@@ -1,0 +1,21 @@
+import React from "react";
+import { createDrawerNavigator } from "react-navigation-drawer";
+import MyProfileNavigation from "./MyProfileNavigation";
+import { Icon } from "react-native-elements";
+
+const MainDrawer = createDrawerNavigator(
+  {
+    Me: {
+      screen: MyProfileNavigation,
+      navigationOptions: {
+        drawerLabel: "Me",
+        drawerIcon: ({ tintColor }) => <Icon name="person" color={tintColor} />,
+      },
+    },
+  },
+  {
+    initialRouteName: "Me",
+  }
+);
+
+export default MainDrawer;
