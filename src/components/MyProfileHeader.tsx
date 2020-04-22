@@ -6,8 +6,9 @@ import styled from "styled-components";
 
 const UserInfoContainer = styled.View`
   align-items: center;
-  margin: 5px 0;
+  justify-content: center;
   background-color: #fff;
+  height: 200px;
 `;
 
 interface IProps {

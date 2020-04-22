@@ -32,20 +32,6 @@ class MyProfileScreen extends React.Component<IProps> {
         }}
       />
     ),
-    headerRight: () => (
-      <View>
-        <Appbar.Action
-          icon="square-edit-outline"
-          onPress={() => {
-            navigation.navigate("EditProfileScreen");
-          }}
-        />
-        <Appbar.Action
-          icon="exit-to-app"
-          onPress={navigation.getParam("logout")}
-        />
-      </View>
-    ),
   });
 
   public componentDidMount = () => {

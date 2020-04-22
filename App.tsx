@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppLoading } from "expo";
-import { Asset } from "expo-asset";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import * as Font from "expo-font";
 import { AsyncStorage } from "react-native";
 import { persistCache } from "apollo-cache-persist";
 import { Provider as PaperProvider } from "react-native-paper";
@@ -50,7 +51,10 @@ export default function App() {
     }
   };
   const loadResourcesAsync = async () => {
-    await Asset.loadAsync([]);
+    await Font.loadAsync({
+      ...Ionicons.font,
+      ...MaterialIcons.font,
+    });
   };
   const handleLoadingError = (error) => {
     console.warn(error);
