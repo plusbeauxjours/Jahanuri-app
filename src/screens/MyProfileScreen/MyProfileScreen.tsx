@@ -61,31 +61,28 @@ class MyProfileScreen extends React.Component<IProps> {
 
   public render() {
     return (
-      <View>
-        <Text>jiji</Text>
-      </View>
-      // <Query<Me> query={ME}>
-      //   {({ data: { me: { user: me = null } = {} } = {}, loading }) => {
-      //     if (loading) {
-      //       return (
-      //         <ActivityIndicator
-      //           size="large"
-      //           style={{
-      //             margin: 20,
-      //           }}
-      //         />
-      //       );
-      //     }
-      //     return (
-      //       <MyProfileHeader
-      //         userImg={me.userImg}
-      //         name={`${me.firstName} ${me.lastName}`}
-      //         username={me.username}
-      //         bio={me.bio}
-      //       />
-      //     );
-      //   }}
-      // </Query>
+      <Query<Me> query={ME}>
+        {({ data: { me: { user: me = null } = {} } = {}, loading }) => {
+          if (loading) {
+            return (
+              <ActivityIndicator
+                size="large"
+                style={{
+                  margin: 20,
+                }}
+              />
+            );
+          }
+          return (
+            <MyProfileHeader
+              userImg={me.userImg}
+              name={`${me.firstName} ${me.lastName}`}
+              username={me.username}
+              bio={me.bio}
+            />
+          );
+        }}
+      </Query>
     );
   }
 }
