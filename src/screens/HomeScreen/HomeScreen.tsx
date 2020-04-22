@@ -25,6 +25,9 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => (
     <Touchabel onPress={KakaoLogin}>
       <Text>KAKAO LOGIN</Text>
     </Touchabel>
+    <Touchabel onPress={() => navigation.navigate("Login")}>
+      <Text>LOGIN</Text>
+    </Touchabel>
   </View>
 );
 
