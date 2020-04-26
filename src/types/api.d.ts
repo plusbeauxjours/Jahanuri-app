@@ -113,10 +113,9 @@ export interface Me_me_user {
   firstName: string;
   lastName: string;
   bio: string;
-  gender: UserGender | null;
   userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
-  hasSubmitedSurvey: boolean;
+  hasSubmitedCheckList: boolean;
   hasSubmitedApplication: boolean;
   hasPaid: boolean;
   hasKakaoAccount: boolean;
@@ -139,15 +138,6 @@ export interface Me {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
-
-/**
- * An enumeration.
- */
-export enum UserGender {
-  FEMALE = "FEMALE",
-  MALE = "MALE",
-  OTHER = "OTHER",
-}
 
 //==============================================================
 // END Enums and Input Objects

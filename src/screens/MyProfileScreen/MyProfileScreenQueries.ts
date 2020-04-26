@@ -13,7 +13,7 @@ export const ME = gql`
         classOrder {
           order
         }
-        hasSubmitedSurvey
+        hasSubmitedCheckList
         hasSubmitedApplication
         hasPaid
         hasKakaoAccount

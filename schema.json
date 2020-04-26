@@ -809,7 +809,7 @@
             "deprecationReason": null
           },
           {
-            "name": "hasSubmitedSurvey",
+            "name": "hasSubmitedCheckList",
             "description": "",
             "args": [],
             "type": {

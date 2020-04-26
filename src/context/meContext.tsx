@@ -6,13 +6,15 @@ import { ME } from "../screens/MyProfileScreen/MyProfileScreenQueries";
 export const MeContext = createContext(null);
 
 export const MeProvider = ({ children }) => {
-  const { data, loading } = useQuery<Me>(ME);
+  const { data, loading, refetch } = useQuery<Me>(ME);
   const me = data ? data.me : null;
   return (
-    <MeContext.Provider value={{ me, loading }}>{children}</MeContext.Provider>
+    <MeContext.Provider value={{ me, loading, refetch }}>
+      {children}
+    </MeContext.Provider>
   );
 };
 export const useMe = () => {
-  const { me, loading } = useContext(MeContext);
-  return { me, loading };
+  const { me, loading, refetch } = useContext(MeContext);
+  return { me, loading, refetch };
 };

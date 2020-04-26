@@ -1,10 +1,8 @@
 import React from "react";
 import { createDrawerNavigator, DrawerItems } from "react-navigation-drawer";
 import MyProfileNavigation from "./MyProfileNavigation";
-import ReportScreen from "../screens/ReportScreen/ReportScreen";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import CheckListScreen from "../screens/CheckListScreen/CheckListScreen";
-import { AsyncStorage, SafeAreaView } from "react-native";
+import { AsyncStorage, SafeAreaView, ActivityIndicator } from "react-native";
 import { Button } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import ContactNavigation from "./ContactNavigation";
@@ -12,6 +10,14 @@ import AboutNavigation from "./AboutNavigation";
 import EditProfileNavigation from "./EditProfileNavigation";
 import ReportNavigation from "./ReportNavigation";
 import CheckListNavigation from "./CheckListNavigation";
+import { useMe } from "../context/meContext";
+import styled from "styled-components";
+
+const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
 
 const DrawerWithLogoutButton = (props) => {
   const handleLogout = async () => {
@@ -61,6 +67,15 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
+    EditProfile: {
+      screen: EditProfileNavigation,
+      navigationOptions: {
+        drawerLabel: "Edit Profile",
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="edit" size={24} color={tintColor} />
+        ),
+      },
+    },
     About: {
       screen: AboutNavigation,
       navigationOptions: {
@@ -80,15 +95,6 @@ const MainDrawer = createDrawerNavigator(
         drawerLabel: "Contact",
         drawerIcon: ({ tintColor }) => (
           <Ionicons name="ios-at" size={24} color={tintColor} />
-        ),
-      },
-    },
-    EditProfile: {
-      screen: EditProfileNavigation,
-      navigationOptions: {
-        drawerLabel: "Edit Profile",
-        drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="edit" size={24} color={tintColor} />
         ),
       },
     },
