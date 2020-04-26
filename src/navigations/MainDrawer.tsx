@@ -1,15 +1,17 @@
 import React from "react";
 import { createDrawerNavigator, DrawerItems } from "react-navigation-drawer";
 import MyProfileNavigation from "./MyProfileNavigation";
-import ContactScreen from "../screens/ContactScreen";
 import ReportScreen from "../screens/ReportScreen/ReportScreen";
-import AboutScreen from "../screens/AboutScreen";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import CheckListScreen from "../screens/CheckListScreen/CheckListScreen";
 import { AsyncStorage, SafeAreaView } from "react-native";
 import { Button } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
-import EditProfileScreen from "../screens/EditProfileScreen/EditProfileScreen";
+import ContactNavigation from "./ContactNavigation";
+import AboutNavigation from "./AboutNavigation";
+import EditProfileNavigation from "./EditProfileNavigation";
+import ReportNavigation from "./ReportNavigation";
+import CheckListNavigation from "./CheckListNavigation";
 
 const DrawerWithLogoutButton = (props) => {
   const handleLogout = async () => {
@@ -38,7 +40,7 @@ const MainDrawer = createDrawerNavigator(
       },
     },
     CheckList: {
-      screen: CheckListScreen,
+      screen: CheckListNavigation,
       navigationOptions: {
         drawerLabel: "Check List",
         drawerIcon: ({ tintColor }) => (
@@ -51,7 +53,7 @@ const MainDrawer = createDrawerNavigator(
       },
     },
     Report: {
-      screen: ReportScreen,
+      screen: ReportNavigation,
       navigationOptions: {
         drawerLabel: "Daily Report",
         drawerIcon: ({ tintColor }) => (
@@ -60,7 +62,7 @@ const MainDrawer = createDrawerNavigator(
       },
     },
     About: {
-      screen: AboutScreen,
+      screen: AboutNavigation,
       navigationOptions: {
         drawerLabel: "About",
         drawerIcon: ({ tintColor }) => (
@@ -73,7 +75,7 @@ const MainDrawer = createDrawerNavigator(
       },
     },
     Contact: {
-      screen: ContactScreen,
+      screen: ContactNavigation,
       navigationOptions: {
         drawerLabel: "Contact",
         drawerIcon: ({ tintColor }) => (
@@ -82,7 +84,7 @@ const MainDrawer = createDrawerNavigator(
       },
     },
     EditProfile: {
-      screen: EditProfileScreen,
+      screen: EditProfileNavigation,
       navigationOptions: {
         drawerLabel: "Edit Profile",
         drawerIcon: ({ tintColor }) => (

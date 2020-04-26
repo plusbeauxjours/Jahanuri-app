@@ -12,6 +12,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import FormikInput from "../../components/Formik/FormikInput";
 import styled from "styled-components";
 import { LOGIN, SIGNUP } from "./AuthScreenQueries";
+import FormikSelect from "../../components/Formik/FormikSelect";
 import {
   Login,
   LoginVariables,
@@ -32,6 +33,7 @@ const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
+  gender: "",
   handle: "",
   password: "",
   confirmPassword: "",
@@ -40,6 +42,7 @@ const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
+  gender: Yup.string().required("Gender is required"),
   handle: Yup.string()
     .matches(
       /^[A-Za-z0-9_]{1,15}$/,

@@ -13,9 +13,9 @@ import { ApolloClient } from "apollo-client";
 import { createUploadLink } from "apollo-upload-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { setContext } from "apollo-link-context";
-
 import { GRAPHQL_URL } from "./src/constants/urls";
-import AppContainer from "./src/components/AppContainer";
+import MainNavigation from "./src/navigations/MainNavigation";
+import { MeProvider } from "./src/context/meContext";
 
 export default function App() {
   const [client, setClient] = useState<any>(null);
@@ -70,7 +70,9 @@ export default function App() {
       <ApolloProvider client={client}>
         <ApolloHooksProvider client={client}>
           <PaperProvider>
-            <AppContainer />
+            <MeProvider>
+              <MainNavigation />
+            </MeProvider>
           </PaperProvider>
         </ApolloHooksProvider>
       </ApolloProvider>

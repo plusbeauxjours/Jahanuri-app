@@ -98,17 +98,28 @@ export interface UpdateUserVariables {
 // GraphQL query operation: Me
 // ====================================================
 
+export interface Me_me_user_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+}
+
 export interface Me_me_user {
   __typename: "UserType";
   uuid: any;
   /**
-   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   * 150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.
    */
   username: string;
   firstName: string;
   lastName: string;
   bio: string;
+  gender: UserGender | null;
   userImg: string | null;
+  classOrder: Me_me_user_classOrder | null;
+  hasSubmitedSurvey: boolean;
+  hasSubmitedApplication: boolean;
+  hasPaid: boolean;
+  hasKakaoAccount: boolean;
 }
 
 export interface Me_me {
@@ -128,6 +139,15 @@ export interface Me {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+/**
+ * An enumeration.
+ */
+export enum UserGender {
+  FEMALE = "FEMALE",
+  MALE = "MALE",
+  OTHER = "OTHER",
+}
 
 //==============================================================
 // END Enums and Input Objects

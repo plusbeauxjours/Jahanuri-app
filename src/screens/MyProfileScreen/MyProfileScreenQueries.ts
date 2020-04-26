@@ -10,8 +10,14 @@ export const ME = gql`
         lastName
         bio
         userImg
+        classOrder {
+          order
+        }
+        hasSubmitedSurvey
+        hasSubmitedApplication
+        hasPaid
+        hasKakaoAccount
       }
     }
   }
 `;
-

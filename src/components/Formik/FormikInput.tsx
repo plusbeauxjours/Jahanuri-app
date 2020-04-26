@@ -29,7 +29,7 @@ const FormikInput: React.FC<IProps> = ({
   autoCapitalize,
   ...rest
 }) => {
-  const handleChange = value => {
+  const handleChange = (value) => {
     onChange(name, value);
   };
 
@@ -37,7 +37,7 @@ const FormikInput: React.FC<IProps> = ({
     onTouch(name);
   };
   return (
-    <Container Container>
+    <Container>
       <TextInput
         label={label}
         autoCapitalize={autoCapitalize}

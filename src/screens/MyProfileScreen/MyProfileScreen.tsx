@@ -6,32 +6,18 @@ import {
   NavigationState,
 } from "react-navigation";
 import { ActivityIndicator, AsyncStorage } from "react-native";
-import { Appbar } from "react-native-paper";
 
 import { ME } from "./MyProfileScreenQueries";
 import { Me } from "../../types/api";
 import MyProfileHeader from "../../components/MyProfileHeader";
-import styled from "styled-components";
 
-const View = styled.View`
-  flex-direction: row;
-`;
-const Text = styled.Text``;
 interface IProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
 class MyProfileScreen extends React.Component<IProps> {
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = () => ({
     title: "Me",
-    headerLeft: () => (
-      <Appbar.Action
-        icon="menu"
-        onPress={() => {
-          navigation.toggleDrawer();
-        }}
-      />
-    ),
   });
 
   public componentDidMount = () => {

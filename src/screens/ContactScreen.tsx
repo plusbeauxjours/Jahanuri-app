@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavigationStackScreenComponent } from "react-navigation-stack";
 
 const View = styled.View`
   flex: 1;
@@ -8,7 +9,7 @@ const View = styled.View`
 `;
 const Text = styled.Text``;
 
-const ContactScreen: React.FC = () => (
+const ContactScreen: NavigationStackScreenComponent = () => (
   <View>
     <Text>Contact</Text>
     <Text>Contact</Text>
@@ -18,5 +19,8 @@ const ContactScreen: React.FC = () => (
     <Text>Contact</Text>
   </View>
 );
+ContactScreen.navigationOptions = () => ({
+  title: "Contact",
+});
 
 export default ContactScreen;

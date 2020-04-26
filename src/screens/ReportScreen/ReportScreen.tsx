@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavigationStackScreenComponent } from "react-navigation-stack";
 
 const View = styled.View`
   flex: 1;
@@ -8,9 +9,12 @@ const View = styled.View`
 `;
 const Text = styled.Text``;
 
-const ReportScreen: React.FC = () => (
+const ReportScreen: NavigationStackScreenComponent = () => (
   <View>
     <Text>Report Screen</Text>
   </View>
 );
+ReportScreen.navigationOptions = () => ({
+  title: "Daily Report",
+});
 export default ReportScreen;

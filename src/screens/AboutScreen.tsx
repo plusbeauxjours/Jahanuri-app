@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavigationStackScreenComponent } from "react-navigation-stack";
 
 const View = styled.View`
   flex: 1;
@@ -8,10 +9,13 @@ const View = styled.View`
 `;
 const Text = styled.Text``;
 
-const AboutScreen: React.FC = () => (
+const AboutScreen: NavigationStackScreenComponent = () => (
   <View>
     <Text>About Jahanuri</Text>
   </View>
 );
+AboutScreen.navigationOptions = () => ({
+  title: "About Jahanuri",
+});
 
 export default AboutScreen;

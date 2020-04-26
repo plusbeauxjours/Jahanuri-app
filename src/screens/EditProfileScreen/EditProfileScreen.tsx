@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Alert } from "react-native";
 import { ApolloConsumer, Mutation } from "react-apollo";
 import gql from "graphql-tag";
@@ -10,7 +10,6 @@ import { ReactNativeFile } from "apollo-upload-client";
 import FormikInput from "../../components/Formik/FormikInput";
 import FormikImagePicker from "../../components/Formik/FormikImagePicker";
 import { UPDATE_USER } from "./EditProfileScreenQueries";
-import Divider from "../../components/Divider";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";
 import { NavigationStackScreenProps } from "react-navigation-stack";
@@ -22,10 +21,10 @@ const Button = styled.Button`
 
 interface IProps extends NavigationStackScreenProps {}
 
-export default class EditProfileScreen extends Component<IProps> {
-  static navigationOptions = {
+class EditProfileScreen extends React.Component<IProps> {
+  static navigationOptions = () => ({
     title: "Edit profile",
-  };
+  });
 
   public onEditSportsPress = () => {
     this.props.navigation.navigate("EditSportsScreen");
@@ -81,10 +80,12 @@ export default class EditProfileScreen extends Component<IProps> {
                 me {
                   user {
                     uuid
+                    username
                     firstName
                     lastName
                     bio
                     userImg
+                    hasKakaoAccount
                   }
                 }
               }
@@ -154,26 +155,32 @@ export default class EditProfileScreen extends Component<IProps> {
                       name="bio"
                       error={touched.bio && errors.bio}
                     />
-                    <FormikInput
-                      label="Password"
-                      autoCapitalize="none"
-                      secureTextEntry
-                      value={values.password}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="password"
-                      error={touched.password && errors.password}
-                    />
-                    <FormikInput
-                      label="Confirm password"
-                      autoCapitalize="none"
-                      secureTextEntry
-                      value={values.confirmPassword}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="confirmPassword"
-                      error={touched.confirmPassword && errors.confirmPassword}
-                    />
+                    {!me.user.hasKakaoAccount && (
+                      <>
+                        <FormikInput
+                          label="Password"
+                          autoCapitalize="none"
+                          secureTextEntry
+                          value={values.password}
+                          onChange={setFieldValue}
+                          onTouch={setFieldTouched}
+                          name="password"
+                          error={touched.password && errors.password}
+                        />
+                        <FormikInput
+                          label="Confirm password"
+                          autoCapitalize="none"
+                          secureTextEntry
+                          value={values.confirmPassword}
+                          onChange={setFieldValue}
+                          onTouch={setFieldTouched}
+                          name="confirmPassword"
+                          error={
+                            touched.confirmPassword && errors.confirmPassword
+                          }
+                        />
+                      </>
+                    )}
                     <Mutation
                       mutation={UPDATE_USER}
                       variables={{
@@ -213,3 +220,5 @@ export default class EditProfileScreen extends Component<IProps> {
     );
   }
 }
+
+export default EditProfileScreen;
