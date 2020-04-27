@@ -100,6 +100,29 @@ export interface GetCheckListQuestions {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CheckList
+// ====================================================
+
+export interface CheckList_checkList {
+  __typename: "CheckListResponse";
+  ok: boolean | null;
+}
+
+export interface CheckList {
+  checkList: CheckList_checkList;
+}
+
+export interface CheckListVariables {
+  checkListCoverUuid: string;
+  checkListSet?: (string | null)[] | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: UpdateUser
 // ====================================================
 

@@ -19,3 +19,23 @@ export const GET_CHECK_LIST_QUESTIONS = gql`
     }
   }
 `;
+
+interface CheckListSet {
+  uuid: String;
+  previous: Boolean;
+  later: Boolean;
+}
+
+export const CHECK_LIST = gql`
+  mutation CheckList(
+    $checkListCoverUuid: String!
+    $checkListSet: CheckListSet
+  ) {
+    checkList(
+      checkListCoverUuid: $checkListCoverUuid
+      checkListSet: $checkListSet
+    ) {
+      ok
+    }
+  }
+`;
