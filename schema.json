@@ -51,6 +51,22 @@
             "deprecationReason": null
           },
           {
+            "name": "getCheckListQuestions",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "GetCheckListQuestionsResponse",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "getClassList",
             "description": null,
             "args": [],
@@ -527,6 +543,38 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "UserType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "previousSubmit",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "laterSubmit",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
                 "ofType": null
               }
             },
@@ -1836,7 +1884,7 @@
             "deprecationReason": null
           },
           {
-            "name": "checklistanswerSet",
+            "name": "questionSet",
             "description": "",
             "args": [],
             "type": {
@@ -1902,8 +1950,41 @@
             "description": "Water",
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "SANGHWA",
+            "description": "Sanghwa",
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "GetCheckListQuestionsResponse",
+        "description": null,
+        "fields": [
+          {
+            "name": "checkListQuestions",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CheckListQuestionType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
         "possibleTypes": null
       },
       {

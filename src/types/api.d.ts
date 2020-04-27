@@ -61,6 +61,45 @@ export interface SignupVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: GetCheckListQuestions
+// ====================================================
+
+export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet_checkListCover {
+  __typename: "CheckListCoverType";
+  uuid: any;
+  previousSubmit: boolean;
+  laterSubmit: boolean;
+}
+
+export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet {
+  __typename: "CheckListAnswerType";
+  checkListCover: GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet_checkListCover;
+  previousAnswer: boolean;
+  laterAnswer: boolean;
+}
+
+export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions {
+  __typename: "CheckListQuestionType";
+  uuid: any;
+  question: string;
+  questionSet: GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet[];
+}
+
+export interface GetCheckListQuestions_getCheckListQuestions {
+  __typename: "GetCheckListQuestionsResponse";
+  checkListQuestions: (GetCheckListQuestions_getCheckListQuestions_checkListQuestions | null)[] | null;
+}
+
+export interface GetCheckListQuestions {
+  getCheckListQuestions: GetCheckListQuestions_getCheckListQuestions;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: UpdateUser
 // ====================================================
 
