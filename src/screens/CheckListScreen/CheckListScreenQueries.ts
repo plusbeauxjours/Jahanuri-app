@@ -1,39 +1,29 @@
 import gql from "graphql-tag";
 
-export const GET_CHECK_LIST_QUESTIONS = gql`
-  query GetCheckListQuestions {
-    getCheckListQuestions {
-      checkListQuestions {
+export const GET_CHECK_LIST_ANSWERS = gql`
+  query GetCheckListAnswers {
+    getCheckListAnswers {
+      checkListAnswers {
         uuid
-        question
-        questionSet {
-          checkListCover {
-            uuid
-            previousSubmit
-            laterSubmit
-          }
-          previousAnswer
-          laterAnswer
+        previousAnswer
+        laterAnswer
+        question {
+          uuid
+          question
         }
       }
     }
   }
 `;
 
-interface CheckListSet {
-  uuid: String;
-  previous: Boolean;
-  later: Boolean;
-}
-
-export const CHECK_LIST = gql`
-  mutation CheckList(
-    $checkListCoverUuid: String!
-    $checkListSet: CheckListSet
+export const SUBMIT_CHECK_LIST = gql`
+  mutation SubmitCheckList(
+    $isPreviousAnswer: Boolean!
+    $trueAnswerQuestionUuids: [String]
   ) {
-    checkList(
-      checkListCoverUuid: $checkListCoverUuid
-      checkListSet: $checkListSet
+    submitCheckList(
+      isPreviousAnswer: $isPreviousAnswer
+      trueAnswerQuestionUuids: $trueAnswerQuestionUuids
     ) {
       ok
     }

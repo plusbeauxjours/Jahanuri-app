@@ -61,37 +61,29 @@ export interface SignupVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetCheckListQuestions
+// GraphQL query operation: GetCheckListAnswers
 // ====================================================
 
-export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet_checkListCover {
-  __typename: "CheckListCoverType";
-  uuid: any;
-  previousSubmit: boolean;
-  laterSubmit: boolean;
+export interface GetCheckListAnswers_getCheckListAnswers_checkListAnswers_question {
+  __typename: "CheckListQuestionType";
+  question: string;
 }
 
-export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet {
+export interface GetCheckListAnswers_getCheckListAnswers_checkListAnswers {
   __typename: "CheckListAnswerType";
-  checkListCover: GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet_checkListCover;
+  uuid: any;
   previousAnswer: boolean;
   laterAnswer: boolean;
+  question: GetCheckListAnswers_getCheckListAnswers_checkListAnswers_question;
 }
 
-export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions {
-  __typename: "CheckListQuestionType";
-  uuid: any;
-  question: string;
-  questionSet: GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet[];
+export interface GetCheckListAnswers_getCheckListAnswers {
+  __typename: "GetCheckListAnswersResponse";
+  checkListAnswers: (GetCheckListAnswers_getCheckListAnswers_checkListAnswers | null)[] | null;
 }
 
-export interface GetCheckListQuestions_getCheckListQuestions {
-  __typename: "GetCheckListQuestionsResponse";
-  checkListQuestions: (GetCheckListQuestions_getCheckListQuestions_checkListQuestions | null)[] | null;
-}
-
-export interface GetCheckListQuestions {
-  getCheckListQuestions: GetCheckListQuestions_getCheckListQuestions;
+export interface GetCheckListAnswers {
+  getCheckListAnswers: GetCheckListAnswers_getCheckListAnswers;
 }
 
 /* tslint:disable */
@@ -100,21 +92,21 @@ export interface GetCheckListQuestions {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: CheckList
+// GraphQL mutation operation: SubmitCheckList
 // ====================================================
 
-export interface CheckList_checkList {
-  __typename: "CheckListResponse";
+export interface SubmitCheckList_submitCheckList {
+  __typename: "SubmitCheckListResponse";
   ok: boolean | null;
 }
 
-export interface CheckList {
-  checkList: CheckList_checkList;
+export interface SubmitCheckList {
+  submitCheckList: SubmitCheckList_submitCheckList;
 }
 
-export interface CheckListVariables {
-  checkListCoverUuid: string;
-  checkListSet?: (string | null)[] | null;
+export interface SubmitCheckListVariables {
+  isPreviousAnswer: boolean;
+  trueAnswerQuestionUuids?: (string | null)[] | null;
 }
 
 /* tslint:disable */
@@ -177,7 +169,8 @@ export interface Me_me_user {
   bio: string;
   userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
-  hasSubmitedCheckList: boolean;
+  hasPreviousCheckListSubmitted: boolean;
+  hasLaterCheckListSubmitted: boolean;
   hasSubmitedApplication: boolean;
   hasPaid: boolean;
   hasKakaoAccount: boolean;

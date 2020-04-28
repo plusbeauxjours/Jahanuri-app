@@ -1,52 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
-import { GET_CHECK_LIST_QUESTIONS } from "./CheckListScreenQueries";
-import { GetCheckListQuestions } from "../../types/api";
+import {
+  GET_CHECK_LIST_ANSWERS,
+  SUBMIT_CHECK_LIST,
+} from "./CheckListScreenQueries";
+import {
+  GetCheckListAnswers,
+  SubmitCheckList,
+  SubmitCheckListVariables,
+} from "../../types/api";
 import CheckListRow from "../../components/CheckListRow";
 import { ActivityIndicator } from "react-native";
-import { useQuery } from "react-apollo-hooks";
+import { useQuery, useMutation } from "react-apollo-hooks";
+import { useMe } from "../../context/meContext";
 
 const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
+const Button = styled.Button`
+  margin-top: 10px;
+  width: 90%;
+`;
 
 const CheckListScreen: NavigationStackScreenComponent = () => {
+  const { me, loading: meLoading } = useMe();
+  const [trueAnswerQuestionUuids, setTrueAnswerQuestionUuids] = useState<any>(
+    []
+  );
   const {
-    data: { getCheckListQuestions: { checkListQuestions = null } = {} } = {},
-    loading,
-  } = useQuery<GetCheckListQuestions>(GET_CHECK_LIST_QUESTIONS);
-  if (loading) {
+    data: { getCheckListAnswers: { checkListAnswers = null } = {} } = {},
+    loading: checkListQuestionsLoading,
+  } = useQuery<GetCheckListAnswers>(GET_CHECK_LIST_ANSWERS);
+  const [submitCheckListFn, { loading: submitCheckListLoading }] = useMutation<
+    SubmitCheckList,
+    SubmitCheckListVariables
+  >(SUBMIT_CHECK_LIST);
+  const onPress = (newUuid: string) => {
+    trueAnswerQuestionUuids.includes(newUuid)
+      ? setTrueAnswerQuestionUuids(
+          trueAnswerQuestionUuids.filter((uuid) => uuid !== newUuid)
+        )
+      : setTrueAnswerQuestionUuids([...trueAnswerQuestionUuids, newUuid]);
+  };
+  if (meLoading || checkListQuestionsLoading) {
     return (
       <Container>
         <ActivityIndicator />
       </Container>
     );
-  } else if (!loading) {
+  } else if (!meLoading && !checkListQuestionsLoading) {
     return (
       <React.Fragment>
-        {checkListQuestions &&
-          checkListQuestions.length !== 0 &&
-          checkListQuestions.map((checkListQuestion: any) => (
+        {checkListAnswers &&
+          checkListAnswers.length !== 0 &&
+          checkListAnswers.map((checkListAnswer: any) => (
             <CheckListRow
-              key={checkListQuestion.uuid}
-              uuid={checkListQuestion.uuid}
-              question={checkListQuestion.question}
-              checkListCoverUuid={
-                checkListQuestion.questionSet[0].checkListCover.uuid
-              }
-              previousAnswer={checkListQuestion.questionSet[0].previousAnswer}
-              laterAnswer={checkListQuestion.questionSet[0].laterAnswer}
-              haspreviousSubmited={
-                checkListQuestion.questionSet[0].checkListCover.previousSubmit
-              }
-              haslaterSubmited={
-                checkListQuestion.questionSet[0].checkListCover.laterSubmit
-              }
+              key={checkListAnswer.uuid}
+              uuid={checkListAnswer.question.uuid}
+              question={checkListAnswer.question.question}
+              previousAnswer={checkListAnswer.previousAnswer}
+              laterAnswer={checkListAnswer.laterAnswer}
+              haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
+              haslaterSubmited={me.user.hasLaterCheckListSubmitted}
+              onPress={onPress}
             />
           ))}
+        <Button
+          raised
+          primary
+          disabled={
+            trueAnswerQuestionUuids.length === 0 || checkListQuestionsLoading
+          }
+          loading={submitCheckListLoading}
+          onPress={() => {
+            console.log(trueAnswerQuestionUuids);
+            submitCheckListFn({
+              variables: {
+                trueAnswerQuestionUuids,
+                isPreviousAnswer:
+                  !me.user.hasPreviousCheckListSubmitted &&
+                  !me.user.hasLaterCheckListSubmitted
+                    ? true
+                    : false,
+              },
+            });
+          }}
+          title="Submit"
+        />
       </React.Fragment>
     );
   } else {

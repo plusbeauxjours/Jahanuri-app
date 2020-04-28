@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -10,66 +10,98 @@ const View = styled.View`
   padding: 0 10px;
 `;
 const Text = styled.Text``;
+const Touchable = styled.TouchableOpacity``;
 
 interface IProps {
   uuid: string;
   question: string;
-  checkListCoverUuid: string;
-  previousAnswer: string;
-  laterAnswer: string;
+  previousAnswer: boolean;
+  laterAnswer: boolean;
   haspreviousSubmited: boolean;
   haslaterSubmited: boolean;
+  onPress: (newUuid: string) => void;
 }
 const CheckListRow: React.FC<IProps> = ({
   uuid,
   question,
-  checkListCoverUuid,
   previousAnswer,
   laterAnswer,
   haspreviousSubmited,
   haslaterSubmited,
+  onPress,
 }) => {
+  const [isPreviousAnswerTrue, setIsPreviousAnswerTrue] = useState<boolean>(
+    previousAnswer
+  );
+  const [isLaterAnswerTrue, setIsLaterAnswerTrue] = useState<boolean>(
+    laterAnswer
+  );
   if (!haspreviousSubmited && !haspreviousSubmited) {
     return (
       <View>
         <Text>{question}</Text>
-        {previousAnswer ? (
-          <Ionicons name="ios-checkbox-outline" size={24} />
-        ) : (
-          <Ionicons name="ios-square-outline" size={24} />
-        )}
+        <Touchable
+          onPress={() => {
+            onPress(uuid);
+            setIsPreviousAnswerTrue(
+              (isPreviousAnswerTrue) => !isPreviousAnswerTrue
+            );
+          }}
+        >
+          {isPreviousAnswerTrue ? (
+            <Ionicons name="ios-checkbox-outline" size={24} />
+          ) : (
+            <Ionicons name="ios-square-outline" size={28} />
+          )}
+        </Touchable>
       </View>
     );
   } else if (haspreviousSubmited && !haslaterSubmited) {
     return (
       <View>
         <Text>{question}</Text>
-        {laterAnswer ? (
-          <Ionicons name="ios-checkbox-outline" size={24} />
-        ) : (
-          <Ionicons name="ios-square-outline" size={24} />
-        )}
+        <Touchable
+          onPress={() => {
+            onPress(uuid);
+            setIsLaterAnswerTrue((isLaterAnswerTrue) => !isLaterAnswerTrue);
+          }}
+        >
+          {isLaterAnswerTrue ? (
+            <Ionicons name="ios-checkbox-outline" size={24} />
+          ) : (
+            <Ionicons name="ios-square-outline" size={28} />
+          )}
+        </Touchable>
       </View>
     );
   } else if (!haspreviousSubmited && haslaterSubmited) {
     return (
       <View>
         <Text>{question}</Text>
-        {previousAnswer ? (
-          <Ionicons name="ios-checkbox-outline" size={24} />
-        ) : (
-          <Ionicons name="ios-square-outline" size={24} />
-        )}
+        <Touchable
+          onPress={() => {
+            onPress(uuid),
+              setIsPreviousAnswerTrue(
+                (isPreviousAnswerTrue) => !isPreviousAnswerTrue
+              );
+          }}
+        >
+          {isPreviousAnswerTrue ? (
+            <Ionicons name="ios-checkbox-outline" size={24} />
+          ) : (
+            <Ionicons name="ios-square-outline" size={28} />
+          )}
+        </Touchable>
       </View>
     );
   } else {
     return (
       <View>
         <Text>{question}</Text>
-        {previousAnswer ? (
-          <Ionicons name="ios-checkbox-outline" size={24} />
+        {isLaterAnswerTrue ? (
+          <Ionicons name="ios-checkbox-outline" size={24} color={"#999"} />
         ) : (
-          <Ionicons name="ios-square-outline" size={24} />
+          <Ionicons name="ios-square-outline" size={28} color={"#999"} />
         )}
       </View>
     );

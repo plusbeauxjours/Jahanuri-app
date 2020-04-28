@@ -28,7 +28,7 @@ export default function App() {
         storage: AsyncStorage,
       });
       // await AsyncStorage.clear();
-      // cache.reset();
+      cache.reset();
       let httpLink = createUploadLink({
         uri: GRAPHQL_URL as string,
       });
