@@ -15,8 +15,8 @@ const Touchable = styled.TouchableOpacity``;
 interface IProps {
   uuid: string;
   question: string;
-  previousAnswer: boolean;
-  laterAnswer: boolean;
+  previousAnswer?: boolean;
+  laterAnswer?: boolean;
   haspreviousSubmited: boolean;
   haslaterSubmited: boolean;
   onPress: (newUuid: string) => void;
@@ -60,6 +60,7 @@ const CheckListRow: React.FC<IProps> = ({
     return (
       <View>
         <Text>{question}</Text>
+
         <Touchable
           onPress={() => {
             onPress(uuid);

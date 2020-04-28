@@ -61,29 +61,29 @@ export interface SignupVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetCheckListAnswers
+// GraphQL query operation: GetCheckListQuestions
 // ====================================================
 
-export interface GetCheckListAnswers_getCheckListAnswers_checkListAnswers_question {
-  __typename: "CheckListQuestionType";
-  question: string;
-}
-
-export interface GetCheckListAnswers_getCheckListAnswers_checkListAnswers {
+export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet {
   __typename: "CheckListAnswerType";
-  uuid: any;
   previousAnswer: boolean;
   laterAnswer: boolean;
-  question: GetCheckListAnswers_getCheckListAnswers_checkListAnswers_question;
 }
 
-export interface GetCheckListAnswers_getCheckListAnswers {
-  __typename: "GetCheckListAnswersResponse";
-  checkListAnswers: (GetCheckListAnswers_getCheckListAnswers_checkListAnswers | null)[] | null;
+export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions {
+  __typename: "CheckListQuestionType";
+  question: string;
+  uuid: any;
+  questionSet: GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet[];
 }
 
-export interface GetCheckListAnswers {
-  getCheckListAnswers: GetCheckListAnswers_getCheckListAnswers;
+export interface GetCheckListQuestions_getCheckListQuestions {
+  __typename: "GetCheckListQuestionsResponse";
+  checkListQuestions: (GetCheckListQuestions_getCheckListQuestions_checkListQuestions | null)[] | null;
+}
+
+export interface GetCheckListQuestions {
+  getCheckListQuestions: GetCheckListQuestions_getCheckListQuestions;
 }
 
 /* tslint:disable */

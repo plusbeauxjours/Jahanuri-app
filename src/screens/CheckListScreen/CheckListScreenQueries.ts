@@ -1,15 +1,14 @@
 import gql from "graphql-tag";
 
-export const GET_CHECK_LIST_ANSWERS = gql`
-  query GetCheckListAnswers {
-    getCheckListAnswers {
-      checkListAnswers {
+export const GET_CHECK_LIST_QUESTIONS = gql`
+  query GetCheckListQuestions {
+    getCheckListQuestions {
+      checkListQuestions {
+        question
         uuid
-        previousAnswer
-        laterAnswer
-        question {
-          uuid
-          question
+        questionSet {
+          previousAnswer
+          laterAnswer
         }
       }
     }
