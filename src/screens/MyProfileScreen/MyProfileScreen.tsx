@@ -80,7 +80,7 @@ class MyProfileScreen extends React.Component<IProps, IState> {
               />
             );
           } else {
-            if (!me.hasSubmitedCheckList) {
+            if (!me.hasPreviousCheckListSubmitted) {
               return (
                 <ScrollView
                   refreshControl={

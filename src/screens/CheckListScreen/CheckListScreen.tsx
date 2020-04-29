@@ -84,48 +84,72 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
   } else if (!meLoading && !checkListQuestionsLoading) {
     return (
       <React.Fragment>
-        {console.log(checkListQuestions)}
-        <SwipeListView
-          useFlatList={false}
-          closeOnRowBeginSwipe={true}
-          data={checkListQuestions}
-          previewOpenValue={1000}
-          renderItem={(data) => (
+        {!me.user.hasPreviousCheckListSubmitted &&
+        !me.user.hasLaterCheckListSubmitted ? (
+          checkListQuestions &&
+          checkListQuestions.length !== 0 &&
+          checkListQuestions.map((checkListQuestion: any) => (
             <CheckListRow
-              key={data.item.uuid}
-              uuid={data.item.uuid}
-              question={data.item.question}
+              key={checkListQuestion.uuid}
+              uuid={checkListQuestion.uuid}
+              question={checkListQuestion.question}
               previousAnswer={
-                data.item.questionSet.length !== 0
-                  ? data.item.questionSet[0].previousAnswer
+                checkListQuestion.questionSet.length !== 0
+                  ? checkListQuestion.questionSet[0].previousAnswer
                   : false
               }
               laterAnswer={
-                data.item.questionSet.length !== 0
-                  ? data.item.questionSet[0].laterAnswer
+                checkListQuestion.questionSet.length !== 0
+                  ? checkListQuestion.questionSet[0].laterAnswer
                   : false
               }
               haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
               haslaterSubmited={me.user.hasLaterCheckListSubmitted}
               onPress={onPress}
             />
-          )}
-          renderHiddenItem={(data) => (
-            <RowBack>
-              <BackLeftBtn
-                disabled={checkListQuestionsLoading}
-                onPress={() => console.log(data)}
-              >
-                <IconContainer>
-                  <SmallText>UN BLOCK</SmallText>
-                </IconContainer>
-              </BackLeftBtn>
-            </RowBack>
-          )}
-          leftOpenValue={45}
-          keyExtractor={(item) => item.uuid}
-        />
-        {/* ))} */}
+          ))
+        ) : (
+          <SwipeListView
+            useFlatList={false}
+            closeOnRowBeginSwipe={true}
+            data={checkListQuestions}
+            previewOpenValue={1000}
+            renderItem={(data) => (
+              <CheckListRow
+                key={data.item.uuid}
+                uuid={data.item.uuid}
+                question={data.item.question}
+                previousAnswer={
+                  data.item.questionSet.length !== 0
+                    ? data.item.questionSet[0].previousAnswer
+                    : false
+                }
+                laterAnswer={
+                  data.item.questionSet.length !== 0
+                    ? data.item.questionSet[0].laterAnswer
+                    : false
+                }
+                haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
+                haslaterSubmited={me.user.hasLaterCheckListSubmitted}
+                onPress={onPress}
+              />
+            )}
+            renderHiddenItem={(data) => (
+              <RowBack>
+                <BackLeftBtn
+                  disabled={checkListQuestionsLoading}
+                  onPress={() => console.log(data)}
+                >
+                  <IconContainer>
+                    <SmallText>UN BLOCK</SmallText>
+                  </IconContainer>
+                </BackLeftBtn>
+              </RowBack>
+            )}
+            leftOpenValue={45}
+            keyExtractor={(item) => item.uuid}
+          />
+        )}
         <Button
           raised
           primary

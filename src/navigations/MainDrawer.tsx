@@ -2,7 +2,7 @@ import React from "react";
 import { createDrawerNavigator, DrawerItems } from "react-navigation-drawer";
 import MyProfileNavigation from "./MyProfileNavigation";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { AsyncStorage, SafeAreaView, ActivityIndicator } from "react-native";
+import { AsyncStorage, SafeAreaView } from "react-native";
 import { Button } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import ContactNavigation from "./ContactNavigation";
@@ -10,14 +10,6 @@ import AboutNavigation from "./AboutNavigation";
 import EditProfileNavigation from "./EditProfileNavigation";
 import ReportNavigation from "./ReportNavigation";
 import CheckListNavigation from "./CheckListNavigation";
-import { useMe } from "../context/meContext";
-import styled from "styled-components";
-
-const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
 
 const DrawerWithLogoutButton = (props) => {
   const handleLogout = async () => {
