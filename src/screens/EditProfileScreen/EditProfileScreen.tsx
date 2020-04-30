@@ -13,6 +13,8 @@ import { UPDATE_USER } from "./EditProfileScreenQueries";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";
 import { NavigationStackScreenProps } from "react-navigation-stack";
+import { UpdateUser } from "src/types/api";
+import { UpdateUserVariables } from "../../types/api";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -181,7 +183,7 @@ class EditProfileScreen extends React.Component<IProps> {
                         />
                       </>
                     )}
-                    <Mutation
+                    <Mutation<UpdateUser, UpdateUserVariables>
                       mutation={UPDATE_USER}
                       variables={{
                         firstName: values.firstName.trim(),

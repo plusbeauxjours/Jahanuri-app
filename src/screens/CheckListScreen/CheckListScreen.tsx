@@ -15,48 +15,34 @@ import { ActivityIndicator } from "react-native";
 import { useQuery, useMutation } from "react-apollo-hooks";
 import { useMe } from "../../context/meContext";
 import { SwipeListView } from "react-native-swipe-list-view";
+import { Ionicons } from "@expo/vector-icons";
 
-const Container = styled.View`
+const View = styled.View`
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+`;
+const LoadingContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
+
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  background-color: ${(props) => props.theme.bgColor};
+`;
+
 const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
 `;
-const Text = styled.Text``;
-const View = styled.View``;
 
-const RowBack = styled.View`
-  align-items: center;
-  flex: 1;
-  flex-direction: row;
-  margin-left: 5px;
-  max-width: 85px;
-  width: 100%;
-  justify-content: space-between;
-`;
-const BackLeftBtn = styled.TouchableOpacity`
-  justify-content: center;
-`;
-const IconContainer = styled.View`
-  width: 40px;
-  height: 40px;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 0.5px solid #999;
-  border-radius: 5px;
-  padding: 2px;
-`;
-const SmallText = styled.Text`
-  color: #999;
-  text-align: center;
-  font-size: 8px;
-`;
 const CheckListScreen: NavigationStackScreenComponent = () => {
   const { me, loading: meLoading } = useMe();
+
   const [trueAnswerQuestionUuids, setTrueAnswerQuestionUuids] = useState<any>(
     []
   );
@@ -75,15 +61,15 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
         )
       : setTrueAnswerQuestionUuids([...trueAnswerQuestionUuids, newUuid]);
   };
-  if (meLoading || checkListQuestionsLoading) {
+  if (meLoading) {
     return (
-      <Container>
+      <LoadingContainer>
         <ActivityIndicator />
-      </Container>
+      </LoadingContainer>
     );
   } else if (!meLoading && !checkListQuestionsLoading) {
     return (
-      <React.Fragment>
+      <Container>
         {!me.user.hasPreviousCheckListSubmitted &&
         !me.user.hasLaterCheckListSubmitted ? (
           checkListQuestions &&
@@ -135,16 +121,21 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
               />
             )}
             renderHiddenItem={(data) => (
-              <RowBack>
-                <BackLeftBtn
-                  disabled={checkListQuestionsLoading}
-                  onPress={() => console.log(data)}
-                >
-                  <IconContainer>
-                    <SmallText>UN BLOCK</SmallText>
-                  </IconContainer>
-                </BackLeftBtn>
-              </RowBack>
+              <View>
+                {data.item.questionSet[0].previousAnswer ? (
+                  <Ionicons
+                    name="ios-checkbox-outline"
+                    size={24}
+                    color={"#999"}
+                  />
+                ) : (
+                  <Ionicons
+                    name="ios-square-outline"
+                    size={28}
+                    color={"#999"}
+                  />
+                )}
+              </View>
             )}
             leftOpenValue={45}
             keyExtractor={(item) => item.uuid}
@@ -172,7 +163,7 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
           }}
           title="Submit"
         />
-      </React.Fragment>
+      </Container>
     );
   } else {
     return null;

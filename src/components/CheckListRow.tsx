@@ -8,6 +8,7 @@ const View = styled.View`
   justify-content: space-between;
   height: 40px;
   padding: 0 10px;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 const Text = styled.Text``;
 const Touchable = styled.TouchableOpacity``;

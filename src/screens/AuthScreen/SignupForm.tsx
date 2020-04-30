@@ -12,7 +12,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import FormikInput from "../../components/Formik/FormikInput";
 import styled from "styled-components";
 import { LOGIN, SIGNUP } from "./AuthScreenQueries";
-import FormikSelect from "../../components/Formik/FormikSelect";
 import {
   Login,
   LoginVariables,

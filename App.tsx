@@ -16,6 +16,8 @@ import { setContext } from "apollo-link-context";
 import { GRAPHQL_URL } from "./src/constants/urls";
 import MainNavigation from "./src/navigations/MainNavigation";
 import { MeProvider } from "./src/context/meContext";
+import { ThemeProvider } from "./src/styles/typed-components";
+import theme from "./src/styles/theme";
 
 export default function App() {
   const [client, setClient] = useState<any>(null);
@@ -72,7 +74,9 @@ export default function App() {
         <ApolloHooksProvider client={client}>
           <PaperProvider>
             <MeProvider>
-              <MainNavigation />
+              <ThemeProvider theme={theme}>
+                <MainNavigation />
+              </ThemeProvider>
             </MeProvider>
           </PaperProvider>
         </ApolloHooksProvider>

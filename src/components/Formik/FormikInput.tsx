@@ -43,7 +43,6 @@ const FormikInput: React.FC<IProps> = ({
         autoCapitalize={autoCapitalize}
         onChangeText={handleChange}
         onBlur={handleBlur}
-        placeholder={label}
         error={error}
         {...rest}
       />
