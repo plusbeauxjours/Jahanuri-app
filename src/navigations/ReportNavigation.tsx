@@ -3,12 +3,16 @@ import { PRIMARY_COLOR } from "../constants/colors";
 
 import ReportScreen from "../screens/ReportScreen";
 import { Appbar } from "react-native-paper";
-import PaidInformationScreen from "../screens/PaidInformationScreen";
+import PaymentInformationScreen from "../screens/ PaymentInformationScreen";
+import ApplicationScreen from "../screens/ApplicationScreen";
+import CheckListScreen from "../screens/CheckListScreen/CheckListScreen";
 
 const ReportNavigation = createStackNavigator(
   {
     ReportScreen,
-    PaidInformationScreen,
+    CheckListScreen,
+    ApplicationScreen,
+    PaymentInformationScreen,
   },
   {
     initialRouteName: "ReportScreen",

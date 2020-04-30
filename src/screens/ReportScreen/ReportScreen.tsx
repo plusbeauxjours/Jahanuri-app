@@ -39,7 +39,7 @@ const ReportScreen: NavigationStackScreenComponent = ({ navigation }) => {
       </Container>
     );
   } else {
-    if (!me.user.hasSubmitedCheckList) {
+    if (!me.user.hasPreviousCheckListSubmitted) {
       return (
         <ScrollView
           refreshControl={
@@ -77,7 +77,7 @@ const ReportScreen: NavigationStackScreenComponent = ({ navigation }) => {
             <Text>
               You didn't submit application yet, please submit application
             </Text>
-            <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
+            <Touchable onPress={() => navigation.navigate("ApplicationScreen")}>
               <Text>go to application</Text>
             </Touchable>
           </View>
@@ -97,7 +97,9 @@ const ReportScreen: NavigationStackScreenComponent = ({ navigation }) => {
         >
           <View>
             <Text>You didn't pay yet, please pay</Text>
-            <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
+            <Touchable
+              onPress={() => navigation.navigate("PaymentInformationScreen")}
+            >
               <Text>go to payment information</Text>
             </Touchable>
           </View>

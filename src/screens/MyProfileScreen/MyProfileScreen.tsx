@@ -11,6 +11,7 @@ import { ME } from "./MyProfileScreenQueries";
 import { Me } from "../../types/api";
 import MyProfileHeader from "../../components/MyProfileHeader";
 import styled from "styled-components";
+import UserStateController from "../../components/UserStateController";
 
 const View = styled.View`
   flex: 1;
@@ -80,125 +81,34 @@ class MyProfileScreen extends React.Component<IProps, IState> {
               />
             );
           } else {
-            if (!me.hasPreviousCheckListSubmitted) {
-              return (
-                <ScrollView
-                  refreshControl={
-                    <RefreshControl
-                      refreshing={this.state.refreshing}
-                      onRefresh={this.onRefresh}
-                      tintColor={"#999"}
-                    />
-                  }
-                  showsVerticalScrollIndicator={false}
-                >
-                  <MyProfileHeader
-                    userImg={me.userImg}
-                    name={`${me.firstName} ${me.lastName}`}
-                    username={me.username}
-                    bio={me.bio}
+            return (
+              <ScrollView
+                refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.onRefresh}
+                    tintColor={"#999"}
                   />
+                }
+                showsVerticalScrollIndicator={false}
+              >
+                <MyProfileHeader
+                  userImg={me.userImg}
+                  name={`${me.firstName} ${me.lastName}`}
+                  username={me.username}
+                  bio={me.bio}
+                />
+                {me.hasPreviousCheckListSubmitted &&
+                me.hasSubmitedApplication &&
+                me.hasPaid ? (
                   <View>
-                    <Text>
-                      You didn't submit check list yet, please submit checklist
-                    </Text>
-                    <Touchable
-                      onPress={() =>
-                        this.props.navigation.navigate("CheckListScreen")
-                      }
-                    >
-                      <Text>go to check list</Text>
-                    </Touchable>
+                    <Text>FEED</Text>
                   </View>
-                </ScrollView>
-              );
-            } else if (!me.hasSubmitedApplication) {
-              return (
-                <ScrollView
-                  refreshControl={
-                    <RefreshControl
-                      refreshing={this.state.refreshing}
-                      onRefresh={this.onRefresh}
-                      tintColor={"#999"}
-                    />
-                  }
-                  showsVerticalScrollIndicator={false}
-                >
-                  <MyProfileHeader
-                    userImg={me.userImg}
-                    name={`${me.firstName} ${me.lastName}`}
-                    username={me.username}
-                    bio={me.bio}
-                  />
-                  <View>
-                    <Text>
-                      You didn't submit application yet, please submit
-                      application
-                    </Text>
-                    <Touchable
-                      onPress={() =>
-                        this.props.navigation.navigate("CheckListScreen")
-                      }
-                    >
-                      <Text>go to application</Text>
-                    </Touchable>
-                  </View>
-                </ScrollView>
-              );
-            } else if (!me.hasPaid) {
-              return (
-                <ScrollView
-                  refreshControl={
-                    <RefreshControl
-                      refreshing={this.state.refreshing}
-                      onRefresh={this.onRefresh}
-                      tintColor={"#999"}
-                    />
-                  }
-                  showsVerticalScrollIndicator={false}
-                >
-                  <MyProfileHeader
-                    userImg={me.userImg}
-                    name={`${me.firstName} ${me.lastName}`}
-                    username={me.username}
-                    bio={me.bio}
-                  />
-                  <View>
-                    <Text>You didn't pay yet, please pay</Text>
-                    <Touchable
-                      onPress={() =>
-                        this.props.navigation.navigate("CheckListScreen")
-                      }
-                    >
-                      <Text>go to payment information</Text>
-                    </Touchable>
-                  </View>
-                </ScrollView>
-              );
-            } else {
-              return (
-                <ScrollView
-                  refreshControl={
-                    <RefreshControl
-                      refreshing={this.state.refreshing}
-                      onRefresh={this.onRefresh}
-                      tintColor={"#999"}
-                    />
-                  }
-                  showsVerticalScrollIndicator={false}
-                >
-                  <MyProfileHeader
-                    userImg={me.userImg}
-                    name={`${me.firstName} ${me.lastName}`}
-                    username={me.username}
-                    bio={me.bio}
-                  />
-                  <View>
-                    <Text>Report Screen</Text>
-                  </View>
-                </ScrollView>
-              );
-            }
+                ) : (
+                  <UserStateController />
+                )}
+              </ScrollView>
+            );
           }
         }}
       </Query>
