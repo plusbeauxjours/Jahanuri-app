@@ -11,11 +11,12 @@ import {
   SubmitCheckListVariables,
 } from "../../types/api";
 import CheckListRow from "../../components/CheckListRow";
-import { ActivityIndicator } from "react-native";
+import { ScrollView, ActivityIndicator } from "react-native";
 import { useQuery, useMutation } from "react-apollo-hooks";
 import { useMe } from "../../context/meContext";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Ionicons } from "@expo/vector-icons";
+import dimensions from "../../constants/dimensions";
 
 const View = styled.View`
   flex-direction: row;
@@ -69,7 +70,14 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     );
   } else if (!meLoading && !checkListQuestionsLoading) {
     return (
-      <Container>
+      <ScrollView
+        style={{
+          width: dimensions.width - 30,
+          backgroundColor: "#FFFFFF",
+        }}
+        keyboardShouldPersistTaps="always"
+        showsVerticalScrollIndicator={false}
+      >
         {!me.user.hasPreviousCheckListSubmitted &&
         !me.user.hasLaterCheckListSubmitted ? (
           checkListQuestions &&
@@ -163,7 +171,7 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
           }}
           title="Submit"
         />
-      </Container>
+      </ScrollView>
     );
   } else {
     return null;
