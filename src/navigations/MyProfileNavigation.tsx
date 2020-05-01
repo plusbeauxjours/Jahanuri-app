@@ -7,18 +7,34 @@ import CheckListScreen from "../screens/CheckListScreen/CheckListScreen";
 import ApplicationScreen from "../screens/ApplicationScreen";
 import PaymentInformationScreen from "../screens/ PaymentInformationScreen";
 import BackCustomHeader from "../components/BackCustomHeader";
+import MenuCustomHeader from "../components/MenuCustomHeader";
 
 const MyProfileNavigation = createStackNavigator(
   {
     MyProfileScreen: {
       screen: MyProfileScreen,
       navigationOptions: {
-        header: (props) => <BackCustomHeader />,
+        header: (props) => <MenuCustomHeader title={"나의 프로필"} />,
       },
     },
-    CheckListScreen,
-    ApplicationScreen,
-    PaymentInformationScreen,
+    CheckListScreen: {
+      screen: CheckListScreen,
+      navigationOptions: {
+        header: (props) => <BackCustomHeader title={"체크리스트"} />,
+      },
+    },
+    ApplicationScreen: {
+      screen: ApplicationScreen,
+      navigationOptions: {
+        header: (props) => <BackCustomHeader title={"신청서"} />,
+      },
+    },
+    PaymentInformationScreen: {
+      screen: PaymentInformationScreen,
+      navigationOptions: {
+        header: (props) => <BackCustomHeader title={"결제"} />,
+      },
+    },
   },
   {
     initialRouteName: "MyProfileScreen",

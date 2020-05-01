@@ -177,8 +177,5 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     return null;
   }
 };
-CheckListScreen.navigationOptions = () => ({
-  title: "Check List",
-});
 
 export default CheckListScreen;

@@ -13,23 +13,23 @@ const IconContainer = styled.TouchableOpacity`
 interface IProps {
   title: string;
 }
-
-const BackArrow = withNavigation(({ navigation }) => {
+const Menu = withNavigation(({ navigation }) => {
   return (
-    <IconContainer onPress={() => navigation.goBack(null)}>
-      <Ionicons size={24} name={"ios-arrow-back"} />
+    <IconContainer onPress={() => navigation.toggleDrawer()}>
+      <Ionicons size={24} name={"ios-menu"} />
     </IconContainer>
   );
 });
 
-const BackCustomHeader: React.FC<IProps> = ({ title }) => {
+const MenuCustomHeader: React.FC<IProps> = ({ title }) => {
   return (
     <Header
       placement="left"
-      leftComponent={<BackArrow />}
+      leftComponent={<Menu />}
       containerStyle={{
         backgroundColor: "#ffffff",
         borderBottomColor: "#999",
+        justifyContent: "space-around",
         alignItems: "center",
         borderBottomWidth: 0.5,
       }}
@@ -39,4 +39,4 @@ const BackCustomHeader: React.FC<IProps> = ({ title }) => {
   );
 };
 
-export default BackCustomHeader;
+export default MenuCustomHeader;

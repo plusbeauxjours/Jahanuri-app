@@ -1,12 +1,19 @@
+import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import { PRIMARY_COLOR } from "../constants/colors";
 
 import AboutScreen from "../screens/AboutScreen";
 import { Appbar } from "react-native-paper";
+import MenuCustomHeader from "../components/MenuCustomHeader";
 
 const AboutNavigation = createStackNavigator(
   {
-    AboutScreen,
+    AboutScreen: {
+      screen: AboutScreen,
+      navigationOptions: {
+        header: (props) => <MenuCustomHeader title={"나의 프로필"} />,
+      },
+    },
   },
   {
     initialRouteName: "AboutScreen",

@@ -28,7 +28,7 @@ export default withNavigation(({ navigation }) => {
       return (
         <View>
           <Text>You didn't submit check list yet, please submit checklist</Text>
-          <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
+          <Touchable onPress={() => navigation.push("CheckListScreen")}>
             <Text>go to check list</Text>
           </Touchable>
         </View>
@@ -39,7 +39,7 @@ export default withNavigation(({ navigation }) => {
           <Text>
             You didn't submit application yet, please submit application
           </Text>
-          <Touchable onPress={() => navigation.navigate("ApplicationScreen")}>
+          <Touchable onPress={() => navigation.push("ApplicationScreen")}>
             <Text>go to application</Text>
           </Touchable>
         </View>
@@ -49,7 +49,7 @@ export default withNavigation(({ navigation }) => {
         <View>
           <Text>You didn't pay yet, please pay</Text>
           <Touchable
-            onPress={() => navigation.navigate("PaymentInformationScreen")}
+            onPress={() => navigation.push("PaymentInformationScreen")}
           >
             <Text>go to payment information</Text>
           </Touchable>

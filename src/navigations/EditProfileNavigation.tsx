@@ -3,10 +3,16 @@ import { PRIMARY_COLOR } from "../constants/colors";
 
 import EditProfileScreen from "../screens/EditProfileScreen";
 import { Appbar } from "react-native-paper";
+import MenuCustomHeader from "../components/MenuCustomHeader";
 
 const EditProfileNavigation = createStackNavigator(
   {
-    EditProfileScreen,
+    EditProfileScreen: {
+      screen: EditProfileScreen,
+      navigationOptions: {
+        header: (props) => <MenuCustomHeader title={"나의 프로필"} />,
+      },
+    },
   },
   {
     initialRouteName: "EditProfileScreen",
