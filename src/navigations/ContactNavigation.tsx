@@ -11,7 +11,7 @@ const ContactNavigation = createStackNavigator(
     ContactScreen: {
       screen: ContactScreen,
       navigationOptions: {
-        header: (props) => <MenuCustomHeader title={"나의 프로필"} />,
+        header: (props) => <MenuCustomHeader title={"자하누리 연락처"} />,
       },
     },
   },

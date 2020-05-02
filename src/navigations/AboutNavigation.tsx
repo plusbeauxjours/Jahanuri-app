@@ -11,7 +11,7 @@ const AboutNavigation = createStackNavigator(
     AboutScreen: {
       screen: AboutScreen,
       navigationOptions: {
-        header: (props) => <MenuCustomHeader title={"나의 프로필"} />,
+        header: (props) => <MenuCustomHeader title={"자하누리에 대하여"} />,
       },
     },
   },

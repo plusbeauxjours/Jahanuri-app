@@ -72,7 +72,6 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     return (
       <ScrollView
         style={{
-          width: dimensions.width - 30,
           backgroundColor: "#FFFFFF",
         }}
         keyboardShouldPersistTaps="always"
