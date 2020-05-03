@@ -16,7 +16,6 @@ import { useQuery, useMutation } from "react-apollo-hooks";
 import { useMe } from "../../context/meContext";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Ionicons } from "@expo/vector-icons";
-import dimensions from "../../constants/dimensions";
 
 const View = styled.View`
   flex-direction: row;
@@ -176,5 +175,6 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     return null;
   }
 };
+CheckListScreen.navigationOptions = () => ({});
 
 export default CheckListScreen;

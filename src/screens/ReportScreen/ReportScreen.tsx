@@ -114,7 +114,5 @@ const ReportScreen: NavigationStackScreenComponent = ({ navigation }) => {
     }
   }
 };
-ReportScreen.navigationOptions = () => ({
-  title: "Daily Report",
-});
+ReportScreen.navigationOptions = () => ({});
 export default ReportScreen;

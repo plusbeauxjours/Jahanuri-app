@@ -14,8 +14,6 @@ const AboutScreen: NavigationStackScreenComponent = () => (
     <Text>About Jahanuri</Text>
   </View>
 );
-AboutScreen.navigationOptions = () => ({
-  title: "About Jahanuri",
-});
+AboutScreen.navigationOptions = () => ({});
 
 export default AboutScreen;

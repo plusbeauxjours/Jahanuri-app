@@ -115,5 +115,6 @@ class MyProfileScreen extends React.Component<IProps, IState> {
     );
   }
 }
+MyProfileScreen.navigationOptions = () => ({});
 
 export default MyProfileScreen;

@@ -19,8 +19,6 @@ const ContactScreen: NavigationStackScreenComponent = () => (
     <Text>Contact</Text>
   </View>
 );
-ContactScreen.navigationOptions = () => ({
-  title: "Contact",
-});
+ContactScreen.navigationOptions = () => ({});
 
 export default ContactScreen;
