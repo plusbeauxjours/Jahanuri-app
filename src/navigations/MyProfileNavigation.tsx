@@ -5,7 +5,7 @@ import { PRIMARY_COLOR } from "../constants/colors";
 import MyProfileScreen from "../screens/MyProfileScreen";
 import CheckListScreen from "../screens/CheckListScreen/CheckListScreen";
 import ApplicationScreen from "../screens/ApplicationScreen";
-import PaymentInformationScreen from "../screens/ PaymentInformationScreen";
+import PaymentInformationScreen from "../screens/PaymentInformationScreen";
 import BackCustomHeader from "../components/BackCustomHeader";
 import MenuCustomHeader from "../components/MenuCustomHeader";
 

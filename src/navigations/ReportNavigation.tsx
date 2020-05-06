@@ -4,7 +4,7 @@ import { PRIMARY_COLOR } from "../constants/colors";
 
 import ReportScreen from "../screens/ReportScreen";
 import { Appbar } from "react-native-paper";
-import PaymentInformationScreen from "../screens/ PaymentInformationScreen";
+import PaymentInformationScreen from "../screens/PaymentInformationScreen";
 import ApplicationScreen from "../screens/ApplicationScreen";
 import CheckListScreen from "../screens/CheckListScreen/CheckListScreen";
 import MenuCustomHeader from "../components/MenuCustomHeader";
