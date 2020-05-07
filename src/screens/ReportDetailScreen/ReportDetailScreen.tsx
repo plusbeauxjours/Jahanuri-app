@@ -19,7 +19,7 @@ const Text = styled.Text``;
 const ScrollView = styled.ScrollView``;
 const Touchable = styled.TouchableOpacity``;
 
-const ReportScreen: NavigationStackScreenComponent = ({ navigation }) => {
+const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const { me, loading, refetch } = useMe();
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const onRefresh = async () => {
@@ -114,5 +114,5 @@ const ReportScreen: NavigationStackScreenComponent = ({ navigation }) => {
     }
   }
 };
-ReportScreen.navigationOptions = () => ({});
-export default ReportScreen;
+ReportDetailScreen.navigationOptions = () => ({});
+export default ReportDetailScreen;

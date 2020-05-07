@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import { PRIMARY_COLOR } from "../constants/colors";
 
-import ReportScreen from "../screens/ReportScreen";
+import ReportDetailScreen from "../screens/ReportDetailScreen";
 import { Appbar } from "react-native-paper";
 import PaymentInformationScreen from "../screens/PaymentInformationScreen";
 import ApplicationScreen from "../screens/ApplicationScreen";
@@ -12,8 +12,8 @@ import BackCustomHeader from "../components/BackCustomHeader";
 
 const ReportNavigation = createStackNavigator(
   {
-    ReportScreen: {
-      screen: ReportScreen,
+    ReportDetailScreen: {
+      screen: ReportDetailScreen,
       navigationOptions: {
         header: (props) => <MenuCustomHeader title={"일지"} />,
       },
@@ -38,7 +38,7 @@ const ReportNavigation = createStackNavigator(
     },
   },
   {
-    initialRouteName: "ReportScreen",
+    initialRouteName: "ReportDetailScreen",
     navigationOptions: {
       headerStyle: {
         backgroundColor: PRIMARY_COLOR,
