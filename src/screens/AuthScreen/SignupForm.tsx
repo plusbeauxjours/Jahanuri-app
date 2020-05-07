@@ -10,6 +10,7 @@ import {
 } from "react-navigation";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import FormikInput from "../../components/Formik/FormikInput";
+import { ImageBackground } from "react-native";
 import styled from "styled-components";
 import { LOGIN, SIGNUP } from "./AuthScreenQueries";
 import {
@@ -26,6 +27,12 @@ interface IProps {
 const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
+`;
+
+const View = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;
 
 const initialValues = {
@@ -76,104 +83,111 @@ export default class SignupForm extends React.Component<IProps> {
     errors,
     isValid,
   }) => (
-    <React.Fragment>
-      <FormikInput
-        label="First Name"
-        value={values.firstName}
-        onChange={setFieldValue}
-        onTouch={setFieldTouched}
-        name="firstName"
-        error={touched.firstName && errors.firstName}
-      />
-      <FormikInput
-        label="Last Name"
-        value={values.lastName}
-        onChange={setFieldValue}
-        onTouch={setFieldTouched}
-        name="lastName"
-        error={touched.lastName && errors.lastName}
-      />
-      <FormikInput
-        label="Email"
-        autoCapitalize="none"
-        keyboardType="email-address"
-        value={values.email}
-        onChange={setFieldValue}
-        onTouch={setFieldTouched}
-        name="email"
-        error={touched.email && errors.email}
-      />
-      <FormikInput
-        label="Username"
-        autoCapitalize="none"
-        value={values.handle}
-        onChange={setFieldValue}
-        onTouch={setFieldTouched}
-        name="handle"
-        error={touched.handle && errors.handle}
-      />
-      <FormikInput
-        label="Password"
-        autoCapitalize="none"
-        secureTextEntry
-        value={values.password}
-        onChange={setFieldValue}
-        onTouch={setFieldTouched}
-        name="password"
-        error={touched.password && errors.password}
-      />
-      <FormikInput
-        label="Confirm password"
-        autoCapitalize="none"
-        secureTextEntry
-        value={values.confirmPassword}
-        onChange={setFieldValue}
-        onTouch={setFieldTouched}
-        name="confirmPassword"
-        error={touched.confirmPassword && errors.confirmPassword}
-      />
-      <Mutation<Login, LoginVariables>
-        mutation={LOGIN}
-        variables={{
-          username: values.handle,
-          password: values.password,
-        }}
-        onCompleted={this.handleSignupComplete}
-      >
-        {(tokenAuth, loginResult) => (
-          <Mutation<Signup, SignupVariables>
-            mutation={SIGNUP}
-            variables={{
-              firstName: values.firstName,
-              lastName: values.lastName,
-              email: values.email,
-              username: values.handle,
-              password: values.password,
-            }}
-            onCompleted={() => {
-              loginResult.client.resetStore();
-              tokenAuth();
-            }}
-          >
-            {(createUser, signupResult) => (
-              <Button
-                raised
-                primary
-                disabled={
-                  !isValid || loginResult.loading || signupResult.loading
-                }
-                loading={loginResult.loading || signupResult.loading}
-                onPress={() => {
-                  createUser();
-                }}
-                style={{ marginTop: 10, width: "90%" }}
-                title="Create account"
-              />
-            )}
-          </Mutation>
-        )}
-      </Mutation>
-    </React.Fragment>
+    <ImageBackground
+      style={{ width: "100%", height: "100%" }}
+      source={require("../../images/MainImage.jpg")}
+      resizeMode="stretch"
+    >
+      <View>
+        <FormikInput
+          label="First Name"
+          value={values.firstName}
+          onChange={setFieldValue}
+          onTouch={setFieldTouched}
+          name="firstName"
+          error={touched.firstName && errors.firstName}
+        />
+        <FormikInput
+          label="Last Name"
+          value={values.lastName}
+          onChange={setFieldValue}
+          onTouch={setFieldTouched}
+          name="lastName"
+          error={touched.lastName && errors.lastName}
+        />
+        <FormikInput
+          label="Email"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          value={values.email}
+          onChange={setFieldValue}
+          onTouch={setFieldTouched}
+          name="email"
+          error={touched.email && errors.email}
+        />
+        <FormikInput
+          label="Username"
+          autoCapitalize="none"
+          value={values.handle}
+          onChange={setFieldValue}
+          onTouch={setFieldTouched}
+          name="handle"
+          error={touched.handle && errors.handle}
+        />
+        <FormikInput
+          label="Password"
+          autoCapitalize="none"
+          secureTextEntry
+          value={values.password}
+          onChange={setFieldValue}
+          onTouch={setFieldTouched}
+          name="password"
+          error={touched.password && errors.password}
+        />
+        <FormikInput
+          label="Confirm password"
+          autoCapitalize="none"
+          secureTextEntry
+          value={values.confirmPassword}
+          onChange={setFieldValue}
+          onTouch={setFieldTouched}
+          name="confirmPassword"
+          error={touched.confirmPassword && errors.confirmPassword}
+        />
+        <Mutation<Login, LoginVariables>
+          mutation={LOGIN}
+          variables={{
+            username: values.handle,
+            password: values.password,
+          }}
+          onCompleted={this.handleSignupComplete}
+        >
+          {(tokenAuth, loginResult) => (
+            <Mutation<Signup, SignupVariables>
+              mutation={SIGNUP}
+              variables={{
+                firstName: values.firstName,
+                lastName: values.lastName,
+                email: values.email,
+                username: values.handle,
+                password: values.password,
+              }}
+              onCompleted={() => {
+                loginResult.client.resetStore();
+                tokenAuth();
+              }}
+            >
+              {(createUser, signupResult) => (
+                <Button
+                  raised
+                  primary
+                  disabled={
+                    !isValid || loginResult.loading || signupResult.loading
+                  }
+                  loading={loginResult.loading || signupResult.loading}
+                  onPress={() => {
+                    createUser();
+                  }}
+                  style={{ marginTop: 10, width: "90%" }}
+                  color="#FFFFFF"
+                  title="계정 만들기"
+                />
+              )}
+            </Mutation>
+          )}
+        </Mutation>
+      </View>
+    </ImageBackground>
   );
 
   public render() {

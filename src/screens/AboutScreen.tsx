@@ -128,9 +128,9 @@ const AboutScreen: NavigationStackScreenComponent = () => (
           <WhiteSpace />
           <Bold>특전</Bold>
           <Text>
-            -참가자들에게 무료 개인 상담 기회가 제공됩니다.(김은숙 원장)
+            참가자들에게 무료 개인 상담 기회가 제공됩니다.(김은숙 원장)
           </Text>
-          <Text>-디톡스와 체온 조절을 돕는 고마 소금방 체험권을 드립니다 </Text>
+          <Text>디톡스와 체온 조절을 돕는 고마 소금방 체험권을 드립니다 </Text>
         </View>
       </Container>
     </ImageBackground>

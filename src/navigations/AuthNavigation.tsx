@@ -2,7 +2,6 @@ import { createStackNavigator } from "react-navigation-stack";
 
 import HomeScreen from "../screens/HomeScreen";
 
-import { PRIMARY_COLOR } from "../constants/colors";
 import AboutScreen from "../screens/AboutScreen";
 import ContactScreen from "../screens/ContactScreen";
 import LoginForm from "../screens/AuthScreen/LoginForm";
@@ -18,11 +17,8 @@ const AuthNavigation = createStackNavigator(
   },
   {
     initialRouteName: "HomeScreen",
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: PRIMARY_COLOR,
-      },
-      headerTintColor: "#fff",
+    defaultNavigationOptions: {
+      header: null,
     },
   }
 );

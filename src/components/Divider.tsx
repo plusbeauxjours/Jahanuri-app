@@ -6,7 +6,7 @@ const View = styled.View`
   padding: 15px;
 `;
 const Container = styled.View`
-  background-color: #3f51b5;
+  background-color: #ffffff;
   height: 1px;
   flex: 1;
   opacity: 0.4;
@@ -16,7 +16,7 @@ const Container = styled.View`
 const Text = styled.Text`
   align-self: center;
   padding: 0 5px;
-  color: #3f51b5;
+  color: #ffffff;
   opacity: 0.7;
 `;
 
