@@ -1,7 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
-
 import HomeScreen from "../screens/HomeScreen";
-
 import AboutScreen from "../screens/AboutScreen";
 import ContactScreen from "../screens/ContactScreen";
 import LoginForm from "../screens/AuthScreen/LoginForm";

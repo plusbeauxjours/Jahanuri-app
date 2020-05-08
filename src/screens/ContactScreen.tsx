@@ -18,7 +18,6 @@ const Box = styled.View`
   align-items: center;
   justify-content: space-around;
 `;
-
 const Text = styled.Text`
   text-align: center;
   color: white;
@@ -26,17 +25,27 @@ const Text = styled.Text`
 `;
 const TitleBox = styled.View`
   margin: 30px 0 10px 0;
-  flex-direction: column;
+  padding: 15px;
+  flex-direction: row;
 `;
 const Title = styled(Text)`
   font-weight: 600;
   font-size: 20px;
+  align-self: center;
+  padding: 0 5px;
+  color: #ffffff;
+  opacity: 0.7;
 `;
-
+const Line = styled.View`
+  background-color: #999;
+  height: 1px;
+  flex: 1;
+  opacity: 0.4;
+  align-self: center;
+`;
 const WhiteSpace = styled.View`
   height: 30px;
 `;
-
 const LogoContainer = styled.TouchableOpacity`
   width: 130px;
   align-items: center;
@@ -86,7 +95,9 @@ const ContactScreen: NavigationStackScreenComponent = () => {
     >
       <Container>
         <TitleBox>
+          <Line />
           <Title>공식홈페이지</Title>
+          <Line />
         </TitleBox>
         <Box>
           <LogoContainer onPress={() => onPress("web_gomaschool")}>
@@ -119,7 +130,9 @@ const ContactScreen: NavigationStackScreenComponent = () => {
           </LogoContainer>
         </Box>
         <TitleBox>
+          <Line />
           <Title>SNS 채널</Title>
+          <Line />
         </TitleBox>
         <Box>
           <LogoContainer onPress={() => onPress("channel_youtube")}>
@@ -168,7 +181,9 @@ const ContactScreen: NavigationStackScreenComponent = () => {
           </LogoContainer>
         </Box>
         <TitleBox>
+          <Line />
           <Title>커뮤니티</Title>
+          <Line />
         </TitleBox>
         <Box>
           <LogoContainer onPress={() => onPress("community_cafe_jahanuri")}>
@@ -180,7 +195,9 @@ const ContactScreen: NavigationStackScreenComponent = () => {
           </LogoContainer>
         </Box>
         <TitleBox>
+          <Line />
           <Title>SHOP</Title>
+          <Line />
         </TitleBox>
         <Box>
           <LogoContainer onPress={() => onPress("shop_gomashop")}>

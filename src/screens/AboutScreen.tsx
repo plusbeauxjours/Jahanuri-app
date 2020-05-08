@@ -41,7 +41,7 @@ const SecondTitle = styled(Title)`
   margin-top: 0px;
 `;
 
-const AboutScreen: NavigationStackScreenComponent = () => (
+const AboutScreen: React.FC = () => (
   <Swiper dotColor={"#ffffff"} loop={false}>
     <ImageBackground
       style={{
@@ -211,6 +211,5 @@ const AboutScreen: NavigationStackScreenComponent = () => (
     </ImageBackground>
   </Swiper>
 );
-AboutScreen.navigationOptions = () => ({});
 
 export default AboutScreen;

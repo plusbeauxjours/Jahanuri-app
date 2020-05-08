@@ -16,6 +16,7 @@ import { useQuery, useMutation } from "react-apollo-hooks";
 import { useMe } from "../../context/meContext";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Ionicons } from "@expo/vector-icons";
+import BackCustomHeader from "../../components/BackCustomHeader";
 
 const View = styled.View`
   flex-direction: row;
@@ -69,107 +70,110 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     );
   } else if (!meLoading && !checkListQuestionsLoading) {
     return (
-      <ScrollView
-        style={{
-          backgroundColor: "#FFFFFF",
-        }}
-        keyboardShouldPersistTaps="always"
-        showsVerticalScrollIndicator={false}
-      >
-        {!me.user.hasPreviousCheckListSubmitted &&
-        !me.user.hasLaterCheckListSubmitted ? (
-          checkListQuestions &&
-          checkListQuestions.length !== 0 &&
-          checkListQuestions.map((checkListQuestion: any) => (
-            <CheckListRow
-              key={checkListQuestion.uuid}
-              uuid={checkListQuestion.uuid}
-              question={checkListQuestion.question}
-              previousAnswer={
-                checkListQuestion.questionSet.length !== 0
-                  ? checkListQuestion.questionSet[0].previousAnswer
-                  : false
-              }
-              laterAnswer={
-                checkListQuestion.questionSet.length !== 0
-                  ? checkListQuestion.questionSet[0].laterAnswer
-                  : false
-              }
-              haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
-              haslaterSubmited={me.user.hasLaterCheckListSubmitted}
-              onPress={onPress}
-            />
-          ))
-        ) : (
-          <SwipeListView
-            useFlatList={false}
-            closeOnRowBeginSwipe={true}
-            data={checkListQuestions}
-            previewOpenValue={1000}
-            renderItem={(data) => (
+      <>
+        <BackCustomHeader />
+        <ScrollView
+          style={{
+            backgroundColor: "#FFFFFF",
+          }}
+          keyboardShouldPersistTaps="always"
+          showsVerticalScrollIndicator={false}
+        >
+          {!me.user.hasPreviousCheckListSubmitted &&
+          !me.user.hasLaterCheckListSubmitted ? (
+            checkListQuestions &&
+            checkListQuestions.length !== 0 &&
+            checkListQuestions.map((checkListQuestion: any) => (
               <CheckListRow
-                key={data.item.uuid}
-                uuid={data.item.uuid}
-                question={data.item.question}
+                key={checkListQuestion.uuid}
+                uuid={checkListQuestion.uuid}
+                question={checkListQuestion.question}
                 previousAnswer={
-                  data.item.questionSet.length !== 0
-                    ? data.item.questionSet[0].previousAnswer
+                  checkListQuestion.questionSet.length !== 0
+                    ? checkListQuestion.questionSet[0].previousAnswer
                     : false
                 }
                 laterAnswer={
-                  data.item.questionSet.length !== 0
-                    ? data.item.questionSet[0].laterAnswer
+                  checkListQuestion.questionSet.length !== 0
+                    ? checkListQuestion.questionSet[0].laterAnswer
                     : false
                 }
                 haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
                 haslaterSubmited={me.user.hasLaterCheckListSubmitted}
                 onPress={onPress}
               />
-            )}
-            renderHiddenItem={(data) => (
-              <View>
-                {data.item.questionSet[0].previousAnswer ? (
-                  <Ionicons
-                    name="ios-checkbox-outline"
-                    size={24}
-                    color={"#999"}
-                  />
-                ) : (
-                  <Ionicons
-                    name="ios-square-outline"
-                    size={28}
-                    color={"#999"}
-                  />
-                )}
-              </View>
-            )}
-            leftOpenValue={45}
-            keyExtractor={(item) => item.uuid}
+            ))
+          ) : (
+            <SwipeListView
+              useFlatList={false}
+              closeOnRowBeginSwipe={true}
+              data={checkListQuestions}
+              previewOpenValue={1000}
+              renderItem={(data) => (
+                <CheckListRow
+                  key={data.item.uuid}
+                  uuid={data.item.uuid}
+                  question={data.item.question}
+                  previousAnswer={
+                    data.item.questionSet.length !== 0
+                      ? data.item.questionSet[0].previousAnswer
+                      : false
+                  }
+                  laterAnswer={
+                    data.item.questionSet.length !== 0
+                      ? data.item.questionSet[0].laterAnswer
+                      : false
+                  }
+                  haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
+                  haslaterSubmited={me.user.hasLaterCheckListSubmitted}
+                  onPress={onPress}
+                />
+              )}
+              renderHiddenItem={(data) => (
+                <View>
+                  {data.item.questionSet[0].previousAnswer ? (
+                    <Ionicons
+                      name="ios-checkbox-outline"
+                      size={24}
+                      color={"#999"}
+                    />
+                  ) : (
+                    <Ionicons
+                      name="ios-square-outline"
+                      size={28}
+                      color={"#999"}
+                    />
+                  )}
+                </View>
+              )}
+              leftOpenValue={45}
+              keyExtractor={(item) => item.uuid}
+            />
+          )}
+          <Button
+            raised
+            primary
+            disabled={
+              trueAnswerQuestionUuids.length === 0 || checkListQuestionsLoading
+            }
+            loading={submitCheckListLoading}
+            onPress={() => {
+              console.log(trueAnswerQuestionUuids);
+              submitCheckListFn({
+                variables: {
+                  trueAnswerQuestionUuids,
+                  isPreviousAnswer:
+                    !me.user.hasPreviousCheckListSubmitted &&
+                    !me.user.hasLaterCheckListSubmitted
+                      ? true
+                      : false,
+                },
+              });
+            }}
+            title="Submit"
           />
-        )}
-        <Button
-          raised
-          primary
-          disabled={
-            trueAnswerQuestionUuids.length === 0 || checkListQuestionsLoading
-          }
-          loading={submitCheckListLoading}
-          onPress={() => {
-            console.log(trueAnswerQuestionUuids);
-            submitCheckListFn({
-              variables: {
-                trueAnswerQuestionUuids,
-                isPreviousAnswer:
-                  !me.user.hasPreviousCheckListSubmitted &&
-                  !me.user.hasLaterCheckListSubmitted
-                    ? true
-                    : false,
-              },
-            });
-          }}
-          title="Submit"
-        />
-      </ScrollView>
+        </ScrollView>
+      </>
     );
   } else {
     return null;
