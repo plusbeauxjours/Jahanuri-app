@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Linking } from "react-native";
-import { ImageBackground } from "react-native";
+import { Linking, ImageBackground } from "react-native";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 
 const Container = styled.View`
@@ -14,20 +13,23 @@ const Container = styled.View`
 `;
 const Box = styled.View`
   flex: 1;
+  width: 100%;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
 `;
 
 const Text = styled.Text`
+  text-align: center;
   color: white;
   font-size: 14px;
 `;
 const TitleBox = styled.View`
+  margin: 30px 0 10px 0;
   flex-direction: column;
 `;
 const Title = styled(Text)`
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
 `;
 
@@ -36,9 +38,9 @@ const WhiteSpace = styled.View`
 `;
 
 const LogoContainer = styled.TouchableOpacity`
+  width: 130px;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
 `;
 const Logo = styled.Image`
   width: 50px;
