@@ -1,90 +1,205 @@
 import React from "react";
 import styled from "styled-components";
-import { ImageBackground, ScrollView } from "react-native";
+import { Linking } from "react-native";
+import { ImageBackground } from "react-native";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
-import dimensions from "../constants/dimensions";
 
 const Container = styled.View`
   flex: 1;
+  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+`;
+const Box = styled.View`
+  flex: 1;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 `;
-const View = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-`;
-const WhiteSpace = styled.View`
-  height: 30px;
-`;
+
 const Text = styled.Text`
   color: white;
   font-size: 14px;
-  margin-bottom: 12px;
-`;
-const Bold = styled(Text)`
-  font-size: 18px;
-  font-weight: 500;
 `;
 const TitleBox = styled.View`
-  margin-top: 100px;
-  align-items: center;
+  flex-direction: column;
 `;
 const Title = styled(Text)`
   font-weight: 400;
-  font-size: 28px;
+  font-size: 20px;
 `;
 
-const ContactScreen: NavigationStackScreenComponent = () => (
-  <ImageBackground
-    style={{ width: "100%", height: "100%" }}
-    source={require("../images/Contact/Contact.jpg")}
-    resizeMode="stretch"
-  >
-    <Container>
-      <ScrollView style={{ width: dimensions.width }}>
+const WhiteSpace = styled.View`
+  height: 30px;
+`;
+
+const LogoContainer = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+`;
+const Logo = styled.Image`
+  width: 50px;
+  height: 80px;
+`;
+
+const ContactScreen: NavigationStackScreenComponent = () => {
+  const urls = {
+    web_gomaschool: "https://www.gomaschool.co.kr",
+    web_jahanuri: "http://www.jahanuri.net",
+    web_hanmuye: "http://www.hanmuye.com",
+    web_gomaon: "http://www.gomaon.co.kr",
+    channel_youtube: "https://www.youtube.com/channel/UCn1gZg25yEw4WTe__OPu1wA",
+    channel_instagram_gomaon: "https://www.instagram.com/gomaon_seoul",
+    channel_facebook_gomaon: "https://www.facebook.com/jhonhealing",
+    channel_blog_gomaschool: "https://blog.naver.com/jh_onhealing",
+    channel_blog_gomaon: "https://blog.naver.com/salt__planet",
+    channel_blog_hanmuye: "https://blog.naver.com/hanmuye",
+    community_cafe_jahanuri: "https://cafe.naver.com/jahanuri",
+    shop_gomashop: "https://www.gomashop.co.kr",
+    shop_naturevitameals: "https://www.naturevitameals.co.kr",
+  };
+  const onPress = (name: string) => {
+    console.log(name);
+    Linking.canOpenURL(urls[name])
+      .then((supported) => {
+        if (supported) {
+          console.log(urls[name]);
+          return Linking.openURL(urls[name]);
+        } else {
+          return null;
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  return (
+    <ImageBackground
+      style={{ width: "100%", height: "100%" }}
+      source={require("../images/Contact/Contact.jpg")}
+      resizeMode="stretch"
+    >
+      <Container>
         <TitleBox>
-          <Title>몸공부 일정과 비용, 신청방법</Title>
+          <Title>공식홈페이지</Title>
         </TitleBox>
-        <WhiteSpace />
-        <WhiteSpace />
-        <View>
-          <Bold>일시</Bold>
-          <Text>2020년 5월 25일 ~ 6월 5일 </Text>
-          <Text>낮반 : 월, 수,금 11:00 ~ 14:00 총 6회</Text>
-          <Text>저녁반: 화, 목, 토 7:30~10:00 </Text>
-          <WhiteSpace />
-          <Bold>장소</Bold>
-          <Text>고마스쿨 교육관 (자하누리)</Text>
-          <WhiteSpace />
-          <Bold>참가비</Bold>
-          <Text>45만원</Text>
-          <WhiteSpace />
-          <Bold>입금계좌</Bold>
-          <Text>우리 은행 1002-050-722288</Text>
-          <Text>장진기 (카드 결제 가능 링크)</Text>
-          <WhiteSpace />
-          <Bold>신청</Bold>
-          <Text>신청링크 들어가서 신청서 작성후 참가비 입금</Text>
-          <WhiteSpace />
-          <Bold>신청/문의</Bold>
-          <Text>02-876-2236 / 010-4052-2236</Text>
-          <Text>카카오톡 @자하누리</Text>
-          <WhiteSpace />
-          <Text>
-            1:1 관리로 이루어지는 프로그램 특성상 소수 정예로 진행됩니다.
-          </Text>
-          <Text>인원 제한이 있으니 신청을 서둘러주세요. </Text>
-          <WhiteSpace />
-          <WhiteSpace />
-          <WhiteSpace />
-        </View>
-      </ScrollView>
-    </Container>
-  </ImageBackground>
-);
+        <Box>
+          <LogoContainer onPress={() => onPress("web_gomaschool")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/web_gomaschool.png`)}
+            />
+            <Text>고마스쿨</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("web_jahanuri")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/web_jahanuri.png`)}
+            />
+            <Text>자하누리</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("web_hanmuye")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/web_hanmuye.png`)}
+            />
+            <Text>한무예연구소</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("web_gomaon")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/web_gomaon.png`)}
+            />
+            <Text>고마온</Text>
+          </LogoContainer>
+        </Box>
+        <TitleBox>
+          <Title>SNS 채널</Title>
+        </TitleBox>
+        <Box>
+          <LogoContainer onPress={() => onPress("channel_youtube")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/channel_youtube.png`)}
+            />
+            <Text>@몸공부TV</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("channel_instagram_gomaon")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/channel_instagram_gomaon.png`)}
+            />
+            <Text>@gomaon_seoul</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("channel_facebook_gomaon")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/channel_facebook_gomaon.png`)}
+            />
+            <Text>@고마와 건강자립학교</Text>
+          </LogoContainer>
+        </Box>
+        <Box>
+          <LogoContainer onPress={() => onPress("channel_blog_gomaschool")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/blog.png`)}
+            />
+            <Text>고마스쿨</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("channel_blog_gomaon")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/blog.png`)}
+            />
+            <Text>고마온</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("channel_blog_hanmuye")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/blog.png`)}
+            />
+            <Text>한무예연구소</Text>
+          </LogoContainer>
+        </Box>
+        <TitleBox>
+          <Title>커뮤니티</Title>
+        </TitleBox>
+        <Box>
+          <LogoContainer onPress={() => onPress("community_cafe_jahanuri")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/community_cafe_jahanuri.png`)}
+            />
+            <Text>자하누리카페</Text>
+          </LogoContainer>
+        </Box>
+        <TitleBox>
+          <Title>SHOP</Title>
+        </TitleBox>
+        <Box>
+          <LogoContainer onPress={() => onPress("shop_gomashop")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/shop_gomashop.png`)}
+            />
+            <Text>고마샵</Text>
+          </LogoContainer>
+          <LogoContainer onPress={() => onPress("shop_naturevitameals")}>
+            <Logo
+              resizeMode={"contain"}
+              source={require(`../images/Contact/shop_naturevitameals.png`)}
+            />
+            <Text>네이쳐 비타밀스</Text>
+          </LogoContainer>
+        </Box>
+      </Container>
+    </ImageBackground>
+  );
+};
 ContactScreen.navigationOptions = () => ({});
 
 export default ContactScreen;

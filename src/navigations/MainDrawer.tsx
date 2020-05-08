@@ -92,7 +92,7 @@ const MainDrawer = createDrawerNavigator(
     },
   },
   {
-    initialRouteName: "About",
+    initialRouteName: "Contact",
     contentComponent: DrawerWithLogoutButton,
   }
 );
