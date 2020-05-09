@@ -12,6 +12,7 @@ import { Me } from "../../types/api";
 import MyProfileHeader from "../../components/MyProfileHeader";
 import styled from "styled-components";
 import UserStateController from "../../components/UserStateController";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const View = styled.View`
   flex: 1;
@@ -20,7 +21,6 @@ const View = styled.View`
 `;
 const Text = styled.Text``;
 const ScrollView = styled.ScrollView``;
-const Touchable = styled.TouchableOpacity``;
 
 interface IProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -82,32 +82,35 @@ class MyProfileScreen extends React.Component<IProps, IState> {
             );
           } else {
             return (
-              <ScrollView
-                refreshControl={
-                  <RefreshControl
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.onRefresh}
-                    tintColor={"#999"}
+              <>
+                <MenuCustomHeader title={"나의 프로필"} />
+                <ScrollView
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={this.onRefresh}
+                      tintColor={"#999"}
+                    />
+                  }
+                  showsVerticalScrollIndicator={false}
+                >
+                  <MyProfileHeader
+                    userImg={me.userImg}
+                    name={`${me.firstName} ${me.lastName}`}
+                    username={me.username}
+                    bio={me.bio}
                   />
-                }
-                showsVerticalScrollIndicator={false}
-              >
-                <MyProfileHeader
-                  userImg={me.userImg}
-                  name={`${me.firstName} ${me.lastName}`}
-                  username={me.username}
-                  bio={me.bio}
-                />
-                {me.hasPreviousCheckListSubmitted &&
-                me.hasSubmitedApplication &&
-                me.hasPaid ? (
-                  <View>
-                    <Text>FEED</Text>
-                  </View>
-                ) : (
-                  <UserStateController />
-                )}
-              </ScrollView>
+                  {me.hasPreviousCheckListSubmitted &&
+                  me.hasSubmitedApplication &&
+                  me.hasPaid ? (
+                    <View>
+                      <Text>FEED</Text>
+                    </View>
+                  ) : (
+                    <UserStateController />
+                  )}
+                </ScrollView>
+              </>
             );
           }
         }}

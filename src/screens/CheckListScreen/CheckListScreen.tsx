@@ -16,7 +16,7 @@ import { useQuery, useMutation } from "react-apollo-hooks";
 import { useMe } from "../../context/meContext";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Ionicons } from "@expo/vector-icons";
-import BackCustomHeader from "../../components/BackCustomHeader";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const View = styled.View`
   flex-direction: row;
@@ -28,12 +28,6 @@ const LoadingContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-`;
-
-const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  background-color: ${(props) => props.theme.bgColor};
 `;
 
 const Button = styled.Button`
@@ -71,7 +65,7 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
   } else if (!meLoading && !checkListQuestionsLoading) {
     return (
       <>
-        <BackCustomHeader />
+        <MenuCustomHeader title={"체크리스트"} />
         <ScrollView
           style={{
             backgroundColor: "#FFFFFF",

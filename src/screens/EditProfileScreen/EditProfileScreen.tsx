@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { NavigationStackScreenProps } from "react-navigation-stack";
 import { UpdateUser } from "src/types/api";
 import { UpdateUserVariables } from "../../types/api";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -95,127 +96,130 @@ class EditProfileScreen extends React.Component<IProps> {
           });
 
           return (
-            <KeyboardAwareScrollView
-              contentContainerStyle={{
-                flexGrow: 1,
-                backgroundColor: "#fff",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              keyboardShouldPersistTaps="handled"
-            >
-              <Formik
-                initialValues={{
-                  firstName: me.user.firstName,
-                  lastName: me.user.lastName,
-                  bio: me.user.bio,
-                  password: "",
-                  confirmPassword: "",
-                  userImg: me.user.userImg && {
-                    uri: me.user.userImg,
-                  },
+            <>
+              <MenuCustomHeader title={"프로필 수정"} />
+              <KeyboardAwareScrollView
+                contentContainerStyle={{
+                  flexGrow: 1,
+                  backgroundColor: "#fff",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-                onSubmit={() => {}}
-                validationSchema={this.validationSchema}
+                keyboardShouldPersistTaps="handled"
               >
-                {({
-                  values,
-                  setFieldValue,
-                  setFieldTouched,
-                  touched,
-                  errors,
-                  isValid,
-                }) => (
-                  <React.Fragment>
-                    <FormikImagePicker
-                      initialImg={me.user.userImg && { uri: me.user.userImg }}
-                      value={values.userImg}
-                      onChoose={setFieldValue}
-                      name="userImg"
-                    />
-                    <FormikInput
-                      label="First name"
-                      value={values.firstName}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="firstName"
-                      error={touched.firstName && errors.firstName}
-                    />
-                    <FormikInput
-                      label="Last name"
-                      value={values.lastName}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="lastName"
-                      error={touched.lastName && errors.lastName}
-                    />
-                    <FormikInput
-                      label="Bio"
-                      value={values.bio}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="bio"
-                      error={touched.bio && errors.bio}
-                    />
-                    {!me.user.hasKakaoAccount && (
-                      <>
-                        <FormikInput
-                          label="Password"
-                          autoCapitalize="none"
-                          secureTextEntry
-                          value={values.password}
-                          onChange={setFieldValue}
-                          onTouch={setFieldTouched}
-                          name="password"
-                          error={touched.password && errors.password}
-                        />
-                        <FormikInput
-                          label="Confirm password"
-                          autoCapitalize="none"
-                          secureTextEntry
-                          value={values.confirmPassword}
-                          onChange={setFieldValue}
-                          onTouch={setFieldTouched}
-                          name="confirmPassword"
-                          error={
-                            touched.confirmPassword && errors.confirmPassword
-                          }
-                        />
-                      </>
-                    )}
-                    <Mutation<UpdateUser, UpdateUserVariables>
-                      mutation={UPDATE_USER}
-                      variables={{
-                        firstName: values.firstName.trim(),
-                        lastName: values.lastName.trim(),
-                        bio: values.bio.trim(),
-                        password: values.password,
-                        userImg:
-                          me.user.userImg === values.userImg
-                            ? null
-                            : new ReactNativeFile(values.userImg),
-                      }}
-                      update={this.updateCache}
-                      onError={(error) => Alert.alert("", error.message)}
-                    >
-                      {(updateUserProfile, { loading }) => (
-                        <Button
-                          raised
-                          primary
-                          disabled={!isValid || loading}
-                          loading={loading}
-                          onPress={() => {
-                            updateUserProfile();
-                            this.props.navigation.goBack();
-                          }}
-                          title="Save"
-                        />
+                <Formik
+                  initialValues={{
+                    firstName: me.user.firstName,
+                    lastName: me.user.lastName,
+                    bio: me.user.bio,
+                    password: "",
+                    confirmPassword: "",
+                    userImg: me.user.userImg && {
+                      uri: me.user.userImg,
+                    },
+                  }}
+                  onSubmit={() => {}}
+                  validationSchema={this.validationSchema}
+                >
+                  {({
+                    values,
+                    setFieldValue,
+                    setFieldTouched,
+                    touched,
+                    errors,
+                    isValid,
+                  }) => (
+                    <React.Fragment>
+                      <FormikImagePicker
+                        initialImg={me.user.userImg && { uri: me.user.userImg }}
+                        value={values.userImg}
+                        onChoose={setFieldValue}
+                        name="userImg"
+                      />
+                      <FormikInput
+                        label="First name"
+                        value={values.firstName}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="firstName"
+                        error={touched.firstName && errors.firstName}
+                      />
+                      <FormikInput
+                        label="Last name"
+                        value={values.lastName}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="lastName"
+                        error={touched.lastName && errors.lastName}
+                      />
+                      <FormikInput
+                        label="Bio"
+                        value={values.bio}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="bio"
+                        error={touched.bio && errors.bio}
+                      />
+                      {!me.user.hasKakaoAccount && (
+                        <>
+                          <FormikInput
+                            label="Password"
+                            autoCapitalize="none"
+                            secureTextEntry
+                            value={values.password}
+                            onChange={setFieldValue}
+                            onTouch={setFieldTouched}
+                            name="password"
+                            error={touched.password && errors.password}
+                          />
+                          <FormikInput
+                            label="Confirm password"
+                            autoCapitalize="none"
+                            secureTextEntry
+                            value={values.confirmPassword}
+                            onChange={setFieldValue}
+                            onTouch={setFieldTouched}
+                            name="confirmPassword"
+                            error={
+                              touched.confirmPassword && errors.confirmPassword
+                            }
+                          />
+                        </>
                       )}
-                    </Mutation>
-                  </React.Fragment>
-                )}
-              </Formik>
-            </KeyboardAwareScrollView>
+                      <Mutation<UpdateUser, UpdateUserVariables>
+                        mutation={UPDATE_USER}
+                        variables={{
+                          firstName: values.firstName.trim(),
+                          lastName: values.lastName.trim(),
+                          bio: values.bio.trim(),
+                          password: values.password,
+                          userImg:
+                            me.user.userImg === values.userImg
+                              ? null
+                              : new ReactNativeFile(values.userImg),
+                        }}
+                        update={this.updateCache}
+                        onError={(error) => Alert.alert("", error.message)}
+                      >
+                        {(updateUserProfile, { loading }) => (
+                          <Button
+                            raised
+                            primary
+                            disabled={!isValid || loading}
+                            loading={loading}
+                            onPress={() => {
+                              updateUserProfile();
+                              this.props.navigation.goBack();
+                            }}
+                            title="Save"
+                          />
+                        )}
+                      </Mutation>
+                    </React.Fragment>
+                  )}
+                </Formik>
+              </KeyboardAwareScrollView>
+            </>
           );
         }}
       </ApolloConsumer>

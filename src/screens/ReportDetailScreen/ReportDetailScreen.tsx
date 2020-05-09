@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useMe } from "../../context/meContext";
 import { ActivityIndicator, RefreshControl } from "react-native";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const Container = styled.View`
   flex: 1;
@@ -41,75 +42,89 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
   } else {
     if (!me.user.hasPreviousCheckListSubmitted) {
       return (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={"#999"}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text>
-              You didn't submit check list yet, please submit checklist
-            </Text>
-            <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
-              <Text>go to check list</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
+        <>
+          <MenuCustomHeader title={"일지"} />
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={"#999"}
+              />
+            }
+            showsVerticalScrollIndicator={false}
+          >
+            <View>
+              <Text>
+                You didn't submit check list yet, please submit checklist
+              </Text>
+              <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
+                <Text>go to check list</Text>
+              </Touchable>
+            </View>
+          </ScrollView>
+        </>
       );
     } else if (!me.user.hasSubmitedApplication) {
       return (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={"#999"}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text>
-              You didn't submit application yet, please submit application
-            </Text>
-            <Touchable onPress={() => navigation.navigate("ApplicationScreen")}>
-              <Text>go to application</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
+        <>
+          <MenuCustomHeader title={"일지"} />
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={"#999"}
+              />
+            }
+            showsVerticalScrollIndicator={false}
+          >
+            <View>
+              <Text>
+                You didn't submit application yet, please submit application
+              </Text>
+              <Touchable
+                onPress={() => navigation.navigate("ApplicationScreen")}
+              >
+                <Text>go to application</Text>
+              </Touchable>
+            </View>
+          </ScrollView>
+        </>
       );
     } else if (!me.user.hasPaid) {
       return (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={"#999"}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text>You didn't pay yet, please pay</Text>
-            <Touchable
-              onPress={() => navigation.navigate("PaymentInformationScreen")}
-            >
-              <Text>go to payment information</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
+        <>
+          <MenuCustomHeader title={"일지"} />
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={"#999"}
+              />
+            }
+            showsVerticalScrollIndicator={false}
+          >
+            <View>
+              <Text>You didn't pay yet, please pay</Text>
+              <Touchable
+                onPress={() => navigation.navigate("PaymentInformationScreen")}
+              >
+                <Text>go to payment information</Text>
+              </Touchable>
+            </View>
+          </ScrollView>
+        </>
       );
     } else {
       return (
-        <View>
-          <Text>Report Screen</Text>
-        </View>
+        <>
+          <MenuCustomHeader title={"일지"} />
+          <View>
+            <Text>Report Screen</Text>
+          </View>
+        </>
       );
     }
   }
