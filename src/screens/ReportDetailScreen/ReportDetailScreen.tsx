@@ -40,32 +40,7 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
       </Container>
     );
   } else {
-    if (!me.user.hasPreviousCheckListSubmitted) {
-      return (
-        <>
-          <MenuCustomHeader title={"일지"} />
-          <ScrollView
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={onRefresh}
-                tintColor={"#999"}
-              />
-            }
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
-              <Text>
-                You didn't submit check list yet, please submit checklist
-              </Text>
-              <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
-                <Text>go to check list</Text>
-              </Touchable>
-            </View>
-          </ScrollView>
-        </>
-      );
-    } else if (!me.user.hasSubmitedApplication) {
+    if (!me.user.hasSubmitedApplication) {
       return (
         <>
           <MenuCustomHeader title={"일지"} />
@@ -112,6 +87,31 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
                 onPress={() => navigation.navigate("PaymentInformationScreen")}
               >
                 <Text>go to payment information</Text>
+              </Touchable>
+            </View>
+          </ScrollView>
+        </>
+      );
+    } else if (!me.user.hasPreviousCheckListSubmitted) {
+      return (
+        <>
+          <MenuCustomHeader title={"일지"} />
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={"#999"}
+              />
+            }
+            showsVerticalScrollIndicator={false}
+          >
+            <View>
+              <Text>
+                You didn't submit check list yet, please submit checklist
+              </Text>
+              <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
+                <Text>go to check list</Text>
               </Touchable>
             </View>
           </ScrollView>

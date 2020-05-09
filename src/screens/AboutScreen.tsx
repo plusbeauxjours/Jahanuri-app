@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Swiper from "react-native-swiper";
-import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { ImageBackground, ScrollView } from "react-native";
 import dimensions from "../constants/dimensions";
 

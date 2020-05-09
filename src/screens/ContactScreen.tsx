@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Linking, ImageBackground } from "react-native";
-import { NavigationStackScreenComponent } from "react-navigation-stack";
 
 const Container = styled.View`
   flex: 1;
@@ -44,7 +43,7 @@ const Line = styled.View`
   align-self: center;
 `;
 const WhiteSpace = styled.View`
-  height: 30px;
+  width: 30px;
 `;
 const LogoContainer = styled.TouchableOpacity`
   width: 130px;
@@ -56,7 +55,7 @@ const Logo = styled.Image`
   height: 80px;
 `;
 
-const ContactScreen: NavigationStackScreenComponent = () => {
+const ContactScreen: React.FC = () => {
   const urls = {
     web_gomaschool: "https://www.gomaschool.co.kr",
     web_jahanuri: "http://www.jahanuri.net",
@@ -200,6 +199,7 @@ const ContactScreen: NavigationStackScreenComponent = () => {
           <Line />
         </TitleBox>
         <Box>
+          <WhiteSpace />
           <LogoContainer onPress={() => onPress("shop_gomashop")}>
             <Logo
               resizeMode={"contain"}
@@ -214,11 +214,11 @@ const ContactScreen: NavigationStackScreenComponent = () => {
             />
             <Text>네이쳐 비타밀스</Text>
           </LogoContainer>
+          <WhiteSpace />
         </Box>
       </Container>
     </ImageBackground>
   );
 };
-ContactScreen.navigationOptions = () => ({});
 
 export default ContactScreen;

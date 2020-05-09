@@ -21,18 +21,22 @@ import MenuCustomHeader from "../../components/MenuCustomHeader";
 const View = styled.View`
   flex-direction: row;
   align-items: center;
-  height: 40px;
-  padding: 0 10px;
+  height: 50px;
+  padding: 0 20px;
 `;
 const LoadingContainer = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
-
 const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
+`;
+const GreyLine = styled.View`
+  margin: 0 20px;
+  border-bottom-width: 0.3px;
+  border-bottom-color: #999;
 `;
 
 const CheckListScreen: NavigationStackScreenComponent = () => {
@@ -104,24 +108,27 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
               data={checkListQuestions}
               previewOpenValue={1000}
               renderItem={(data) => (
-                <CheckListRow
-                  key={data.item.uuid}
-                  uuid={data.item.uuid}
-                  question={data.item.question}
-                  previousAnswer={
-                    data.item.questionSet.length !== 0
-                      ? data.item.questionSet[0].previousAnswer
-                      : false
-                  }
-                  laterAnswer={
-                    data.item.questionSet.length !== 0
-                      ? data.item.questionSet[0].laterAnswer
-                      : false
-                  }
-                  haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
-                  haslaterSubmited={me.user.hasLaterCheckListSubmitted}
-                  onPress={onPress}
-                />
+                <>
+                  <CheckListRow
+                    key={data.item.uuid}
+                    uuid={data.item.uuid}
+                    question={data.item.question}
+                    previousAnswer={
+                      data.item.questionSet.length !== 0
+                        ? data.item.questionSet[0].previousAnswer
+                        : false
+                    }
+                    laterAnswer={
+                      data.item.questionSet.length !== 0
+                        ? data.item.questionSet[0].laterAnswer
+                        : false
+                    }
+                    haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
+                    haslaterSubmited={me.user.hasLaterCheckListSubmitted}
+                    onPress={onPress}
+                  />
+                  <GreyLine />
+                </>
               )}
               renderHiddenItem={(data) => (
                 <View>
@@ -140,7 +147,7 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
                   )}
                 </View>
               )}
-              leftOpenValue={45}
+              leftOpenValue={40}
               keyExtractor={(item) => item.uuid}
             />
           )}

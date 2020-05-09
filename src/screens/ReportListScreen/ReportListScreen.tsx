@@ -39,79 +39,11 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
       </Container>
     );
   } else {
-    if (!me.user.hasPreviousCheckListSubmitted) {
-      return (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={"#999"}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text>
-              You didn't submit check list yet, please submit checklist
-            </Text>
-            <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
-              <Text>go to check list</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
-      );
-    } else if (!me.user.hasSubmitedApplication) {
-      return (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={"#999"}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text>
-              You didn't submit application yet, please submit application
-            </Text>
-            <Touchable onPress={() => navigation.navigate("ApplicationScreen")}>
-              <Text>go to application</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
-      );
-    } else if (!me.user.hasPaid) {
-      return (
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={"#999"}
-            />
-          }
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text>You didn't pay yet, please pay</Text>
-            <Touchable
-              onPress={() => navigation.navigate("PaymentInformationScreen")}
-            >
-              <Text>go to payment information</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
-      );
-    } else {
-      return (
-        <View>
-          <Text>Report Screen</Text>
-        </View>
-      );
-    }
+    return (
+      <View>
+        <Text>Report Screen</Text>
+      </View>
+    );
   }
 };
 ReportListScreen.navigationOptions = () => ({});

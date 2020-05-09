@@ -6,11 +6,14 @@ const View = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
-  padding: 0 10px;
+  height: 50px;
+  padding: 0 20px;
   background-color: ${(props) => props.theme.bgColor};
 `;
-const Text = styled.Text``;
+const Text = styled.Text`
+  width: 90%;
+  flex-wrap: wrap;
+`;
 const Touchable = styled.TouchableOpacity``;
 
 interface IProps {
@@ -61,7 +64,6 @@ const CheckListRow: React.FC<IProps> = ({
     return (
       <View>
         <Text>{question}</Text>
-
         <Touchable
           onPress={() => {
             onPress(uuid);

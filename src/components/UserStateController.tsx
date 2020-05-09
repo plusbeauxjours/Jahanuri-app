@@ -24,16 +24,7 @@ export default withNavigation(({ navigation }) => {
       />
     );
   } else {
-    if (!me.user.hasPreviousCheckListSubmitted) {
-      return (
-        <View>
-          <Text>You didn't submit check list yet, please submit checklist</Text>
-          <Touchable onPress={() => navigation.push("CheckListScreen")}>
-            <Text>go to check list</Text>
-          </Touchable>
-        </View>
-      );
-    } else if (!me.user.hasSubmitedApplication) {
+    if (!me.user.hasSubmitedApplication) {
       return (
         <View>
           <Text>
@@ -55,6 +46,17 @@ export default withNavigation(({ navigation }) => {
           </Touchable>
         </View>
       );
+    } else if (!me.user.hasPreviousCheckListSubmitted) {
+      return (
+        <View>
+          <Text>You didn't submit check list yet, please submit checklist</Text>
+          <Touchable onPress={() => navigation.push("CheckListScreen")}>
+            <Text>go to check list</Text>
+          </Touchable>
+        </View>
+      );
+    } else {
+      return null;
     }
   }
 });

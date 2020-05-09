@@ -27,7 +27,7 @@ const MenuCustomHeader: React.FC<IProps> = ({ title }) => {
       placement="left"
       leftComponent={<Menu />}
       containerStyle={{
-        backgroundColor: "#ffffff",
+        backgroundColor: null,
         borderBottomColor: "#999",
         justifyContent: "space-around",
         alignItems: "center",
