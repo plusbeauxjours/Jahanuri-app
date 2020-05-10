@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useQuery } from "react-apollo-hooks";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useMe } from "../../context/meContext";
 import { ActivityIndicator, RefreshControl } from "react-native";
@@ -22,6 +23,10 @@ const Touchable = styled.TouchableOpacity``;
 const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const { me, loading, refetch } = useMe();
   const [refreshing, setRefreshing] = useState<boolean>(false);
+  const {
+    data: { getCheckListQuestions: { checkListQuestions = null } = {} } = {},
+    loading: checkListQuestionsLoading,
+  } = useQuery<GetCheckListQuestions>(GET_CHECK_LIST_QUESTIONS);
   const onRefresh = async () => {
     try {
       setRefreshing(true);
