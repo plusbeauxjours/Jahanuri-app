@@ -4,6 +4,9 @@ import { useQuery } from "react-apollo-hooks";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useMe } from "../../context/meContext";
 import { ActivityIndicator, RefreshControl } from "react-native";
+import { GetReportList, GetReportListVariables } from "../../types/api";
+import { GET_REPORT_LIST } from "./ReportListScreenQueries";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const Container = styled.View`
   flex: 1;
@@ -24,9 +27,11 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const { me, loading, refetch } = useMe();
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const {
-    data: { getCheckListQuestions: { checkListQuestions = null } = {} } = {},
-    loading: checkListQuestionsLoading,
-  } = useQuery<GetCheckListQuestions>(GET_CHECK_LIST_QUESTIONS);
+    data: { getReportList: { reports = null } = {} } = {},
+    loading: getReportListLoading,
+  } = useQuery<GetReportList, GetReportListVariables>(GET_REPORT_LIST, {
+    variables: { userUuid: me.user.uuid },
+  });
   const onRefresh = async () => {
     try {
       setRefreshing(true);
@@ -37,7 +42,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
       setRefreshing(false);
     }
   };
-  if (loading) {
+  if (loading || getReportListLoading) {
     return (
       <Container>
         <ActivityIndicator />
@@ -45,9 +50,28 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
     );
   } else {
     return (
-      <View>
-        <Text>Report Screen</Text>
-      </View>
+      <>
+        <MenuCustomHeader title={"일지"} />
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={"#999"}
+            />
+          }
+          showsVerticalScrollIndicator={false}
+        >
+          {reports &&
+            reports.length !== 0 &&
+            reports.map((report: any) => (
+              <Touchable>
+                <Text>{report.uuid}</Text>
+              </Touchable>
+            ))}
+          <Text>Report Screen</Text>
+        </ScrollView>
+      </>
     );
   }
 };

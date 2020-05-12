@@ -306,12 +306,12 @@
             "deprecationReason": null
           },
           {
-            "name": "elements",
+            "name": "element",
             "description": "",
             "args": [],
             "type": {
               "kind": "ENUM",
-              "name": "CheckListQuestionElements",
+              "name": "CheckListQuestionElement",
               "ofType": null
             },
             "isDeprecated": false,
@@ -395,7 +395,7 @@
       },
       {
         "kind": "ENUM",
-        "name": "CheckListQuestionElements",
+        "name": "CheckListQuestionElement",
         "description": "An enumeration.",
         "fields": null,
         "inputFields": null,

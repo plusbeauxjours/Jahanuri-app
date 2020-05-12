@@ -190,6 +190,34 @@ export interface Me {
 // @generated
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: GetReportList
+// ====================================================
+
+export interface GetReportList_getReportList_reports {
+  __typename: "ReportType";
+  uuid: any;
+}
+
+export interface GetReportList_getReportList {
+  __typename: "GetReportListResponse";
+  reports: (GetReportList_getReportList_reports | null)[] | null;
+}
+
+export interface GetReportList {
+  getReportList: GetReportList_getReportList;
+}
+
+export interface GetReportListVariables {
+  classOrderId?: string | null;
+  userUuid?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
