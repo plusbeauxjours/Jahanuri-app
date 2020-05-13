@@ -8,7 +8,7 @@ const ContactNavigation = createStackNavigator(
   {
     initialRouteName: "ContactScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );

@@ -8,7 +8,7 @@ const AboutNavigation = createStackNavigator(
   {
     initialRouteName: "AboutScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );

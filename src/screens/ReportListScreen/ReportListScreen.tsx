@@ -65,11 +65,17 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
           {reports &&
             reports.length !== 0 &&
             reports.map((report: any) => (
-              <Touchable>
+              <Touchable
+                key={report.uuid}
+                onPress={() =>
+                  navigation.push("ReportDetailScreen", {
+                    reportUuid: report.uuid,
+                  })
+                }
+              >
                 <Text>{report.uuid}</Text>
               </Touchable>
             ))}
-          <Text>Report Screen</Text>
         </ScrollView>
       </>
     );

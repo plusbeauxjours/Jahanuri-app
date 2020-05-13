@@ -15,7 +15,7 @@ const MyProfileNavigation = createStackNavigator(
   {
     initialRouteName: "MyProfileScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );

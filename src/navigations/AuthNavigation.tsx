@@ -16,7 +16,7 @@ const AuthNavigation = createStackNavigator(
   {
     initialRouteName: "HomeScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );

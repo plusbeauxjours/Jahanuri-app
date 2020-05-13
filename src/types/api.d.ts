@@ -191,6 +191,33 @@ export interface Me {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: GetReportDetail
+// ====================================================
+
+export interface GetReportDetail_getReportDetail_report {
+  __typename: "ReportType";
+  uuid: any;
+}
+
+export interface GetReportDetail_getReportDetail {
+  __typename: "GetReportDetailResponse";
+  report: GetReportDetail_getReportDetail_report | null;
+}
+
+export interface GetReportDetail {
+  getReportDetail: GetReportDetail_getReportDetail;
+}
+
+export interface GetReportDetailVariables {
+  reportUuid?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: GetReportList
 // ====================================================
 

@@ -16,7 +16,7 @@ const ReportNavigation = createStackNavigator(
   {
     initialRouteName: "ReportListScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );

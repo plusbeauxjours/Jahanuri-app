@@ -8,7 +8,7 @@ const CheckListNavigation = createStackNavigator(
   {
     initialRouteName: "CheckListScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );

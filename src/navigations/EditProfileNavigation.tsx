@@ -8,7 +8,7 @@ const EditProfileNavigation = createStackNavigator(
   {
     initialRouteName: "EditProfileScreen",
     defaultNavigationOptions: {
-      header: null,
+      headerShown: false,
     },
   }
 );
