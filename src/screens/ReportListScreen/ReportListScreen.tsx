@@ -30,7 +30,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
     data: { getReportList: { reports = null } = {} } = {},
     loading: getReportListLoading,
   } = useQuery<GetReportList, GetReportListVariables>(GET_REPORT_LIST, {
-    variables: { userUuid: me.user.uuid },
+    variables: { userUuid: me && me.user.uuid },
   });
   const onRefresh = async () => {
     try {
@@ -62,20 +62,22 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
           }
           showsVerticalScrollIndicator={false}
         >
-          {reports &&
-            reports.length !== 0 &&
-            reports.map((report: any) => (
-              <Touchable
-                key={report.uuid}
-                onPress={() =>
-                  navigation.push("ReportDetailScreen", {
-                    reportUuid: report.uuid,
-                  })
-                }
-              >
-                <Text>{report.uuid}</Text>
-              </Touchable>
-            ))}
+          <View>
+            {reports &&
+              reports.length !== 0 &&
+              reports.map((report: any) => (
+                <Touchable
+                  key={report.uuid}
+                  onPress={() =>
+                    navigation.push("ReportDetailScreen", {
+                      reportUuid: report.uuid,
+                    })
+                  }
+                >
+                  <Text>{report.uuid}</Text>
+                </Touchable>
+              ))}
+          </View>
         </ScrollView>
       </>
     );

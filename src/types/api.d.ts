@@ -194,9 +194,40 @@ export interface Me {
 // GraphQL query operation: GetReportDetail
 // ====================================================
 
+export interface GetReportDetail_getReportDetail_report_reportCover_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+}
+
+export interface GetReportDetail_getReportDetail_report_reportCover {
+  __typename: "ReportCoverType";
+  classOrder: GetReportDetail_getReportDetail_report_reportCover_classOrder | null;
+  uuid: any;
+  reportType: ReportCoverReportType;
+}
+
 export interface GetReportDetail_getReportDetail_report {
   __typename: "ReportType";
   uuid: any;
+  reportCover: GetReportDetail_getReportDetail_report_reportCover;
+  saengSik: ReportSaengSik;
+  amino: ReportAmino;
+  sangiSo: ReportSangiSo;
+  jeunHaeJil: boolean;
+  jeunHaeJilTime: any;
+  meal: string;
+  mealCheck: string;
+  sleeping: string;
+  stool: string;
+  hotGrain: string;
+  hotWater: string;
+  strolling: string;
+  workout: string;
+  lecture: string;
+  etc: string;
+  diary: string;
 }
 
 export interface GetReportDetail_getReportDetail {
@@ -248,6 +279,41 @@ export interface GetReportListVariables {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+/**
+ * An enumeration.
+ */
+export enum ReportAmino {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportCoverReportType {
+  BODY_STUDY = "BODY_STUDY",
+  ETC = "ETC",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportSaengSik {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportSangiSo {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
 
 //==============================================================
 // END Enums and Input Objects
