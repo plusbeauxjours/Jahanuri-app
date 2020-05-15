@@ -33,10 +33,6 @@ class EditProfileScreen extends React.Component<IProps> {
     this.props.navigation.navigate("EditSportsScreen");
   };
 
-  public onCreateTeamPress = () => {
-    this.props.navigation.navigate("CreateTeamScreen");
-  };
-
   public updateCache = (cache, { data: { updateUser } }) => {
     const { me } = cache.readQuery({ query: ME });
     cache.writeQuery({

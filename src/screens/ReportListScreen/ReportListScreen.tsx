@@ -63,6 +63,15 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         >
           <View>
+            <Touchable
+              onPress={() =>
+                navigation.push("ReportDetailScreen", {
+                  reportUuid: report.uuid,
+                })
+              }
+            >
+              <Text>CreateReport</Text>
+            </Touchable>
             {reports &&
               reports.length !== 0 &&
               reports.map((report: any) => (
@@ -74,7 +83,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                     })
                   }
                 >
-                  <Text>{report.uuid}</Text>
+                  <Text>{report.createdAt}</Text>
                 </Touchable>
               ))}
           </View>

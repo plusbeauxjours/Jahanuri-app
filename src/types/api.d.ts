@@ -115,6 +115,80 @@ export interface SubmitCheckListVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateReport
+// ====================================================
+
+export interface CreateReport_createReport_report_reportCover_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+}
+
+export interface CreateReport_createReport_report_reportCover {
+  __typename: "ReportCoverType";
+  classOrder: CreateReport_createReport_report_reportCover_classOrder | null;
+  uuid: any;
+  reportType: ReportCoverReportType;
+}
+
+export interface CreateReport_createReport_report {
+  __typename: "ReportType";
+  uuid: any;
+  reportCover: CreateReport_createReport_report_reportCover;
+  saengSik: ReportSaengSik;
+  amino: ReportAmino;
+  sangiSo: ReportSangiSo;
+  jeunHaeJil: boolean;
+  jeunHaeJilTime: any;
+  meal: string;
+  mealCheck: string;
+  sleeping: string;
+  stool: string;
+  hotGrain: string;
+  hotWater: string;
+  strolling: string;
+  workout: string;
+  lecture: string;
+  etc: string;
+  diary: string;
+}
+
+export interface CreateReport_createReport {
+  __typename: "CreateReportResponse";
+  report: CreateReport_createReport_report | null;
+}
+
+export interface CreateReport {
+  createReport: CreateReport_createReport;
+}
+
+export interface CreateReportVariables {
+  reportCoverUuid: string;
+  saengSik?: string | null;
+  amino?: string | null;
+  sangiSo?: string | null;
+  jeunHaeJil?: boolean | null;
+  jeunHaeJilTime?: any | null;
+  meal?: string | null;
+  mealCheck?: string | null;
+  sleeping?: string | null;
+  stool?: string | null;
+  hotGrain?: string | null;
+  hotWater?: string | null;
+  strolling?: string | null;
+  workout?: string | null;
+  lecture?: string | null;
+  etc?: string | null;
+  diary?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: UpdateUser
 // ====================================================
 
@@ -252,9 +326,16 @@ export interface GetReportDetailVariables {
 // GraphQL query operation: GetReportList
 // ====================================================
 
+export interface GetReportList_getReportList_reports_reportCover {
+  __typename: "ReportCoverType";
+  uuid: any;
+}
+
 export interface GetReportList_getReportList_reports {
   __typename: "ReportType";
+  reportCover: GetReportList_getReportList_reports_reportCover;
   uuid: any;
+  createdAt: any;
 }
 
 export interface GetReportList_getReportList {
