@@ -126,12 +126,6 @@ class EditProfileScreen extends React.Component<IProps> {
                     isValid,
                   }) => (
                     <React.Fragment>
-                      <FormikImagePicker
-                        initialImg={me.user.userImg && { uri: me.user.userImg }}
-                        value={values.userImg}
-                        onChoose={setFieldValue}
-                        name="userImg"
-                      />
                       <FormikInput
                         label="First name"
                         value={values.firstName}

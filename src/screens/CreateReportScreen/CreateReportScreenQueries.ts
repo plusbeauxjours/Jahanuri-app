@@ -7,7 +7,6 @@ export const CREATE_REPORT = gql`
     $amino: String
     $sangiSo: String
     $jeunHaeJil: Boolean
-    $jeunHaeJilTime: Time
     $meal: String
     $mealCheck: String
     $sleeping: String
@@ -26,7 +25,6 @@ export const CREATE_REPORT = gql`
       amino: $amino
       sangiSo: $sangiSo
       jeunHaeJil: $jeunHaeJil
-      jeunHaeJilTime: $jeunHaeJilTime
       meal: $meal
       mealCheck: $mealCheck
       sleeping: $sleeping
@@ -54,7 +52,6 @@ export const CREATE_REPORT = gql`
         amino
         sangiSo
         jeunHaeJil
-        jeunHaeJilTime
         meal
         mealCheck
         sleeping

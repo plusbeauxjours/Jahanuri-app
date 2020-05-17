@@ -72,11 +72,9 @@ const ContactScreen: React.FC = () => {
     shop_naturevitameals: "https://www.naturevitameals.co.kr",
   };
   const onPress = (name: string) => {
-    console.log(name);
     Linking.canOpenURL(urls[name])
       .then((supported) => {
         if (supported) {
-          console.log(urls[name]);
           return Linking.openURL(urls[name]);
         } else {
           return null;

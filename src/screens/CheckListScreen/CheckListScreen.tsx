@@ -159,7 +159,6 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
             }
             loading={submitCheckListLoading}
             onPress={() => {
-              console.log(trueAnswerQuestionUuids);
               submitCheckListFn({
                 variables: {
                   trueAnswerQuestionUuids,

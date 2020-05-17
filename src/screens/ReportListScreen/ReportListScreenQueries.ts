@@ -8,7 +8,7 @@ export const GET_REPORT_LIST = gql`
           uuid
         }
         uuid
-        createdAt
+        reportDate
       }
     }
   }

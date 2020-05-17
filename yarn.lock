@@ -1276,6 +1276,12 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
+"@react-native-community/datetimepicker@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-2.2.2.tgz#4c6388631179098cc5b289146e879764f79af4c1"
+  dependencies:
+    invariant "^2.2.4"
+
 "@react-native-community/masked-view@^0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.9.tgz#383aca2fb053e3e14405c99cce2d5805df730821"
@@ -5225,6 +5231,12 @@ react-native-keyboard-aware-scroll-view@^0.9.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
+
+react-native-modal-datetime-picker@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-8.6.0.tgz#d3ce022b44926c5f08fc4fc29718ec8ef0111592"
+  dependencies:
+    prop-types "^15.7.2"
 
 react-native-paper@^3.8.0:
   version "3.8.0"

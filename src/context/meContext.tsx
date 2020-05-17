@@ -8,7 +8,7 @@ export const MeContext = createContext(null);
 export const MeProvider = ({ children }) => {
   const { data, loading, refetch } = useQuery<Me>(ME);
   const me = data ? data.me : null;
-  console.log(me);
+  console.log("me", me);
   return (
     <MeContext.Provider value={{ me, loading, refetch }}>
       {children}

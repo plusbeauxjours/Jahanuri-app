@@ -140,7 +140,6 @@ export interface CreateReport_createReport_report {
   amino: ReportAmino;
   sangiSo: ReportSangiSo;
   jeunHaeJil: boolean;
-  jeunHaeJilTime: any;
   meal: string;
   mealCheck: string;
   sleeping: string;
@@ -169,7 +168,6 @@ export interface CreateReportVariables {
   amino?: string | null;
   sangiSo?: string | null;
   jeunHaeJil?: boolean | null;
-  jeunHaeJilTime?: any | null;
   meal?: string | null;
   mealCheck?: string | null;
   sleeping?: string | null;
@@ -243,6 +241,7 @@ export interface Me_me_user {
   bio: string;
   userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
+  reportCoverUuid: string | null;
   hasPreviousCheckListSubmitted: boolean;
   hasLaterCheckListSubmitted: boolean;
   hasSubmitedApplication: boolean;
@@ -290,7 +289,6 @@ export interface GetReportDetail_getReportDetail_report {
   amino: ReportAmino;
   sangiSo: ReportSangiSo;
   jeunHaeJil: boolean;
-  jeunHaeJilTime: any;
   meal: string;
   mealCheck: string;
   sleeping: string;
@@ -302,6 +300,7 @@ export interface GetReportDetail_getReportDetail_report {
   lecture: string;
   etc: string;
   diary: string;
+  reportDate: any;
 }
 
 export interface GetReportDetail_getReportDetail {
@@ -335,7 +334,7 @@ export interface GetReportList_getReportList_reports {
   __typename: "ReportType";
   reportCover: GetReportList_getReportList_reports_reportCover;
   uuid: any;
-  createdAt: any;
+  reportDate: any;
 }
 
 export interface GetReportList_getReportList {

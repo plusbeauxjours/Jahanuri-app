@@ -63,15 +63,21 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         >
           <View>
-            <Touchable
-              onPress={() =>
-                navigation.push("ReportDetailScreen", {
-                  reportUuid: report.uuid,
-                })
-              }
-            >
-              <Text>CreateReport</Text>
-            </Touchable>
+            {me && me.user.hasPaid ? (
+              <Touchable
+                onPress={() =>
+                  navigation.push("CreateReportScreen", {
+                    reportCoverUuid: me.user.reportCoverUuid,
+                  })
+                }
+              >
+                <Text>CreateReport</Text>
+              </Touchable>
+            ) : (
+              <Touchable onPress={() => navigation.push("CreateReportScreen")}>
+                <Text>CreateReport</Text>
+              </Touchable>
+            )}
             {reports &&
               reports.length !== 0 &&
               reports.map((report: any) => (
@@ -83,7 +89,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                     })
                   }
                 >
-                  <Text>{report.createdAt}</Text>
+                  <Text>{report.reportDate}</Text>
                 </Touchable>
               ))}
           </View>

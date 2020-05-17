@@ -13,6 +13,7 @@ export const ME = gql`
         classOrder {
           order
         }
+        reportCoverUuid
         hasPreviousCheckListSubmitted
         hasLaterCheckListSubmitted
         hasSubmitedApplication

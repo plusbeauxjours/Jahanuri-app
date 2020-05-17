@@ -18,7 +18,6 @@ export const GET_REPORT_DETAIL = gql`
         amino
         sangiSo
         jeunHaeJil
-        jeunHaeJilTime
         meal
         mealCheck
         sleeping
@@ -30,6 +29,7 @@ export const GET_REPORT_DETAIL = gql`
         lecture
         etc
         diary
+        reportDate
       }
     }
   }
