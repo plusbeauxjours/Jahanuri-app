@@ -5,15 +5,20 @@ import { withNavigation } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
 
 const IconContainer = styled.TouchableOpacity`
-  flex: 1;
   align-items: center;
+  justify-content: center;
   width: 40px;
 `;
+const View = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+const Text = styled.Text``;
 
 interface IProps {
   title: string;
 }
-const Menu = withNavigation(({ navigation }) => {
+const LeftComponent = withNavigation(({ navigation }) => {
   return (
     <IconContainer onPress={() => navigation.toggleDrawer()}>
       <Ionicons size={24} name={"ios-menu"} />
@@ -21,11 +26,20 @@ const Menu = withNavigation(({ navigation }) => {
   );
 });
 
+const CenterComponent = ({ title }) => {
+  return (
+    <View>
+      <Text>{title}</Text>
+    </View>
+  );
+};
+
 const MenuCustomHeader: React.FC<IProps> = ({ title }) => {
   return (
     <Header
       placement="left"
-      leftComponent={<Menu />}
+      leftComponent={<LeftComponent />}
+      centerComponent={<CenterComponent title={title} />}
       containerStyle={{
         backgroundColor: null,
         borderBottomColor: "#999",
@@ -33,8 +47,7 @@ const MenuCustomHeader: React.FC<IProps> = ({ title }) => {
         alignItems: "center",
         borderBottomWidth: 0.5,
       }}
-      centerComponent={{ text: title, style: { alignItems: "center" } }}
-      barStyle={"light-content"}
+      barStyle={"dark-content"}
     />
   );
 };

@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { ActivityIndicator } from "react-native";
-import MenuCustomHeader from "../../components/MenuCustomHeader";
 import { GetReportDetail, GetReportDetailVariables } from "../../types/api";
 import { GET_REPORT_DETAIL } from "./ReportDetailScreenQueries";
 import { useQuery } from "react-apollo-hooks";
 import Divider from "../../components/Divider";
+import BackCustomHeader from "../../components/BackCustomHeader";
 
 const Container = styled.View`
   flex: 1;
@@ -46,7 +46,7 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
   } else {
     return (
       <>
-        <MenuCustomHeader title={"일지"} />
+        <BackCustomHeader title={"일지"} />
         <ScrollView>
           <View>
             <Text>{report.uuid}</Text>
