@@ -14,9 +14,15 @@ export const GET_REPORT_DETAIL = gql`
           uuid
           reportType
         }
-        saengSik
-        amino
-        sangiSo
+        saengSikMorning
+        saengSikNoon
+        saengSikEvening
+        aminoMorning
+        aminoNoon
+        aminoEvening
+        sangiSoMorning
+        sangiSoNoon
+        sangiSoEvening
         jeunHaeJil
         meal
         mealCheck

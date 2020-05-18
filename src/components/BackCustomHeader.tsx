@@ -42,7 +42,7 @@ const BackCustomHeader: React.FC<IProps> = ({ title }) => {
       leftComponent={<LeftComponent />}
       centerComponent={<CenterComponent title={title} />}
       containerStyle={{
-        backgroundColor: "#ffffff",
+        backgroundColor: null,
         borderBottomColor: "#999",
         alignItems: "center",
         borderBottomWidth: 0.5,

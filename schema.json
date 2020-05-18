@@ -1477,7 +1477,7 @@
             "deprecationReason": null
           },
           {
-            "name": "saengSik",
+            "name": "saengSikMorning",
             "description": "",
             "args": [],
             "type": {
@@ -1485,7 +1485,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "ReportSaengSik",
+                "name": "ReportSaengSikMorning",
                 "ofType": null
               }
             },
@@ -1493,7 +1493,7 @@
             "deprecationReason": null
           },
           {
-            "name": "amino",
+            "name": "saengSikNoon",
             "description": "",
             "args": [],
             "type": {
@@ -1501,7 +1501,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "ReportAmino",
+                "name": "ReportSaengSikNoon",
                 "ofType": null
               }
             },
@@ -1509,7 +1509,7 @@
             "deprecationReason": null
           },
           {
-            "name": "sangiSo",
+            "name": "saengSikEvening",
             "description": "",
             "args": [],
             "type": {
@@ -1517,7 +1517,103 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "ReportSangiSo",
+                "name": "ReportSaengSikEvening",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aminoMorning",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ReportAminoMorning",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aminoNoon",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ReportAminoNoon",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aminoEvening",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ReportAminoEvening",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sangiSoMorning",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ReportSangiSoMorning",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sangiSoNoon",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ReportSangiSoNoon",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sangiSoEvening",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "ReportSangiSoEvening",
                 "ofType": null
               }
             },
@@ -1724,7 +1820,7 @@
       },
       {
         "kind": "ENUM",
-        "name": "ReportSaengSik",
+        "name": "ReportSaengSikMorning",
         "description": "An enumeration.",
         "fields": null,
         "inputFields": null,
@@ -1753,7 +1849,7 @@
       },
       {
         "kind": "ENUM",
-        "name": "ReportAmino",
+        "name": "ReportSaengSikNoon",
         "description": "An enumeration.",
         "fields": null,
         "inputFields": null,
@@ -1782,7 +1878,181 @@
       },
       {
         "kind": "ENUM",
-        "name": "ReportSangiSo",
+        "name": "ReportSaengSikEvening",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MORNING",
+            "description": "Morning",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NOON",
+            "description": "Noon",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "EVENING",
+            "description": "Evening",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ReportAminoMorning",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MORNING",
+            "description": "Morning",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NOON",
+            "description": "Noon",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "EVENING",
+            "description": "Evening",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ReportAminoNoon",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MORNING",
+            "description": "Morning",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NOON",
+            "description": "Noon",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "EVENING",
+            "description": "Evening",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ReportAminoEvening",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MORNING",
+            "description": "Morning",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NOON",
+            "description": "Noon",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "EVENING",
+            "description": "Evening",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ReportSangiSoMorning",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MORNING",
+            "description": "Morning",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NOON",
+            "description": "Noon",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "EVENING",
+            "description": "Evening",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ReportSangiSoNoon",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MORNING",
+            "description": "Morning",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NOON",
+            "description": "Noon",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "EVENING",
+            "description": "Evening",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ReportSangiSoEvening",
         "description": "An enumeration.",
         "fields": null,
         "inputFields": null,
@@ -2332,7 +2602,27 @@
             "description": null,
             "args": [
               {
-                "name": "amino",
+                "name": "aminoEvening",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "aminoMorning",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "aminoNoon",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -2392,16 +2682,6 @@
                 "defaultValue": null
               },
               {
-                "name": "jeunHaeJilTime",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Time",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
                 "name": "lecture",
                 "description": null,
                 "type": {
@@ -2452,7 +2732,7 @@
                 "defaultValue": null
               },
               {
-                "name": "saengSik",
+                "name": "saengSikEvening",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -2462,7 +2742,47 @@
                 "defaultValue": null
               },
               {
-                "name": "sangiSo",
+                "name": "saengSikMorning",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "saengSikNoon",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sangiSoEvening",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sangiSoMorning",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sangiSoNoon",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -2529,7 +2849,27 @@
             "description": null,
             "args": [
               {
-                "name": "amino",
+                "name": "aminoEvening",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "aminoMorning",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "aminoNoon",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -2579,26 +2919,6 @@
                 "defaultValue": null
               },
               {
-                "name": "jeunHaeJil",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "jeunHaeJilTime",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Time",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
                 "name": "lecture",
                 "description": null,
                 "type": {
@@ -2643,7 +2963,7 @@
                 "defaultValue": null
               },
               {
-                "name": "saengSik",
+                "name": "saengSikEvening",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -2653,7 +2973,47 @@
                 "defaultValue": null
               },
               {
-                "name": "sangiSo",
+                "name": "saengSikMorning",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "saengSikNoon",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sangiSoEvening",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sangiSoMorning",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sangiSoNoon",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -3182,16 +3542,6 @@
         ],
         "inputFields": null,
         "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Time",
-        "description": "The `Time` scalar type represents a Time value as\nspecified by\n[iso8601](https://en.wikipedia.org/wiki/ISO_8601).",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },

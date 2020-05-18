@@ -82,24 +82,27 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
             checkListQuestions &&
             checkListQuestions.length !== 0 &&
             checkListQuestions.map((checkListQuestion: any) => (
-              <CheckListRow
-                key={checkListQuestion.uuid}
-                uuid={checkListQuestion.uuid}
-                question={checkListQuestion.question}
-                previousAnswer={
-                  checkListQuestion.questionSet.length !== 0
-                    ? checkListQuestion.questionSet[0].previousAnswer
-                    : false
-                }
-                laterAnswer={
-                  checkListQuestion.questionSet.length !== 0
-                    ? checkListQuestion.questionSet[0].laterAnswer
-                    : false
-                }
-                haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
-                haslaterSubmited={me.user.hasLaterCheckListSubmitted}
-                onPress={onPress}
-              />
+              <>
+                <CheckListRow
+                  key={checkListQuestion.uuid}
+                  uuid={checkListQuestion.uuid}
+                  question={checkListQuestion.question}
+                  previousAnswer={
+                    checkListQuestion.questionSet.length !== 0
+                      ? checkListQuestion.questionSet[0].previousAnswer
+                      : false
+                  }
+                  laterAnswer={
+                    checkListQuestion.questionSet.length !== 0
+                      ? checkListQuestion.questionSet[0].laterAnswer
+                      : false
+                  }
+                  haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
+                  haslaterSubmited={me.user.hasLaterCheckListSubmitted}
+                  onPress={onPress}
+                />
+                <GreyLine />
+              </>
             ))
           ) : (
             <SwipeListView

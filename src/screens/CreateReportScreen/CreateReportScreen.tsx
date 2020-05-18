@@ -23,10 +23,19 @@ const Button = styled.Button`
 `;
 const Text = styled.Text``;
 const Touchable = styled.TouchableOpacity``;
+const Line = styled.View`
+  flex-direction: row;
+`;
 const initialValues = {
-  saengSik: "",
-  amino: "",
-  sangiSo: "",
+  saengSikMorning: "",
+  saengSikNoon: "",
+  saengSikEvening: "",
+  aminoMorning: "",
+  aminoNoon: "",
+  aminoEvening: "",
+  sangiSoMorning: "",
+  sangiSoNoon: "",
+  sangiSoEvening: "",
   jeunHaeJil: false,
   meal: "",
   mealCheck: "",
@@ -57,9 +66,6 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     setTimePickerModalOpen(false);
   };
   const validationSchema = Yup.object().shape({
-    saengSik: Yup.string().required("saengSik is required"),
-    amino: Yup.string().required("amino is required"),
-    sangiSo: Yup.string().required("sangiSo is required"),
     jeunHaeJil: Yup.boolean().required("jeunHaeJil is required"),
     meal: Yup.string().required("meal is required"),
     mealCheck: Yup.string().required("mealCheck is required"),
@@ -108,30 +114,105 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onCancel={() => setDatePickerModalOpen(false)}
                 />
               </Touchable>
-              <FormikInput
-                label="SaengSik"
-                value={values.saengSik}
-                onChange={setFieldValue}
-                onTouch={setFieldTouched}
-                name="saengSik"
-                error={touched.saengSik && errors.saengSik}
-              />
-              <FormikInput
-                label="Amino"
-                value={values.amino}
-                onChange={setFieldValue}
-                onTouch={setFieldTouched}
-                name="amino"
-                error={touched.amino && errors.amino}
-              />
-              <FormikInput
-                label="Sangi So"
-                value={values.sangiSo}
-                onChange={setFieldValue}
-                onTouch={setFieldTouched}
-                name="sangiSo"
-                error={touched.sangiSo && errors.sangiSo}
-              />
+              <Line>
+                <Text>섭생식</Text>
+                <FormikInput
+                  type="row"
+                  label="아침"
+                  value={values.saengSikMorning}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="saengSikMorning"
+                  error={touched.saengSikMorning && errors.saengSikMorning}
+                  placeholder="화토"
+                />
+                <FormikInput
+                  type="row"
+                  label="점심"
+                  value={values.saengSikNoon}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="saengSikNoon"
+                  error={touched.saengSikNoon && errors.saengSikNoon}
+                  placeholder="화토"
+                />
+                <FormikInput
+                  type="row"
+                  label="저녁"
+                  value={values.saengSikEvening}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="saengSikEvening"
+                  error={touched.saengSikEvening && errors.saengSikEvening}
+                  placeholder="수목"
+                />
+              </Line>
+              <Line>
+                <Text>아미노</Text>
+                <FormikInput
+                  type="row"
+                  label="아침"
+                  value={values.aminoMorning}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="aminoMorning"
+                  error={touched.aminoMorning && errors.aminoMorning}
+                  placeholder="아미노 1스푼"
+                />
+                <FormikInput
+                  type="row"
+                  label="점심"
+                  value={values.aminoNoon}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="aminoNoon"
+                  error={touched.aminoNoon && errors.aminoNoon}
+                  placeholder="아미노 2스푼"
+                />
+                <FormikInput
+                  type="row"
+                  label="저녁"
+                  value={values.aminoEvening}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="aminoEvening"
+                  error={touched.aminoEvening && errors.aminoEvening}
+                  placeholder="아미노 2스푼"
+                />
+              </Line>
+              <Line>
+                <Text>생기소</Text>
+                <FormikInput
+                  type="row"
+                  label="아침"
+                  value={values.sangiSoMorning}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sangiSoMorning"
+                  error={touched.sangiSoMorning && errors.sangiSoMorning}
+                  placeholder="휴 1스푼, 활 2스푼"
+                />
+                <FormikInput
+                  type="row"
+                  label="점심"
+                  value={values.sangiSoNoon}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sangiSoNoon"
+                  error={touched.sangiSoNoon && errors.sangiSoNoon}
+                  placeholder="활 1스푼"
+                />
+                <FormikInput
+                  type="row"
+                  label="저녁"
+                  value={values.sangiSoEvening}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sangiSoEvening"
+                  error={touched.sangiSoEvening && errors.sangiSoEvening}
+                  placeholder="휴 2스푼, 정 1스푼"
+                />
+              </Line>
               <Touchable onPress={() => setTimePickerModalOpen(true)}>
                 <Text>Jeun Hae Jil Time</Text>
                 <DateTimePickerModal
@@ -142,87 +223,97 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 />
               </Touchable>
               <FormikInput
-                label="Meal"
+                label="일반 식사"
                 value={values.meal}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="meal"
                 error={touched.meal && errors.meal}
+                placeholder="저녁 된장찌개 + 밥"
               />
               <FormikInput
-                label="Meal Check"
+                label="식사 습관 체크"
                 value={values.mealCheck}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="mealCheck"
                 error={touched.mealCheck && errors.mealCheck}
+                placeholder="먹는 양이 줄었다."
               />
               <FormikInput
-                label="Sleeping"
+                label="잠"
                 value={values.sleeping}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="sleeping"
                 error={touched.sleeping && errors.sleeping}
+                placeholder="현실적인 꿈을 꾸었다."
               />
               <FormikInput
-                label="Stool"
+                label="변"
                 value={values.stool}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="stool"
                 error={touched.stool && errors.stool}
+                placeholder="약간 풀어짐"
               />
               <FormikInput
-                label="Hot Grain"
+                label="곡식 찜질"
                 value={values.hotGrain}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="hotGrain"
                 error={touched.hotGrain && errors.hotGrain}
+                placeholder="족욕, 자기전에 배"
               />
               <FormikInput
-                label="Hot Water"
+                label="따뜻한 물"
                 value={values.hotWater}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="hotWater"
                 error={touched.hotWater && errors.hotWater}
+                placeholder="따뜻한 차만 마심"
               />
               <FormikInput
-                label="Strolling"
+                label="걷기"
                 value={values.strolling}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="strolling"
                 error={touched.strolling && errors.strolling}
+                placeholder="2시간 반"
               />
               <FormikInput
-                label="Workout"
+                label="운동"
                 value={values.workout}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="workout"
                 error={touched.workout && errors.workout}
+                placeholder="허리돌리기 호흡에 맞게 10분, 앉았다 일어나기 10회 3번"
               />
               <FormikInput
-                label="Lecture"
+                label="강의"
                 value={values.lecture}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="lecture"
                 error={touched.lecture && errors.lecture}
+                placeholder="뇌구조"
               />
               <FormikInput
-                label="Etc"
+                label="기타"
                 value={values.etc}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
                 name="etc"
                 error={touched.etc && errors.etc}
+                placeholder="곡식주머니 꾸준히 하기, 음식에 간해서 먹기"
               />
               <FormikInput
-                label="Diary"
+                label="세줄 일기"
                 value={values.diary}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
@@ -235,9 +326,15 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   reportCoverUuid:
                     navigation.state.params &&
                     navigation.state.params.reportCoverUuid,
-                  saengSik: values.saengSik.trim(),
-                  amino: values.amino.trim(),
-                  sangiSo: values.sangiSo.trim(),
+                  saengSikMorning: values.saengSikMorning.trim(),
+                  saengSikNoon: values.saengSikNoon.trim(),
+                  saengSikEvening: values.saengSikEvening.trim(),
+                  aminoMorning: values.aminoMorning.trim(),
+                  aminoNoon: values.aminoNoon.trim(),
+                  aminoEvening: values.aminoEvening.trim(),
+                  sangiSoMorning: values.sangiSoMorning.trim(),
+                  sangiSoNoon: values.sangiSoNoon.trim(),
+                  sangiSoEvening: values.sangiSoEvening.trim(),
                   jeunHaeJil: values.jeunHaeJil,
                   meal: values.meal.trim(),
                   mealCheck: values.mealCheck.trim(),

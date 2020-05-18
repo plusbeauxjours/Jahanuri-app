@@ -67,14 +67,22 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
             <Line>
               <MainTitle>주식</MainTitle>
               <Title>섭생식</Title>
-              <Text>{report.saengSik}</Text>
+              <Text>아침{report.saengSikMorning}</Text>
+              <Text>점심{report.saengSikNoon}</Text>
+              <Text>저녁{report.saengSikEvening}</Text>
+            </Line>
+            <MainTitle>부식</MainTitle>
+            <Line>
+              <Title>아미노</Title>
+              <Text>아침{report.aminoMorning}</Text>
+              <Text>점심{report.aminoNoon}</Text>
+              <Text>저녁{report.aminoEvening}</Text>
             </Line>
             <Line>
-              <MainTitle>부식</MainTitle>
-              <Title>아미노</Title>
-              <Text>{report.amino}</Text>
               <Title>생기소</Title>
-              <Text>{report.sangiSo}</Text>
+              <Text>아침{report.sangiSoMorning}</Text>
+              <Text>점심{report.sangiSoNoon}</Text>
+              <Text>저녁{report.sangiSoEvening}</Text>
             </Line>
             <Line>
               <Title>전해질 보충</Title>

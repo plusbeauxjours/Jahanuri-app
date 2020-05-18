@@ -136,9 +136,15 @@ export interface CreateReport_createReport_report {
   __typename: "ReportType";
   uuid: any;
   reportCover: CreateReport_createReport_report_reportCover;
-  saengSik: ReportSaengSik;
-  amino: ReportAmino;
-  sangiSo: ReportSangiSo;
+  saengSikMorning: ReportSaengSikMorning;
+  saengSikNoon: ReportSaengSikNoon;
+  saengSikEvening: ReportSaengSikEvening;
+  aminoMorning: ReportAminoMorning;
+  aminoNoon: ReportAminoNoon;
+  aminoEvening: ReportAminoEvening;
+  sangiSoMorning: ReportSangiSoMorning;
+  sangiSoNoon: ReportSangiSoNoon;
+  sangiSoEvening: ReportSangiSoEvening;
   jeunHaeJil: boolean;
   meal: string;
   mealCheck: string;
@@ -164,9 +170,15 @@ export interface CreateReport {
 
 export interface CreateReportVariables {
   reportCoverUuid: string;
-  saengSik?: string | null;
-  amino?: string | null;
-  sangiSo?: string | null;
+  saengSikMorning?: string | null;
+  saengSikNoon?: string | null;
+  saengSikEvening?: string | null;
+  aminoMorning?: string | null;
+  aminoNoon?: string | null;
+  aminoEvening?: string | null;
+  sangiSoMorning?: string | null;
+  sangiSoNoon?: string | null;
+  sangiSoEvening?: string | null;
   jeunHaeJil?: boolean | null;
   meal?: string | null;
   mealCheck?: string | null;
@@ -285,9 +297,15 @@ export interface GetReportDetail_getReportDetail_report {
   __typename: "ReportType";
   uuid: any;
   reportCover: GetReportDetail_getReportDetail_report_reportCover;
-  saengSik: ReportSaengSik;
-  amino: ReportAmino;
-  sangiSo: ReportSangiSo;
+  saengSikMorning: ReportSaengSikMorning;
+  saengSikNoon: ReportSaengSikNoon;
+  saengSikEvening: ReportSaengSikEvening;
+  aminoMorning: ReportAminoMorning;
+  aminoNoon: ReportAminoNoon;
+  aminoEvening: ReportAminoEvening;
+  sangiSoMorning: ReportSangiSoMorning;
+  sangiSoNoon: ReportSangiSoNoon;
+  sangiSoEvening: ReportSangiSoEvening;
   jeunHaeJil: boolean;
   meal: string;
   mealCheck: string;
@@ -363,7 +381,25 @@ export interface GetReportListVariables {
 /**
  * An enumeration.
  */
-export enum ReportAmino {
+export enum ReportAminoEvening {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportAminoMorning {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportAminoNoon {
   EVENING = "EVENING",
   MORNING = "MORNING",
   NOON = "NOON",
@@ -380,7 +416,7 @@ export enum ReportCoverReportType {
 /**
  * An enumeration.
  */
-export enum ReportSaengSik {
+export enum ReportSaengSikEvening {
   EVENING = "EVENING",
   MORNING = "MORNING",
   NOON = "NOON",
@@ -389,7 +425,43 @@ export enum ReportSaengSik {
 /**
  * An enumeration.
  */
-export enum ReportSangiSo {
+export enum ReportSaengSikMorning {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportSaengSikNoon {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportSangiSoEvening {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportSangiSoMorning {
+  EVENING = "EVENING",
+  MORNING = "MORNING",
+  NOON = "NOON",
+}
+
+/**
+ * An enumeration.
+ */
+export enum ReportSangiSoNoon {
   EVENING = "EVENING",
   MORNING = "MORNING",
   NOON = "NOON",

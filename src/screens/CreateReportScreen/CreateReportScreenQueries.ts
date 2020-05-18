@@ -3,9 +3,15 @@ import gql from "graphql-tag";
 export const CREATE_REPORT = gql`
   mutation CreateReport(
     $reportCoverUuid: String!
-    $saengSik: String
-    $amino: String
-    $sangiSo: String
+    $saengSikMorning: String
+    $saengSikNoon: String
+    $saengSikEvening: String
+    $aminoMorning: String
+    $aminoNoon: String
+    $aminoEvening: String
+    $sangiSoMorning: String
+    $sangiSoNoon: String
+    $sangiSoEvening: String
     $jeunHaeJil: Boolean
     $meal: String
     $mealCheck: String
@@ -21,9 +27,15 @@ export const CREATE_REPORT = gql`
   ) {
     createReport(
       reportCoverUuid: $reportCoverUuid
-      saengSik: $saengSik
-      amino: $amino
-      sangiSo: $sangiSo
+      saengSikMorning: $saengSikMorning
+      saengSikNoon: $saengSikNoon
+      saengSikEvening: $saengSikEvening
+      aminoMorning: $aminoMorning
+      aminoNoon: $aminoNoon
+      aminoEvening: $aminoEvening
+      sangiSoMorning: $sangiSoMorning
+      sangiSoNoon: $sangiSoNoon
+      sangiSoEvening: $sangiSoEvening
       jeunHaeJil: $jeunHaeJil
       meal: $meal
       mealCheck: $mealCheck
@@ -48,9 +60,15 @@ export const CREATE_REPORT = gql`
           uuid
           reportType
         }
-        saengSik
-        amino
-        sangiSo
+        saengSikMorning
+        saengSikNoon
+        saengSikEvening
+        aminoMorning
+        aminoNoon
+        aminoEvening
+        sangiSoMorning
+        sangiSoNoon
+        sangiSoEvening
         jeunHaeJil
         meal
         mealCheck
