@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
+import { SwipeListView } from "react-native-swipe-list-view";
+import { Ionicons } from "@expo/vector-icons";
+import Toast from "react-native-root-toast";
+import { ScrollView, ActivityIndicator } from "react-native";
+import { useQuery, useMutation } from "react-apollo-hooks";
+import CheckListRow from "../../components/CheckListRow";
+import { useMe } from "../../context/meContext";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
+import { Portal, Dialog, Paragraph } from "react-native-paper";
 import {
   GET_CHECK_LIST_QUESTIONS,
   SUBMIT_CHECK_LIST,
@@ -10,13 +19,11 @@ import {
   SubmitCheckList,
   SubmitCheckListVariables,
 } from "../../types/api";
-import CheckListRow from "../../components/CheckListRow";
-import { ScrollView, ActivityIndicator } from "react-native";
-import { useQuery, useMutation } from "react-apollo-hooks";
-import { useMe } from "../../context/meContext";
-import { SwipeListView } from "react-native-swipe-list-view";
-import { Ionicons } from "@expo/vector-icons";
-import MenuCustomHeader from "../../components/MenuCustomHeader";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
 
 const View = styled.View`
   flex-direction: row;
@@ -39,12 +46,16 @@ const GreyLine = styled.View`
   border-bottom-color: #999;
 `;
 
-const CheckListScreen: NavigationStackScreenComponent = () => {
-  const { me, loading: meLoading } = useMe();
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
 
+const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
+  const { me, loading: meLoading } = useMe();
   const [trueAnswerQuestionUuids, setTrueAnswerQuestionUuids] = useState<any>(
     []
   );
+  const [modalOpen, setModalOpen] = useState(false);
   const {
     data: { getCheckListQuestions: { checkListQuestions = null } = {} } = {},
     loading: checkListQuestionsLoading,
@@ -53,12 +64,36 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     SubmitCheckList,
     SubmitCheckListVariables
   >(SUBMIT_CHECK_LIST);
+  const toast = (message: string) => {
+    Toast.show(message, {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.CENTER,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+    });
+  };
   const onPress = (newUuid: string) => {
     trueAnswerQuestionUuids.includes(newUuid)
       ? setTrueAnswerQuestionUuids(
           trueAnswerQuestionUuids.filter((uuid) => uuid !== newUuid)
         )
       : setTrueAnswerQuestionUuids([...trueAnswerQuestionUuids, newUuid]);
+  };
+  const submitConfirm = () => {
+    submitCheckListFn({
+      variables: {
+        trueAnswerQuestionUuids,
+        isPreviousAnswer:
+          !me.user.hasPreviousCheckListSubmitted &&
+          !me.user.hasLaterCheckListSubmitted
+            ? true
+            : false,
+      },
+    });
+    setModalOpen(false);
+    toast("체크리스트를 제출 하였습니다.");
   };
   if (meLoading) {
     return (
@@ -69,6 +104,21 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
   } else if (!meLoading && !checkListQuestionsLoading) {
     return (
       <>
+        <Portal>
+          <Dialog visible={modalOpen} onDismiss={() => setModalOpen(false)}>
+            <Dialog.Title>알림</Dialog.Title>
+            <Dialog.Content>
+              <Paragraph>
+                체크리스트는 제출한 후에는 수정을 할 수 없습니다.
+              </Paragraph>
+              <Paragraph>제출하시겠습니까?</Paragraph>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button title="취소" onPress={() => setModalOpen(false)} />
+              <Button title="제출" onPress={() => submitConfirm()} />
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
         <MenuCustomHeader title={"체크리스트"} />
         <ScrollView
           style={{
@@ -161,18 +211,7 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
               trueAnswerQuestionUuids.length === 0 || checkListQuestionsLoading
             }
             loading={submitCheckListLoading}
-            onPress={() => {
-              submitCheckListFn({
-                variables: {
-                  trueAnswerQuestionUuids,
-                  isPreviousAnswer:
-                    !me.user.hasPreviousCheckListSubmitted &&
-                    !me.user.hasLaterCheckListSubmitted
-                      ? true
-                      : false,
-                },
-              });
-            }}
+            onPress={() => setModalOpen(true)}
             title="Submit"
           />
         </ScrollView>
@@ -182,6 +221,5 @@ const CheckListScreen: NavigationStackScreenComponent = () => {
     return null;
   }
 };
-CheckListScreen.navigationOptions = () => ({});
 
 export default CheckListScreen;

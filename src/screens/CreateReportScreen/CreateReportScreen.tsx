@@ -60,7 +60,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   const [isDatePickerModalOpen, setDatePickerModalOpen] = useState(false);
   const [isTimePickerModalOpen, setTimePickerModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [submitCheckListFn, { loading: submitCheckListLoading }] = useMutation<
+  const [submitReportFn, { loading: submitReportLoading }] = useMutation<
     CreateReport,
     CreateReportVariables
   >(CREATE_REPORT);
@@ -74,9 +74,8 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
       delay: 0,
     });
   };
-
   const submitConfirm = (values: any) => {
-    submitCheckListFn({
+    submitReportFn({
       variables: {
         reportCoverUuid:
           navigation.state.params && navigation.state.params.reportCoverUuid,
@@ -399,7 +398,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 raised
                 primary
                 disabled={!isValid}
-                loading={submitCheckListLoading}
+                loading={submitReportLoading}
                 onPress={() => setModalOpen(true)}
                 title="Submit"
               />
