@@ -15,6 +15,7 @@ import {
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BackCustomHeader from "../../components/BackCustomHeader";
 import { Portal, Dialog, Paragraph } from "react-native-paper";
+import Toast from "react-native-root-toast";
 import { useMutation } from "react-apollo-hooks";
 
 const Button = styled.Button`
@@ -63,6 +64,17 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     CreateReport,
     CreateReportVariables
   >(CREATE_REPORT);
+  const toast = (message: string) => {
+    Toast.show(message, {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.CENTER,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+    });
+  };
+
   const submitConfirm = (values: any) => {
     submitCheckListFn({
       variables: {
@@ -96,6 +108,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     });
     setModalOpen(false);
     navigation.goBack(null);
+    toast("일지를 제출 하였습니다.");
   };
   const handleDateConfirm = (date) => {
     console.log("A date has been picked: ", date);
