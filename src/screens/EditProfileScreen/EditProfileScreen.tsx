@@ -8,7 +8,6 @@ import * as Yup from "yup";
 import { ReactNativeFile } from "apollo-upload-client";
 
 import FormikInput from "../../components/Formik/FormikInput";
-import FormikImagePicker from "../../components/Formik/FormikImagePicker";
 import { UPDATE_USER } from "./EditProfileScreenQueries";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";

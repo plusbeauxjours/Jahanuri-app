@@ -5,6 +5,7 @@ import { KeyboardTypeOptions } from "react-native";
 
 const Container = styled.View<ITheme>`
   width: ${(props) => (props.type === "row" ? "25%" : "90%")};
+  margin-right: ${(props) => (props.type === "row" ? "10px" : "0")};
   align-self: center;
 `;
 

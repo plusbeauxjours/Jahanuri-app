@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const CREATE_REPORT = gql`
   mutation CreateReport(
-    $reportCoverUuid: String!
+    $reportCoverUuid: String
     $saengSikMorning: String
     $saengSikNoon: String
     $saengSikEvening: String
@@ -24,6 +24,7 @@ export const CREATE_REPORT = gql`
     $lecture: String
     $etc: String
     $diary: String
+    $reportDate: Date
   ) {
     createReport(
       reportCoverUuid: $reportCoverUuid
@@ -48,6 +49,7 @@ export const CREATE_REPORT = gql`
       lecture: $lecture
       etc: $etc
       diary: $diary
+      reportDate: $reportDate
     ) {
       report {
         uuid

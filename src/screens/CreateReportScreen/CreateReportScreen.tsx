@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Alert } from "react-native";
-import { Mutation } from "react-apollo";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -16,6 +14,8 @@ import {
 } from "react-navigation";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BackCustomHeader from "../../components/BackCustomHeader";
+import { Portal, Dialog, Paragraph } from "react-native-paper";
+import { useMutation } from "react-apollo-hooks";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -48,6 +48,7 @@ const initialValues = {
   lecture: "",
   etc: "",
   diary: "",
+  reportDate: "20201010",
 };
 
 interface IProps {
@@ -57,6 +58,45 @@ interface IProps {
 const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   const [isDatePickerModalOpen, setDatePickerModalOpen] = useState(false);
   const [isTimePickerModalOpen, setTimePickerModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [submitCheckListFn, { loading: submitCheckListLoading }] = useMutation<
+    CreateReport,
+    CreateReportVariables
+  >(CREATE_REPORT);
+  const submitConfirm = (values: any) => {
+    submitCheckListFn({
+      variables: {
+        reportCoverUuid:
+          navigation.state.params && navigation.state.params.reportCoverUuid,
+        saengSikMorning:
+          values.saengSikMorning && values.saengSikMorning.trim(),
+        saengSikNoon: values.saengSikNoon && values.saengSikNoon.trim(),
+        saengSikEvening:
+          values.saengSikEvening && values.saengSikEvening.trim(),
+        aminoMorning: values.aminoMorning && values.aminoMorning.trim(),
+        aminoNoon: values.aminoNoon && values.aminoNoon.trim(),
+        aminoEvening: values.aminoEvening && values.aminoEvening.trim(),
+        sangiSoMorning: values.sangiSoMorning && values.sangiSoMorning.trim(),
+        sangiSoNoon: values.sangiSoNoon && values.sangiSoNoon.trim(),
+        sangiSoEvening: values.sangiSoEvening && values.sangiSoEvening.trim(),
+        jeunHaeJil: values.jeunHaeJil,
+        meal: values.meal.trim(),
+        mealCheck: values.mealCheck.trim(),
+        sleeping: values.sleeping.trim(),
+        stool: values.stool.trim(),
+        hotGrain: values.hotGrain.trim(),
+        hotWater: values.hotWater.trim(),
+        strolling: values.strolling.trim(),
+        workout: values.workout.trim(),
+        lecture: values.lecture.trim(),
+        etc: values.etc.trim(),
+        diary: values.diary.trim(),
+        reportDate: "20201010",
+      },
+    });
+    setModalOpen(false);
+    navigation.goBack(null);
+  };
   const handleDateConfirm = (date) => {
     console.log("A date has been picked: ", date);
     setDatePickerModalOpen(false);
@@ -78,6 +118,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     lecture: Yup.string().required("lecture is required"),
     etc: Yup.string().required("etc is required"),
     diary: Yup.string().required("diary is required"),
+    reportDate: Yup.date().required("reportDate is required"),
   });
   return (
     <>
@@ -105,6 +146,27 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
             isValid,
           }) => (
             <>
+              <Portal>
+                <Dialog
+                  visible={modalOpen}
+                  onDismiss={() => setModalOpen(false)}
+                >
+                  <Dialog.Title>알림</Dialog.Title>
+                  <Dialog.Content>
+                    <Paragraph>
+                      일지는 제출한 후에는 수정을 할 수 없습니다.
+                    </Paragraph>
+                    <Paragraph>제출하시겠습니까?</Paragraph>
+                  </Dialog.Content>
+                  <Dialog.Actions>
+                    <Button title="취소" onPress={() => setModalOpen(false)} />
+                    <Button
+                      title="제출"
+                      onPress={() => submitConfirm(values)}
+                    />
+                  </Dialog.Actions>
+                </Dialog>
+              </Portal>
               <Touchable onPress={() => setDatePickerModalOpen(true)}>
                 <Text>Date</Text>
                 <DateTimePickerModal
@@ -320,50 +382,14 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 name="diary"
                 error={touched.diary && errors.diary}
               />
-              <Mutation<CreateReport, CreateReportVariables>
-                mutation={CREATE_REPORT}
-                variables={{
-                  reportCoverUuid:
-                    navigation.state.params &&
-                    navigation.state.params.reportCoverUuid,
-                  saengSikMorning: values.saengSikMorning.trim(),
-                  saengSikNoon: values.saengSikNoon.trim(),
-                  saengSikEvening: values.saengSikEvening.trim(),
-                  aminoMorning: values.aminoMorning.trim(),
-                  aminoNoon: values.aminoNoon.trim(),
-                  aminoEvening: values.aminoEvening.trim(),
-                  sangiSoMorning: values.sangiSoMorning.trim(),
-                  sangiSoNoon: values.sangiSoNoon.trim(),
-                  sangiSoEvening: values.sangiSoEvening.trim(),
-                  jeunHaeJil: values.jeunHaeJil,
-                  meal: values.meal.trim(),
-                  mealCheck: values.mealCheck.trim(),
-                  sleeping: values.sleeping.trim(),
-                  stool: values.stool.trim(),
-                  hotGrain: values.hotGrain.trim(),
-                  hotWater: values.hotWater.trim(),
-                  strolling: values.strolling.trim(),
-                  workout: values.workout.trim(),
-                  lecture: values.lecture.trim(),
-                  etc: values.etc.trim(),
-                  diary: values.diary.trim(),
-                }}
-                onError={(error) => Alert.alert("", error.message)}
-              >
-                {(updateUserProfile, { loading }) => (
-                  <Button
-                    raised
-                    primary
-                    disabled={!isValid || loading}
-                    loading={loading}
-                    onPress={() => {
-                      updateUserProfile();
-                      navigation.goBack();
-                    }}
-                    title="Save"
-                  />
-                )}
-              </Mutation>
+              <Button
+                raised
+                primary
+                disabled={!isValid}
+                loading={submitCheckListLoading}
+                onPress={() => setModalOpen(true)}
+                title="Submit"
+              />
             </>
           )}
         </Formik>

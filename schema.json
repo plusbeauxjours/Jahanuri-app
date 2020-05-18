@@ -1500,8 +1500,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportSaengSikNoon",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1516,8 +1516,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportSaengSikEvening",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1532,8 +1532,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportAminoMorning",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1548,8 +1548,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportAminoNoon",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1564,8 +1564,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportAminoEvening",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1580,8 +1580,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportSangiSoMorning",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1596,8 +1596,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportSangiSoNoon",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1612,8 +1612,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportSangiSoEvening",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1821,238 +1821,6 @@
       {
         "kind": "ENUM",
         "name": "ReportSaengSikMorning",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportSaengSikNoon",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportSaengSikEvening",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportAminoMorning",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportAminoNoon",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportAminoEvening",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportSangiSoMorning",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportSangiSoNoon",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportSangiSoEvening",
         "description": "An enumeration.",
         "fields": null,
         "inputFields": null,
