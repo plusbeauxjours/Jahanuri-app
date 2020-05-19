@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Ionicons } from "@expo/vector-icons";
+import dimensions from "../constants/dimensions";
 
 const View = styled.View`
   flex-direction: row;
@@ -11,7 +12,7 @@ const View = styled.View`
   background-color: ${(props) => props.theme.bgColor};
 `;
 const Text = styled.Text`
-  width: 90%;
+  width: ${dimensions.width - 100};
   flex-wrap: wrap;
 `;
 const Touchable = styled.TouchableOpacity``;
@@ -21,8 +22,8 @@ interface IProps {
   question: string;
   previousAnswer?: boolean;
   laterAnswer?: boolean;
-  haspreviousSubmited: boolean;
-  haslaterSubmited: boolean;
+  hasPreviousCheckListSubmitted: boolean;
+  hasLaterCheckListSubmitted: boolean;
   onPress: (newUuid: string) => void;
 }
 const CheckListRow: React.FC<IProps> = ({
@@ -30,8 +31,8 @@ const CheckListRow: React.FC<IProps> = ({
   question,
   previousAnswer,
   laterAnswer,
-  haspreviousSubmited,
-  haslaterSubmited,
+  hasPreviousCheckListSubmitted,
+  hasLaterCheckListSubmitted,
   onPress,
 }) => {
   const [isPreviousAnswerTrue, setIsPreviousAnswerTrue] = useState<boolean>(
@@ -40,7 +41,7 @@ const CheckListRow: React.FC<IProps> = ({
   const [isLaterAnswerTrue, setIsLaterAnswerTrue] = useState<boolean>(
     laterAnswer
   );
-  if (!haspreviousSubmited && !haspreviousSubmited) {
+  if (!hasPreviousCheckListSubmitted && !hasPreviousCheckListSubmitted) {
     return (
       <View>
         <Text>{question}</Text>
@@ -60,7 +61,7 @@ const CheckListRow: React.FC<IProps> = ({
         </Touchable>
       </View>
     );
-  } else if (haspreviousSubmited && !haslaterSubmited) {
+  } else if (hasPreviousCheckListSubmitted && !hasLaterCheckListSubmitted) {
     return (
       <View>
         <Text>{question}</Text>
@@ -78,7 +79,7 @@ const CheckListRow: React.FC<IProps> = ({
         </Touchable>
       </View>
     );
-  } else if (!haspreviousSubmited && haslaterSubmited) {
+  } else if (!hasPreviousCheckListSubmitted && hasLaterCheckListSubmitted) {
     return (
       <View>
         <Text>{question}</Text>
@@ -101,6 +102,21 @@ const CheckListRow: React.FC<IProps> = ({
   } else {
     return (
       <View>
+        {isPreviousAnswerTrue ? (
+          <Ionicons
+            name="ios-checkbox-outline"
+            size={24}
+            color={"#999"}
+            style={{ marginRight: 20 }}
+          />
+        ) : (
+          <Ionicons
+            name="ios-square-outline"
+            size={28}
+            color={"#999"}
+            style={{ marginRight: 20 }}
+          />
+        )}
         <Text>{question}</Text>
         {isLaterAnswerTrue ? (
           <Ionicons name="ios-checkbox-outline" size={24} color={"#999"} />

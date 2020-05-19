@@ -176,8 +176,12 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                         ? data.item.questionSet[0].laterAnswer
                         : false
                     }
-                    haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
-                    haslaterSubmited={me.user.hasLaterCheckListSubmitted}
+                    hasPreviousCheckListSubmitted={
+                      me.user.hasPreviousCheckListSubmitted
+                    }
+                    hasLaterCheckListSubmitted={
+                      me.user.hasLaterCheckListSubmitted
+                    }
                     onPress={onPress}
                   />
                   <GreyLine />
