@@ -1484,8 +1484,8 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "ENUM",
-                "name": "ReportSaengSikMorning",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -1816,35 +1816,6 @@
         "inputFields": null,
         "interfaces": [],
         "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "ReportSaengSikMorning",
-        "description": "An enumeration.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "MORNING",
-            "description": "Morning",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NOON",
-            "description": "Noon",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "EVENING",
-            "description": "Evening",
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
         "possibleTypes": null
       },
       {

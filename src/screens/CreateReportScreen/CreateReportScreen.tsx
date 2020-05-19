@@ -5,7 +5,13 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 import FormikInput from "../../components/Formik/FormikInput";
-import { CreateReport, CreateReportVariables } from "../../types/api";
+import { GET_REPORT_LIST } from "../ReportListScreen/ReportListScreenQueries";
+import {
+  CreateReport,
+  CreateReportVariables,
+  GetReportList,
+  GetReportListVariables,
+} from "../../types/api";
 import { CREATE_REPORT } from "./CreateReportScreenQueries";
 import {
   NavigationScreenProp,
@@ -17,6 +23,7 @@ import BackCustomHeader from "../../components/BackCustomHeader";
 import { Portal, Dialog, Paragraph } from "react-native-paper";
 import Toast from "react-native-root-toast";
 import { useMutation } from "react-apollo-hooks";
+import { useMe } from "../../context/meContext";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -57,13 +64,20 @@ interface IProps {
 }
 
 const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
+  const { me, loading } = useMe();
   const [isDatePickerModalOpen, setDatePickerModalOpen] = useState(false);
-  const [isTimePickerModalOpen, setTimePickerModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [submitReportFn, { loading: submitReportLoading }] = useMutation<
     CreateReport,
     CreateReportVariables
-  >(CREATE_REPORT);
+  >(CREATE_REPORT, {
+    refetchQueries: [
+      {
+        query: GET_REPORT_LIST,
+        variables: { userUuid: me && me.user.uuid },
+      },
+    ],
+  });
   const toast = (message: string) => {
     Toast.show(message, {
       duration: Toast.durations.SHORT,
@@ -112,10 +126,6 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   const handleDateConfirm = (date) => {
     console.log("A date has been picked: ", date);
     setDatePickerModalOpen(false);
-  };
-  const handleTimeConfirm = (time) => {
-    console.log("A time has been picked: ", time);
-    setTimePickerModalOpen(false);
   };
   const validationSchema = Yup.object().shape({
     jeunHaeJil: Yup.boolean().required("jeunHaeJil is required"),
@@ -287,15 +297,6 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   placeholder="휴 2스푼, 정 1스푼"
                 />
               </Line>
-              <Touchable onPress={() => setTimePickerModalOpen(true)}>
-                <Text>Jeun Hae Jil Time</Text>
-                <DateTimePickerModal
-                  isVisible={isTimePickerModalOpen}
-                  mode="time"
-                  onConfirm={handleTimeConfirm}
-                  onCancel={() => setTimePickerModalOpen(false)}
-                />
-              </Touchable>
               <FormikInput
                 label="일반 식사"
                 value={values.meal}

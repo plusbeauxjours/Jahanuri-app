@@ -27,12 +27,10 @@ const Text = styled.Text``;
 const ScrollView = styled.ScrollView``;
 
 const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
-  console.log("uuid", navigation.state.params.reportUuid);
   const {
     data: { getReportDetail: { report = null } = {} } = {},
     loading: getReportDetailLoading,
   } = useQuery<GetReportDetail, GetReportDetailVariables>(GET_REPORT_DETAIL, {
-    fetchPolicy: "network-only",
     variables: {
       reportUuid: navigation.state.params && navigation.state.params.reportUuid,
     },

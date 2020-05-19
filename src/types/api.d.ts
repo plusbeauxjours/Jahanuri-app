@@ -135,28 +135,8 @@ export interface CreateReport_createReport_report_reportCover {
 export interface CreateReport_createReport_report {
   __typename: "ReportType";
   uuid: any;
+  reportDate: any;
   reportCover: CreateReport_createReport_report_reportCover;
-  saengSikMorning: ReportSaengSikMorning;
-  saengSikNoon: string;
-  saengSikEvening: string;
-  aminoMorning: string;
-  aminoNoon: string;
-  aminoEvening: string;
-  sangiSoMorning: string;
-  sangiSoNoon: string;
-  sangiSoEvening: string;
-  jeunHaeJil: boolean;
-  meal: string;
-  mealCheck: string;
-  sleeping: string;
-  stool: string;
-  hotGrain: string;
-  hotWater: string;
-  strolling: string;
-  workout: string;
-  lecture: string;
-  etc: string;
-  diary: string;
 }
 
 export interface CreateReport_createReport {
@@ -298,7 +278,7 @@ export interface GetReportDetail_getReportDetail_report {
   __typename: "ReportType";
   uuid: any;
   reportCover: GetReportDetail_getReportDetail_report_reportCover;
-  saengSikMorning: ReportSaengSikMorning;
+  saengSikMorning: string;
   saengSikNoon: string;
   saengSikEvening: string;
   aminoMorning: string;
@@ -344,16 +324,25 @@ export interface GetReportDetailVariables {
 // GraphQL query operation: GetReportList
 // ====================================================
 
+export interface GetReportList_getReportList_reports_reportCover_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+}
+
 export interface GetReportList_getReportList_reports_reportCover {
   __typename: "ReportCoverType";
+  classOrder: GetReportList_getReportList_reports_reportCover_classOrder | null;
   uuid: any;
+  reportType: ReportCoverReportType;
 }
 
 export interface GetReportList_getReportList_reports {
   __typename: "ReportType";
-  reportCover: GetReportList_getReportList_reports_reportCover;
   uuid: any;
   reportDate: any;
+  reportCover: GetReportList_getReportList_reports_reportCover;
 }
 
 export interface GetReportList_getReportList {
@@ -385,15 +374,6 @@ export interface GetReportListVariables {
 export enum ReportCoverReportType {
   BODY_STUDY = "BODY_STUDY",
   ETC = "ETC",
-}
-
-/**
- * An enumeration.
- */
-export enum ReportSaengSikMorning {
-  EVENING = "EVENING",
-  MORNING = "MORNING",
-  NOON = "NOON",
 }
 
 //==============================================================

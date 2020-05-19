@@ -3,17 +3,20 @@ import styled from "styled-components";
 import { useQuery } from "react-apollo-hooks";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useMe } from "../../context/meContext";
-import { ActivityIndicator, RefreshControl } from "react-native";
+import { ActivityIndicator, RefreshControl, Platform } from "react-native";
 import { GetReportList, GetReportListVariables } from "../../types/api";
 import { GET_REPORT_LIST } from "./ReportListScreenQueries";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
+import { Ionicons } from "@expo/vector-icons";
 
 const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
-
+const IconContainer = styled.View`
+  margin: 20px 0;
+`;
 const View = styled.View`
   flex: 1;
   align-items: center;
@@ -71,11 +74,43 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                   })
                 }
               >
-                <Text>CreateReport</Text>
+                {Platform.OS === "ios" ? (
+                  <IconContainer>
+                    <Ionicons
+                      name="ios-add-circle-outline"
+                      size={32}
+                      color="black"
+                    />
+                  </IconContainer>
+                ) : (
+                  <IconContainer>
+                    <Ionicons
+                      name="md-add-circle-outline"
+                      size={32}
+                      color="black"
+                    />
+                  </IconContainer>
+                )}
               </Touchable>
             ) : (
               <Touchable onPress={() => navigation.push("CreateReportScreen")}>
-                <Text>CreateReport</Text>
+                {Platform.OS === "ios" ? (
+                  <IconContainer>
+                    <Ionicons
+                      name="ios-add-circle-outline"
+                      size={32}
+                      color="black"
+                    />
+                  </IconContainer>
+                ) : (
+                  <IconContainer>
+                    <Ionicons
+                      name="md-add-circle-outline"
+                      size={32}
+                      color="black"
+                    />
+                  </IconContainer>
+                )}
               </Touchable>
             )}
             {reports &&

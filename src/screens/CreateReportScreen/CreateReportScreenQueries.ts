@@ -53,6 +53,7 @@ export const CREATE_REPORT = gql`
     ) {
       report {
         uuid
+        reportDate
         reportCover {
           classOrder {
             order
@@ -62,27 +63,6 @@ export const CREATE_REPORT = gql`
           uuid
           reportType
         }
-        saengSikMorning
-        saengSikNoon
-        saengSikEvening
-        aminoMorning
-        aminoNoon
-        aminoEvening
-        sangiSoMorning
-        sangiSoNoon
-        sangiSoEvening
-        jeunHaeJil
-        meal
-        mealCheck
-        sleeping
-        stool
-        hotGrain
-        hotWater
-        strolling
-        workout
-        lecture
-        etc
-        diary
       }
     }
   }
