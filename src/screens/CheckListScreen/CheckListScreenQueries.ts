@@ -24,7 +24,14 @@ export const SUBMIT_CHECK_LIST = gql`
       isPreviousAnswer: $isPreviousAnswer
       trueAnswerQuestionUuids: $trueAnswerQuestionUuids
     ) {
-      ok
+      checkListQuestions {
+        question
+        uuid
+        questionSet {
+          previousAnswer
+          laterAnswer
+        }
+      }
     }
   }
 `;

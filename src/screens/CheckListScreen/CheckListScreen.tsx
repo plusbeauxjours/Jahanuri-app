@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Ionicons } from "@expo/vector-icons";
 import Toast from "react-native-root-toast";
@@ -10,6 +9,7 @@ import CheckListRow from "../../components/CheckListRow";
 import { useMe } from "../../context/meContext";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import { Portal, Dialog, Paragraph } from "react-native-paper";
+import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import {
   GET_CHECK_LIST_QUESTIONS,
   SUBMIT_CHECK_LIST,
@@ -18,6 +18,7 @@ import {
   GetCheckListQuestions,
   SubmitCheckList,
   SubmitCheckListVariables,
+  Me,
 } from "../../types/api";
 import {
   NavigationScreenProp,
@@ -63,7 +64,54 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
   const [submitCheckListFn, { loading: submitCheckListLoading }] = useMutation<
     SubmitCheckList,
     SubmitCheckListVariables
-  >(SUBMIT_CHECK_LIST);
+  >(SUBMIT_CHECK_LIST, {
+    update(cache, { data: { submitCheckList } }) {
+      try {
+        const checkListData = cache.readQuery<GetCheckListQuestions>({
+          query: GET_CHECK_LIST_QUESTIONS,
+        });
+        if (checkListData) {
+          checkListData.getCheckListQuestions.checkListQuestions =
+            submitCheckList.checkListQuestions;
+          cache.writeQuery({
+            query: GET_CHECK_LIST_QUESTIONS,
+            data: checkListData,
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+      try {
+        const meData = cache.readQuery<Me>({
+          query: ME,
+        });
+        if (meData) {
+          if (!meData.me.user.hasPreviousCheckListSubmitted) {
+            meData.me.user.hasPreviousCheckListSubmitted = true;
+          } else if (
+            meData.me.user.hasPreviousCheckListSubmitted &&
+            !meData.me.user.hasLaterCheckListSubmitted
+          ) {
+            meData.me.user.hasLaterCheckListSubmitted = true;
+          } else if (
+            !meData.me.user.hasPreviousCheckListSubmitted &&
+            meData.me.user.hasLaterCheckListSubmitted
+          ) {
+            meData.me.user.hasPreviousCheckListSubmitted = false;
+            meData.me.user.hasLaterCheckListSubmitted = false;
+          } else {
+            return;
+          }
+          cache.writeQuery({
+            query: ME,
+            data: meData,
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+  });
   const toast = (message: string) => {
     Toast.show(message, {
       duration: Toast.durations.SHORT,
@@ -127,34 +175,8 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           keyboardShouldPersistTaps="always"
           showsVerticalScrollIndicator={false}
         >
-          {!me.user.hasPreviousCheckListSubmitted &&
+          {me.user.hasPreviousCheckListSubmitted &&
           !me.user.hasLaterCheckListSubmitted ? (
-            checkListQuestions &&
-            checkListQuestions.length !== 0 &&
-            checkListQuestions.map((checkListQuestion: any) => (
-              <>
-                <CheckListRow
-                  key={checkListQuestion.uuid}
-                  uuid={checkListQuestion.uuid}
-                  question={checkListQuestion.question}
-                  previousAnswer={
-                    checkListQuestion.questionSet.length !== 0
-                      ? checkListQuestion.questionSet[0].previousAnswer
-                      : false
-                  }
-                  laterAnswer={
-                    checkListQuestion.questionSet.length !== 0
-                      ? checkListQuestion.questionSet[0].laterAnswer
-                      : false
-                  }
-                  haspreviousSubmited={me.user.hasPreviousCheckListSubmitted}
-                  haslaterSubmited={me.user.hasLaterCheckListSubmitted}
-                  onPress={onPress}
-                />
-                <GreyLine />
-              </>
-            ))
-          ) : (
             <SwipeListView
               useFlatList={false}
               closeOnRowBeginSwipe={true}
@@ -207,17 +229,57 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               leftOpenValue={40}
               keyExtractor={(item) => item.uuid}
             />
+          ) : (
+            checkListQuestions &&
+            checkListQuestions.length !== 0 &&
+            checkListQuestions.map((checkListQuestion: any) => (
+              <>
+                <CheckListRow
+                  key={checkListQuestion.uuid}
+                  uuid={checkListQuestion.uuid}
+                  question={checkListQuestion.question}
+                  previousAnswer={
+                    checkListQuestion.questionSet.length !== 0
+                      ? checkListQuestion.questionSet[0].previousAnswer
+                      : false
+                  }
+                  laterAnswer={
+                    checkListQuestion.questionSet.length !== 0
+                      ? checkListQuestion.questionSet[0].laterAnswer
+                      : false
+                  }
+                  hasPreviousCheckListSubmitted={
+                    me.user.hasPreviousCheckListSubmitted
+                  }
+                  hasLaterCheckListSubmitted={
+                    me.user.hasLaterCheckListSubmitted
+                  }
+                  onPress={onPress}
+                />
+                <GreyLine />
+              </>
+            ))
           )}
-          <Button
-            raised
-            primary
-            disabled={
-              trueAnswerQuestionUuids.length === 0 || checkListQuestionsLoading
-            }
-            loading={submitCheckListLoading}
-            onPress={() => setModalOpen(true)}
-            title="Submit"
-          />
+          {me.user.hasPreviousCheckListSubmitted &&
+          me.user.hasLaterCheckListSubmitted ? null : (
+            <Button
+              raised
+              primary
+              style={{
+                marginTop: 30,
+                marginBottom: 30,
+                borderWidht: 1,
+                color: "red",
+              }}
+              disabled={
+                trueAnswerQuestionUuids.length === 0 ||
+                checkListQuestionsLoading
+              }
+              loading={submitCheckListLoading}
+              onPress={() => setModalOpen(true)}
+              title="제출"
+            />
+          )}
         </ScrollView>
       </>
     );

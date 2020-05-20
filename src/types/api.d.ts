@@ -95,9 +95,22 @@ export interface GetCheckListQuestions {
 // GraphQL mutation operation: SubmitCheckList
 // ====================================================
 
+export interface SubmitCheckList_submitCheckList_checkListQuestions_questionSet {
+  __typename: "CheckListAnswerType";
+  previousAnswer: boolean;
+  laterAnswer: boolean;
+}
+
+export interface SubmitCheckList_submitCheckList_checkListQuestions {
+  __typename: "CheckListQuestionType";
+  question: string;
+  uuid: any;
+  questionSet: SubmitCheckList_submitCheckList_checkListQuestions_questionSet[];
+}
+
 export interface SubmitCheckList_submitCheckList {
   __typename: "SubmitCheckListResponse";
-  ok: boolean | null;
+  checkListQuestions: (SubmitCheckList_submitCheckList_checkListQuestions | null)[] | null;
 }
 
 export interface SubmitCheckList {
@@ -278,15 +291,15 @@ export interface GetReportDetail_getReportDetail_report {
   __typename: "ReportType";
   uuid: any;
   reportCover: GetReportDetail_getReportDetail_report_reportCover;
-  saengSikMorning: string;
-  saengSikNoon: string;
-  saengSikEvening: string;
-  aminoMorning: string;
-  aminoNoon: string;
-  aminoEvening: string;
-  sangiSoMorning: string;
-  sangiSoNoon: string;
-  sangiSoEvening: string;
+  saengSikMorning: string | null;
+  saengSikNoon: string | null;
+  saengSikEvening: string | null;
+  aminoMorning: string | null;
+  aminoNoon: string | null;
+  aminoEvening: string | null;
+  sangiSoMorning: string | null;
+  sangiSoNoon: string | null;
+  sangiSoEvening: string | null;
   jeunHaeJil: boolean;
   meal: string;
   mealCheck: string;

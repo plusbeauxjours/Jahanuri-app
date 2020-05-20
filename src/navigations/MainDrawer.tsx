@@ -21,7 +21,7 @@ const DrawerWithLogoutButton = (props) => {
       <SafeAreaView>
         <DrawerItems {...props} />
       </SafeAreaView>
-      <Button title="Logout" onPress={() => handleLogout()} />
+      <Button title="로그아웃" onPress={() => handleLogout()} />
     </ScrollView>
   );
 };
@@ -31,7 +31,7 @@ const MainDrawer = createDrawerNavigator(
     Me: {
       screen: MyProfileNavigation,
       navigationOptions: {
-        drawerLabel: "Me",
+        drawerLabel: "나의 프로필",
         drawerIcon: ({ tintColor }) => (
           <Ionicons name="ios-contact" size={24} color={tintColor} />
         ),
@@ -40,7 +40,7 @@ const MainDrawer = createDrawerNavigator(
     CheckList: {
       screen: CheckListNavigation,
       navigationOptions: {
-        drawerLabel: "Check List",
+        drawerLabel: "체크리스트",
         drawerIcon: ({ tintColor }) => (
           <Ionicons
             name={"ios-checkmark-circle-outline"}
@@ -53,7 +53,7 @@ const MainDrawer = createDrawerNavigator(
     Report: {
       screen: ReportNavigation,
       navigationOptions: {
-        drawerLabel: "Daily Report",
+        drawerLabel: "일지",
         drawerIcon: ({ tintColor }) => (
           <MaterialIcons name="filter-none" size={20} color={tintColor} />
         ),
@@ -62,7 +62,7 @@ const MainDrawer = createDrawerNavigator(
     EditProfile: {
       screen: EditProfileNavigation,
       navigationOptions: {
-        drawerLabel: "Edit Profile",
+        drawerLabel: "프로필 수정",
         drawerIcon: ({ tintColor }) => (
           <MaterialIcons name="edit" size={24} color={tintColor} />
         ),
@@ -71,7 +71,7 @@ const MainDrawer = createDrawerNavigator(
     About: {
       screen: AboutNavigation,
       navigationOptions: {
-        drawerLabel: "About",
+        drawerLabel: "직관의 몸공부란",
         drawerIcon: ({ tintColor }) => (
           <Ionicons
             name="ios-information-circle-outline"
@@ -84,7 +84,7 @@ const MainDrawer = createDrawerNavigator(
     Contact: {
       screen: ContactNavigation,
       navigationOptions: {
-        drawerLabel: "Contact",
+        drawerLabel: "고마센터 알아가기",
         drawerIcon: ({ tintColor }) => (
           <Ionicons name="ios-at" size={24} color={tintColor} />
         ),
@@ -92,7 +92,7 @@ const MainDrawer = createDrawerNavigator(
     },
   },
   {
-    initialRouteName: "Report",
+    initialRouteName: "CheckList",
     contentComponent: DrawerWithLogoutButton,
   }
 );
