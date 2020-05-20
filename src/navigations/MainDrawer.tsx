@@ -10,6 +10,9 @@ import AboutNavigation from "./AboutNavigation";
 import EditProfileNavigation from "./EditProfileNavigation";
 import ReportNavigation from "./ReportNavigation";
 import CheckListNavigation from "./CheckListNavigation";
+import SurveyNavigation from "./SurveyNavigation";
+import ApplicationNavigation from "./ApplicationNavigation";
+import HabitCheckListNavigation from "./HabitCheckListNavigation";
 
 const DrawerWithLogoutButton = (props) => {
   const handleLogout = async () => {
@@ -59,12 +62,39 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
+    Survey: {
+      screen: SurveyNavigation,
+      navigationOptions: {
+        drawerLabel: "설문지",
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="filter-none" size={20} color={tintColor} />
+        ),
+      },
+    },
+    HabitCheckListNavigation: {
+      screen: HabitCheckListNavigation,
+      navigationOptions: {
+        drawerLabel: "습관 체크리스트",
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="filter-none" size={20} color={tintColor} />
+        ),
+      },
+    },
     EditProfile: {
       screen: EditProfileNavigation,
       navigationOptions: {
         drawerLabel: "프로필 수정",
         drawerIcon: ({ tintColor }) => (
           <MaterialIcons name="edit" size={24} color={tintColor} />
+        ),
+      },
+    },
+    Application: {
+      screen: ApplicationNavigation,
+      navigationOptions: {
+        drawerLabel: "신청서",
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="filter-none" size={20} color={tintColor} />
         ),
       },
     },

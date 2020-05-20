@@ -286,6 +286,7 @@ export interface GetFeedList_getFeedList_feeds {
   classOrder: GetFeedList_getFeedList_feeds_classOrder | null;
   uuid: any;
   text: string | null;
+  createdAt: any;
 }
 
 export interface GetFeedList_getFeedList {

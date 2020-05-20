@@ -9,13 +9,14 @@ const View = styled.View`
 `;
 const Text = styled.Text``;
 
-const ApplicationScreen: NavigationStackScreenComponent = () => (
-  <View>
-    <Text>신청서</Text>
-  </View>
-);
+const ApplicationScreen: NavigationStackScreenComponent = ({ navigation }) => {
+  return (
+    <View>
+      <Text>Application</Text>
+    </View>
+  );
+};
 ApplicationScreen.navigationOptions = () => ({
   title: "신청서",
 });
-
 export default ApplicationScreen;

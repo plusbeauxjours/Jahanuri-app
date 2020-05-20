@@ -34,6 +34,12 @@ const Touchable = styled.TouchableOpacity``;
 const Line = styled.View`
   flex-direction: row;
 `;
+const ButtonContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+`;
 const initialValues = {
   saengSikMorning: "",
   saengSikNoon: "",
@@ -129,7 +135,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   };
   const validationSchema = Yup.object().shape({
     jeunHaeJil: Yup.boolean().required("jeunHaeJil is required"),
-    meal: Yup.string().required("meal is required"),
+    meal: Yup.string().required(""),
     mealCheck: Yup.string().required("mealCheck is required"),
     sleeping: Yup.string().required("sleeping is required"),
     stool: Yup.string().required("stool is required"),
@@ -395,14 +401,16 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 name="diary"
                 error={touched.diary && errors.diary}
               />
-              <Button
-                raised
-                primary
-                disabled={!isValid}
-                loading={submitReportLoading}
-                onPress={() => setModalOpen(true)}
-                title="Submit"
-              />
+              <ButtonContainer>
+                <Button
+                  raised
+                  primary
+                  disabled={!isValid}
+                  loading={submitReportLoading}
+                  onPress={() => setModalOpen(true)}
+                  title="제출"
+                />
+              </ButtonContainer>
             </>
           )}
         </Formik>

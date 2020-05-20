@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import { Query } from "react-apollo";
-import {
-  NavigationScreenProp,
-  NavigationParams,
-  NavigationState,
-} from "react-navigation";
-import { ActivityIndicator, AsyncStorage, RefreshControl } from "react-native";
+import { ActivityIndicator, RefreshControl } from "react-native";
 
 import { ME, GET_FEED_LIST } from "./MyProfileScreenQueries";
 import { Me, GetFeedList } from "../../types/api";
@@ -17,10 +11,16 @@ import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useQuery } from "react-apollo-hooks";
 
 const View = styled.View`
-  flex: 1;
+  min-height: 100px;
   align-items: center;
   justify-content: center;
 `;
+const GreyLine = styled.View`
+  margin: 0 20px;
+  border-bottom-width: 1px;
+  border-bottom-color: red;
+`;
+
 const Text = styled.Text``;
 const ScrollView = styled.ScrollView``;
 
@@ -79,14 +79,15 @@ const MyProfileScreen: NavigationStackScreenComponent = () => {
           {me.hasPreviousCheckListSubmitted &&
           me.hasSubmitedApplication &&
           me.hasPaid ? (
-            <View>
+            <>
               {feeds.map((feed: any) => (
-                <>
+                <View key={feed.uuid}>
                   <Text>{feed.text}</Text>
-                  <Text>{feed.uuid}</Text>
-                </>
+                  <GreyLine />
+                  <Text>{feed.createdAt}</Text>
+                </View>
               ))}
-            </View>
+            </>
           ) : (
             <UserStateController />
           )}

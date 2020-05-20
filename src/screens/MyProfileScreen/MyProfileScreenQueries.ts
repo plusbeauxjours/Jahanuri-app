@@ -36,6 +36,7 @@ export const GET_FEED_LIST = gql`
         }
         uuid
         text
+        createdAt
       }
     }
   }
