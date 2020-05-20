@@ -4,7 +4,6 @@ import MyProfileNavigation from "./MyProfileNavigation";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { AsyncStorage, SafeAreaView } from "react-native";
 import { Button } from "react-native-elements";
-import { ScrollView } from "react-native-gesture-handler";
 import ContactNavigation from "./ContactNavigation";
 import AboutNavigation from "./AboutNavigation";
 import EditProfileNavigation from "./EditProfileNavigation";
@@ -13,19 +12,37 @@ import CheckListNavigation from "./CheckListNavigation";
 import SurveyNavigation from "./SurveyNavigation";
 import ApplicationNavigation from "./ApplicationNavigation";
 import HabitCheckListNavigation from "./HabitCheckListNavigation";
+import styled from "styled-components";
 
+const Container = styled.View`
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+const Text = styled.Text`
+  text-align: right;
+  margin-right: 5px;
+  color: #999;
+  font-size: 10px;
+`;
+const View = styled.View`
+  height: 70px;
+`;
 const DrawerWithLogoutButton = (props) => {
   const handleLogout = async () => {
     await AsyncStorage.clear();
     props.navigation.navigate("Auth");
   };
   return (
-    <ScrollView>
+    <Container>
       <SafeAreaView>
         <DrawerItems {...props} />
       </SafeAreaView>
-      <Button title="로그아웃" onPress={() => handleLogout()} />
-    </ScrollView>
+      <View>
+        <Button title="로그아웃" onPress={() => handleLogout()} />
+        <Text>Handcrafted by plusbeauxjours © twentytwenty</Text>
+      </View>
+    </Container>
   );
 };
 

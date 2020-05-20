@@ -18,10 +18,21 @@ const Text = styled.Text`
 const Touchabel = styled.TouchableOpacity`
   margin-bottom: 50px;
 `;
+const Sign = styled.Text`
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff
+  font-size: 10px;
+`;
 
 const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => (
   <ImageBackground
-    style={{ width: "100%", height: "100%" }}
+    style={{
+      width: "100%",
+      height: "100%",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}
     source={require("../../images/MainImage.jpg")}
     resizeMode="stretch"
   >
@@ -42,6 +53,7 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => (
         <Text>로그인</Text>
       </Touchabel>
     </View>
+    <Sign>Handcrafted by plusbeauxjours © twentytwenty</Sign>
   </ImageBackground>
 );
 HomeScreen.navigationOptions = () => ({
