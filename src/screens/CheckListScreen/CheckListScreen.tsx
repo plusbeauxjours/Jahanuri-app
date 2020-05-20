@@ -149,7 +149,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
     setModalOpen(false);
     toast("체크리스트를 제출 하였습니다.");
   };
-  if (meLoading) {
+  if (meLoading || checkListQuestionsLoading) {
     return (
       <LoadingContainer>
         <ActivityIndicator />

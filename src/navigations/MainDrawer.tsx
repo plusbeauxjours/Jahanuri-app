@@ -43,7 +43,7 @@ const MainDrawer = createDrawerNavigator(
     CheckList: {
       screen: CheckListNavigation,
       navigationOptions: {
-        drawerLabel: "체크리스트",
+        drawerLabel: "체크 리스트",
         drawerIcon: ({ tintColor }) => (
           <Ionicons
             name={"ios-checkmark-circle-outline"}
@@ -53,12 +53,21 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
+    HabitCheckListNavigation: {
+      screen: HabitCheckListNavigation,
+      navigationOptions: {
+        drawerLabel: "나의 습관",
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="filter-none" size={20} color={tintColor} />
+        ),
+      },
+    },
     Report: {
       screen: ReportNavigation,
       navigationOptions: {
         drawerLabel: "일지",
         drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="filter-none" size={20} color={tintColor} />
+          <Ionicons name={"ios-calendar"} size={24} color={tintColor} />
         ),
       },
     },
@@ -67,16 +76,7 @@ const MainDrawer = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "설문지",
         drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="filter-none" size={20} color={tintColor} />
-        ),
-      },
-    },
-    HabitCheckListNavigation: {
-      screen: HabitCheckListNavigation,
-      navigationOptions: {
-        drawerLabel: "습관 체크리스트",
-        drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="filter-none" size={20} color={tintColor} />
+          <Ionicons name={"ios-paper"} size={24} color={tintColor} />
         ),
       },
     },
@@ -94,7 +94,7 @@ const MainDrawer = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "신청서",
         drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="filter-none" size={20} color={tintColor} />
+          <Ionicons name={"ios-document"} size={24} color={tintColor} />
         ),
       },
     },

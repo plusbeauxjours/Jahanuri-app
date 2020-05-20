@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const View = styled.View`
   flex: 1;
@@ -13,12 +14,13 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   navigation,
 }) => {
   return (
-    <View>
-      <Text>HabitCheckListScreen</Text>
-    </View>
+    <>
+      <MenuCustomHeader title={"나의 습관"} />
+      <View>
+        <Text>HabitCheckListScreen</Text>
+      </View>
+    </>
   );
 };
-HabitCheckListScreen.navigationOptions = () => ({
-  title: "HabitCheckListScreen",
-});
+HabitCheckListScreen.navigationOptions = () => ({});
 export default HabitCheckListScreen;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const View = styled.View`
   flex: 1;
@@ -11,12 +12,13 @@ const Text = styled.Text``;
 
 const SurveyScreen: NavigationStackScreenComponent = ({ navigation }) => {
   return (
-    <View>
-      <Text>SurveyScreen</Text>
-    </View>
+    <>
+      <MenuCustomHeader title={"설문지"} />
+      <View>
+        <Text>SurveyScreen</Text>
+      </View>
+    </>
   );
 };
-SurveyScreen.navigationOptions = () => ({
-  title: "SurveyScreen",
-});
+SurveyScreen.navigationOptions = () => ({});
 export default SurveyScreen;
