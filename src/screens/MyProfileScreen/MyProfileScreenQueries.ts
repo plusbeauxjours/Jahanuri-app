@@ -23,3 +23,20 @@ export const ME = gql`
     }
   }
 `;
+
+export const GET_FEED_LIST = gql`
+  query GetFeedList {
+    getFeedList {
+      feeds {
+        classOrder {
+          order
+          startDate
+          endDate
+          uuid
+        }
+        uuid
+        text
+      }
+    }
+  }
+`;

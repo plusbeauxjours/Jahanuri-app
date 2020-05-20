@@ -270,6 +270,39 @@ export interface Me {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: GetFeedList
+// ====================================================
+
+export interface GetFeedList_getFeedList_feeds_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+  uuid: any;
+}
+
+export interface GetFeedList_getFeedList_feeds {
+  __typename: "FeedType";
+  classOrder: GetFeedList_getFeedList_feeds_classOrder | null;
+  uuid: any;
+  text: string | null;
+}
+
+export interface GetFeedList_getFeedList {
+  __typename: "GetFeedListResponse";
+  feeds: (GetFeedList_getFeedList_feeds | null)[] | null;
+}
+
+export interface GetFeedList {
+  getFeedList: GetFeedList_getFeedList;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: GetReportDetail
 // ====================================================
 

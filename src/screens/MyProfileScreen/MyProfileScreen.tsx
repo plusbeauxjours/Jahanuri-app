@@ -7,8 +7,8 @@ import {
 } from "react-navigation";
 import { ActivityIndicator, AsyncStorage, RefreshControl } from "react-native";
 
-import { ME } from "./MyProfileScreenQueries";
-import { Me } from "../../types/api";
+import { ME, GET_FEED_LIST } from "./MyProfileScreenQueries";
+import { Me, GetFeedList } from "../../types/api";
 import MyProfileHeader from "../../components/MyProfileHeader";
 import styled from "styled-components";
 import UserStateController from "../../components/UserStateController";
@@ -28,21 +28,26 @@ const MyProfileScreen: NavigationStackScreenComponent = () => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const {
     data: { me: { user: me = null } = {} } = {},
-    loading,
-    refetch,
+    loading: meLoading,
+    refetch: meRefetch,
   } = useQuery<Me>(ME);
+  const {
+    data: { getFeedList: { feeds = null } = {} } = {},
+    loading: getFeedLoading,
+    refetch: getFeedRefetch,
+  } = useQuery<GetFeedList>(GET_FEED_LIST);
   const onRefresh = async () => {
     try {
       setRefreshing(true);
-      await refetch();
+      await meRefetch();
+      await getFeedRefetch();
     } catch (e) {
       console.log(e);
     } finally {
       setRefreshing(false);
     }
   };
-
-  if (loading) {
+  if (meLoading || getFeedLoading) {
     return (
       <ActivityIndicator
         size="large"
@@ -75,7 +80,12 @@ const MyProfileScreen: NavigationStackScreenComponent = () => {
           me.hasSubmitedApplication &&
           me.hasPaid ? (
             <View>
-              <Text>FEED</Text>
+              {feeds.map((feed: any) => (
+                <>
+                  <Text>{feed.text}</Text>
+                  <Text>{feed.uuid}</Text>
+                </>
+              ))}
             </View>
           ) : (
             <UserStateController />

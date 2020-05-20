@@ -92,7 +92,7 @@ const MainDrawer = createDrawerNavigator(
     },
   },
   {
-    initialRouteName: "CheckList",
+    initialRouteName: "Me",
     contentComponent: DrawerWithLogoutButton,
   }
 );
