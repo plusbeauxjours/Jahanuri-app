@@ -37,6 +37,12 @@ const LoadingContainer = styled.View`
   align-items: center;
   justify-content: center;
 `;
+const ButtonContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+`;
 const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
@@ -262,23 +268,20 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           )}
           {me.user.hasPreviousCheckListSubmitted &&
           me.user.hasLaterCheckListSubmitted ? null : (
-            <Button
-              raised
-              primary
-              style={{
-                marginTop: 30,
-                marginBottom: 30,
-                borderWidht: 1,
-                color: "red",
-              }}
-              disabled={
-                trueAnswerQuestionUuids.length === 0 ||
-                checkListQuestionsLoading
-              }
-              loading={submitCheckListLoading}
-              onPress={() => setModalOpen(true)}
-              title="제출"
-            />
+            <ButtonContainer>
+              <Button
+                raised
+                primary
+                style={{ marginTop: 30, marginBottom: 30, color: "red" }}
+                disabled={
+                  trueAnswerQuestionUuids.length === 0 ||
+                  checkListQuestionsLoading
+                }
+                loading={submitCheckListLoading}
+                onPress={() => setModalOpen(true)}
+                title="제출"
+              />
+            </ButtonContainer>
           )}
         </ScrollView>
       </>

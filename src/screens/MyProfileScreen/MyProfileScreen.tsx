@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Query } from "react-apollo";
 import {
   NavigationScreenProp,
@@ -13,6 +13,8 @@ import MyProfileHeader from "../../components/MyProfileHeader";
 import styled from "styled-components";
 import UserStateController from "../../components/UserStateController";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
+import { NavigationStackScreenComponent } from "react-navigation-stack";
+import { useQuery } from "react-apollo-hooks";
 
 const View = styled.View`
   flex: 1;
@@ -22,102 +24,67 @@ const View = styled.View`
 const Text = styled.Text``;
 const ScrollView = styled.ScrollView``;
 
-interface IProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
-interface IState {
-  refreshing: boolean;
-}
-
-class MyProfileScreen extends React.Component<IProps, IState> {
-  public refetch: any;
-  constructor(props) {
-    super(props);
-    this.state = {
-      refreshing: false,
-    };
-  }
-  static navigationOptions = () => ({
-    title: "Me",
-  });
-
-  public onRefresh = async () => {
+const MyProfileScreen: NavigationStackScreenComponent = () => {
+  const [refreshing, setRefreshing] = useState<boolean>(false);
+  const {
+    data: { me: { user: me = null } = {} } = {},
+    loading,
+    refetch,
+  } = useQuery<Me>(ME);
+  const onRefresh = async () => {
     try {
-      this.setState({ refreshing: true });
-      await this.refetch();
+      setRefreshing(true);
+      await refetch();
     } catch (e) {
       console.log(e);
     } finally {
-      this.setState({ refreshing: false });
+      setRefreshing(false);
     }
   };
-  public componentDidMount = () => {
-    this.props.navigation.setParams({
-      logout: this.handleLogout,
-    });
-  };
 
-  public handleLogout = async () => {
-    await AsyncStorage.clear();
-    this.props.navigation.navigate("Auth");
-  };
-
-  public render() {
+  if (loading) {
     return (
-      <Query<Me> query={ME}>
-        {({
-          data: { me: { user: me = null } = {} } = {},
-          loading,
-          refetch,
-        }) => {
-          this.refetch = refetch;
-          if (loading) {
-            return (
-              <ActivityIndicator
-                size="large"
-                style={{
-                  margin: 20,
-                }}
-              />
-            );
-          } else {
-            return (
-              <>
-                <MenuCustomHeader title={"나의 프로필"} />
-                <ScrollView
-                  refreshControl={
-                    <RefreshControl
-                      refreshing={this.state.refreshing}
-                      onRefresh={this.onRefresh}
-                      tintColor={"#999"}
-                    />
-                  }
-                  showsVerticalScrollIndicator={false}
-                >
-                  <MyProfileHeader
-                    userImg={me.userImg}
-                    name={`${me.firstName} ${me.lastName}`}
-                    username={me.username}
-                    bio={me.bio}
-                  />
-                  {me.hasPreviousCheckListSubmitted &&
-                  me.hasSubmitedApplication &&
-                  me.hasPaid ? (
-                    <View>
-                      <Text>FEED</Text>
-                    </View>
-                  ) : (
-                    <UserStateController />
-                  )}
-                </ScrollView>
-              </>
-            );
-          }
+      <ActivityIndicator
+        size="large"
+        style={{
+          margin: 20,
         }}
-      </Query>
+      />
+    );
+  } else {
+    return (
+      <>
+        <MenuCustomHeader title={"나의 프로필"} />
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={"#999"}
+            />
+          }
+          showsVerticalScrollIndicator={false}
+        >
+          <MyProfileHeader
+            userImg={me.userImg}
+            name={`${me.firstName} ${me.lastName}`}
+            username={me.username}
+            bio={me.bio}
+          />
+          {me.hasPreviousCheckListSubmitted &&
+          me.hasSubmitedApplication &&
+          me.hasPaid ? (
+            <View>
+              <Text>FEED</Text>
+            </View>
+          ) : (
+            <UserStateController />
+          )}
+        </ScrollView>
+      </>
     );
   }
-}
+};
 MyProfileScreen.navigationOptions = () => ({});
 
 export default MyProfileScreen;
