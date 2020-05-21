@@ -1,14 +1,13 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { ImageBackground } from "react-native";
+import { ImageBackground, KeyboardAvoidingView, Platform } from "react-native";
 import { Mutation, MutationFunction } from "react-apollo";
 import {
   NavigationParams,
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { AsyncStorage } from "react-native";
 import FormikInput from "../../components/Formik/FormikInput";
 import styled from "styled-components";
@@ -128,14 +127,9 @@ export default class LoginForm extends React.Component<IProps> {
 
   public render() {
     return (
-      <KeyboardAwareScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-          backgroundColor: "#fff",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        keyboardShouldPersistTaps="handled"
+      <KeyboardAvoidingView
+        enabled
+        behavior={Platform.OS === "ios" ? "padding" : false}
       >
         <Formik
           initialValues={initialValues}
@@ -144,7 +138,7 @@ export default class LoginForm extends React.Component<IProps> {
         >
           {this.renderForm}
         </Formik>
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

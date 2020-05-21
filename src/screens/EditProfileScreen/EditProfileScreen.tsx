@@ -15,6 +15,7 @@ import { NavigationStackScreenProps } from "react-navigation-stack";
 import { UpdateUser } from "src/types/api";
 import { UpdateUserVariables } from "../../types/api";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
+import Toast from "react-native-root-toast";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -31,7 +32,16 @@ class EditProfileScreen extends React.Component<IProps> {
   public onEditSportsPress = () => {
     this.props.navigation.navigate("EditSportsScreen");
   };
-
+  public toast = (message: string) => {
+    Toast.show(message, {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.CENTER,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+    });
+  };
   public updateCache = (cache, { data: { updateUser } }) => {
     const { me } = cache.readQuery({ query: ME });
     cache.writeQuery({
@@ -52,19 +62,15 @@ class EditProfileScreen extends React.Component<IProps> {
   };
 
   public validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("First name is required"),
-    lastName: Yup.string().required("Last name is required"),
+    firstName: Yup.string().required("이름은 필수 사항 입니다."),
+    lastName: Yup.string().required("성은 필수 사항 입니다."),
     bio: Yup.string(),
     password: Yup.lazy((value) =>
-      !value
-        ? Yup.string()
-        : Yup.string()
-            .min(6, "Password must be at least 6 characters")
-            .required("Password is required")
+      !value ? Yup.string() : Yup.string().min(6, "비밀번호는 6자 이상입니다.")
     ),
     confirmPassword: Yup.string().oneOf(
       [Yup.ref("password")],
-      "Passwords do not match"
+      "비밀번호가 맞지 않습니다."
     ),
   });
 
@@ -126,7 +132,7 @@ class EditProfileScreen extends React.Component<IProps> {
                   }) => (
                     <React.Fragment>
                       <FormikInput
-                        label="First name"
+                        label="이름"
                         value={values.firstName}
                         onChange={setFieldValue}
                         onTouch={setFieldTouched}
@@ -134,7 +140,7 @@ class EditProfileScreen extends React.Component<IProps> {
                         error={touched.firstName && errors.firstName}
                       />
                       <FormikInput
-                        label="Last name"
+                        label="성"
                         value={values.lastName}
                         onChange={setFieldValue}
                         onTouch={setFieldTouched}
@@ -142,7 +148,7 @@ class EditProfileScreen extends React.Component<IProps> {
                         error={touched.lastName && errors.lastName}
                       />
                       <FormikInput
-                        label="Bio"
+                        label="정보"
                         value={values.bio}
                         onChange={setFieldValue}
                         onTouch={setFieldTouched}
@@ -152,7 +158,7 @@ class EditProfileScreen extends React.Component<IProps> {
                       {!me.user.hasKakaoAccount && (
                         <>
                           <FormikInput
-                            label="Password"
+                            label="비밀번호"
                             autoCapitalize="none"
                             secureTextEntry
                             value={values.password}
@@ -162,7 +168,7 @@ class EditProfileScreen extends React.Component<IProps> {
                             error={touched.password && errors.password}
                           />
                           <FormikInput
-                            label="Confirm password"
+                            label="비밀번호 확인"
                             autoCapitalize="none"
                             secureTextEntry
                             value={values.confirmPassword}
@@ -198,7 +204,8 @@ class EditProfileScreen extends React.Component<IProps> {
                             loading={loading}
                             onPress={() => {
                               updateUserProfile();
-                              this.props.navigation.goBack();
+                              this.toast("프로필이 변경되었습니다.");
+                              this.props.navigation.navigate("MyProfileScreen");
                             }}
                             title="Save"
                           />

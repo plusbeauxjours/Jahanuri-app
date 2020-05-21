@@ -2,7 +2,7 @@ import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { Mutation, MutationFunction } from "react-apollo";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, KeyboardAvoidingView, Platform } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -192,14 +192,9 @@ export default class SignupForm extends React.Component<IProps> {
 
   public render() {
     return (
-      <KeyboardAwareScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-          backgroundColor: "#fff",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        keyboardShouldPersistTaps="handled"
+      <KeyboardAvoidingView
+        enabled
+        behavior={Platform.OS === "ios" ? "padding" : false}
       >
         <Formik
           initialValues={initialValues}
@@ -208,7 +203,7 @@ export default class SignupForm extends React.Component<IProps> {
         >
           {this.renderForm}
         </Formik>
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

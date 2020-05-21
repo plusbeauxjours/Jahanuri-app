@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Linking, ImageBackground } from "react-native";
+import { Linking, ImageBackground, ScrollView } from "react-native";
+import dimensions from "../constants/dimensions";
 
 const Container = styled.View`
   flex: 1;
@@ -8,7 +9,8 @@ const Container = styled.View`
   background-color: rgba(0, 0, 0, 0.3);
   align-items: center;
   justify-content: center;
-  padding: 30px 0;
+  padding-top: 30px;
+  padding: 0 10px;
 `;
 const Box = styled.View`
   flex: 1;
@@ -16,11 +18,12 @@ const Box = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  padding: 0 10px;
 `;
 const Text = styled.Text`
   text-align: center;
   color: white;
-  font-size: 14px;
+  font-size: 13px;
 `;
 const TitleBox = styled.View`
   margin: 30px 0 10px 0;
@@ -91,129 +94,131 @@ const ContactScreen: React.FC = () => {
       resizeMode="stretch"
     >
       <Container>
-        <TitleBox>
-          <Line />
-          <Title>공식홈페이지</Title>
-          <Line />
-        </TitleBox>
-        <Box>
-          <LogoContainer onPress={() => onPress("web_gomaschool")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/web_gomaschool.png`)}
-            />
-            <Text>고마스쿨</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("web_jahanuri")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/web_jahanuri.png`)}
-            />
-            <Text>자하누리</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("web_hanmuye")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/web_hanmuye.png`)}
-            />
-            <Text>한무예연구소</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("web_gomaon")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/web_gomaon.png`)}
-            />
-            <Text>고마온</Text>
-          </LogoContainer>
-        </Box>
-        <TitleBox>
-          <Line />
-          <Title>SNS 채널</Title>
-          <Line />
-        </TitleBox>
-        <Box>
-          <LogoContainer onPress={() => onPress("channel_youtube")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/channel_youtube.png`)}
-            />
-            <Text>@몸공부TV</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("channel_instagram_gomaon")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/channel_instagram_gomaon.png`)}
-            />
-            <Text>@gomaon_seoul</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("channel_facebook_gomaon")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/channel_facebook_gomaon.png`)}
-            />
-            <Text>@고마와 건강자립학교</Text>
-          </LogoContainer>
-        </Box>
-        <Box>
-          <LogoContainer onPress={() => onPress("channel_blog_gomaschool")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/blog.png`)}
-            />
-            <Text>고마스쿨</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("channel_blog_gomaon")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/blog.png`)}
-            />
-            <Text>고마온</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("channel_blog_hanmuye")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/blog.png`)}
-            />
-            <Text>한무예연구소</Text>
-          </LogoContainer>
-        </Box>
-        <TitleBox>
-          <Line />
-          <Title>커뮤니티</Title>
-          <Line />
-        </TitleBox>
-        <Box>
-          <LogoContainer onPress={() => onPress("community_cafe_jahanuri")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/community_cafe_jahanuri.png`)}
-            />
-            <Text>자하누리카페</Text>
-          </LogoContainer>
-        </Box>
-        <TitleBox>
-          <Line />
-          <Title>SHOP</Title>
-          <Line />
-        </TitleBox>
-        <Box>
-          <WhiteSpace />
-          <LogoContainer onPress={() => onPress("shop_gomashop")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/shop_gomashop.png`)}
-            />
-            <Text>고마샵</Text>
-          </LogoContainer>
-          <LogoContainer onPress={() => onPress("shop_naturevitameals")}>
-            <Logo
-              resizeMode={"contain"}
-              source={require(`../images/Contact/shop_naturevitameals.png`)}
-            />
-            <Text>네이쳐 비타밀스</Text>
-          </LogoContainer>
-          <WhiteSpace />
-        </Box>
+        <ScrollView style={{ width: dimensions.width }}>
+          <TitleBox>
+            <Line />
+            <Title>공식홈페이지</Title>
+            <Line />
+          </TitleBox>
+          <Box>
+            <LogoContainer onPress={() => onPress("web_gomaschool")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/web_gomaschool.png`)}
+              />
+              <Text>고마스쿨</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("web_jahanuri")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/web_jahanuri.png`)}
+              />
+              <Text>자하누리</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("web_hanmuye")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/web_hanmuye.png`)}
+              />
+              <Text>한무예연구소</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("web_gomaon")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/web_gomaon.png`)}
+              />
+              <Text>고마온</Text>
+            </LogoContainer>
+          </Box>
+          <TitleBox>
+            <Line />
+            <Title>SNS 채널</Title>
+            <Line />
+          </TitleBox>
+          <Box>
+            <LogoContainer onPress={() => onPress("channel_youtube")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/channel_youtube.png`)}
+              />
+              <Text>@몸공부TV</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("channel_instagram_gomaon")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/channel_instagram_gomaon.png`)}
+              />
+              <Text>@gomaon_seoul</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("channel_facebook_gomaon")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/channel_facebook_gomaon.png`)}
+              />
+              <Text>@고마와 건강자립학교</Text>
+            </LogoContainer>
+          </Box>
+          <Box>
+            <LogoContainer onPress={() => onPress("channel_blog_gomaschool")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/blog.png`)}
+              />
+              <Text>고마스쿨</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("channel_blog_gomaon")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/blog.png`)}
+              />
+              <Text>고마온</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("channel_blog_hanmuye")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/blog.png`)}
+              />
+              <Text>한무예연구소</Text>
+            </LogoContainer>
+          </Box>
+          <TitleBox>
+            <Line />
+            <Title>커뮤니티</Title>
+            <Line />
+          </TitleBox>
+          <Box>
+            <LogoContainer onPress={() => onPress("community_cafe_jahanuri")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/community_cafe_jahanuri.png`)}
+              />
+              <Text>자하누리카페</Text>
+            </LogoContainer>
+          </Box>
+          <TitleBox>
+            <Line />
+            <Title>SHOP</Title>
+            <Line />
+          </TitleBox>
+          <Box>
+            <WhiteSpace />
+            <LogoContainer onPress={() => onPress("shop_gomashop")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/shop_gomashop.png`)}
+              />
+              <Text>고마샵</Text>
+            </LogoContainer>
+            <LogoContainer onPress={() => onPress("shop_naturevitameals")}>
+              <Logo
+                resizeMode={"contain"}
+                source={require(`../images/Contact/shop_naturevitameals.png`)}
+              />
+              <Text>네이쳐 비타밀스</Text>
+            </LogoContainer>
+            <WhiteSpace />
+          </Box>
+        </ScrollView>
       </Container>
     </ImageBackground>
   );
