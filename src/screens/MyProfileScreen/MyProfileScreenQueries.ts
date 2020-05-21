@@ -11,6 +11,9 @@ export const ME = gql`
         userImg
         classOrder {
           order
+          startDate
+          endDate
+          uuid
         }
         reportCoverUuid
         hasPreviousCheckListSubmitted
@@ -18,6 +21,7 @@ export const ME = gql`
         hasSubmitedApplication
         hasPaid
         hasKakaoAccount
+        isStaff
       }
     }
   }
@@ -39,6 +43,41 @@ export const GET_FEED_LIST = gql`
         uuid
         text
         createdAt
+      }
+    }
+  }
+`;
+
+export const GET_FEED_LIST_STAFF = gql`
+  query GetFeedListStaff($classOrderUuid: String!) {
+    getFeedListStaff(classOrderUuid: $classOrderUuid) {
+      feeds {
+        classOrder {
+          order
+          startDate
+          endDate
+          uuid
+        }
+        user {
+          username
+        }
+        uuid
+        text
+        createdAt
+      }
+    }
+  }
+`;
+
+
+export const GET_CLASS_LIST = gql`
+  query GetClassList {
+    getClassList {
+      classes {
+        order
+        startDate
+        endDate
+        uuid
       }
     }
   }

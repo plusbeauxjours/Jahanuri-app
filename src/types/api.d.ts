@@ -231,6 +231,9 @@ export interface UpdateUserVariables {
 export interface Me_me_user_classOrder {
   __typename: "ClassOrderType";
   order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+  uuid: any;
 }
 
 export interface Me_me_user {
@@ -250,6 +253,10 @@ export interface Me_me_user {
   hasSubmitedApplication: boolean;
   hasPaid: boolean;
   hasKakaoAccount: boolean;
+  /**
+   * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.
+   */
+  isStaff: boolean;
 }
 
 export interface Me_me {
@@ -302,6 +309,79 @@ export interface GetFeedList_getFeedList {
 
 export interface GetFeedList {
   getFeedList: GetFeedList_getFeedList;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetFeedListStaff
+// ====================================================
+
+export interface GetFeedListStaff_getFeedListStaff_feeds_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+  uuid: any;
+}
+
+export interface GetFeedListStaff_getFeedListStaff_feeds_user {
+  __typename: "UserType";
+  /**
+   * 150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.
+   */
+  username: string;
+}
+
+export interface GetFeedListStaff_getFeedListStaff_feeds {
+  __typename: "FeedType";
+  classOrder: GetFeedListStaff_getFeedListStaff_feeds_classOrder | null;
+  user: GetFeedListStaff_getFeedListStaff_feeds_user;
+  uuid: any;
+  text: string | null;
+  createdAt: any;
+}
+
+export interface GetFeedListStaff_getFeedListStaff {
+  __typename: "GetFeedListStaffResponse";
+  feeds: (GetFeedListStaff_getFeedListStaff_feeds | null)[] | null;
+}
+
+export interface GetFeedListStaff {
+  getFeedListStaff: GetFeedListStaff_getFeedListStaff;
+}
+
+export interface GetFeedListStaffVariables {
+  classOrderUuid: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetClassList
+// ====================================================
+
+export interface GetClassList_getClassList_classes {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+  uuid: any;
+}
+
+export interface GetClassList_getClassList {
+  __typename: "GetClassListReponse";
+  classes: (GetClassList_getClassList_classes | null)[] | null;
+}
+
+export interface GetClassList {
+  getClassList: GetClassList_getClassList;
 }
 
 /* tslint:disable */
