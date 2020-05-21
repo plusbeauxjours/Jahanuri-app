@@ -23,6 +23,7 @@
     "expo": "~37.0.3",
     "expo-image-picker": "^8.1.0",
     "formik": "^2.1.4",
+    "moment": "^2.26.0",
     "react": "~16.9.0",
     "react-apollo": "^3.1.5",
     "react-apollo-hooks": "^0.5.0",

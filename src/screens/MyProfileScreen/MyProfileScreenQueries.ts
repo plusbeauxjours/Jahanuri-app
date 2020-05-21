@@ -8,7 +8,6 @@ export const ME = gql`
         username
         firstName
         lastName
-        bio
         userImg
         classOrder {
           order
@@ -33,6 +32,9 @@ export const GET_FEED_LIST = gql`
           startDate
           endDate
           uuid
+        }
+        user {
+          username
         }
         uuid
         text

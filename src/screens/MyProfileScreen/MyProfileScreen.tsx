@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Moment from "moment";
 import { ActivityIndicator, RefreshControl } from "react-native";
 
 import { ME, GET_FEED_LIST } from "./MyProfileScreenQueries";
@@ -11,17 +12,34 @@ import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useQuery } from "react-apollo-hooks";
 
 const View = styled.View`
+  flex: 1;
   min-height: 100px;
   align-items: center;
   justify-content: center;
+  padding: 10px 20px 20px 20px;
 `;
 const GreyLine = styled.View`
   margin: 0 20px;
-  border-bottom-width: 1px;
-  border-bottom-color: red;
+  border-bottom-width: 0.5px;
+  border-bottom-color: #999;
 `;
-
-const Text = styled.Text``;
+const Row = styled.View`
+  flex: 1;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+`;
+const FeedHeader = styled.Text`
+  font-weight: 600;
+`;
+const DateFont = styled.Text`
+  font-size: 10px;
+`;
+const Text = styled.Text`
+  font-size: 16px;
+`;
 const ScrollView = styled.ScrollView``;
 
 const MyProfileScreen: NavigationStackScreenComponent = () => {
@@ -74,18 +92,24 @@ const MyProfileScreen: NavigationStackScreenComponent = () => {
             userImg={me.userImg}
             name={`${me.firstName} ${me.lastName}`}
             username={me.username}
-            bio={me.bio}
           />
           {me.hasPreviousCheckListSubmitted &&
           me.hasSubmitedApplication &&
           me.hasPaid ? (
             <>
               {feeds.map((feed: any) => (
-                <View key={feed.uuid}>
-                  <Text>{feed.text}</Text>
+                <>
+                  <View key={feed.uuid}>
+                    <Row>
+                      <FeedHeader>{feed.user.username}</FeedHeader>
+                      <DateFont>
+                        {Moment(feed.createdAt).format("Y년 M월 D일")}
+                      </DateFont>
+                    </Row>
+                    <Text>{feed.text}</Text>
+                  </View>
                   <GreyLine />
-                  <Text>{feed.createdAt}</Text>
-                </View>
+                </>
               ))}
             </>
           ) : (

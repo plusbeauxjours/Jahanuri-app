@@ -200,7 +200,6 @@ export interface UpdateUser_updateUser_user {
   __typename: "UserType";
   firstName: string;
   lastName: string;
-  bio: string;
   userImg: string | null;
 }
 
@@ -216,7 +215,6 @@ export interface UpdateUser {
 export interface UpdateUserVariables {
   firstName: string;
   lastName: string;
-  bio: string;
   password: string;
   userImg?: any | null;
 }
@@ -244,7 +242,6 @@ export interface Me_me_user {
   username: string;
   firstName: string;
   lastName: string;
-  bio: string;
   userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
   reportCoverUuid: string | null;
@@ -281,9 +278,18 @@ export interface GetFeedList_getFeedList_feeds_classOrder {
   uuid: any;
 }
 
+export interface GetFeedList_getFeedList_feeds_user {
+  __typename: "UserType";
+  /**
+   * 150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.
+   */
+  username: string;
+}
+
 export interface GetFeedList_getFeedList_feeds {
   __typename: "FeedType";
   classOrder: GetFeedList_getFeedList_feeds_classOrder | null;
+  user: GetFeedList_getFeedList_feeds_user;
   uuid: any;
   text: string | null;
   createdAt: any;

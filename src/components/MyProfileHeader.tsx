@@ -15,14 +15,12 @@ interface IProps {
   userImg?: string;
   name: string;
   username: string;
-  bio?: string;
 }
 
 const MyProfileHeader: React.FC<IProps> = ({
   userImg = null,
   name,
   username,
-  bio = "",
 }) => {
   return (
     <UserInfoContainer>
@@ -38,7 +36,6 @@ const MyProfileHeader: React.FC<IProps> = ({
       />
       <Headline>{name}</Headline>
       <Caption>{`@${username}`}</Caption>
-      <Paragraph>{bio}</Paragraph>
     </UserInfoContainer>
   );
 };

@@ -53,7 +53,6 @@ class EditProfileScreen extends React.Component<IProps> {
             ...me.user,
             firstName: updateUser.user.firstName,
             lastName: updateUser.user.lastName,
-            bio: updateUser.user.bio,
             userImg: updateUser.user.userImg,
           },
         },
@@ -64,7 +63,6 @@ class EditProfileScreen extends React.Component<IProps> {
   public validationSchema = Yup.object().shape({
     firstName: Yup.string().required("이름은 필수 사항 입니다."),
     lastName: Yup.string().required("성은 필수 사항 입니다."),
-    bio: Yup.string(),
     password: Yup.lazy((value) =>
       !value ? Yup.string() : Yup.string().min(6, "비밀번호는 6자 이상입니다.")
     ),
@@ -87,7 +85,6 @@ class EditProfileScreen extends React.Component<IProps> {
                     username
                     firstName
                     lastName
-                    bio
                     userImg
                     hasKakaoAccount
                   }
@@ -112,7 +109,6 @@ class EditProfileScreen extends React.Component<IProps> {
                   initialValues={{
                     firstName: me.user.firstName,
                     lastName: me.user.lastName,
-                    bio: me.user.bio,
                     password: "",
                     confirmPassword: "",
                     userImg: me.user.userImg && {
@@ -147,14 +143,6 @@ class EditProfileScreen extends React.Component<IProps> {
                         name="lastName"
                         error={touched.lastName && errors.lastName}
                       />
-                      <FormikInput
-                        label="정보"
-                        value={values.bio}
-                        onChange={setFieldValue}
-                        onTouch={setFieldTouched}
-                        name="bio"
-                        error={touched.bio && errors.bio}
-                      />
                       {!me.user.hasKakaoAccount && (
                         <>
                           <FormikInput
@@ -186,7 +174,6 @@ class EditProfileScreen extends React.Component<IProps> {
                         variables={{
                           firstName: values.firstName.trim(),
                           lastName: values.lastName.trim(),
-                          bio: values.bio.trim(),
                           password: values.password,
                           userImg:
                             me.user.userImg === values.userImg
