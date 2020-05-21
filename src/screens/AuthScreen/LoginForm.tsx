@@ -38,12 +38,12 @@ const validationSchema = Yup.object().shape({
   username: Yup.string()
     .matches(
       /^[A-Za-z0-9_]{1,15}$/,
-      "Username can only contain alphabets, digits and underscores and has to be between 1 to 15 characters"
+      "유저명은 숫자와 영문 알파벳만 가능하고, 15자 이내입니다."
     )
-    .required("Username는 필수 입력 사항입니다."),
+    .required("유저명은 필수 입력 사항입니다."),
   password: Yup.string()
-    .min(6, "Password는 6글자 이상이어야 합니다.")
-    .required("Password는 필수 입력 사항입니다."),
+    .min(6, "비밀번호는 6자 이상입니다.")
+    .required("비밀번호는 필수 사항 입니다."),
 });
 
 export default class LoginForm extends React.Component<IProps> {
@@ -71,7 +71,7 @@ export default class LoginForm extends React.Component<IProps> {
         <WhiteSpace />
         <WhiteSpace />
         <FormikInput
-          label="Username"
+          label="유저명"
           autoCapitalize="none"
           value={values.username}
           onChange={setFieldValue}
@@ -80,7 +80,7 @@ export default class LoginForm extends React.Component<IProps> {
           error={touched.username && errors.username}
         />
         <FormikInput
-          label="Password"
+          label="비밀번호"
           autoCapitalize="none"
           secureTextEntry
           value={values.password}
