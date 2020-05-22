@@ -43,7 +43,7 @@ const validationSchema = Yup.object().shape({
     .required("유저명은 필수 입력 사항입니다."),
   password: Yup.string()
     .min(6, "비밀번호는 6자 이상입니다.")
-    .required("비밀번호는 필수 사항 입니다."),
+    .required("비밀번호는 필수 입력 사항 입니다."),
 });
 
 export default class LoginForm extends React.Component<IProps> {

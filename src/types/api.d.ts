@@ -172,19 +172,22 @@ export interface CreateReportVariables {
   sangiSoMorning?: string | null;
   sangiSoNoon?: string | null;
   sangiSoEvening?: string | null;
-  jeunHaeJil?: boolean | null;
-  meal?: string | null;
-  mealCheck?: string | null;
-  sleeping?: string | null;
-  stool?: string | null;
-  hotGrain?: string | null;
-  hotWater?: string | null;
-  strolling?: string | null;
-  workout?: string | null;
-  lecture?: string | null;
-  etc?: string | null;
-  diary?: string | null;
-  reportDate?: any | null;
+  jeunHaeJilA?: boolean | null;
+  jeunHaeJilB?: boolean | null;
+  jeunHaeJilC?: boolean | null;
+  jeunHaeJilD?: boolean | null;
+  meal: string;
+  mealCheck: string;
+  sleeping: string;
+  stool: string;
+  hotGrain: string;
+  hotWater: string;
+  strolling: string;
+  workout: string;
+  lecture: string;
+  etc: string;
+  diary: string;
+  reportDate: any;
 }
 
 /* tslint:disable */
@@ -490,7 +493,10 @@ export interface GetReportDetail_getReportDetail_report {
   sangiSoMorning: string | null;
   sangiSoNoon: string | null;
   sangiSoEvening: string | null;
-  jeunHaeJil: boolean;
+  jeunHaeJilA: boolean;
+  jeunHaeJilB: boolean;
+  jeunHaeJilC: boolean;
+  jeunHaeJilD: boolean;
   meal: string;
   mealCheck: string;
   sleeping: string;

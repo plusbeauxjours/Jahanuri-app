@@ -61,8 +61,8 @@ class EditProfileScreen extends React.Component<IProps> {
   };
 
   public validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("이름은 필수 사항 입니다."),
-    lastName: Yup.string().required("성은 필수 사항 입니다."),
+    firstName: Yup.string().required("이름은 필수 입력 사항 입니다."),
+    lastName: Yup.string().required("성은 필수 입력 사항 입니다."),
     password: Yup.lazy((value) =>
       !value ? Yup.string() : Yup.string().min(6, "비밀번호는 6자 이상입니다.")
     ),

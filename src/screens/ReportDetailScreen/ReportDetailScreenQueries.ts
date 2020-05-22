@@ -23,7 +23,10 @@ export const GET_REPORT_DETAIL = gql`
         sangiSoMorning
         sangiSoNoon
         sangiSoEvening
-        jeunHaeJil
+        jeunHaeJilA
+        jeunHaeJilB
+        jeunHaeJilC
+        jeunHaeJilD
         meal
         mealCheck
         sleeping

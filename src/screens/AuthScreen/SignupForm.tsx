@@ -43,11 +43,11 @@ const initialValues = {
   confirmPassword: "",
 };
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("이름은 필수 사항 입니다."),
-  lastName: Yup.string().required("성은 필수 사항 입니다."),
+  firstName: Yup.string().required("이름은 필수 입력 사항 입니다."),
+  lastName: Yup.string().required("성은 필수 입력 사항 입니다."),
   email: Yup.string()
     .email("Invalid email")
-    .required("이메일은 필수 사항 입니다."),
+    .required("이메일은 필수 입력 사항 입니다."),
   handle: Yup.string()
     .matches(
       /^[A-Za-z0-9_]{1,15}$/,
@@ -56,7 +56,7 @@ const validationSchema = Yup.object().shape({
     .required("유저명은 필수 입력 사항입니다."),
   password: Yup.string()
     .min(6, "비밀번호는 6자 이상입니다.")
-    .required("비밀번호는 필수 사항 입니다."),
+    .required("비밀번호는 필수 입력 사항 입니다."),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password" ? "password" : null)], "Passwords do not match")
     .required("비밀번호가 맞지 않습니다."),

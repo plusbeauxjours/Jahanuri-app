@@ -12,19 +12,22 @@ export const CREATE_REPORT = gql`
     $sangiSoMorning: String
     $sangiSoNoon: String
     $sangiSoEvening: String
-    $jeunHaeJil: Boolean
-    $meal: String
-    $mealCheck: String
-    $sleeping: String
-    $stool: String
-    $hotGrain: String
-    $hotWater: String
-    $strolling: String
-    $workout: String
-    $lecture: String
-    $etc: String
-    $diary: String
-    $reportDate: Date
+    $jeunHaeJilA: Boolean
+    $jeunHaeJilB: Boolean
+    $jeunHaeJilC: Boolean
+    $jeunHaeJilD: Boolean
+    $meal: String!
+    $mealCheck: String!
+    $sleeping: String!
+    $stool: String!
+    $hotGrain: String!
+    $hotWater: String!
+    $strolling: String!
+    $workout: String!
+    $lecture: String!
+    $etc: String!
+    $diary: String!
+    $reportDate: DateTime!
   ) {
     createReport(
       reportCoverUuid: $reportCoverUuid
@@ -37,7 +40,10 @@ export const CREATE_REPORT = gql`
       sangiSoMorning: $sangiSoMorning
       sangiSoNoon: $sangiSoNoon
       sangiSoEvening: $sangiSoEvening
-      jeunHaeJil: $jeunHaeJil
+      jeunHaeJilA: $jeunHaeJilA
+      jeunHaeJilB: $jeunHaeJilB
+      jeunHaeJilC: $jeunHaeJilC
+      jeunHaeJilD: $jeunHaeJilD
       meal: $meal
       mealCheck: $mealCheck
       sleeping: $sleeping

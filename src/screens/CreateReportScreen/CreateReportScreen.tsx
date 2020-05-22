@@ -1,44 +1,56 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { Portal, Dialog, Paragraph } from "react-native-paper";
+import Toast from "react-native-root-toast";
+import { useMutation } from "react-apollo-hooks";
 import { Formik } from "formik";
 import * as Yup from "yup";
-
-import FormikInput from "../../components/Formik/FormikInput";
-import { GET_REPORT_LIST } from "../ReportListScreen/ReportListScreenQueries";
-import {
-  CreateReport,
-  CreateReportVariables,
-  GetReportList,
-  GetReportListVariables,
-} from "../../types/api";
-import { CREATE_REPORT } from "./CreateReportScreenQueries";
+import { CheckBox } from "react-native-elements";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationParams,
 } from "react-navigation";
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DatePickerModal from "react-native-modal-datetime-picker";
+import Moment from "moment";
+
+import FormikInput from "../../components/Formik/FormikInput";
+import { GET_REPORT_LIST } from "../ReportListScreen/ReportListScreenQueries";
+import { CreateReport, CreateReportVariables } from "../../types/api";
+import { CREATE_REPORT } from "./CreateReportScreenQueries";
+
 import BackCustomHeader from "../../components/BackCustomHeader";
-import { Portal, Dialog, Paragraph } from "react-native-paper";
-import Toast from "react-native-root-toast";
-import { useMutation } from "react-apollo-hooks";
+
 import { useMe } from "../../context/meContext";
+import Divider from "../../components/Divider";
 
 const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
 `;
-const Text = styled.Text``;
+const Text = styled.Text`
+  align-self: flex-start;
+  font-weight: 400;
+  margin-left: 20px;
+  font-size: 12px;
+`;
 const Touchable = styled.TouchableOpacity``;
 const Line = styled.View`
   flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
 `;
 const ButtonContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
   height: 100px;
+`;
+const Date = styled.Text`
+  font-size: 20px;
+  font-weight: 400;
+  color: #999;
 `;
 const initialValues = {
   saengSikMorning: "",
@@ -50,7 +62,6 @@ const initialValues = {
   sangiSoMorning: "",
   sangiSoNoon: "",
   sangiSoEvening: "",
-  jeunHaeJil: false,
   meal: "",
   mealCheck: "",
   sleeping: "",
@@ -62,7 +73,6 @@ const initialValues = {
   lecture: "",
   etc: "",
   diary: "",
-  reportDate: "20201010",
 };
 
 interface IProps {
@@ -71,7 +81,14 @@ interface IProps {
 
 const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   const { me, loading } = useMe();
-  const [isDatePickerModalOpen, setDatePickerModalOpen] = useState(false);
+  const [reportDate, setReportDate] = useState<any>(null);
+  const [isDatePickerModalOpen, setDatePickerModalOpen] = useState<boolean>(
+    false
+  );
+  const [jeunHaeJilA, setJeunHaeJilA] = useState<boolean>(false);
+  const [jeunHaeJilB, setJeunHaeJilB] = useState<boolean>(false);
+  const [jeunHaeJilC, setJeunHaeJilC] = useState<boolean>(false);
+  const [jeunHaeJilD, setJeunHaeJilD] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [submitReportFn, { loading: submitReportLoading }] = useMutation<
     CreateReport,
@@ -95,6 +112,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     });
   };
   const submitConfirm = (values: any) => {
+    console.log(reportDate);
     submitReportFn({
       variables: {
         reportCoverUuid:
@@ -110,7 +128,10 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
         sangiSoMorning: values.sangiSoMorning && values.sangiSoMorning.trim(),
         sangiSoNoon: values.sangiSoNoon && values.sangiSoNoon.trim(),
         sangiSoEvening: values.sangiSoEvening && values.sangiSoEvening.trim(),
-        jeunHaeJil: values.jeunHaeJil,
+        jeunHaeJilA,
+        jeunHaeJilB,
+        jeunHaeJilC,
+        jeunHaeJilD,
         meal: values.meal.trim(),
         mealCheck: values.mealCheck.trim(),
         sleeping: values.sleeping.trim(),
@@ -122,7 +143,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
         lecture: values.lecture.trim(),
         etc: values.etc.trim(),
         diary: values.diary.trim(),
-        reportDate: "20201010",
+        reportDate: Moment(reportDate),
       },
     });
     setModalOpen(false);
@@ -130,31 +151,30 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     toast("일지를 제출하였습니다.");
   };
   const handleDateConfirm = (date) => {
-    console.log("A date has been picked: ", date);
+    setReportDate(Moment(date).format("YMD"));
     setDatePickerModalOpen(false);
   };
   const validationSchema = Yup.object().shape({
-    jeunHaeJil: Yup.boolean().required("jeunHaeJil is required"),
-    meal: Yup.string().required(""),
-    mealCheck: Yup.string().required("mealCheck is required"),
-    sleeping: Yup.string().required("sleeping is required"),
-    stool: Yup.string().required("stool is required"),
-    hotGrain: Yup.string().required("hotGrain is required"),
-    hotWater: Yup.string().required("hotWater is required"),
-    strolling: Yup.string().required("strolling is required"),
-    workout: Yup.string().required("workout is required"),
-    lecture: Yup.string().required("lecture is required"),
-    etc: Yup.string().required("etc is required"),
-    diary: Yup.string().required("diary is required"),
-    reportDate: Yup.date().required("reportDate is required"),
+    meal: Yup.string().required("일반 식사는 필수 입력 사항입니다."),
+    mealCheck: Yup.string().required("식사 습관 체크는 필수 입력 사항입니다."),
+    sleeping: Yup.string().required("잠은 필수 입력 사항입니다."),
+    stool: Yup.string().required("변은 필수 입력 사항입니다."),
+    hotGrain: Yup.string().required("곡식 찜질은 필수 입력 사항입니다."),
+    hotWater: Yup.string().required("따뜻한 물은 필수 입력 사항입니다."),
+    strolling: Yup.string().required("걷기는 필수 입력 사항입니다."),
+    workout: Yup.string().required("운동은 필수 입력 사항입니다."),
+    lecture: Yup.string().required("강의는 필수 입력 사항입니다."),
+    etc: Yup.string().required("기타는 필수 입력 사항입니다."),
+    diary: Yup.string().required("세줄 일기는 필수 입력 사항입니다."),
   });
   return (
     <>
       <BackCustomHeader title={"새 일지"} />
+      <Date>{reportDate}</Date>
       <KeyboardAwareScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          backgroundColor: "#fff",
+          backgroundColor: null,
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -197,15 +217,17 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
               </Portal>
               <Touchable onPress={() => setDatePickerModalOpen(true)}>
                 <Text>Date</Text>
-                <DateTimePickerModal
+                <DatePickerModal
                   isVisible={isDatePickerModalOpen}
                   mode="date"
+                  locale="kr_KR"
                   onConfirm={handleDateConfirm}
                   onCancel={() => setDatePickerModalOpen(false)}
                 />
               </Touchable>
+              <Divider text={"영양습관"} color={"dark"} />
+              <Text>섭생식</Text>
               <Line>
-                <Text>섭생식</Text>
                 <FormikInput
                   type="row"
                   label="아침"
@@ -237,8 +259,8 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   placeholder="수목"
                 />
               </Line>
+              <Text>아미노</Text>
               <Line>
-                <Text>아미노</Text>
                 <FormikInput
                   type="row"
                   label="아침"
@@ -247,7 +269,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="aminoMorning"
                   error={touched.aminoMorning && errors.aminoMorning}
-                  placeholder="아미노 1스푼"
+                  placeholder="아미노 1"
                 />
                 <FormikInput
                   type="row"
@@ -257,7 +279,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="aminoNoon"
                   error={touched.aminoNoon && errors.aminoNoon}
-                  placeholder="아미노 2스푼"
+                  placeholder="아미노 2"
                 />
                 <FormikInput
                   type="row"
@@ -267,11 +289,11 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="aminoEvening"
                   error={touched.aminoEvening && errors.aminoEvening}
-                  placeholder="아미노 2스푼"
+                  placeholder="아미노 2"
                 />
               </Line>
+              <Text>생기소</Text>
               <Line>
-                <Text>생기소</Text>
                 <FormikInput
                   type="row"
                   label="아침"
@@ -280,7 +302,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="sangiSoMorning"
                   error={touched.sangiSoMorning && errors.sangiSoMorning}
-                  placeholder="휴 1스푼, 활 2스푼"
+                  placeholder="휴 1, 활 2"
                 />
                 <FormikInput
                   type="row"
@@ -290,7 +312,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="sangiSoNoon"
                   error={touched.sangiSoNoon && errors.sangiSoNoon}
-                  placeholder="활 1스푼"
+                  placeholder="활 1"
                 />
                 <FormikInput
                   type="row"
@@ -300,7 +322,38 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="sangiSoEvening"
                   error={touched.sangiSoEvening && errors.sangiSoEvening}
-                  placeholder="휴 2스푼, 정 1스푼"
+                  placeholder="휴 2, 정 1"
+                />
+              </Line>
+              <Text>전해질 보충</Text>
+              <Line>
+                <CheckBox
+                  size={30}
+                  checked={jeunHaeJilA}
+                  onPress={() => {
+                    setJeunHaeJilA((jeunHaeJilA) => !jeunHaeJilA);
+                  }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={jeunHaeJilB}
+                  onPress={() => {
+                    setJeunHaeJilB((jeunHaeJilB) => !jeunHaeJilB);
+                  }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={jeunHaeJilC}
+                  onPress={() => {
+                    setJeunHaeJilC((jeunHaeJilC) => !jeunHaeJilC);
+                  }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={jeunHaeJilD}
+                  onPress={() => {
+                    setJeunHaeJilD((jeunHaeJilD) => !jeunHaeJilD);
+                  }}
                 />
               </Line>
               <FormikInput
@@ -321,6 +374,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 error={touched.mealCheck && errors.mealCheck}
                 placeholder="먹는 양이 줄었다."
               />
+              <Divider text={"생활습관"} color={"dark"} />
               <FormikInput
                 label="잠"
                 value={values.sleeping}
@@ -366,6 +420,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 error={touched.strolling && errors.strolling}
                 placeholder="2시간 반"
               />
+              <Divider text={"오늘의 숙제 (운동/강의)"} color={"dark"} />
               <FormikInput
                 label="운동"
                 value={values.workout}
@@ -393,6 +448,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 error={touched.etc && errors.etc}
                 placeholder="곡식주머니 꾸준히 하기, 음식에 간해서 먹기"
               />
+              <Divider text={"세줄 일기"} color={"dark"} />
               <FormikInput
                 label="세줄 일기"
                 value={values.diary}
@@ -400,6 +456,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 onTouch={setFieldTouched}
                 name="diary"
                 error={touched.diary && errors.diary}
+                multiline={true}
               />
               <ButtonContainer>
                 <Button

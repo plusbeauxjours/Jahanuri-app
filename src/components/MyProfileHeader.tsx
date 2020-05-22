@@ -4,7 +4,6 @@ import { Avatar } from "react-native-elements";
 import styled from "styled-components";
 
 import { MEDIA_URL } from "../constants/urls";
-import dimensions from "../constants/dimensions";
 import Moment from "moment";
 
 const UserInfoContainer = styled.View`
@@ -20,18 +19,19 @@ const Staff = styled.Text`
 `;
 const Row = styled.View`
   flex-direction: row;
+  width: 100%;
+  padding: 0 20px;
   margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
 `;
 const Order = styled.Text`
   align-self: center;
-  padding: 0 5px;
   width: 70px;
-  text-align: center;
   font-weight: 600;
 `;
-const Date = styled.Text`
-  width: ${dimensions.width - 100};
-  text-align: center;
+const DateFont = styled.Text`
+  font-size: 10px;
 `;
 
 interface IProps {
@@ -74,11 +74,11 @@ const MyProfileHeader: React.FC<IProps> = ({
           {startDate && endDate && (
             <Row>
               <Order>{order}기</Order>
-              <Date>
+              <DateFont>
                 {Moment(startDate).format("Y년 M월 D일")}
                 &nbsp;~&nbsp;
                 {Moment(endDate).format("Y년 M월 D일")}
-              </Date>
+              </DateFont>
             </Row>
           )}
         </>

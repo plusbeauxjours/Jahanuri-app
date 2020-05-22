@@ -84,7 +84,10 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
             </Line>
             <Line>
               <Title>전해질 보충</Title>
-              <Text>{report.jeunHaeJil}</Text>
+              <Text>{report.jeunHaeJilA}</Text>
+              <Text>{report.jeunHaeJilB}</Text>
+              <Text>{report.jeunHaeJilC}</Text>
+              <Text>{report.jeunHaeJilD}</Text>
             </Line>
             <Line>
               <Title>일반 식사</Title>

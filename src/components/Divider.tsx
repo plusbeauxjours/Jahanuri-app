@@ -17,6 +17,8 @@ const Container = styled.View<ITheme>`
 const Text = styled.Text<ITheme>`
   align-self: center;
   padding: 0 5px;
+  font-size: 16px;
+  font-weight: 400;
   color: ${(props) => (props.color === "dark" ? "#000000" : "#ffffff")};
 `;
 

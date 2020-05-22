@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { TextInput, HelperText } from "react-native-paper";
 import { KeyboardTypeOptions } from "react-native";
 
-const Container = styled.View<ITheme>`
+const View = styled.View<ITheme>`
   width: ${(props) => (props.type === "row" ? "25%" : "90%")};
-  margin-right: ${(props) => (props.type === "row" ? "10px" : "0")};
+  padding-right: ${(props) => (props.type === "row" ? "5px" : "0")};
+  padding-left: ${(props) => (props.type === "row" ? "5px" : "0")};
   align-self: center;
 `;
 
@@ -47,7 +48,7 @@ const FormikInput: React.FC<IProps> = ({
     onTouch(name);
   };
   return (
-    <Container type={type}>
+    <View type={type}>
       <TextInput
         mode="outlined"
         label={label}
@@ -62,7 +63,7 @@ const FormikInput: React.FC<IProps> = ({
       <HelperText type="error" visible={error}>
         {error}
       </HelperText>
-    </Container>
+    </View>
   );
 };
 
