@@ -67,7 +67,7 @@ const Text = styled.Text`
 const ScrollView = styled.ScrollView``;
 const Circle = styled.Text`
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 8px;
   color: #999;
   margin-bottom: 50px;
@@ -76,12 +76,13 @@ const ButtonContainer = styled.View`
   align-items: center;
   margin-bottom: 10px;
 `;
-const Touchable = styled.TouchableOpacity``;
+const Touchable = styled.TouchableOpacity`
+  padding: 20px;
+`;
+
 const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
-  const [classOrderUuid, setClassOrderUuid] = useState<string>(
-    "01ed026e-4f52-406a-a640-eb491fa2875a"
-  );
+  const [classOrderUuid, setClassOrderUuid] = useState<string>(null);
   const [createFeedModalOpen, setCreateFeedModalOpen] = useState<boolean>(
     false
   );
@@ -205,24 +206,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
               case true:
                 return (
                   <>
-                    <View>
-                      <Touchable>
-                        <RNPickerSelect
-                          onValueChange={(value) => console.log(value)}
-                          items={[
-                            { label: "Football", value: "football" },
-                            { label: "Baseball", value: "baseball" },
-                            { label: "Hockey", value: "hockey" },
-                          ]}
-                        />
-                        <Text>몸공부 기수 검색</Text>
-                        {classes &&
-                          classes.length !== 0 &&
-                          classes.map((classe: any) => (
-                            <Text key={classe.uuid}>{classe.order}</Text>
-                          ))}
-                      </Touchable>
-                    </View>
                     <Formik
                       initialValues={{ text: "" }}
                       onSubmit={() => {}}
@@ -264,24 +247,71 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                               </Dialog.Actions>
                             </Dialog>
                           </Portal>
-                          <FormikInput
-                            label="기수 공지"
-                            value={values.text}
-                            onChange={setFieldValue}
-                            onTouch={setFieldTouched}
-                            name="text"
-                            error={touched.text && errors.text}
-                            multiline={true}
-                          />
-                          <ButtonContainer>
-                            <Button
-                              color="#0000ff"
-                              disabled={createFeedLoading}
-                              onPress={() => setCreateFeedModalOpen(true)}
-                            >
-                              게시
-                            </Button>
-                          </ButtonContainer>
+                          <Touchable>
+                            <RNPickerSelect
+                              onValueChange={(value) => {
+                                setClassOrderUuid(value);
+                              }}
+                              value={classOrderUuid}
+                              style={{
+                                inputIOS: {
+                                  fontSize: 16,
+                                  paddingVertical: 12,
+                                  paddingHorizontal: 10,
+                                  borderWidth: 1,
+                                  borderColor: "gray",
+                                  borderRadius: 4,
+                                  color: "black",
+                                  paddingRight: 30,
+                                },
+                              }}
+                              placeholder={{
+                                label: "기수를 선택하세요.",
+                              }}
+                              pickerProps={{
+                                style: { height: 200, overflow: "hidden" },
+                              }}
+                              items={
+                                classes &&
+                                classes.length !== 0 &&
+                                classes.map((classe: any) => ({
+                                  label:
+                                    classe.order.toString() +
+                                    " 기 - " +
+                                    Moment(classe.startDate).format(
+                                      "Y년 M월 D일"
+                                    ) +
+                                    " ~ " +
+                                    Moment(classe.endDate).format(
+                                      "Y년 M월 D일"
+                                    ),
+                                  value: classe.uuid.toString(),
+                                }))
+                              }
+                            />
+                          </Touchable>
+                          {classOrderUuid && classOrderUuid.length !== 0 && (
+                            <>
+                              <FormikInput
+                                label={"공지를 입력하세요"}
+                                value={values.text}
+                                onChange={setFieldValue}
+                                onTouch={setFieldTouched}
+                                name="text"
+                                error={touched.text && errors.text}
+                                multiline={true}
+                              />
+                              <ButtonContainer>
+                                <Button
+                                  color="#0000ff"
+                                  disabled={createFeedLoading}
+                                  onPress={() => setCreateFeedModalOpen(true)}
+                                >
+                                  게시
+                                </Button>
+                              </ButtonContainer>
+                            </>
+                          )}
                         </>
                       )}
                     </Formik>
