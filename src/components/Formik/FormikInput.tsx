@@ -22,6 +22,7 @@ interface IProps {
   keyboardType?: KeyboardTypeOptions;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
   placeholder?: string;
+  multiline?: boolean;
   onChange: (name: string, value: string) => void;
   onTouch: (name: string) => void;
 }
@@ -35,6 +36,7 @@ const FormikInput: React.FC<IProps> = ({
   onTouch,
   autoCapitalize,
   placeholder,
+  multiline = false,
   ...rest
 }) => {
   const handleChange = (value) => {
@@ -47,12 +49,14 @@ const FormikInput: React.FC<IProps> = ({
   return (
     <Container type={type}>
       <TextInput
+        mode="outlined"
         label={label}
         autoCapitalize={autoCapitalize}
         onChangeText={handleChange}
         onBlur={handleBlur}
         error={error}
         placeholder={placeholder}
+        multiline={multiline}
         {...rest}
       />
       <HelperText type="error" visible={error}>

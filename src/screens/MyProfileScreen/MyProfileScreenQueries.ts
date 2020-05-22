@@ -69,7 +69,6 @@ export const GET_FEED_LIST_STAFF = gql`
   }
 `;
 
-
 export const GET_CLASS_LIST = gql`
   query GetClassList {
     getClassList {
@@ -79,6 +78,35 @@ export const GET_CLASS_LIST = gql`
         endDate
         uuid
       }
+    }
+  }
+`;
+
+export const CREATE_FEED = gql`
+  mutation CreateFeed($classOrderUuid: String!, $text: String!) {
+    createFeed(classOrderUuid: $classOrderUuid, text: $text) {
+      feed {
+        classOrder {
+          order
+          startDate
+          endDate
+          uuid
+        }
+        user {
+          username
+        }
+        uuid
+        text
+        createdAt
+      }
+    }
+  }
+`;
+
+export const REMOVE_FEED = gql`
+  mutation RemoveFeed($feedUuid: String!) {
+    removeFeed(feedUuid: $feedUuid) {
+      uuid
     }
   }
 `;

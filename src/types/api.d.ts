@@ -390,6 +390,76 @@ export interface GetClassList {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateFeed
+// ====================================================
+
+export interface CreateFeed_createFeed_feed_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+  uuid: any;
+}
+
+export interface CreateFeed_createFeed_feed_user {
+  __typename: "UserType";
+  /**
+   * 150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.
+   */
+  username: string;
+}
+
+export interface CreateFeed_createFeed_feed {
+  __typename: "FeedType";
+  classOrder: CreateFeed_createFeed_feed_classOrder | null;
+  user: CreateFeed_createFeed_feed_user;
+  uuid: any;
+  text: string | null;
+  createdAt: any;
+}
+
+export interface CreateFeed_createFeed {
+  __typename: "CreateFeedReponse";
+  feed: CreateFeed_createFeed_feed | null;
+}
+
+export interface CreateFeed {
+  createFeed: CreateFeed_createFeed;
+}
+
+export interface CreateFeedVariables {
+  classOrderUuid: string;
+  text: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: RemoveFeed
+// ====================================================
+
+export interface RemoveFeed_removeFeed {
+  __typename: "RemoveFeedReponse";
+  uuid: string | null;
+}
+
+export interface RemoveFeed {
+  removeFeed: RemoveFeed_removeFeed;
+}
+
+export interface RemoveFeedVariables {
+  feedUuid: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: GetReportDetail
 // ====================================================
 

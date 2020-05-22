@@ -147,7 +147,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
       },
     });
     setModalOpen(false);
-    toast("체크리스트를 제출 하였습니다.");
+    toast("체크리스트를 제출하였습니다.");
   };
   if (meLoading || checkListQuestionsLoading) {
     return (
@@ -163,7 +163,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
             <Dialog.Title>알림</Dialog.Title>
             <Dialog.Content>
               <Paragraph>
-                체크리스트는 제출한 후에는 수정을 할 수 없습니다.
+                체크리스트를 제출한 후에는 수정을 할 수 없습니다.
               </Paragraph>
               <Paragraph>제출하시겠습니까?</Paragraph>
             </Dialog.Content>

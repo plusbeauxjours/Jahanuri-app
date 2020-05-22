@@ -2260,7 +2260,7 @@
             "description": null,
             "args": [
               {
-                "name": "orderUuid",
+                "name": "classOrderUuid",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -3423,12 +3423,12 @@
         "description": null,
         "fields": [
           {
-            "name": "ok",
+            "name": "feed",
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
+              "kind": "OBJECT",
+              "name": "FeedType",
               "ofType": null
             },
             "isDeprecated": false,
@@ -3446,12 +3446,12 @@
         "description": null,
         "fields": [
           {
-            "name": "ok",
+            "name": "uuid",
             "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,

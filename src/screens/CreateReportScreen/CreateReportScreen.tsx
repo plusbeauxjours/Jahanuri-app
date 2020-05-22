@@ -127,7 +127,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     });
     setModalOpen(false);
     navigation.goBack(null);
-    toast("일지를 제출 하였습니다.");
+    toast("일지를 제출하였습니다.");
   };
   const handleDateConfirm = (date) => {
     console.log("A date has been picked: ", date);
