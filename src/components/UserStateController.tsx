@@ -42,7 +42,7 @@ export default withNavigation(({ navigation }) => {
         <>
           <View>
             <Text>아직 신청서를 제출하지 않았습니다.</Text>
-            <Touchable onPress={() => navigation.push("ApplicationScreen")}>
+            <Touchable onPress={() => navigation.navigate("ApplicationScreen")}>
               <DateFont>신청서를 제출하려면 여기를 탭하세요.</DateFont>
             </Touchable>
           </View>
@@ -55,7 +55,7 @@ export default withNavigation(({ navigation }) => {
           <View>
             <Text>아직 결제를 하지 않았습니다.</Text>
             <Touchable
-              onPress={() => navigation.push("PaymentInformationScreen")}
+              onPress={() => navigation.navigate("PaymentInformationScreen")}
             >
               <DateFont>결제 정보를 보려면 여기를 탭하세요.</DateFont>
             </Touchable>
@@ -68,7 +68,7 @@ export default withNavigation(({ navigation }) => {
         <>
           <View>
             <Text>체크리스트를 제출하지 않았습니다.</Text>
-            <Touchable onPress={() => navigation.push("CheckListScreen")}>
+            <Touchable onPress={() => navigation.navigate("CheckListScreen")}>
               <DateFont>체크리스트를 제출하려면 여기를 탭하세요.</DateFont>
             </Touchable>
           </View>

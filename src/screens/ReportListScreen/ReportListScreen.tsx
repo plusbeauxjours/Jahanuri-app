@@ -69,8 +69,9 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
             {me && me.user.hasPaid ? (
               <Touchable
                 onPress={() =>
-                  navigation.push("CreateReportScreen", {
+                  navigation.navigate("CreateReportScreen", {
                     reportCoverUuid: me.user.reportCoverUuid,
+                    reports: reports,
                   })
                 }
               >
@@ -93,7 +94,9 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                 )}
               </Touchable>
             ) : (
-              <Touchable onPress={() => navigation.push("CreateReportScreen")}>
+              <Touchable
+                onPress={() => navigation.navigate("CreateReportScreen")}
+              >
                 {Platform.OS === "ios" ? (
                   <IconContainer>
                     <Ionicons
@@ -119,7 +122,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                 <Touchable
                   key={report.uuid}
                   onPress={() =>
-                    navigation.push("ReportDetailScreen", {
+                    navigation.navigate("ReportDetailScreen", {
                       reportUuid: report.uuid,
                     })
                   }

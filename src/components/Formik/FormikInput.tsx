@@ -52,12 +52,15 @@ const FormikInput: React.FC<IProps> = ({
       <TextInput
         mode="outlined"
         label={label}
-        autoCapitalize={autoCapitalize}
+        autoCapitalize={"none"}
+        autoCompleteType={"off"}
+        autoCorrect={false}
         onChangeText={handleChange}
         onBlur={handleBlur}
         error={error}
         placeholder={placeholder}
         multiline={multiline}
+        style={{ backgroundColor: "#fff" }}
         {...rest}
       />
       <HelperText type="error" visible={error}>

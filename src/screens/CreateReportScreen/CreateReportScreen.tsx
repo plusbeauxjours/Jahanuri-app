@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Portal, Dialog, Paragraph } from "react-native-paper";
@@ -24,6 +24,7 @@ import BackCustomHeader from "../../components/BackCustomHeader";
 
 import { useMe } from "../../context/meContext";
 import Divider from "../../components/Divider";
+import dimensions from "../../constants/dimensions";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -48,10 +49,18 @@ const ButtonContainer = styled.View`
   height: 100px;
 `;
 const Date = styled.Text`
-  font-size: 20px;
-  font-weight: 400;
+  width: ${dimensions.width - 40};
+  font-size: 24px;
+  color: #000;
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  border: 1px solid #999;
   color: #999;
+  border-radius: 5px;
+  background-color: #fff;
 `;
+
 const initialValues = {
   saengSikMorning: "",
   saengSikNoon: "",
@@ -82,6 +91,7 @@ interface IProps {
 const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   const { me, loading } = useMe();
   const [reportDate, setReportDate] = useState<any>(null);
+  const [reportDates, setReportDates] = useState<any>([]);
   const [isDatePickerModalOpen, setDatePickerModalOpen] = useState<boolean>(
     false
   );
@@ -112,7 +122,6 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     });
   };
   const submitConfirm = (values: any) => {
-    console.log(reportDate);
     submitReportFn({
       variables: {
         reportCoverUuid:
@@ -147,12 +156,16 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
       },
     });
     setModalOpen(false);
-    navigation.goBack(null);
+    navigation.navigate("ReportListScreen");
     toast("일지를 제출하였습니다.");
   };
   const handleDateConfirm = (date) => {
-    setReportDate(Moment(date).format("YMD"));
-    setDatePickerModalOpen(false);
+    setReportDate(Moment(date).format("YYYY-MM-DD"));
+    if (reportDates.includes(Moment(date).format("YYYY-MM-DD"))) {
+      toast("이미 일지를 제출하였습니다.");
+    } else {
+      setDatePickerModalOpen(false);
+    }
   };
   const validationSchema = Yup.object().shape({
     meal: Yup.string().required("일반 식사는 필수 입력 사항입니다."),
@@ -167,10 +180,17 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     etc: Yup.string().required("기타는 필수 입력 사항입니다."),
     diary: Yup.string().required("세줄 일기는 필수 입력 사항입니다."),
   });
+  useEffect(() => {
+    navigation.state.params &&
+      navigation.state.params.reports &&
+      navigation.state.params.reports.length !== 0 &&
+      navigation.state.params.reports.map((report: any) =>
+        setReportDates((prev) => [...prev, report.reportDate])
+      );
+  }, []);
   return (
     <>
       <BackCustomHeader title={"새 일지"} />
-      <Date>{reportDate}</Date>
       <KeyboardAwareScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -216,8 +236,20 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 </Dialog>
               </Portal>
               <Touchable onPress={() => setDatePickerModalOpen(true)}>
-                <Text>Date</Text>
+                <Date>
+                  {reportDate
+                    ? reportDate.substr(0, 4) +
+                      "년 " +
+                      reportDate.substr(5, 2) +
+                      "월 " +
+                      reportDate.substr(8, 2) +
+                      "일"
+                    : "탭하여 날짜를 선택하세요."}
+                </Date>
                 <DatePickerModal
+                  headerTextIOS={"날짜를 선택하세요."}
+                  cancelTextIOS={"취소"}
+                  confirmTextIOS={"확인"}
                   isVisible={isDatePickerModalOpen}
                   mode="date"
                   locale="kr_KR"
@@ -330,6 +362,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 <CheckBox
                   size={30}
                   checked={jeunHaeJilA}
+                  checkedColor={"#8b00ff"}
                   onPress={() => {
                     setJeunHaeJilA((jeunHaeJilA) => !jeunHaeJilA);
                   }}
@@ -337,6 +370,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 <CheckBox
                   size={30}
                   checked={jeunHaeJilB}
+                  checkedColor={"#8b00ff"}
                   onPress={() => {
                     setJeunHaeJilB((jeunHaeJilB) => !jeunHaeJilB);
                   }}
@@ -344,6 +378,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 <CheckBox
                   size={30}
                   checked={jeunHaeJilC}
+                  checkedColor={"#8b00ff"}
                   onPress={() => {
                     setJeunHaeJilC((jeunHaeJilC) => !jeunHaeJilC);
                   }}
@@ -351,6 +386,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 <CheckBox
                   size={30}
                   checked={jeunHaeJilD}
+                  checkedColor={"#8b00ff"}
                   onPress={() => {
                     setJeunHaeJilD((jeunHaeJilD) => !jeunHaeJilD);
                   }}
@@ -462,7 +498,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 <Button
                   raised
                   primary
-                  disabled={!isValid}
+                  disabled={!isValid || !reportDate}
                   loading={submitReportLoading}
                   onPress={() => setModalOpen(true)}
                   title="제출"
