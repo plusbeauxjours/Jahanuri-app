@@ -10,15 +10,21 @@ const IconContainer = styled.TouchableOpacity`
   width: 40px;
 `;
 const View = styled.View`
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: baseline;
 `;
 const Text = styled.Text`
   font-size: 18px;
+  margin-right: 10px;
+`;
+const SmallText = styled.Text`
+  font-size: 12px;
 `;
 
 interface IProps {
   title: string;
+  subTitle?: string;
 }
 const LeftComponent = withNavigation(({ navigation }) => {
   return (
@@ -28,22 +34,23 @@ const LeftComponent = withNavigation(({ navigation }) => {
   );
 });
 
-const CenterComponent = ({ title }) => {
+const CenterComponent = ({ title, subTitle }) => {
   return (
     <View>
       <Text>{title}</Text>
+      <SmallText>{subTitle}</SmallText>
     </View>
   );
 };
 
-const MenuCustomHeader: React.FC<IProps> = ({ title }) => {
+const MenuCustomHeader: React.FC<IProps> = ({ title, subTitle }) => {
   return (
     <Header
       placement="left"
       leftComponent={<LeftComponent />}
-      centerComponent={<CenterComponent title={title} />}
+      centerComponent={<CenterComponent title={title} subTitle={subTitle} />}
       containerStyle={{
-        backgroundColor: null,
+        backgroundColor: "#fff",
         borderBottomColor: "#999",
         justifyContent: "space-around",
         alignItems: "center",

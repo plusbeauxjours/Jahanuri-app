@@ -99,7 +99,6 @@ class EditProfileScreen extends React.Component<IProps> {
               <KeyboardAwareScrollView
                 contentContainerStyle={{
                   flexGrow: 1,
-                  backgroundColor: "#fff",
                   alignItems: "center",
                   justifyContent: "center",
                 }}

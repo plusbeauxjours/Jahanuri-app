@@ -173,10 +173,21 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
             </Dialog.Actions>
           </Dialog>
         </Portal>
-        <MenuCustomHeader title={"체크리스트"} />
+        {!me.user.hasPreviousCheckListSubmitted &&
+          !me.user.hasLaterCheckListSubmitted && (
+            <MenuCustomHeader title={"체크리스트"} subTitle={"(0/2)"} />
+          )}
+        {me.user.hasPreviousCheckListSubmitted &&
+          !me.user.hasLaterCheckListSubmitted && (
+            <MenuCustomHeader title={"체크리스트"} subTitle={"(1/2)"} />
+          )}
+        {me.user.hasPreviousCheckListSubmitted &&
+          me.user.hasLaterCheckListSubmitted && (
+            <MenuCustomHeader title={"체크리스트"} subTitle={"(2/2)"} />
+          )}
         <ScrollView
           style={{
-            backgroundColor: "#FFFFFF",
+            backgroundColor: null,
           }}
           keyboardShouldPersistTaps="always"
           showsVerticalScrollIndicator={false}
@@ -272,7 +283,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               <Button
                 raised
                 primary
-                style={{ marginTop: 30, marginBottom: 30, color: "red" }}
+                style={{ marginTop: 30, marginBottom: 30 }}
                 disabled={
                   trueAnswerQuestionUuids.length === 0 ||
                   checkListQuestionsLoading

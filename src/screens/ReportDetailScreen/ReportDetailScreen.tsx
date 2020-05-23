@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useQuery } from "react-apollo-hooks";
 import { Formik } from "formik";
-import { CheckBox } from "react-native-elements";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -16,7 +15,6 @@ import { GetReportDetail, GetReportDetailVariables } from "../../types/api";
 import BackCustomHeader from "../../components/BackCustomHeader";
 
 import Divider from "../../components/Divider";
-import dimensions from "../../constants/dimensions";
 import { ActivityIndicator } from "react-native";
 import { GET_REPORT_DETAIL } from "./ReportDetailScreenQueries";
 import Moment from "moment";
@@ -36,18 +34,6 @@ const Line = styled.View`
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
-`;
-const Date = styled.Text`
-  width: ${dimensions.width - 40};
-  font-size: 24px;
-  color: #000;
-  text-align: center;
-  margin: 40px 0;
-  padding: 20px;
-  border: 1px solid #999;
-  color: #999;
-  border-radius: 5px;
-  background-color: #fff;
 `;
 const CheckboxLine = styled.View`
   justify-content: space-around;

@@ -193,9 +193,9 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         >
           <MyProfileHeader
-            order={me.classOrder.order}
-            startDate={me.classOrder.startDate}
-            endDate={me.classOrder.endDate}
+            order={me.classOrder && me.classOrder.order}
+            startDate={me.classOrder && me.classOrder.startDate}
+            endDate={me.classOrder && me.classOrder.endDate}
             isStaff={me.isStaff}
             userImg={me.userImg}
             name={`${me.lastName} ${me.firstName}`}

@@ -9,7 +9,6 @@ const View = styled.View`
   justify-content: space-between;
   height: 50px;
   padding: 0 20px;
-  background-color: ${(props) => props.theme.bgColor};
 `;
 const Text = styled.Text`
   width: ${dimensions.width - 100};
