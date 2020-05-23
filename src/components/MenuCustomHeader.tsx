@@ -13,7 +13,9 @@ const View = styled.View`
   align-items: center;
   justify-content: center;
 `;
-const Text = styled.Text``;
+const Text = styled.Text`
+  font-size: 18px;
+`;
 
 interface IProps {
   title: string;

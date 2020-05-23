@@ -1,32 +1,70 @@
 import React from "react";
 import styled from "styled-components";
-import { NavigationStackScreenComponent } from "react-navigation-stack";
-import { ActivityIndicator } from "react-native";
-import { GetReportDetail, GetReportDetailVariables } from "../../types/api";
-import { GET_REPORT_DETAIL } from "./ReportDetailScreenQueries";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useQuery } from "react-apollo-hooks";
-import Divider from "../../components/Divider";
+import { Formik } from "formik";
+import { CheckBox } from "react-native-elements";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
+import { FontAwesome } from "@expo/vector-icons";
+
+import FormikInput from "../../components/Formik/FormikInput";
+import { GetReportDetail, GetReportDetailVariables } from "../../types/api";
 import BackCustomHeader from "../../components/BackCustomHeader";
+
+import Divider from "../../components/Divider";
+import dimensions from "../../constants/dimensions";
+import { ActivityIndicator } from "react-native";
+import { GET_REPORT_DETAIL } from "./ReportDetailScreenQueries";
+import Moment from "moment";
 
 const Container = styled.View`
   flex: 1;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+`;
+const Text = styled.Text`
+  align-self: flex-start;
+  font-weight: 400;
+  margin-left: 20px;
+  font-size: 12px;
 `;
 const Line = styled.View`
   flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
 `;
-const View = styled.View`
-  flex: 1;
+const Date = styled.Text`
+  width: ${dimensions.width - 40};
+  font-size: 24px;
+  color: #000;
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  border: 1px solid #999;
+  color: #999;
+  border-radius: 5px;
+  background-color: #fff;
+`;
+const CheckboxLine = styled.View`
+  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 60px;
 `;
-const MainTitle = styled.Text``;
-const Title = styled.Text``;
-const Text = styled.Text``;
-const ScrollView = styled.ScrollView``;
+const WhiteSpace = styled.View`
+  height: 30px;
+`;
 
-const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
   const {
     data: { getReportDetail: { report = null } = {} } = {},
     loading: getReportDetailLoading,
@@ -44,102 +82,294 @@ const ReportDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
   } else {
     return (
       <>
-        <BackCustomHeader title={"일지"} />
-        <ScrollView>
-          <View>
-            <Text>{report.uuid}</Text>
-            <Divider text={"기수"} color={"dark"} />
-            <Line>
-              {report.reportCover.classOrder && (
-                <Text>{report.reportCover.classOrder.order}</Text>
-              )}
-              {report.reportCover.classOrder && (
-                <Text>{report.reportCover.classOrder.startDate}</Text>
-              )}
-              {report.reportCover.classOrder && (
-                <Text>report.reportCover.classOrder.endDate}</Text>
-              )}
-              <Text>{report.reportCover.reportType}</Text>
-            </Line>
-            <Divider text={"영양습관"} color={"dark"} />
-            <Line>
-              <MainTitle>주식</MainTitle>
-              <Title>섭생식</Title>
-              <Text>아침{report.saengSikMorning}</Text>
-              <Text>점심{report.saengSikNoon}</Text>
-              <Text>저녁{report.saengSikEvening}</Text>
-            </Line>
-            <MainTitle>부식</MainTitle>
-            <Line>
-              <Title>아미노</Title>
-              <Text>아침{report.aminoMorning}</Text>
-              <Text>점심{report.aminoNoon}</Text>
-              <Text>저녁{report.aminoEvening}</Text>
-            </Line>
-            <Line>
-              <Title>생기소</Title>
-              <Text>아침{report.sangiSoMorning}</Text>
-              <Text>점심{report.sangiSoNoon}</Text>
-              <Text>저녁{report.sangiSoEvening}</Text>
-            </Line>
-            <Line>
-              <Title>전해질 보충</Title>
-              <Text>{report.jeunHaeJilA}</Text>
-              <Text>{report.jeunHaeJilB}</Text>
-              <Text>{report.jeunHaeJilC}</Text>
-              <Text>{report.jeunHaeJilD}</Text>
-            </Line>
-            <Line>
-              <Title>일반 식사</Title>
-              <Text>{report.meal}</Text>
-            </Line>
-            <Line>
-              <Title>식사 습관 체크</Title>
-              <Text>{report.mealCheck}</Text>
-            </Line>
-            <Divider text={"생활습관"} color={"dark"} />
-            <Line>
-              <Title>잠</Title>
-              <Text>{report.sleeping}</Text>
-            </Line>
-            <Line>
-              <Title>변</Title>
-              <Text>{report.stool}</Text>
-            </Line>
-            <Line>
-              <Title>곡식 찜질</Title>
-              <Text>{report.hotGrain}</Text>
-            </Line>
-            <Line>
-              <Title>따뜻한 물</Title>
-              <Text>{report.hotWater}</Text>
-            </Line>
-            <Line>
-              <Title>걷기</Title>
-              <Text>{report.strolling}</Text>
-            </Line>
-            <Divider text={"오늘의 숙제 (운동 / 강의)"} color={"dark"} />
-            <Line>
-              <Title>운동</Title>
-              <Text>{report.workout}</Text>
-            </Line>
-            <Line>
-              <Title>강의</Title>
-              <Text>{report.lecture}</Text>
-            </Line>
-            <Line>
-              <Title>기타</Title>
-              <Text>{report.etc}</Text>
-            </Line>
-            <Divider text={"세줄 일기"} color={"dark"} />
-            <Line>
-              <Text>{report.diary}</Text>
-            </Line>
-          </View>
-        </ScrollView>
+        {report.reportCover.classOrder ? (
+          <BackCustomHeader
+            title={
+              `${Moment(report.reportDate).diff(
+                Moment(report.reportCover.classOrder.startDate),
+                "day"
+              )}` + "일차 일지"
+            }
+            subTitle={`(${
+              report.reportDate &&
+              report.reportDate.substr(5, 2) +
+                "월 " +
+                report.reportDate.substr(8, 2) +
+                "일"
+            })`}
+          />
+        ) : (
+          <BackCustomHeader
+            title={
+              report.reportDate &&
+              report.reportDate.substr(5, 2) +
+                "월 " +
+                report.reportDate.substr(8, 2) +
+                "일 일지"
+            }
+          />
+        )}
+        <KeyboardAwareScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+            backgroundColor: null,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          keyboardShouldPersistTaps="handled"
+        >
+          <Formik initialValues={{}} onSubmit={() => {}}>
+            {({ setFieldValue, setFieldTouched, touched, errors }) => (
+              <>
+                <WhiteSpace />
+                <Divider text={"영양습관"} color={"dark"} />
+                <Text>섭생식</Text>
+                <Line>
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="아침"
+                    value={report.saengSikMorning}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="saengSikMorning"
+                  />
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="점심"
+                    value={report.saengSikNoon}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="saengSikNoon"
+                  />
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="저녁"
+                    value={report.saengSikEvening}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="saengSikEvening"
+                  />
+                </Line>
+                <Text>아미노</Text>
+                <Line>
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="아침"
+                    value={report.aminoMorning}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="aminoMorning"
+                  />
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="점심"
+                    value={report.aminoNoon}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="aminoNoon"
+                  />
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="저녁"
+                    value={report.aminoEvening}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="aminoEvening"
+                  />
+                </Line>
+                <Text>생기소</Text>
+                <Line>
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="아침"
+                    value={report.sangiSoMorning}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="sangiSoMorning"
+                  />
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="점심"
+                    value={report.sangiSoNoon}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="sangiSoNoon"
+                  />
+                  <FormikInput
+                    editable={false}
+                    type="row"
+                    label="저녁"
+                    value={report.sangiSoEvening}
+                    onChange={setFieldValue}
+                    onTouch={setFieldTouched}
+                    name="sangiSoEvening"
+                  />
+                </Line>
+                <Text>전해질 보충</Text>
+                <CheckboxLine>
+                  {report.jeunHaeJilA ? (
+                    <FontAwesome
+                      name="check-square-o"
+                      color={"#999"}
+                      size={30}
+                    />
+                  ) : (
+                    <FontAwesome
+                      name="square-o"
+                      color={"#999"}
+                      size={30}
+                      checked={report.jeunHaeJilA}
+                    />
+                  )}
+                  {report.jeunHaeJilB ? (
+                    <FontAwesome
+                      name="check-square-o"
+                      color={"#999"}
+                      size={30}
+                    />
+                  ) : (
+                    <FontAwesome
+                      name="square-o"
+                      color={"#999"}
+                      size={30}
+                      checked={report.jeunHaeJilB}
+                    />
+                  )}
+                  {report.jeunHaeJilC ? (
+                    <FontAwesome
+                      name="check-square-o"
+                      color={"#999"}
+                      size={30}
+                    />
+                  ) : (
+                    <FontAwesome
+                      name="square-o"
+                      color={"#999"}
+                      size={30}
+                      checked={report.jeunHaeJilC}
+                    />
+                  )}
+                  {report.jeunHaeJilD ? (
+                    <FontAwesome
+                      name="check-square-o"
+                      color={"#999"}
+                      size={30}
+                    />
+                  ) : (
+                    <FontAwesome
+                      name="square-o"
+                      color={"#999"}
+                      size={30}
+                      checked={report.jeunHaeJilD}
+                    />
+                  )}
+                </CheckboxLine>
+                <FormikInput
+                  editable={false}
+                  label="일반 식사"
+                  value={report.meal}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="meal"
+                />
+                <FormikInput
+                  editable={false}
+                  label="식사 습관 체크"
+                  value={report.mealCheck}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="mealCheck"
+                />
+                <Divider text={"생활습관"} color={"dark"} />
+                <FormikInput
+                  editable={false}
+                  label="잠"
+                  value={report.sleeping}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sleeping"
+                />
+                <FormikInput
+                  editable={false}
+                  label="변"
+                  value={report.stool}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="stool"
+                />
+                <FormikInput
+                  editable={false}
+                  label="곡식 찜질"
+                  value={report.hotGrain}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="hotGrain"
+                />
+                <FormikInput
+                  editable={false}
+                  label="따뜻한 물"
+                  value={report.hotWater}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="hotWater"
+                />
+                <FormikInput
+                  editable={false}
+                  label="걷기"
+                  value={report.strolling}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="strolling"
+                />
+                <Divider text={"오늘의 숙제 (운동/강의)"} color={"dark"} />
+                <FormikInput
+                  editable={false}
+                  label="운동"
+                  value={report.workout}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="workout"
+                />
+                <FormikInput
+                  editable={false}
+                  label="강의"
+                  value={report.lecture}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="lecture"
+                />
+                <FormikInput
+                  editable={false}
+                  label="기타"
+                  value={report.etc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="etc"
+                />
+                <Divider text={"세줄 일기"} color={"dark"} />
+                <FormikInput
+                  editable={false}
+                  label="세줄 일기"
+                  value={report.diary}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="diary"
+                  multiline={true}
+                />
+              </>
+            )}
+          </Formik>
+        </KeyboardAwareScrollView>
       </>
     );
   }
 };
-ReportDetailScreen.navigationOptions = () => ({});
 export default ReportDetailScreen;

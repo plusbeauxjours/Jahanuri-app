@@ -60,7 +60,12 @@ const Date = styled.Text`
   border-radius: 5px;
   background-color: #fff;
 `;
-
+const CheckboxLine = styled.View`
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  height: 60px;
+`;
 const initialValues = {
   saengSikMorning: "",
   saengSikNoon: "",
@@ -358,7 +363,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 />
               </Line>
               <Text>전해질 보충</Text>
-              <Line>
+              <CheckboxLine>
                 <CheckBox
                   size={30}
                   checked={jeunHaeJilA}
@@ -391,7 +396,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     setJeunHaeJilD((jeunHaeJilD) => !jeunHaeJilD);
                   }}
                 />
-              </Line>
+              </CheckboxLine>
               <FormikInput
                 label="일반 식사"
                 value={values.meal}

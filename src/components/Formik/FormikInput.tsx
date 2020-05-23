@@ -16,7 +16,7 @@ interface ITheme {
 interface IProps {
   type?: string;
   label: string;
-  error: any;
+  error?: any;
   value: string;
   name: string;
   secureTextEntry?: boolean;
@@ -24,6 +24,7 @@ interface IProps {
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
   placeholder?: string;
   multiline?: boolean;
+  editable?: boolean;
   onChange: (name: string, value: string) => void;
   onTouch: (name: string) => void;
 }
@@ -38,6 +39,7 @@ const FormikInput: React.FC<IProps> = ({
   autoCapitalize,
   placeholder,
   multiline = false,
+  editable = true,
   ...rest
 }) => {
   const handleChange = (value) => {
@@ -61,6 +63,7 @@ const FormikInput: React.FC<IProps> = ({
         placeholder={placeholder}
         multiline={multiline}
         style={{ backgroundColor: "#fff" }}
+        editable={editable}
         {...rest}
       />
       <HelperText type="error" visible={error}>

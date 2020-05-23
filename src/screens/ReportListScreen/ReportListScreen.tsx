@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useQuery } from "react-apollo-hooks";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useMe } from "../../context/meContext";
-import { ActivityIndicator, RefreshControl, Platform } from "react-native";
+import { ActivityIndicator, RefreshControl } from "react-native";
 import { GetReportList, GetReportListVariables } from "../../types/api";
 import { GET_REPORT_LIST } from "./ReportListScreenQueries";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
@@ -27,11 +27,7 @@ const SmallText = styled.Text`
   font-weight: 400;
   font-size: 12px;
 `;
-const ScrollView = styled.ScrollView`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
+const ScrollView = styled.ScrollView``;
 const Touchable = styled.TouchableOpacity``;
 const Row = styled.View`
   width: 240px;
@@ -41,7 +37,7 @@ const Row = styled.View`
   align-items: center;
   padding: 20px;
 `;
-const FirstRow = styled(Row)`
+const CenterRow = styled(Row)`
   width: 240px;
   height: 80px;
   justify-content: center;
@@ -99,6 +95,11 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
               tintColor={"#999"}
             />
           }
+          contentContainerStyle={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
           showsVerticalScrollIndicator={false}
         >
           <View>
@@ -112,9 +113,9 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                     })
                   }
                 >
-                  <FirstRow>
+                  <CenterRow>
                     <Text>새일지 제출하기</Text>
-                  </FirstRow>
+                  </CenterRow>
                 </Touchable>
                 <GreyLine />
               </>
@@ -123,9 +124,9 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                 <Touchable
                   onPress={() => navigation.navigate("CreateReportScreen")}
                 >
-                  <FirstRow>
+                  <CenterRow>
                     <Text>새일지 제출하기</Text>
-                  </FirstRow>
+                  </CenterRow>
                 </Touchable>
                 <GreyLine />
               </>
@@ -133,31 +134,37 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
             {reports &&
               reports.length !== 0 &&
               reports.map((report: any) => (
-                <>
+                <React.Fragment key={report.uuid}>
                   <Touchable
-                    key={report.uuid}
                     onPress={() =>
                       navigation.navigate("ReportDetailScreen", {
                         reportUuid: report.uuid,
                       })
                     }
                   >
-                    <Row>
-                      <Text>
-                        {report.reportCover.classOrder &&
-                          Moment(report.reportDate).diff(
+                    {report.reportCover.classOrder ? (
+                      <Row>
+                        <Text>
+                          {Moment(report.reportDate).diff(
                             Moment(report.reportCover.classOrder.startDate),
                             "day"
                           )}
-                        일차 일지
-                      </Text>
-                      <SmallText>
-                        ({Moment(report.reportDate).format("MM월 DD일")})
-                      </SmallText>
-                    </Row>
+                          일차 일지
+                        </Text>
+                        <SmallText>
+                          ({Moment(report.reportDate).format("MM월 DD일")})
+                        </SmallText>
+                      </Row>
+                    ) : (
+                      <CenterRow>
+                        <Text>
+                          {Moment(report.reportDate).format("MM월 DD일")} 일지
+                        </Text>
+                      </CenterRow>
+                    )}
                   </Touchable>
                   <GreyLine />
-                </>
+                </React.Fragment>
               ))}
           </View>
           <Circle>●</Circle>
