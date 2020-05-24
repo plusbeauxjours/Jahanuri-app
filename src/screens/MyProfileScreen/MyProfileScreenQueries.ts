@@ -22,6 +22,7 @@ export const ME = gql`
         hasSubmittedSurvey
         hasPaid
         hasKakaoAccount
+        hasAppleAccount
         isStaff
       }
     }
