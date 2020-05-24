@@ -49,9 +49,9 @@ const validationSchema = Yup.object().shape({
   username: Yup.string()
     .matches(
       /^[A-Za-z0-9_]{4,15}$/,
-      "유저명은 숫자와 영문 알파벳만 가능하고, 4자 이상, 15자 이내입니다."
+      "아이디는 숫자와 영문 알파벳만 가능하고, 4자 이상, 15자 이내입니다."
     )
-    .required("유저명은 필수 입력 사항입니다."),
+    .required("아이디는 필수 입력 사항입니다."),
   password: Yup.string()
     .min(6, "비밀번호는 6자 이상입니다.")
     .required("비밀번호는 필수 입력 사항 입니다."),
@@ -140,7 +140,7 @@ const SignupForm: React.FC<IProps> = ({ navigation }) => {
                   error={touched.email && errors.email}
                 />
                 <FormikInput
-                  label="유저명"
+                  label="아이디"
                   autoCapitalize="none"
                   value={values.username}
                   onChange={setFieldValue}
@@ -191,7 +191,7 @@ const SignupForm: React.FC<IProps> = ({ navigation }) => {
                         loginFn();
                       }}
                       onError={(e) => {
-                        toast("다른 유저명을 사용하세요.");
+                        toast("다른 아이디을 사용하세요.");
                       }}
                     >
                       {(signupFn, { loading: signupLoading }) => (

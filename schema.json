@@ -992,6 +992,30 @@
             "deprecationReason": null
           },
           {
+            "name": "habitchecklistSet",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "HabitCheckListType",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "userSet",
             "description": "",
             "args": [],
@@ -1413,6 +1437,1259 @@
           {
             "name": "SANGHWA",
             "description": "Sanghwa",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "HabitCheckListType",
+        "description": null,
+        "fields": [
+          {
+            "name": "createdAt",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updatedAt",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "user",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "UserType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "job",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wakeupTime",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wakeupLong",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wakeupCondition",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListWakeupCondition",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wakeupConditionEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wakeupFirstThing",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListWakeupFirstThing",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "wakeupFirstThingEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "meal",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mealDuring",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListMealDuring",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mealDuringEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mealWithWater",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListMealWithWater",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mealWithSnack",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListMealWithSnack",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mealWithNightFood",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListMealWithNightFood",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "afterLunch",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListAfterLunch",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "afterLunchEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "saying",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListSaying",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sayingEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sayingRepeat",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "walking",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListWalking",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "walkingEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "posture",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListPosture",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "postureEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "postureDetail",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListPostureDetail",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "postureDetailEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bodyHeat",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListBodyHeat",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bodyHeatEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "exercise",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sleeping",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListSleeping",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sleepingEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "beforeSleeping",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "HabitCheckListBeforeSleeping",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "beforeSleepingEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "goodThing",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "badThing",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListWakeupCondition",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "WAKEUP_CONDITION_A",
+            "description": "개운하다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_B",
+            "description": "머리가 아프다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_C",
+            "description": "눈이 아프거나 잘 안 떠진다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_D",
+            "description": "몸이 결리거나 뻐근하다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_E",
+            "description": "일어나기 힘들다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_F",
+            "description": "멍하다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_G",
+            "description": "손이나 발 등이 저리다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_H",
+            "description": "부어있다 (얼굴, 손, 발 등)",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListWakeupFirstThing",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "WAKEUP_CONDITION_A",
+            "description": "찬물 혹은 찬음료를 마신다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_B",
+            "description": "뜨거운 물 혹은 차를 마신다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_C",
+            "description": "가벼운 스트레칭",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_D",
+            "description": "양치, 세수, 샤워",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_E",
+            "description": "스마트폰",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WAKEUP_CONDITION_F",
+            "description": "잡지, 신문",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListMealDuring",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "MEAL_DURING_A",
+            "description": "대화를 많이 하는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_B",
+            "description": "먹는 것에 집중하는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_C",
+            "description": "TV, 스마트폰 등을 보면서 먹는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_D",
+            "description": "꼭꼭 씹어서 먹는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_E",
+            "description": "급하게 먹는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_F",
+            "description": "많이 먹는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_G",
+            "description": "입이 짧다 (많이 못 먹는다)",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_H",
+            "description": "음식의 맛을 음미하면서 먹는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_I",
+            "description": "끼니 때우듯 먹는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_J",
+            "description": "식욕이 별로 없다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MEAL_DURING_K",
+            "description": "밥맛이 아주 좋다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListMealWithWater",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "DEGREE_A",
+            "description": "안한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_B",
+            "description": "거의 안한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_C",
+            "description": "가끔 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_D",
+            "description": "거의 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_E",
+            "description": "자주 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListMealWithSnack",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "DEGREE_A",
+            "description": "안한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_B",
+            "description": "거의 안한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_C",
+            "description": "가끔 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_D",
+            "description": "거의 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_E",
+            "description": "자주 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListMealWithNightFood",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "DEGREE_A",
+            "description": "안한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_B",
+            "description": "거의 안한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_C",
+            "description": "가끔 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_D",
+            "description": "거의 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DEGREE_E",
+            "description": "자주 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListAfterLunch",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "AFTER_LUNCH_A",
+            "description": "스마트폰을 본다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "AFTER_LUNCH_B",
+            "description": "밖에 나가 걷거나 산책을 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "AFTER_LUNCH_C",
+            "description": "담배를 핀다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "AFTER_LUNCH_D",
+            "description": "커피 등 후식을 즐긴다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "AFTER_LUNCH_E",
+            "description": "수다를 즐긴다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "AFTER_LUNCH_F",
+            "description": "잠이 쏟아진다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListSaying",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "SAYING_A",
+            "description": "말의 속도가 빠르다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_B",
+            "description": "듣는 것보다 말하는 것에 더 익숙하다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_C",
+            "description": "상대방의 말을 잘 듣는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_D",
+            "description": "말을 자주 더듬는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_E",
+            "description": "말을 거침없이 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_F",
+            "description": "자주 흥분해서 말한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_G",
+            "description": "말이 별로 없다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_H",
+            "description": "생각을 하고 말을 하는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_I",
+            "description": "말을 하면서 생각하는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_J",
+            "description": "말실수를 많이 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SAYING_K",
+            "description": "부정적인 반응을 자주 보인다(아닌 것 같은데~ 등)",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListWalking",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "WALKING_A",
+            "description": "걸음이 느리다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_B",
+            "description": "걸음이 빠른 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_C",
+            "description": "옆사람과 나란히 걷는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_D",
+            "description": "앞서서 걷는 편이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_E",
+            "description": "발을 끌면서 걷는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_F",
+            "description": "허리가 굽어 있다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_G",
+            "description": "파워워킹을 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "WALKING_H",
+            "description": "오래 걷지 못한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListPosture",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "POSTURE_A",
+            "description": "앉아 있는 시간",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_B",
+            "description": "서 있는 시간",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_C",
+            "description": "걷는 시간",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_D",
+            "description": "교통수단을 이용하는 시간",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_E",
+            "description": "누워 있는 시간",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListPostureDetail",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "POSTURE_DETAIL_A",
+            "description": "자세를 편하게 잘 펴고 있다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_B",
+            "description": "자세가 무너져 있다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_C",
+            "description": "앉아 있는 것에 익숙하다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_D",
+            "description": "오래 서 있지 못한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_E",
+            "description": "앉아 있는 게 힘들다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_F",
+            "description": "등이 굽어 있거나 거북목이다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_G",
+            "description": "일자목, 목이 돌아가지 않는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_H",
+            "description": "다리를 자주 꼰다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_I",
+            "description": "무지외반증이 있다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSTURE_DETAIL_J",
+            "description": "다리가 휘어 있다 (안으로, 밖으로 등)",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListBodyHeat",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "BODY_HEAT_A",
+            "description": "열이 많아서 옷을 얇게 입는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_B",
+            "description": "찬물을 피한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_C",
+            "description": "찬물을 즐겨 마신다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_D",
+            "description": "뜨거운 차를 자주 마신다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_E",
+            "description": "핫팩을 자주 붙이고 다닌다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_F",
+            "description": "목도리, 장갑 등을 챙겨서 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_G",
+            "description": "내의를 챙겨 입는다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_H",
+            "description": "발을 항상 따듯하게 해 준다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_I",
+            "description": "발이 답답해서 집에서 맨발로 다닌다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_J",
+            "description": "찜질팩, 돌뜸 등을 늘 챙겨서 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BODY_HEAT_K",
+            "description": "족탕, 반신욕, 찜질 등을 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListSleeping",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "SLEEPING_A",
+            "description": "머리를 대면 바로 잠든다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SLEEPING_B",
+            "description": "한참을 뒤척이다 자야 한다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SLEEPING_C",
+            "description": "새벽에 꼭 한 번(이상) 일어난다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SLEEPING_D",
+            "description": "잠을 못 잔다",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "HabitCheckListBeforeSleeping",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "BEFORE_SLEEPING_A",
+            "description": "스마트폰",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BEFORE_SLEEPING_B",
+            "description": "TV시청",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BEFORE_SLEEPING_C",
+            "description": "책, 잡지, 신문 등 읽기",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BEFORE_SLEEPING_D",
+            "description": "일기, 글쓰기",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BEFORE_SLEEPING_E",
+            "description": "야식",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -2425,6 +3702,421 @@
             "deprecationReason": null
           },
           {
+            "name": "submitHabitCheckList",
+            "description": null,
+            "args": [
+              {
+                "name": "afterLunch",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "afterLunchEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "badThing",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "beforeSleeping",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "beforeSleepingEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "bodyHeat",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "bodyHeatEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "exercise",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "goodThing",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "job",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "meal",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "mealDuring",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "mealDuringEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "mealWithNightFood",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "mealWithSnack",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "mealWithWater",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "posture",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "postureDetail",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "postureDetailEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "postureEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "saying",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sayingEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sayingRepeat",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sleeping",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "sleepingetc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "wakeupCondition",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "wakeupConditionEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "wakeupFirstThing",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "wakeupFirstThingEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "wakeupLong",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "wakeupTime",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "walking",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "walkingEtc",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "SubmitHabitCheckListResponse",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "createClassOrder",
             "description": null,
             "args": [
@@ -3051,9 +4743,13 @@
                 "name": "diary",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3061,9 +4757,13 @@
                 "name": "etc",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3071,9 +4771,13 @@
                 "name": "hotGrain",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3081,8 +4785,52 @@
                 "name": "hotWater",
                 "description": null,
                 "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "jeunHaeJilA",
+                "description": null,
+                "type": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "jeunHaeJilB",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "jeunHaeJilC",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "jeunHaeJilD",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -3091,9 +4839,13 @@
                 "name": "lecture",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3101,9 +4853,13 @@
                 "name": "meal",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3111,6 +4867,20 @@
                 "name": "mealCheck",
                 "description": null,
                 "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "reportCoverUuid",
+                "description": null,
+                "type": {
                   "kind": "SCALAR",
                   "name": "String",
                   "ofType": null
@@ -3118,14 +4888,14 @@
                 "defaultValue": null
               },
               {
-                "name": "reportUuid",
+                "name": "reportDate",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "String",
+                    "name": "Date",
                     "ofType": null
                   }
                 },
@@ -3195,9 +4965,13 @@
                 "name": "sleeping",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3205,9 +4979,13 @@
                 "name": "stool",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3215,9 +4993,13 @@
                 "name": "strolling",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -3225,9 +5007,13 @@
                 "name": "workout",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               }
@@ -3606,6 +5392,29 @@
                 "name": "CheckListQuestionType",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SubmitHabitCheckListResponse",
+        "description": null,
+        "fields": [
+          {
+            "name": "ok",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
