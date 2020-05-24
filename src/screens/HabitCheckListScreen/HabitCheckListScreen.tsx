@@ -85,6 +85,13 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   const [wakeupConditionF, setWakeupConditionF] = useState<boolean>(false);
   const [wakeupConditionG, setWakeupConditionG] = useState<boolean>(false);
   const [wakeupConditionH, setWakeupConditionH] = useState<boolean>(false);
+  const [wakeupFirstThing, setWakeupFirstThing] = useState<any>([]);
+  const [wakeupFirstThingA, setWakeupirstThingA] = useState<boolean>(false);
+  const [wakeupFirstThingB, setWakeupirstThingB] = useState<boolean>(false);
+  const [wakeupFirstThingC, setWakeupirstThingC] = useState<boolean>(false);
+  const [wakeupFirstThingD, setWakeupirstThingD] = useState<boolean>(false);
+  const [wakeupFirstThingE, setWakeupirstThingE] = useState<boolean>(false);
+  const [wakeupFirstThingF, setWakeupirstThingF] = useState<boolean>(false);
   const [
     submitHabitCheckListFn,
     { loading: submitHabitCheckListLoading },
@@ -145,12 +152,10 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   };
   const toggleItems = (array: any, action: any, variables: string) => {
     if (array.includes(variables)) {
-      console.log(array, variables);
       action(array.filter((i) => i !== variables));
       console.log("includes", array);
     } else {
       action((i) => [...i, variables]);
-      array.push(variables);
       console.log("not includes", array);
     }
   };
@@ -247,6 +252,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_A"
+                    );
                     setWakeupConditionA(
                       (wakeupConditionA) => !wakeupConditionA
                     );
@@ -260,6 +270,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_B"
+                    );
                     setWakeupConditionB(
                       (wakeupConditionB) => !wakeupConditionB
                     );
@@ -273,6 +288,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_C"
+                    );
                     setWakeupConditionC(
                       (wakeupConditionC) => !wakeupConditionC
                     );
@@ -286,6 +306,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_D"
+                    );
                     setWakeupConditionD(
                       (wakeupConditionD) => !wakeupConditionD
                     );
@@ -299,6 +324,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_E"
+                    );
                     setWakeupConditionE(
                       (wakeupConditionE) => !wakeupConditionE
                     );
@@ -312,6 +342,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_F"
+                    );
                     setWakeupConditionF(
                       (wakeupConditionF) => !wakeupConditionF
                     );
@@ -325,6 +360,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   checked={wakeupConditionG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
+                    toggleItems(
+                      wakeupCondition,
+                      setWakeupCondition,
+                      "WAKEUP_CONDITION_G"
+                    );
                     setWakeupConditionG(
                       (wakeupConditionG) => !wakeupConditionG
                     );
@@ -357,20 +397,114 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                 color={"dark"}
               />
               <Box>
-                {/* <CheckBox
+                <CheckBox
                   size={30}
-                  checked={wakeupConditionH}
+                  checked={wakeupFirstThingA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
-                    toggleItems(values.wakeupFirstThing, "WAKEUP_CONDITION_A");
-                    setWakeupConditionH(
-                      (wakeupConditionH) => !wakeupConditionH
+                    toggleItems(
+                      wakeupFirstThing,
+                      setWakeupFirstThing,
+                      "WAKEUP_FIRST_THING_A"
+                    );
+                    setWakeupirstThingA(
+                      (wakeupFirstThingA) => !wakeupFirstThingA
                     );
                   }}
-                  title={"부어있다 (얼굴, 손, 발 등)"}
+                  title={"찬물 혹은 찬음료를 마신다"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
-                /> */}
+                />
+                <CheckBox
+                  size={30}
+                  checked={wakeupFirstThingB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      wakeupFirstThing,
+                      setWakeupFirstThing,
+                      "WAKEUP_FIRST_THING_B"
+                    );
+                    setWakeupirstThingB(
+                      (wakeupFirstThingB) => !wakeupFirstThingB
+                    );
+                  }}
+                  title={"뜨거운 물 혹은 차를 마신다"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={wakeupFirstThingC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      wakeupFirstThing,
+                      setWakeupFirstThing,
+                      "WAKEUP_FIRST_THING_C"
+                    );
+                    setWakeupirstThingC(
+                      (wakeupFirstThingC) => !wakeupFirstThingC
+                    );
+                  }}
+                  title={"가벼운 스트레칭"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={wakeupFirstThingD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      wakeupFirstThing,
+                      setWakeupFirstThing,
+                      "WAKEUP_FIRST_THING_D"
+                    );
+                    setWakeupirstThingD(
+                      (wakeupFirstThingD) => !wakeupFirstThingD
+                    );
+                  }}
+                  title={"양치, 세수, 샤워"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={wakeupFirstThingE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      wakeupFirstThing,
+                      setWakeupFirstThing,
+                      "WAKEUP_FIRST_THING_E"
+                    );
+                    setWakeupirstThingE(
+                      (wakeupFirstThingE) => !wakeupFirstThingE
+                    );
+                  }}
+                  title={"스마트폰"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={wakeupFirstThingF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      wakeupFirstThing,
+                      setWakeupFirstThing,
+                      "WAKEUP_FIRST_THING_F"
+                    );
+                    setWakeupirstThingF(
+                      (wakeupFirstThingF) => !wakeupFirstThingF
+                    );
+                  }}
+                  title={"잡지, 신문"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
               </Box>
               <FormikInput
                 label="하루에 몇 끼, 무엇을, 몇 시에 드시나요?"
