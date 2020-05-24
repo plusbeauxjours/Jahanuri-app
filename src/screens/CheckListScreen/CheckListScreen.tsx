@@ -6,7 +6,6 @@ import Toast from "react-native-root-toast";
 import { ScrollView, ActivityIndicator } from "react-native";
 import { useQuery, useMutation } from "react-apollo-hooks";
 import CheckListRow from "../../components/CheckListRow";
-import { useMe } from "../../context/meContext";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import { Portal, Dialog, Paragraph } from "react-native-paper";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
@@ -58,7 +57,10 @@ interface IProps {
 }
 
 const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
-  const { me, loading: meLoading } = useMe();
+  const {
+    data: { me: { user: me = null } = {} } = {},
+    loading: meLoading,
+  } = useQuery<Me>(ME);
   const [trueAnswerQuestionUuids, setTrueAnswerQuestionUuids] = useState<any>(
     []
   );
@@ -140,8 +142,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
       variables: {
         trueAnswerQuestionUuids,
         isPreviousAnswer:
-          !me.user.hasPreviousCheckListSubmitted &&
-          !me.user.hasLaterCheckListSubmitted
+          !me.hasPreviousCheckListSubmitted && !me.hasLaterCheckListSubmitted
             ? true
             : false,
       },
@@ -173,18 +174,16 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
             </Dialog.Actions>
           </Dialog>
         </Portal>
-        {!me.user.hasPreviousCheckListSubmitted &&
-          !me.user.hasLaterCheckListSubmitted && (
+        {!me.hasPreviousCheckListSubmitted &&
+          !me.hasLaterCheckListSubmitted && (
             <MenuCustomHeader title={"체크리스트"} subTitle={"(0/2)"} />
           )}
-        {me.user.hasPreviousCheckListSubmitted &&
-          !me.user.hasLaterCheckListSubmitted && (
-            <MenuCustomHeader title={"체크리스트"} subTitle={"(1/2)"} />
-          )}
-        {me.user.hasPreviousCheckListSubmitted &&
-          me.user.hasLaterCheckListSubmitted && (
-            <MenuCustomHeader title={"체크리스트"} subTitle={"(2/2)"} />
-          )}
+        {me.hasPreviousCheckListSubmitted && !me.hasLaterCheckListSubmitted && (
+          <MenuCustomHeader title={"체크리스트"} subTitle={"(1/2)"} />
+        )}
+        {me.hasPreviousCheckListSubmitted && me.hasLaterCheckListSubmitted && (
+          <MenuCustomHeader title={"체크리스트"} subTitle={"(2/2)"} />
+        )}
         <ScrollView
           style={{
             backgroundColor: null,
@@ -192,8 +191,8 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           keyboardShouldPersistTaps="always"
           showsVerticalScrollIndicator={false}
         >
-          {me.user.hasPreviousCheckListSubmitted &&
-          !me.user.hasLaterCheckListSubmitted ? (
+          {me.hasPreviousCheckListSubmitted &&
+          !me.hasLaterCheckListSubmitted ? (
             <SwipeListView
               useFlatList={false}
               closeOnRowBeginSwipe={true}
@@ -216,11 +215,9 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                         : false
                     }
                     hasPreviousCheckListSubmitted={
-                      me.user.hasPreviousCheckListSubmitted
+                      me.hasPreviousCheckListSubmitted
                     }
-                    hasLaterCheckListSubmitted={
-                      me.user.hasLaterCheckListSubmitted
-                    }
+                    hasLaterCheckListSubmitted={me.hasLaterCheckListSubmitted}
                     onPress={onPress}
                   />
                   <GreyLine />
@@ -266,19 +263,17 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                       : false
                   }
                   hasPreviousCheckListSubmitted={
-                    me.user.hasPreviousCheckListSubmitted
+                    me.hasPreviousCheckListSubmitted
                   }
-                  hasLaterCheckListSubmitted={
-                    me.user.hasLaterCheckListSubmitted
-                  }
+                  hasLaterCheckListSubmitted={me.hasLaterCheckListSubmitted}
                   onPress={onPress}
                 />
                 <GreyLine />
               </React.Fragment>
             ))
           )}
-          {me.user.hasPreviousCheckListSubmitted &&
-          me.user.hasLaterCheckListSubmitted ? null : (
+          {me.hasPreviousCheckListSubmitted &&
+          me.hasLaterCheckListSubmitted ? null : (
             <ButtonContainer>
               <Button
                 raised

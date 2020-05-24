@@ -25,6 +25,23 @@ export const SIGNUP = gql`
     ) {
       user {
         uuid
+        username
+        firstName
+        lastName
+        userImg
+        classOrder {
+          order
+          startDate
+          endDate
+          uuid
+        }
+        reportCoverUuid
+        hasPreviousCheckListSubmitted
+        hasLaterCheckListSubmitted
+        hasSubmitedApplication
+        hasPaid
+        hasKakaoAccount
+        isStaff
       }
     }
   }

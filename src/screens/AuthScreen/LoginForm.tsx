@@ -14,10 +14,8 @@ import styled from "styled-components";
 import Divider from "../../components/Divider";
 import { LOGIN } from "./AuthScreenQueries";
 import { Login, LoginVariables } from "../../types/api";
-
-interface IProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
+import Toast from "react-native-root-toast";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -32,7 +30,6 @@ const View = styled.View`
   justify-content: center;
   align-items: center;
 `;
-
 const initialValues = { username: "", password: "" };
 const validationSchema = Yup.object().shape({
   username: Yup.string()
@@ -46,99 +43,125 @@ const validationSchema = Yup.object().shape({
     .required("비밀번호는 필수 입력 사항 입니다."),
 });
 
-export default class LoginForm extends React.Component<IProps> {
-  public tokenAuth: MutationFunction;
-  public handleLoginComplete = async ({ tokenAuth }) => {
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const LoginForm: React.FC<IProps> = ({ navigation }) => {
+  const onCompleteLogin = async ({ tokenAuth }) => {
     const { token } = tokenAuth;
     await AsyncStorage.setItem("jwt", token);
-    this.props.navigation.navigate("Main");
+    navigation.navigate("Main");
   };
-
-  public renderForm = ({
-    values,
-    setFieldValue,
-    setFieldTouched,
-    touched,
-    errors,
-    isValid,
-  }) => (
-    <ImageBackground
-      style={{ width: "100%", height: "100%" }}
-      source={require("../../images/MainImage.jpg")}
-      resizeMode="stretch"
-    >
-      <View>
-        <WhiteSpace />
-        <WhiteSpace />
-        <FormikInput
-          label="유저명"
-          autoCapitalize="none"
-          value={values.username}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="username"
-          error={touched.username && errors.username}
-        />
-        <FormikInput
-          label="비밀번호"
-          autoCapitalize="none"
-          secureTextEntry
-          value={values.password}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="password"
-          error={touched.password && errors.password}
-        />
-        <WhiteSpace />
-        <Mutation<Login, LoginVariables>
-          mutation={LOGIN}
-          variables={{ username: values.username, password: values.password }}
-          onCompleted={this.handleLoginComplete}
-        >
-          {(tokenAuth, { loading, client }) => (
-            <React.Fragment>
-              <Button
-                raised
-                primary
-                disabled={!isValid || loading}
-                loading={loading}
-                onPress={() => {
-                  client.resetStore();
-                  tokenAuth();
-                }}
-                color="#FFFFFF"
-                title="로그인"
-              />
-              <Divider text="OR" />
-              <Button
-                disabled={loading}
-                onPress={() => {
-                  this.props.navigation.navigate("SignUp");
-                }}
-                color="#FFFFFF"
-                title="계정 만들기"
-              />
-            </React.Fragment>
-          )}
-        </Mutation>
-      </View>
-    </ImageBackground>
-  );
-
-  public render() {
-    return (
-      <KeyboardAvoidingView
-        enabled
-        behavior={Platform.OS === "ios" ? "padding" : false}
+  const toast = (message: string) => {
+    Toast.show(message, {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.CENTER,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+    });
+  };
+  return (
+    <>
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          backgroundColor: null,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        keyboardShouldPersistTaps="handled"
       >
         <Formik
           initialValues={initialValues}
-          validationSchema={validationSchema}
           onSubmit={() => {}}
+          validationSchema={validationSchema}
         >
-          {this.renderForm}
+          {({
+            values,
+            setFieldValue,
+            setFieldTouched,
+            touched,
+            errors,
+            isValid,
+          }) => (
+            <ImageBackground
+              style={{ width: "100%", height: "100%" }}
+              source={require("../../images/MainImage.jpg")}
+              resizeMode="stretch"
+            >
+              <View>
+                <WhiteSpace />
+                <WhiteSpace />
+                <FormikInput
+                  label="유저명"
+                  autoCapitalize="none"
+                  value={values.username}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="username"
+                  error={touched.username && errors.username}
+                />
+                <FormikInput
+                  label="비밀번호"
+                  autoCapitalize="none"
+                  secureTextEntry
+                  value={values.password}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="password"
+                  error={touched.password && errors.password}
+                />
+                <WhiteSpace />
+                <Mutation<Login, LoginVariables>
+                  mutation={LOGIN}
+                  variables={{
+                    username: values.username,
+                    password: values.password,
+                  }}
+                  onCompleted={onCompleteLogin}
+                  onError={(e) => toast("아이디와 비밀번호를 확인하세요")}
+                >
+                  {(loginFn, { loading, client }) => (
+                    <React.Fragment>
+                      <Button
+                        raised
+                        primary
+                        disabled={
+                          !isValid ||
+                          !values.username ||
+                          !values.password ||
+                          loading
+                        }
+                        loading={loading}
+                        onPress={() => {
+                          client.resetStore();
+                          loginFn();
+                        }}
+                        color="#FFFFFF"
+                        title="로그인"
+                      />
+                      <Divider text="OR" />
+                      <Button
+                        disabled={loading}
+                        onPress={() => {
+                          navigation.navigate("SignUp");
+                        }}
+                        color="#FFFFFF"
+                        title="계정 만들기"
+                      />
+                    </React.Fragment>
+                  )}
+                </Mutation>
+              </View>
+            </ImageBackground>
+          )}
         </Formik>
-      </KeyboardAvoidingView>
-    );
-  }
-}
+      </KeyboardAwareScrollView>
+    </>
+  );
+};
+
+export default LoginForm;

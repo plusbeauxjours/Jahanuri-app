@@ -29,9 +29,6 @@ class EditProfileScreen extends React.Component<IProps> {
     title: "Edit profile",
   });
 
-  public onEditSportsPress = () => {
-    this.props.navigation.navigate("EditSportsScreen");
-  };
   public toast = (message: string) => {
     Toast.show(message, {
       duration: Toast.durations.SHORT,

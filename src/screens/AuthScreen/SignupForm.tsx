@@ -12,16 +12,14 @@ import FormikInput from "../../components/Formik/FormikInput";
 import { ImageBackground } from "react-native";
 import styled from "styled-components";
 import { LOGIN, SIGNUP } from "./AuthScreenQueries";
+import Toast from "react-native-root-toast";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
   Login,
   LoginVariables,
   Signup,
   SignupVariables,
 } from "../../types/api";
-
-interface IProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
 
 const Button = styled.Button`
   margin-top: 10px;
@@ -38,7 +36,7 @@ const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
-  handle: "",
+  username: "",
   password: "",
   confirmPassword: "",
 };
@@ -46,163 +44,187 @@ const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("이름은 필수 입력 사항 입니다."),
   lastName: Yup.string().required("성은 필수 입력 사항 입니다."),
   email: Yup.string()
-    .email("Invalid email")
+    .email("이메일 주소를 입력하세요.")
     .required("이메일은 필수 입력 사항 입니다."),
-  handle: Yup.string()
+  username: Yup.string()
     .matches(
-      /^[A-Za-z0-9_]{1,15}$/,
-      "유저명은 숫자와 영문 알파벳만 가능하고, 15자 이내입니다."
+      /^[A-Za-z0-9_]{4,15}$/,
+      "유저명은 숫자와 영문 알파벳만 가능하고, 4자 이상, 15자 이내입니다."
     )
     .required("유저명은 필수 입력 사항입니다."),
   password: Yup.string()
     .min(6, "비밀번호는 6자 이상입니다.")
     .required("비밀번호는 필수 입력 사항 입니다."),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password" ? "password" : null)], "Passwords do not match")
+    .oneOf(
+      [Yup.ref("password" ? "password" : null)],
+      "비밀번호가 맞지 않습니다."
+    )
     .required("비밀번호가 맞지 않습니다."),
 });
 
-export default class SignupForm extends React.Component<IProps> {
-  public tokenAuth: MutationFunction;
-  public createUser: MutationFunction;
-  static navigationOptions = {
-    title: "Sign Up",
-  };
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
 
-  public handleSignupComplete = async (data) => {
+const SignupForm: React.FC<IProps> = ({ navigation }) => {
+  const onCompleteLogin = async (data) => {
     await AsyncStorage.setItem("jwt", data.tokenAuth.token);
-    this.props.navigation.navigate("Main");
+    navigation.navigate("Main");
+    toast("환영합니다.");
   };
-
-  public renderForm = ({
-    values,
-    setFieldValue,
-    setFieldTouched,
-    touched,
-    errors,
-    isValid,
-  }) => (
-    <ImageBackground
-      style={{ width: "100%", height: "100%" }}
-      source={require("../../images/MainImage.jpg")}
-      resizeMode="stretch"
-    >
-      <View>
-        <FormikInput
-          label="이름"
-          value={values.firstName}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="firstName"
-          error={touched.firstName && errors.firstName}
-        />
-        <FormikInput
-          label="성"
-          value={values.lastName}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="lastName"
-          error={touched.lastName && errors.lastName}
-        />
-        <FormikInput
-          label="이메일"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          value={values.email}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="email"
-          error={touched.email && errors.email}
-        />
-        <FormikInput
-          label="유저명"
-          autoCapitalize="none"
-          value={values.handle}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="handle"
-          error={touched.handle && errors.handle}
-        />
-        <FormikInput
-          label="비밀번호"
-          autoCapitalize="none"
-          secureTextEntry
-          value={values.password}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="password"
-          error={touched.password && errors.password}
-        />
-        <FormikInput
-          label="비밀번호 확인"
-          autoCapitalize="none"
-          secureTextEntry
-          value={values.confirmPassword}
-          onChange={setFieldValue}
-          onTouch={setFieldTouched}
-          name="confirmPassword"
-          error={touched.confirmPassword && errors.confirmPassword}
-        />
-        <Mutation<Login, LoginVariables>
-          mutation={LOGIN}
-          variables={{
-            username: values.handle,
-            password: values.password,
-          }}
-          onCompleted={this.handleSignupComplete}
-        >
-          {(tokenAuth, loginResult) => (
-            <Mutation<Signup, SignupVariables>
-              mutation={SIGNUP}
-              variables={{
-                firstName: values.firstName,
-                lastName: values.lastName,
-                email: values.email,
-                username: values.handle,
-                password: values.password,
-              }}
-              onCompleted={() => {
-                loginResult.client.resetStore();
-                tokenAuth();
-              }}
-            >
-              {(createUser, signupResult) => (
-                <Button
-                  raised
-                  primary
-                  disabled={
-                    !isValid || loginResult.loading || signupResult.loading
-                  }
-                  loading={loginResult.loading || signupResult.loading}
-                  onPress={() => {
-                    createUser();
-                  }}
-                  style={{ marginTop: 10, width: "90%" }}
-                  color="#FFFFFF"
-                  title="계정 만들기"
-                />
-              )}
-            </Mutation>
-          )}
-        </Mutation>
-      </View>
-    </ImageBackground>
-  );
-
-  public render() {
-    return (
-      <KeyboardAvoidingView
-        enabled
-        behavior={Platform.OS === "ios" ? "padding" : false}
+  const toast = (message: string) => {
+    Toast.show(message, {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.CENTER,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+    });
+  };
+  return (
+    <>
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          backgroundColor: null,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        keyboardShouldPersistTaps="handled"
       >
         <Formik
           initialValues={initialValues}
           onSubmit={() => {}}
           validationSchema={validationSchema}
         >
-          {this.renderForm}
+          {({
+            values,
+            setFieldValue,
+            setFieldTouched,
+            touched,
+            errors,
+            isValid,
+          }) => (
+            <ImageBackground
+              style={{ width: "100%", height: "100%" }}
+              source={require("../../images/MainImage.jpg")}
+              resizeMode="stretch"
+            >
+              <View>
+                <FormikInput
+                  label="이름"
+                  value={values.firstName}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="firstName"
+                  error={touched.firstName && errors.firstName}
+                />
+                <FormikInput
+                  label="성"
+                  value={values.lastName}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="lastName"
+                  error={touched.lastName && errors.lastName}
+                />
+                <FormikInput
+                  label="이메일"
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  value={values.email}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="email"
+                  error={touched.email && errors.email}
+                />
+                <FormikInput
+                  label="유저명"
+                  autoCapitalize="none"
+                  value={values.username}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="username"
+                  error={touched.username && errors.username}
+                />
+                <FormikInput
+                  label="비밀번호"
+                  autoCapitalize="none"
+                  secureTextEntry
+                  value={values.password}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="password"
+                  error={touched.password && errors.password}
+                />
+                <FormikInput
+                  label="비밀번호 확인"
+                  autoCapitalize="none"
+                  secureTextEntry
+                  value={values.confirmPassword}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="confirmPassword"
+                  error={touched.confirmPassword && errors.confirmPassword}
+                />
+                <Mutation<Login, LoginVariables>
+                  mutation={LOGIN}
+                  variables={{
+                    username: values.username,
+                    password: values.password,
+                  }}
+                  onCompleted={onCompleteLogin}
+                >
+                  {(loginFn, { loading: loginLoading, client }) => (
+                    <Mutation<Signup, SignupVariables>
+                      mutation={SIGNUP}
+                      variables={{
+                        firstName: values.firstName,
+                        lastName: values.lastName,
+                        email: values.email,
+                        username: values.username,
+                        password: values.password,
+                      }}
+                      onCompleted={() => {
+                        client.resetStore();
+                        loginFn();
+                      }}
+                      onError={(e) => {
+                        toast("다른 유저명을 사용하세요.");
+                      }}
+                    >
+                      {(signupFn, { loading: signupLoading }) => (
+                        <Button
+                          raised
+                          primary
+                          disabled={
+                            !isValid ||
+                            loginLoading ||
+                            signupLoading ||
+                            !values.firstName ||
+                            !values.lastName ||
+                            !values.email ||
+                            !values.username ||
+                            !values.password ||
+                            !values.confirmPassword
+                          }
+                          loading={signupLoading}
+                          onPress={() => signupFn()}
+                          color="#fff"
+                          title="계정 만들기"
+                        />
+                      )}
+                    </Mutation>
+                  )}
+                </Mutation>
+              </View>
+            </ImageBackground>
+          )}
         </Formik>
-      </KeyboardAvoidingView>
-    );
-  }
-}
+      </KeyboardAwareScrollView>
+    </>
+  );
+};
+
+export default SignupForm;

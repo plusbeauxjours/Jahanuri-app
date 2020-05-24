@@ -32,16 +32,16 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const LoginPart = () => {
     return (
       <View>
+        <Touchabel onPress={() => navigation.navigate("Login")}>
+          <Text>계정 로그인</Text>
+        </Touchabel>
+        <WhiteSpace />
         <Touchabel onPress={KakaoLogin}>
           <Text>카카오 로그인</Text>
         </Touchabel>
         <WhiteSpace />
         <Touchabel onPress={KakaoLogin}>
           <Text>애플 로그인</Text>
-        </Touchabel>
-        <WhiteSpace />
-        <Touchabel onPress={() => navigation.navigate("Login")}>
-          <Text>계정 로그인</Text>
         </Touchabel>
         <WhiteSpace />
         <Divider text="OR" />

@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { useMe } from "../context/meContext";
 import { ActivityIndicator } from "react-native";
 import { withNavigation } from "react-navigation";
+import { Me } from "../types/api";
+import { ME } from "../screens/MyProfileScreen/MyProfileScreenQueries";
+import { useQuery } from "react-apollo-hooks";
 
 const View = styled.View`
   flex: 1;
@@ -26,8 +28,11 @@ const Text = styled.Text`
 const Touchable = styled.TouchableOpacity``;
 
 export default withNavigation(({ navigation }) => {
-  const { me, loading } = useMe();
-  if (loading) {
+  const {
+    data: { me: { user: me = null } = {} } = {},
+    loading: meLoading,
+  } = useQuery<Me>(ME);
+  if (meLoading) {
     return (
       <ActivityIndicator
         size="large"
@@ -37,7 +42,7 @@ export default withNavigation(({ navigation }) => {
       />
     );
   } else {
-    if (!me.user.hasSubmitedApplication) {
+    if (!me.hasSubmitedApplication) {
       return (
         <>
           <View>
@@ -49,7 +54,7 @@ export default withNavigation(({ navigation }) => {
           <GreyLine />
         </>
       );
-    } else if (!me.user.hasPaid) {
+    } else if (!me.hasPaid) {
       return (
         <>
           <View>
@@ -63,7 +68,7 @@ export default withNavigation(({ navigation }) => {
           <GreyLine />
         </>
       );
-    } else if (!me.user.hasPreviousCheckListSubmitted) {
+    } else if (!me.hasPreviousCheckListSubmitted) {
       return (
         <>
           <View>

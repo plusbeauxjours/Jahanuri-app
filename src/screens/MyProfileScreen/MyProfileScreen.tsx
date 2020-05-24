@@ -261,8 +261,10 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                                   borderWidth: 1,
                                   borderColor: "gray",
                                   borderRadius: 4,
+                                  backgroundColor: "#fff",
                                   color: "black",
                                   paddingRight: 30,
+                                  textAlign: "center",
                                 },
                               }}
                               placeholder={{
@@ -278,13 +280,9 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                                   label:
                                     classe.order.toString() +
                                     " 기 - " +
-                                    Moment(classe.startDate).format(
-                                      "Y년 M월 D일"
-                                    ) +
+                                    Moment(classe.startDate).format("M월 D일") +
                                     " ~ " +
-                                    Moment(classe.endDate).format(
-                                      "Y년 M월 D일"
-                                    ),
+                                    Moment(classe.endDate).format("M월 D일"),
                                   value: classe.uuid.toString(),
                                 }))
                               }
