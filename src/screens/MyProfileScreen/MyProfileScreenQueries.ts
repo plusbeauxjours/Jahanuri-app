@@ -16,9 +16,10 @@ export const ME = gql`
           uuid
         }
         reportCoverUuid
-        hasPreviousCheckListSubmitted
-        hasLaterCheckListSubmitted
-        hasSubmitedApplication
+        hasSubmittedPreviousCheckList
+        hasSubmittedLaterCheckList
+        hasSubmittedApplication
+        hasSubmittedSurvey
         hasPaid
         hasKakaoAccount
         isStaff

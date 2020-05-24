@@ -375,8 +375,8 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
               default:
                 return (
                   <>
-                    {me.hasPreviousCheckListSubmitted &&
-                    me.hasSubmitedApplication &&
+                    {me.hasSubmittedPreviousCheckList &&
+                    me.hasSubmittedApplication &&
                     me.hasPaid ? (
                       <>
                         {feeds &&

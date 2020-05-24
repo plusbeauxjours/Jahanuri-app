@@ -21,8 +21,8 @@ interface IProps {
   question: string;
   previousAnswer?: boolean;
   laterAnswer?: boolean;
-  hasPreviousCheckListSubmitted: boolean;
-  hasLaterCheckListSubmitted: boolean;
+  hasSubmittedPreviousCheckList: boolean;
+  hasSubmittedLaterCheckList: boolean;
   onPress: (newUuid: string) => void;
 }
 const CheckListRow: React.FC<IProps> = ({
@@ -30,8 +30,8 @@ const CheckListRow: React.FC<IProps> = ({
   question,
   previousAnswer,
   laterAnswer,
-  hasPreviousCheckListSubmitted,
-  hasLaterCheckListSubmitted,
+  hasSubmittedPreviousCheckList,
+  hasSubmittedLaterCheckList,
   onPress,
 }) => {
   const [isPreviousAnswerTrue, setIsPreviousAnswerTrue] = useState<boolean>(
@@ -40,7 +40,7 @@ const CheckListRow: React.FC<IProps> = ({
   const [isLaterAnswerTrue, setIsLaterAnswerTrue] = useState<boolean>(
     laterAnswer
   );
-  if (!hasPreviousCheckListSubmitted && !hasPreviousCheckListSubmitted) {
+  if (!hasSubmittedPreviousCheckList && !hasSubmittedPreviousCheckList) {
     return (
       <View>
         <Text>{question}</Text>
@@ -60,7 +60,7 @@ const CheckListRow: React.FC<IProps> = ({
         </Touchable>
       </View>
     );
-  } else if (hasPreviousCheckListSubmitted && !hasLaterCheckListSubmitted) {
+  } else if (hasSubmittedPreviousCheckList && !hasSubmittedLaterCheckList) {
     return (
       <View>
         <Text>{question}</Text>
@@ -78,7 +78,7 @@ const CheckListRow: React.FC<IProps> = ({
         </Touchable>
       </View>
     );
-  } else if (!hasPreviousCheckListSubmitted && hasLaterCheckListSubmitted) {
+  } else if (!hasSubmittedPreviousCheckList && hasSubmittedLaterCheckList) {
     return (
       <View>
         <Text>{question}</Text>

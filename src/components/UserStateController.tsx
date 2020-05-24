@@ -42,7 +42,7 @@ export default withNavigation(({ navigation }) => {
       />
     );
   } else {
-    if (!me.hasSubmitedApplication) {
+    if (!me.hasSubmittedApplication) {
       return (
         <>
           <View>
@@ -68,7 +68,7 @@ export default withNavigation(({ navigation }) => {
           <GreyLine />
         </>
       );
-    } else if (!me.hasPreviousCheckListSubmitted) {
+    } else if (!me.hasSubmittedPreviousCheckList) {
       return (
         <>
           <View>

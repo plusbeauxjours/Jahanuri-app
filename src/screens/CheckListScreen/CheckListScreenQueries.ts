@@ -66,7 +66,7 @@ export const SUBMIT_HABIT_CHECK_LIST = gql`
     $bodyHeatEtc: String
     $exercise: String!
     $sleeping: [String]
-    $sleepingetc: String
+    $sleepingEtc: String
     $beforeSleeping: [String]
     $beforeSleepingEtc: String
     $goodThing: String!
@@ -101,7 +101,7 @@ export const SUBMIT_HABIT_CHECK_LIST = gql`
       bodyHeatEtc: $bodyHeatEtc
       exercise: $exercise
       sleeping: $sleeping
-      sleepingetc: $sleepingetc
+      sleepingEtc: $sleepingEtc
       beforeSleeping: $beforeSleeping
       beforeSleepingEtc: $beforeSleepingEtc
       goodThing: $goodThing

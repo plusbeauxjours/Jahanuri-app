@@ -94,19 +94,19 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           query: ME,
         });
         if (meData) {
-          if (!meData.me.user.hasPreviousCheckListSubmitted) {
-            meData.me.user.hasPreviousCheckListSubmitted = true;
+          if (!meData.me.user.hasSubmittedPreviousCheckList) {
+            meData.me.user.hasSubmittedPreviousCheckList = true;
           } else if (
-            meData.me.user.hasPreviousCheckListSubmitted &&
-            !meData.me.user.hasLaterCheckListSubmitted
+            meData.me.user.hasSubmittedPreviousCheckList &&
+            !meData.me.user.hasSubmittedLaterCheckList
           ) {
-            meData.me.user.hasLaterCheckListSubmitted = true;
+            meData.me.user.hasSubmittedLaterCheckList = true;
           } else if (
-            !meData.me.user.hasPreviousCheckListSubmitted &&
-            meData.me.user.hasLaterCheckListSubmitted
+            !meData.me.user.hasSubmittedPreviousCheckList &&
+            meData.me.user.hasSubmittedLaterCheckList
           ) {
-            meData.me.user.hasPreviousCheckListSubmitted = false;
-            meData.me.user.hasLaterCheckListSubmitted = false;
+            meData.me.user.hasSubmittedPreviousCheckList = false;
+            meData.me.user.hasSubmittedLaterCheckList = false;
           } else {
             return;
           }
@@ -142,7 +142,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
       variables: {
         trueAnswerQuestionUuids,
         isPreviousAnswer:
-          !me.hasPreviousCheckListSubmitted && !me.hasLaterCheckListSubmitted
+          !me.hasSubmittedPreviousCheckList && !me.hasSubmittedLaterCheckList
             ? true
             : false,
       },
@@ -174,14 +174,14 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
             </Dialog.Actions>
           </Dialog>
         </Portal>
-        {!me.hasPreviousCheckListSubmitted &&
-          !me.hasLaterCheckListSubmitted && (
+        {!me.hasSubmittedPreviousCheckList &&
+          !me.hasSubmittedLaterCheckList && (
             <MenuCustomHeader title={"체크리스트"} subTitle={"(0/2)"} />
           )}
-        {me.hasPreviousCheckListSubmitted && !me.hasLaterCheckListSubmitted && (
+        {me.hasSubmittedPreviousCheckList && !me.hasSubmittedLaterCheckList && (
           <MenuCustomHeader title={"체크리스트"} subTitle={"(1/2)"} />
         )}
-        {me.hasPreviousCheckListSubmitted && me.hasLaterCheckListSubmitted && (
+        {me.hasSubmittedPreviousCheckList && me.hasSubmittedLaterCheckList && (
           <MenuCustomHeader title={"체크리스트"} subTitle={"(2/2)"} />
         )}
         <ScrollView
@@ -191,8 +191,8 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           keyboardShouldPersistTaps="always"
           showsVerticalScrollIndicator={false}
         >
-          {me.hasPreviousCheckListSubmitted &&
-          !me.hasLaterCheckListSubmitted ? (
+          {me.hasSubmittedPreviousCheckList &&
+          !me.hasSubmittedLaterCheckList ? (
             <SwipeListView
               useFlatList={false}
               closeOnRowBeginSwipe={true}
@@ -214,10 +214,10 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                         ? data.item.questionSet[0].laterAnswer
                         : false
                     }
-                    hasPreviousCheckListSubmitted={
-                      me.hasPreviousCheckListSubmitted
+                    hasSubmittedPreviousCheckList={
+                      me.hasSubmittedPreviousCheckList
                     }
-                    hasLaterCheckListSubmitted={me.hasLaterCheckListSubmitted}
+                    hasSubmittedLaterCheckList={me.hasSubmittedLaterCheckList}
                     onPress={onPress}
                   />
                   <GreyLine />
@@ -262,18 +262,18 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                       ? checkListQuestion.questionSet[0].laterAnswer
                       : false
                   }
-                  hasPreviousCheckListSubmitted={
-                    me.hasPreviousCheckListSubmitted
+                  hasSubmittedPreviousCheckList={
+                    me.hasSubmittedPreviousCheckList
                   }
-                  hasLaterCheckListSubmitted={me.hasLaterCheckListSubmitted}
+                  hasSubmittedLaterCheckList={me.hasSubmittedLaterCheckList}
                   onPress={onPress}
                 />
                 <GreyLine />
               </React.Fragment>
             ))
           )}
-          {me.hasPreviousCheckListSubmitted &&
-          me.hasLaterCheckListSubmitted ? null : (
+          {me.hasSubmittedPreviousCheckList &&
+          me.hasSubmittedLaterCheckList ? null : (
             <ButtonContainer>
               <Button
                 raised

@@ -36,11 +36,13 @@ export const SIGNUP = gql`
           uuid
         }
         reportCoverUuid
-        hasPreviousCheckListSubmitted
-        hasLaterCheckListSubmitted
-        hasSubmitedApplication
+        hasSubmittedPreviousCheckList
+        hasSubmittedLaterCheckList
+        hasSubmittedApplication
+        hasSubmittedSurvey
         hasPaid
         hasKakaoAccount
+        hasAppleAccount
         isStaff
       }
     }

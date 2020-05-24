@@ -53,11 +53,13 @@ export interface Signup_createUser_user {
   userImg: string | null;
   classOrder: Signup_createUser_user_classOrder | null;
   reportCoverUuid: string | null;
-  hasPreviousCheckListSubmitted: boolean;
-  hasLaterCheckListSubmitted: boolean;
-  hasSubmitedApplication: boolean;
+  hasSubmittedPreviousCheckList: boolean;
+  hasSubmittedLaterCheckList: boolean;
+  hasSubmittedApplication: boolean;
+  hasSubmittedSurvey: boolean;
   hasPaid: boolean;
   hasKakaoAccount: boolean;
+  hasAppleAccount: boolean;
   /**
    * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.
    */
@@ -195,7 +197,7 @@ export interface SubmitHabitCheckListVariables {
   bodyHeatEtc?: string | null;
   exercise: string;
   sleeping?: (string | null)[] | null;
-  sleepingetc?: string | null;
+  sleepingEtc?: string | null;
   beforeSleeping?: (string | null)[] | null;
   beforeSleepingEtc?: string | null;
   goodThing: string;
@@ -331,9 +333,10 @@ export interface Me_me_user {
   userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
   reportCoverUuid: string | null;
-  hasPreviousCheckListSubmitted: boolean;
-  hasLaterCheckListSubmitted: boolean;
-  hasSubmitedApplication: boolean;
+  hasSubmittedPreviousCheckList: boolean;
+  hasSubmittedLaterCheckList: boolean;
+  hasSubmittedApplication: boolean;
+  hasSubmittedSurvey: boolean;
   hasPaid: boolean;
   hasKakaoAccount: boolean;
   /**
