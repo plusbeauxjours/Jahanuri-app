@@ -16,10 +16,18 @@ import Divider from "../../components/Divider";
 import FormikInput from "../../components/Formik/FormikInput";
 import { CheckBox } from "react-native-elements";
 import { SUBMIT_HABIT_CHECK_LIST } from "./HabitCheckListScreenQueries";
+import dimensions from "../../constants/dimensions";
 
 const Box = styled.View`
   width: 100%;
-  padding: 0 20px;
+  padding: 0 15px;
+`;
+const Line = styled.View`
+  width: ${dimensions.width - 30};
+  flex-direction: row;
+  border-bottom-width: 1px;
+  opacity: 0.4;
+  margin: 20px;
 `;
 const View = styled.View`
   flex: 1;
@@ -36,17 +44,17 @@ const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
 `;
+const WhiteSpace = styled.View`
+  height: 30px;
+`;
 
 const initialValues = {
   job: "",
   wakeupTime: "",
   wakeupLong: "",
-  wakeupCondition: [],
   wakeupConditionEtc: "",
-  wakeupFirstThing: "",
-  wakeupFirstThingEtc: [],
+  wakeupFirstThingEtc: "",
   meal: "",
-  mealDuring: [],
   mealDuringEtc: "",
   mealWithWater: [],
   mealWithSnack: [],
@@ -86,12 +94,58 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   const [wakeupConditionG, setWakeupConditionG] = useState<boolean>(false);
   const [wakeupConditionH, setWakeupConditionH] = useState<boolean>(false);
   const [wakeupFirstThing, setWakeupFirstThing] = useState<any>([]);
-  const [wakeupFirstThingA, setWakeupirstThingA] = useState<boolean>(false);
-  const [wakeupFirstThingB, setWakeupirstThingB] = useState<boolean>(false);
-  const [wakeupFirstThingC, setWakeupirstThingC] = useState<boolean>(false);
-  const [wakeupFirstThingD, setWakeupirstThingD] = useState<boolean>(false);
-  const [wakeupFirstThingE, setWakeupirstThingE] = useState<boolean>(false);
-  const [wakeupFirstThingF, setWakeupirstThingF] = useState<boolean>(false);
+  const [wakeupFirstThingA, setWakeupFirstThingA] = useState<boolean>(false);
+  const [wakeupFirstThingB, setWakeupFirstThingB] = useState<boolean>(false);
+  const [wakeupFirstThingC, setWakeupFirstThingC] = useState<boolean>(false);
+  const [wakeupFirstThingD, setWakeupFirstThingD] = useState<boolean>(false);
+  const [wakeupFirstThingE, setWakeupFirstThingE] = useState<boolean>(false);
+  const [wakeupFirstThingF, setWakeupFirstThingF] = useState<boolean>(false);
+  const [mealDuring, setMealDuring] = useState<any>([]);
+  const [mealDuringA, setMealDuringA] = useState<boolean>(false);
+  const [mealDuringB, setMealDuringB] = useState<boolean>(false);
+  const [mealDuringC, setMealDuringC] = useState<boolean>(false);
+  const [mealDuringD, setMealDuringD] = useState<boolean>(false);
+  const [mealDuringE, setMealDuringE] = useState<boolean>(false);
+  const [mealDuringF, setMealDuringF] = useState<boolean>(false);
+  const [mealDuringG, setMealDuringG] = useState<boolean>(false);
+  const [mealDuringH, setMealDuringH] = useState<boolean>(false);
+  const [mealDuringI, setMealDuringI] = useState<boolean>(false);
+  const [mealDuringJ, setMealDuringJ] = useState<boolean>(false);
+  const [mealDuringK, setMealDuringK] = useState<boolean>(false);
+  const [afterLunch, setAfterLunch] = useState<any>([]);
+  const [afterLunchA, setAfterLunchA] = useState<boolean>(false);
+  const [afterLunchB, setAfterLunchB] = useState<boolean>(false);
+  const [afterLunchC, setAfterLunchC] = useState<boolean>(false);
+  const [afterLunchD, setAfterLunchD] = useState<boolean>(false);
+  const [afterLunchE, setAfterLunchE] = useState<boolean>(false);
+  const [afterLunchF, setAfterLunchF] = useState<boolean>(false);
+  const [saying, setSaying] = useState<any>([]);
+  const [sayingA, setSayingA] = useState<boolean>(false);
+  const [sayingB, setSayingB] = useState<boolean>(false);
+  const [sayingC, setSayingC] = useState<boolean>(false);
+  const [sayingD, setSayingD] = useState<boolean>(false);
+  const [sayingE, setSayingE] = useState<boolean>(false);
+  const [sayingF, setSayingF] = useState<boolean>(false);
+  const [sayingG, setSayingG] = useState<boolean>(false);
+  const [sayingH, setSayingH] = useState<boolean>(false);
+  const [sayingI, setSayingI] = useState<boolean>(false);
+  const [sayingJ, setSayingJ] = useState<boolean>(false);
+  const [sayingK, setSayingK] = useState<boolean>(false);
+  const [walking, setWalking] = useState<any>([]);
+  const [walkingA, setWalkingA] = useState<boolean>(false);
+  const [walkingB, setWalkingB] = useState<boolean>(false);
+  const [walkingC, setWalkingC] = useState<boolean>(false);
+  const [walkingD, setWalkingD] = useState<boolean>(false);
+  const [walkingE, setWalkingE] = useState<boolean>(false);
+  const [walkingF, setWalkingF] = useState<boolean>(false);
+  const [walkingG, setWalkingG] = useState<boolean>(false);
+  const [walkingH, setWalkingH] = useState<boolean>(false);
+  const [posture, setPosture] = useState<any>([]);
+  const [postureA, setPostureA] = useState<boolean>(false);
+  const [postureB, setPostureB] = useState<boolean>(false);
+  const [postureC, setPostureC] = useState<boolean>(false);
+  const [postureD, setPostureD] = useState<boolean>(false);
+  const [postureE, setPostureE] = useState<boolean>(false);
   const [
     submitHabitCheckListFn,
     { loading: submitHabitCheckListLoading },
@@ -215,6 +269,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   </Dialog.Actions>
                 </Dialog>
               </Portal>
+              <WhiteSpace />
               <FormikInput
                 label="직업 / 하는일"
                 value={values.job}
@@ -261,7 +316,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionA) => !wakeupConditionA
                     );
                   }}
-                  title={"개운하다"}
+                  title={"개운하다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -279,7 +334,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionB) => !wakeupConditionB
                     );
                   }}
-                  title={"머리가 아프다"}
+                  title={"머리가 아프다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -297,7 +352,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionC) => !wakeupConditionC
                     );
                   }}
-                  title={"눈이 아프거나 잘 안 떠진다"}
+                  title={"눈이 아프거나 잘 안 떠진다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -315,7 +370,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionD) => !wakeupConditionD
                     );
                   }}
-                  title={"몸이 결리거나 뻐근하다"}
+                  title={"몸이 결리거나 뻐근하다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -333,7 +388,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionE) => !wakeupConditionE
                     );
                   }}
-                  title={"일어나기 힘들다"}
+                  title={"일어나기 힘들다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -351,7 +406,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionF) => !wakeupConditionF
                     );
                   }}
-                  title={"멍하다"}
+                  title={"멍하다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -369,7 +424,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       (wakeupConditionG) => !wakeupConditionG
                     );
                   }}
-                  title={"손이나 발 등이 저리다"}
+                  title={"손이나 발 등이 저리다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -407,11 +462,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       setWakeupFirstThing,
                       "WAKEUP_FIRST_THING_A"
                     );
-                    setWakeupirstThingA(
+                    setWakeupFirstThingA(
                       (wakeupFirstThingA) => !wakeupFirstThingA
                     );
                   }}
-                  title={"찬물 혹은 찬음료를 마신다"}
+                  title={"찬물 혹은 찬음료를 마신다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -425,11 +480,11 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       setWakeupFirstThing,
                       "WAKEUP_FIRST_THING_B"
                     );
-                    setWakeupirstThingB(
+                    setWakeupFirstThingB(
                       (wakeupFirstThingB) => !wakeupFirstThingB
                     );
                   }}
-                  title={"뜨거운 물 혹은 차를 마신다"}
+                  title={"뜨거운 물 혹은 차를 마신다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -443,7 +498,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       setWakeupFirstThing,
                       "WAKEUP_FIRST_THING_C"
                     );
-                    setWakeupirstThingC(
+                    setWakeupFirstThingC(
                       (wakeupFirstThingC) => !wakeupFirstThingC
                     );
                   }}
@@ -461,7 +516,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       setWakeupFirstThing,
                       "WAKEUP_FIRST_THING_D"
                     );
-                    setWakeupirstThingD(
+                    setWakeupFirstThingD(
                       (wakeupFirstThingD) => !wakeupFirstThingD
                     );
                   }}
@@ -479,7 +534,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       setWakeupFirstThing,
                       "WAKEUP_FIRST_THING_E"
                     );
-                    setWakeupirstThingE(
+                    setWakeupFirstThingE(
                       (wakeupFirstThingE) => !wakeupFirstThingE
                     );
                   }}
@@ -497,7 +552,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                       setWakeupFirstThing,
                       "WAKEUP_FIRST_THING_F"
                     );
-                    setWakeupirstThingF(
+                    setWakeupFirstThingF(
                       (wakeupFirstThingF) => !wakeupFirstThingF
                     );
                   }}
@@ -506,6 +561,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
               </Box>
+              <Line />
               <FormikInput
                 label="하루에 몇 끼, 무엇을, 몇 시에 드시나요?"
                 value={values.meal}
@@ -515,6 +571,522 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                 error={touched.meal && errors.meal}
                 placeholder="삼시세끼 아침점심저녁 모두 밥과 반찬과 국을 챙겨먹음"
               />
+              <Divider
+                text={"식사할 때, 나는 주로... (중복 가능)"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={mealDuringA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_A");
+                    setMealDuringA((mealDuringA) => !mealDuringA);
+                  }}
+                  title={"대화를 많이 하는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_B");
+                    setMealDuringB((mealDuringB) => !mealDuringB);
+                  }}
+                  title={"먹는 것에 집중하는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_C");
+                    setMealDuringC((mealDuringC) => !mealDuringC);
+                  }}
+                  title={"TV, 스마트폰 등을 보면서 먹는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_D");
+                    setMealDuringD((mealDuringD) => !mealDuringD);
+                  }}
+                  title={"꼭꼭 씹어서 먹는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_E");
+                    setMealDuringE((mealDuringE) => !mealDuringE);
+                  }}
+                  title={"급하게 먹는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_F");
+                    setMealDuringF((mealDuringF) => !mealDuringF);
+                  }}
+                  title={"많이 먹는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringG}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_G");
+                    setMealDuringG((mealDuringG) => !mealDuringG);
+                  }}
+                  title={"입이 짧다 (많이 못 먹는다)"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringH}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_H");
+                    setMealDuringH((mealDuringH) => !mealDuringH);
+                  }}
+                  title={"음식의 맛을 음미하면서 먹는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringI}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_I");
+                    setMealDuringI((mealDuringI) => !mealDuringI);
+                  }}
+                  title={"끼니 때우듯 먹는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringJ}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_J");
+                    setMealDuringJ((mealDuringJ) => !mealDuringJ);
+                  }}
+                  title={"식욕이 별로 없다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealDuringK}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(mealDuring, setMealDuring, "MEAL_DURING_K");
+                    setMealDuringK((mealDuringK) => !mealDuringK);
+                  }}
+                  title={"밥맛이 아주 좋다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Divider
+                text={"점심식사 후 나는 주로... (중복 가능)"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={afterLunchA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(afterLunch, setAfterLunch, "AFTER_LUNCH_A");
+                    setAfterLunchA((afterLunchA) => !afterLunchA);
+                  }}
+                  title={"스마트폰을 본다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={afterLunchB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(afterLunch, setAfterLunch, "AFTER_LUNCH_B");
+                    setAfterLunchB((afterLunchB) => !afterLunchB);
+                  }}
+                  title={"밖에 나가 걷거나 산책을 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={afterLunchC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(afterLunch, setAfterLunch, "AFTER_LUNCH_C");
+                    setAfterLunchC((afterLunchC) => !afterLunchC);
+                  }}
+                  title={"담배를 핀다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={afterLunchD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(afterLunch, setAfterLunch, "AFTER_LUNCH_D");
+                    setAfterLunchD((afterLunchD) => !afterLunchD);
+                  }}
+                  title={"커피 등 후식을 즐긴다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={afterLunchE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(afterLunch, setAfterLunch, "AFTER_LUNCH_E");
+                    setAfterLunchE((afterLunchE) => !afterLunchE);
+                  }}
+                  title={"수다를 즐긴다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={afterLunchF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(afterLunch, setAfterLunch, "AFTER_LUNCH_F");
+                    setAfterLunchF((afterLunchF) => !afterLunchF);
+                  }}
+                  title={"잠이 쏟아진다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Divider text={"내가 말을 할 때... (중복 가능)"} color={"dark"} />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={sayingA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_A");
+                    setSayingA((sayingA) => !sayingA);
+                  }}
+                  title={"말의 속도가 빠르다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_B");
+                    setSayingB((sayingB) => !sayingB);
+                  }}
+                  title={"듣는 것보다 말하는 것에 더 익숙하다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_C");
+                    setSayingC((sayingC) => !sayingC);
+                  }}
+                  title={"상대방의 말을 잘 듣는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_D");
+                    setSayingD((sayingD) => !sayingD);
+                  }}
+                  title={"말을 자주 더듬는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_E");
+                    setSayingE((sayingE) => !sayingE);
+                  }}
+                  title={"말을 거침없이 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_F");
+                    setSayingF((sayingF) => !sayingF);
+                  }}
+                  title={"자주 흥분해서 말한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingG}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_G");
+                    setSayingG((sayingG) => !sayingG);
+                  }}
+                  title={"말이 별로 없다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingH}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_H");
+                    setSayingH((sayingH) => !sayingH);
+                  }}
+                  title={"생각을 하고 말을 하는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingI}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_I");
+                    setSayingI((sayingI) => !sayingI);
+                  }}
+                  title={"말을 하면서 생각하는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingJ}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_J");
+                    setSayingJ((sayingJ) => !sayingJ);
+                  }}
+                  title={"말실수를 많이 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sayingK}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(saying, setSaying, "SAYING_K");
+                    setSayingK((sayingK) => !sayingK);
+                  }}
+                  title={"부정적인 반응을 자주 보인다.(아닌 것 같은데~ 등)"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Divider text={"나는 걸을 때... (중복 가능)"} color={"dark"} />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={walkingA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_A");
+                    setWalkingA((walkingA) => !walkingA);
+                  }}
+                  title={"걸음이 느리다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_B");
+                    setWalkingB((walkingB) => !walkingB);
+                  }}
+                  title={"걸음이 빠른 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_C");
+                    setWalkingC((walkingC) => !walkingC);
+                  }}
+                  title={"옆사람과 나란히 걷는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_D");
+                    setWalkingD((walkingD) => !walkingD);
+                  }}
+                  title={"앞서서 걷는 편이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_E");
+                    setWalkingE((walkingE) => !walkingE);
+                  }}
+                  title={"발을 끌면서 걷는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_F");
+                    setWalkingF((walkingF) => !walkingF);
+                  }}
+                  title={"허리가 굽어 있다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingG}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_G");
+                    setWalkingG((walkingG) => !walkingG);
+                  }}
+                  title={"파워워킹을 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={walkingH}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(walking, setWalking, "WALKING_H");
+                    setWalkingH((walkingH) => !walkingH);
+                  }}
+                  title={"오래 걷지 못한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Divider
+                text={"하루 중 어느 시간이 가장 긴가요? (중복 가능)"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={postureA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(posture, setPosture, "POSTURE_A");
+                    setPostureA((postureA) => !postureA);
+                  }}
+                  title={"앉아 있는 시간"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(posture, setPosture, "POSTURE_B");
+                    setPostureB((postureB) => !postureB);
+                  }}
+                  title={"서 있는 시간"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(posture, setPosture, "POSTURE_C");
+                    setPostureC((postureC) => !postureC);
+                  }}
+                  title={"걷는 시간"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(posture, setPosture, "POSTURE_D");
+                    setPostureD((postureD) => !postureD);
+                  }}
+                  title={"교통수단을 이용하는 시간"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(posture, setPosture, "POSTURE_E");
+                    setPostureE((postureE) => !postureE);
+                  }}
+                  title={"누워 있는 시간"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
               <ButtonContainer>
                 <Button
                   raised
