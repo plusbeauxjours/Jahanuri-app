@@ -52,7 +52,6 @@ const WhiteSpace = styled.View`
 `;
 
 const initialValues = {
-  job: "",
   wakeupTime: "",
   wakeupLong: "",
   wakeupConditionEtc: "",
@@ -203,58 +202,120 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
     });
   };
   const submitConfirm = (values: any) => {
+    console.log(
+      "wakeupTime:",
+      values.wakeupTime,
+      "wakeupLong:",
+      values.wakeupLong,
+      "wakeupCondition:",
+      wakeupCondition,
+      "wakeupConditionEtc:",
+      values.wakeupConditionEtc,
+      "wakeupFirstThing:",
+      wakeupFirstThing,
+      "wakeupFirstThingEtc:",
+      values.wakeupFirstThingEtc,
+      "meal:",
+      values.meal,
+      "mealDuring:",
+      mealDuring,
+      "mealDuringEtc:",
+      values.mealDuringEtc,
+      "mealWithWater:",
+      mealWithWater,
+      "mealWithSnack:",
+      mealWithSnack,
+      "mealWithNightFood:",
+      mealWithNightFood,
+      "afterLunch:",
+      afterLunch,
+      "afterLunchEtc:",
+      values.afterLunchEtc,
+      "saying:",
+      saying,
+      "sayingEtc:",
+      values.sayingEtc,
+      "sayingRepeat:",
+      values.sayingRepeat,
+      "walking:",
+      walking,
+      "walkingEtc:",
+      values.walkingEtc,
+      "posture:",
+      posture,
+      "postureEtc:",
+      values.postureEtc,
+      "postureDetail:",
+      postureDetail,
+      "postureDetailEtc:",
+      values.postureDetailEtc,
+      "bodyHeat:",
+      bodyHeat,
+      "bodyHeatEtc:",
+      values.bodyHeatEtc,
+      "exercise:",
+      values.exercise,
+      "sleeping:",
+      sleeping,
+      "sleepingEtc:",
+      values.sleepingEtc,
+      "beforeSleeping:",
+      beforeSleeping,
+      "beforeSleepingEtc:",
+      values.beforeSleepingEtc,
+      "goodThing:",
+      values.goodThing,
+      "badThing:",
+      values.badThing
+    );
     submitHabitCheckListFn({
       variables: {
-        job: values.job,
         wakeupTime: values.wakeupTime,
         wakeupLong: values.wakeupLong,
-        wakeupCondition: values.wakeupCondition,
+        wakeupCondition: wakeupCondition,
         wakeupConditionEtc: values.wakeupConditionEtc,
-        wakeupFirstThing: values.wakeupFirstThing,
+        wakeupFirstThing: wakeupFirstThing,
         wakeupFirstThingEtc: values.wakeupFirstThingEtc,
         meal: values.meal,
-        mealDuring: values.mealDuring,
+        mealDuring: mealDuring,
         mealDuringEtc: values.mealDuringEtc,
         mealWithWater: mealWithWater,
         mealWithSnack: mealWithSnack,
         mealWithNightFood: mealWithNightFood,
-        afterLunch: values.afterLunch,
+        afterLunch: afterLunch,
         afterLunchEtc: values.afterLunchEtc,
-        saying: values.saying,
+        saying: saying,
         sayingEtc: values.sayingEtc,
         sayingRepeat: values.sayingRepeat,
-        walking: values.walking,
+        walking: walking,
         walkingEtc: values.walkingEtc,
-        posture: values.posture,
+        posture: posture,
         postureEtc: values.postureEtc,
-        postureDetail: values.postureDetail,
+        postureDetail: postureDetail,
         postureDetailEtc: values.postureDetailEtc,
-        bodyHeat: values.bodyHeat,
+        bodyHeat: bodyHeat,
         bodyHeatEtc: values.bodyHeatEtc,
         exercise: values.exercise,
-        sleeping: values.sleeping,
+        sleeping: sleeping,
         sleepingEtc: values.sleepingEtc,
-        beforeSleeping: values.beforeSleeping,
+        beforeSleeping: beforeSleeping,
         beforeSleepingEtc: values.beforeSleepingEtc,
         goodThing: values.goodThing,
         badThing: values.badThing,
       },
     });
     setModalOpen(false);
-    navigation.navigate("MyprofileScreen");
+    // navigation.navigate("MyprofileScreen");
     toast("나의 습관을 제출하였습니다.");
   };
   const toggleItems = (array: any, action: any, variables: string) => {
     if (array.includes(variables)) {
       action(array.filter((i) => i !== variables));
-      console.log("includes", array);
     } else {
       action((i) => [...i, variables]);
-      console.log("not includes", array);
     }
   };
   const validationSchema = Yup.object().shape({
-    job: Yup.string().required("필수 입력 사항입니다."),
     wakeupTime: Yup.string().required("필수 입력 사항입니다."),
     wakeupLong: Yup.string().required("필수 입력 사항입니다."),
     sayingRepeat: Yup.string().required("필수 입력 사항입니다."),
@@ -310,15 +371,6 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                 </Dialog>
               </Portal>
               <WhiteSpace />
-              <FormikInput
-                label="직업 / 하는일"
-                value={values.job}
-                onChange={setFieldValue}
-                onTouch={setFieldTouched}
-                name="job"
-                error={touched.job && errors.job}
-                placeholder="건축가"
-              />
               <FormikInput
                 label="기상시간이 규칙적인가요?"
                 value={values.wakeupTime}
@@ -1182,6 +1234,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   placeholder="기타"
                 />
               </Box>
+              <Line />
               <FormikInput
                 label="내가 말할 때 가장 자주 쓰는 말은?"
                 value={values.sayingRepeat}

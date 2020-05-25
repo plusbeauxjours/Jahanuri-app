@@ -2185,13 +2185,13 @@
           },
           {
             "name": "DEGREE_D",
-            "description": "거의 한다",
+            "description": "자주 한다",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "DEGREE_E",
-            "description": "자주 한다",
+            "description": "매일 한다",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -2226,13 +2226,13 @@
           },
           {
             "name": "DEGREE_D",
-            "description": "거의 한다",
+            "description": "자주 한다",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "DEGREE_E",
-            "description": "자주 한다",
+            "description": "매일 한다",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -2267,13 +2267,13 @@
           },
           {
             "name": "DEGREE_D",
-            "description": "거의 한다",
+            "description": "자주 한다",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "DEGREE_E",
-            "description": "자주 한다",
+            "description": "매일 한다",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -3835,20 +3835,6 @@
               },
               {
                 "name": "goodThing",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "job",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",

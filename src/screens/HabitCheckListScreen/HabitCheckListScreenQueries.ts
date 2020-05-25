@@ -3,7 +3,6 @@ import gql from "graphql-tag";
 
 export const SUBMIT_HABIT_CHECK_LIST = gql`
   mutation SubmitHabitCheckList(
-    $job: String!
     $wakeupTime: String!
     $wakeupLong: String!
     $wakeupCondition: [String]
@@ -38,7 +37,6 @@ export const SUBMIT_HABIT_CHECK_LIST = gql`
     $badThing: String!
   ) {
     submitHabitCheckList(
-      job: $job
       wakeupTime: $wakeupTime
       wakeupLong: $wakeupLong
       wakeupCondition: $wakeupCondition

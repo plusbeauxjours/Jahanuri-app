@@ -269,7 +269,6 @@ export interface SubmitHabitCheckList {
 }
 
 export interface SubmitHabitCheckListVariables {
-  job: string;
   wakeupTime: string;
   wakeupLong: string;
   wakeupCondition?: (string | null)[] | null;
