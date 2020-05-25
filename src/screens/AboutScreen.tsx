@@ -23,6 +23,7 @@ const Text = styled.Text`
   color: white;
   font-size: 14px;
   margin-bottom: 12px;
+  font-weight: 200;
 `;
 const Bold = styled(Text)`
   font-size: 18px;

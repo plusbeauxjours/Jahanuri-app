@@ -26,7 +26,7 @@ const Container = styled.View`
 `;
 const Text = styled.Text`
   align-self: flex-start;
-  font-weight: 400;
+  font-weight: 100;
   margin-left: 20px;
   font-size: 12px;
 `;
@@ -205,13 +205,13 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
                     <FontAwesome
                       name="check-square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                     />
                   ) : (
                     <FontAwesome
                       name="square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                       checked={report.jeunHaeJilA}
                     />
                   )}
@@ -219,13 +219,13 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
                     <FontAwesome
                       name="check-square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                     />
                   ) : (
                     <FontAwesome
                       name="square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                       checked={report.jeunHaeJilB}
                     />
                   )}
@@ -233,13 +233,13 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
                     <FontAwesome
                       name="check-square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                     />
                   ) : (
                     <FontAwesome
                       name="square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                       checked={report.jeunHaeJilC}
                     />
                   )}
@@ -247,13 +247,13 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
                     <FontAwesome
                       name="check-square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                     />
                   ) : (
                     <FontAwesome
                       name="square-o"
                       color={"#999"}
-                      size={30}
+                      size={24}
                       checked={report.jeunHaeJilD}
                     />
                   )}

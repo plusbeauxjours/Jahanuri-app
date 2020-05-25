@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SwipeListView } from "react-native-swipe-list-view";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import Toast from "react-native-root-toast";
 import { ScrollView, ActivityIndicator } from "react-native";
 import { useQuery, useMutation } from "react-apollo-hooks";
@@ -226,21 +226,17 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               renderHiddenItem={(data) => (
                 <View>
                   {data.item.questionSet[0].previousAnswer ? (
-                    <Ionicons
-                      name="ios-checkbox-outline"
-                      size={24}
+                    <FontAwesome
+                      name="check-square-o"
                       color={"#999"}
+                      size={24}
                     />
                   ) : (
-                    <Ionicons
-                      name="ios-square-outline"
-                      size={28}
-                      color={"#999"}
-                    />
+                    <FontAwesome name="square-o" color={"#999"} size={24} />
                   )}
                 </View>
               )}
-              leftOpenValue={40}
+              leftOpenValue={50}
               keyExtractor={(item) => item.uuid}
             />
           ) : (

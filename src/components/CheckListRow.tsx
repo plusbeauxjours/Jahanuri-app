@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import dimensions from "../constants/dimensions";
 
 const View = styled.View`
@@ -9,8 +9,11 @@ const View = styled.View`
   justify-content: space-between;
   height: 50px;
   padding: 0 20px;
+  background-color: #f2f2f2;
 `;
 const Text = styled.Text`
+  font-weight: 100;
+  font-size: 16px;
   width: ${dimensions.width - 100};
   flex-wrap: wrap;
 `;
@@ -53,9 +56,9 @@ const CheckListRow: React.FC<IProps> = ({
           }}
         >
           {isPreviousAnswerTrue ? (
-            <Ionicons name="ios-checkbox-outline" size={24} />
+            <FontAwesome name="check-square-o" color={"#999"} size={24} />
           ) : (
-            <Ionicons name="ios-square-outline" size={28} />
+            <FontAwesome name="square-o" color={"#999"} size={24} />
           )}
         </Touchable>
       </View>
@@ -71,9 +74,9 @@ const CheckListRow: React.FC<IProps> = ({
           }}
         >
           {isLaterAnswerTrue ? (
-            <Ionicons name="ios-checkbox-outline" size={24} />
+            <FontAwesome name="check-square-o" color={"#999"} size={24} />
           ) : (
-            <Ionicons name="ios-square-outline" size={28} />
+            <FontAwesome name="square-o" color={"#999"} size={24} />
           )}
         </Touchable>
       </View>
@@ -91,9 +94,9 @@ const CheckListRow: React.FC<IProps> = ({
           }}
         >
           {isPreviousAnswerTrue ? (
-            <Ionicons name="ios-checkbox-outline" size={24} />
+            <FontAwesome name="check-square-o" color={"#999"} size={24} />
           ) : (
-            <Ionicons name="ios-square-outline" size={28} />
+            <FontAwesome name="square-o" color={"#999"} size={24} />
           )}
         </Touchable>
       </View>
@@ -102,25 +105,15 @@ const CheckListRow: React.FC<IProps> = ({
     return (
       <View>
         {isPreviousAnswerTrue ? (
-          <Ionicons
-            name="ios-checkbox-outline"
-            size={24}
-            color={"#999"}
-            style={{ marginRight: 20 }}
-          />
+          <FontAwesome name="check-square-o" color={"#999"} size={24} />
         ) : (
-          <Ionicons
-            name="ios-square-outline"
-            size={28}
-            color={"#999"}
-            style={{ marginRight: 20 }}
-          />
+          <FontAwesome name="square-o" color={"#999"} size={24} />
         )}
         <Text>{question}</Text>
         {isLaterAnswerTrue ? (
-          <Ionicons name="ios-checkbox-outline" size={24} color={"#999"} />
+          <FontAwesome name="check-square-o" color={"#999"} size={24} />
         ) : (
-          <Ionicons name="ios-square-outline" size={28} color={"#999"} />
+          <FontAwesome name="square-o" color={"#999"} size={24} />
         )}
       </View>
     );

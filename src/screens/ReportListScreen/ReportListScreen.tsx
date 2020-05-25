@@ -20,11 +20,11 @@ const View = styled.View`
   justify-content: center;
 `;
 const Text = styled.Text`
-  font-weight: 400;
+  font-weight: 100;
   font-size: 20px;
 `;
 const SmallText = styled.Text`
-  font-weight: 400;
+  font-weight: 100;
   font-size: 12px;
 `;
 const ScrollView = styled.ScrollView``;

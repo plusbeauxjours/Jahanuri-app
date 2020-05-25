@@ -62,7 +62,8 @@ const DateFont = styled.Text`
   font-size: 10px;
 `;
 const Text = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 100;
 `;
 const ScrollView = styled.ScrollView``;
 const Circle = styled.Text`

@@ -32,6 +32,7 @@ const Order = styled.Text`
 `;
 const DateFont = styled.Text`
   font-size: 10px;
+  font-weight: 100;
 `;
 
 interface IProps {

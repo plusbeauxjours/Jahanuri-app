@@ -20,9 +20,11 @@ const GreyLine = styled.View`
 `;
 const DateFont = styled.Text`
   font-size: 10px;
+  font-weight: 100;
 `;
 const Text = styled.Text`
   font-size: 16px;
+  font-weight: 100;
   margin-bottom: 10px;
 `;
 const Touchable = styled.TouchableOpacity``;

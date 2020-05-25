@@ -23,7 +23,8 @@ const Box = styled.View`
 const Text = styled.Text`
   text-align: center;
   color: white;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 200;
 `;
 const TitleBox = styled.View`
   margin: 30px 0 10px 0;

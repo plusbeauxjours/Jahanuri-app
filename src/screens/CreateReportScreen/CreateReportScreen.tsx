@@ -38,7 +38,7 @@ const Button = styled.Button`
 `;
 const Text = styled.Text`
   align-self: flex-start;
-  font-weight: 400;
+  font-weight: 100;
   margin-left: 20px;
   font-size: 12px;
 `;
@@ -384,7 +384,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 <Text>전해질 보충</Text>
                 <CheckboxLine>
                   <CheckBox
-                    size={30}
+                    size={24}
                     checked={jeunHaeJilA}
                     checkedColor={"#8b00ff"}
                     onPress={() => {
@@ -392,7 +392,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     }}
                   />
                   <CheckBox
-                    size={30}
+                    size={24}
                     checked={jeunHaeJilB}
                     checkedColor={"#8b00ff"}
                     onPress={() => {
@@ -400,7 +400,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     }}
                   />
                   <CheckBox
-                    size={30}
+                    size={24}
                     checked={jeunHaeJilC}
                     checkedColor={"#8b00ff"}
                     onPress={() => {
@@ -408,7 +408,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     }}
                   />
                   <CheckBox
-                    size={30}
+                    size={24}
                     checked={jeunHaeJilD}
                     checkedColor={"#8b00ff"}
                     onPress={() => {

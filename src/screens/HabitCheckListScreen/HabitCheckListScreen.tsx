@@ -202,72 +202,6 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
     });
   };
   const submitConfirm = (values: any) => {
-    console.log(
-      "wakeupTime:",
-      values.wakeupTime,
-      "wakeupLong:",
-      values.wakeupLong,
-      "wakeupCondition:",
-      wakeupCondition,
-      "wakeupConditionEtc:",
-      values.wakeupConditionEtc,
-      "wakeupFirstThing:",
-      wakeupFirstThing,
-      "wakeupFirstThingEtc:",
-      values.wakeupFirstThingEtc,
-      "meal:",
-      values.meal,
-      "mealDuring:",
-      mealDuring,
-      "mealDuringEtc:",
-      values.mealDuringEtc,
-      "mealWithWater:",
-      mealWithWater,
-      "mealWithSnack:",
-      mealWithSnack,
-      "mealWithNightFood:",
-      mealWithNightFood,
-      "afterLunch:",
-      afterLunch,
-      "afterLunchEtc:",
-      values.afterLunchEtc,
-      "saying:",
-      saying,
-      "sayingEtc:",
-      values.sayingEtc,
-      "sayingRepeat:",
-      values.sayingRepeat,
-      "walking:",
-      walking,
-      "walkingEtc:",
-      values.walkingEtc,
-      "posture:",
-      posture,
-      "postureEtc:",
-      values.postureEtc,
-      "postureDetail:",
-      postureDetail,
-      "postureDetailEtc:",
-      values.postureDetailEtc,
-      "bodyHeat:",
-      bodyHeat,
-      "bodyHeatEtc:",
-      values.bodyHeatEtc,
-      "exercise:",
-      values.exercise,
-      "sleeping:",
-      sleeping,
-      "sleepingEtc:",
-      values.sleepingEtc,
-      "beforeSleeping:",
-      beforeSleeping,
-      "beforeSleepingEtc:",
-      values.beforeSleepingEtc,
-      "goodThing:",
-      values.goodThing,
-      "badThing:",
-      values.badThing
-    );
     submitHabitCheckListFn({
       variables: {
         wakeupTime: values.wakeupTime,
@@ -347,6 +281,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
             touched,
             errors,
             isValid,
+            submitForm,
           }) => (
             <>
               <Portal>
@@ -395,7 +330,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -413,7 +348,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -431,7 +366,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -449,7 +384,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -467,7 +402,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -485,7 +420,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -503,7 +438,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -521,7 +456,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupConditionH}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -553,7 +488,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupFirstThingA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -571,7 +506,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupFirstThingB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -589,7 +524,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupFirstThingC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -607,7 +542,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupFirstThingD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -625,7 +560,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupFirstThingE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -643,7 +578,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={wakeupFirstThingF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -685,7 +620,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -697,7 +632,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -709,7 +644,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -721,7 +656,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -733,7 +668,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -745,7 +680,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -757,7 +692,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -769,7 +704,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringH}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -781,7 +716,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringI}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -793,7 +728,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringJ}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -805,7 +740,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealDuringK}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -831,7 +766,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithWater === "DEGREE_A"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -842,7 +777,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithWater === "DEGREE_B"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -853,7 +788,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithWater === "DEGREE_C"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -864,7 +799,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithWater === "DEGREE_D"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -875,7 +810,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithWater === "DEGREE_E"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -892,7 +827,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithSnack === "DEGREE_A"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -903,7 +838,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithSnack === "DEGREE_B"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -914,7 +849,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithSnack === "DEGREE_C"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -925,7 +860,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithSnack === "DEGREE_D"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -936,7 +871,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithSnack === "DEGREE_E"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -950,7 +885,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               <Divider text={"야식을 많이 드시나요?"} color={"dark"} />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithNightFood === "DEGREE_A"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -961,7 +896,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithNightFood === "DEGREE_B"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -972,7 +907,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithNightFood === "DEGREE_C"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -983,7 +918,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithNightFood === "DEGREE_D"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -994,7 +929,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={mealWithNightFood === "DEGREE_E"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1011,7 +946,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={afterLunchA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1023,7 +958,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={afterLunchB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1035,7 +970,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={afterLunchC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1047,7 +982,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={afterLunchD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1059,7 +994,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={afterLunchE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1071,7 +1006,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={afterLunchF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1094,7 +1029,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               <Divider text={"내가 말을 할 때... (중복 가능)"} color={"dark"} />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1106,7 +1041,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1118,7 +1053,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1130,7 +1065,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1142,7 +1077,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1154,7 +1089,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1166,7 +1101,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1178,7 +1113,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingH}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1190,7 +1125,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingI}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1202,7 +1137,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingJ}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1214,7 +1149,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sayingK}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1246,7 +1181,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               <Divider text={"나는 걸을 때... (중복 가능)"} color={"dark"} />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1258,7 +1193,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1270,7 +1205,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1282,7 +1217,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1294,7 +1229,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1306,7 +1241,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1318,7 +1253,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1330,7 +1265,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={walkingH}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1356,7 +1291,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1368,7 +1303,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1380,7 +1315,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1392,7 +1327,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1404,7 +1339,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1427,7 +1362,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               <Divider text={"나의 평소 자세는? (중복 가능)"} color={"dark"} />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1443,7 +1378,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1459,7 +1394,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1475,7 +1410,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1491,7 +1426,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1507,7 +1442,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1523,7 +1458,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1539,7 +1474,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailH}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1555,7 +1490,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailI}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1571,7 +1506,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={postureDetailJ}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1601,7 +1536,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1613,7 +1548,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1625,7 +1560,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1637,7 +1572,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1649,7 +1584,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1661,7 +1596,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatF}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1673,7 +1608,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatG}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1685,7 +1620,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatH}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1697,7 +1632,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatI}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1709,7 +1644,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatJ}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1721,7 +1656,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={bodyHeatK}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1754,7 +1689,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               <Divider text={"잠은 어떻게 주무시나요?"} color={"dark"} />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sleepingA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1766,7 +1701,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sleepingB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1778,7 +1713,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sleepingC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1790,7 +1725,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={sleepingD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1813,7 +1748,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               <Divider text={"자기 전 주로 하는 일은?"} color={"dark"} />
               <Box>
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={beforeSleepingA}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1829,7 +1764,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={beforeSleepingB}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1845,7 +1780,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={beforeSleepingC}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1861,7 +1796,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={beforeSleepingD}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1877,7 +1812,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   containerStyle={{ backgroundColor: null }}
                 />
                 <CheckBox
-                  size={30}
+                  size={24}
                   checked={beforeSleepingE}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
@@ -1931,9 +1866,23 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                 <Button
                   raised
                   primary
-                  disabled={!isValid}
+                  disabled={
+                    !isValid ||
+                    !values.wakeupTime ||
+                    !values.wakeupLong ||
+                    !values.meal ||
+                    !mealWithWater ||
+                    !mealWithSnack ||
+                    !mealWithNightFood ||
+                    !values.sayingRepeat ||
+                    !values.exercise ||
+                    !values.goodThing ||
+                    !values.badThing
+                  }
                   loading={submitHabitCheckListLoading}
-                  onPress={() => setModalOpen(true)}
+                  onPress={() => {
+                    setModalOpen(true), submitForm;
+                  }}
                   title="제출"
                 />
               </ButtonContainer>
