@@ -30,11 +30,14 @@ const Line = styled.View`
   margin: 20px;
 `;
 const View = styled.View`
+  width: 80%;
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
-const Text = styled.Text``;
+const Text = styled.Text`
+  color: #999;
+`;
 const ButtonContainer = styled.View`
   justify-content: center;
   align-items: center;
@@ -56,9 +59,9 @@ const initialValues = {
   wakeupFirstThingEtc: "",
   meal: "",
   mealDuringEtc: "",
-  mealWithWater: [],
-  mealWithSnack: [],
-  mealWithNightFood: [],
+  mealWithWater: "",
+  mealWithSnack: "",
+  mealWithNightFood: "",
   afterLunch: [],
   afterLunchEtc: "",
   saying: [],
@@ -112,6 +115,9 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   const [mealDuringI, setMealDuringI] = useState<boolean>(false);
   const [mealDuringJ, setMealDuringJ] = useState<boolean>(false);
   const [mealDuringK, setMealDuringK] = useState<boolean>(false);
+  const [mealWithWater, setMealWithWater] = useState<string>("");
+  const [mealWithSnack, setMealWithSnack] = useState<string>("");
+  const [mealWithNightFood, setMealWithNightFood] = useState<string>("");
   const [afterLunch, setAfterLunch] = useState<any>([]);
   const [afterLunchA, setAfterLunchA] = useState<boolean>(false);
   const [afterLunchB, setAfterLunchB] = useState<boolean>(false);
@@ -146,6 +152,40 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   const [postureC, setPostureC] = useState<boolean>(false);
   const [postureD, setPostureD] = useState<boolean>(false);
   const [postureE, setPostureE] = useState<boolean>(false);
+  const [postureDetail, setPostureDetail] = useState<any>([]);
+  const [postureDetailA, setPostureDetailA] = useState<boolean>(false);
+  const [postureDetailB, setPostureDetailB] = useState<boolean>(false);
+  const [postureDetailC, setPostureDetailC] = useState<boolean>(false);
+  const [postureDetailD, setPostureDetailD] = useState<boolean>(false);
+  const [postureDetailE, setPostureDetailE] = useState<boolean>(false);
+  const [postureDetailF, setPostureDetailF] = useState<boolean>(false);
+  const [postureDetailG, setPostureDetailG] = useState<boolean>(false);
+  const [postureDetailH, setPostureDetailH] = useState<boolean>(false);
+  const [postureDetailI, setPostureDetailI] = useState<boolean>(false);
+  const [postureDetailJ, setPostureDetailJ] = useState<boolean>(false);
+  const [bodyHeat, setBodyHeat] = useState<any>([]);
+  const [bodyHeatA, setBodyHeatA] = useState<boolean>(false);
+  const [bodyHeatB, setBodyHeatB] = useState<boolean>(false);
+  const [bodyHeatC, setBodyHeatC] = useState<boolean>(false);
+  const [bodyHeatD, setBodyHeatD] = useState<boolean>(false);
+  const [bodyHeatE, setBodyHeatE] = useState<boolean>(false);
+  const [bodyHeatF, setBodyHeatF] = useState<boolean>(false);
+  const [bodyHeatG, setBodyHeatG] = useState<boolean>(false);
+  const [bodyHeatH, setBodyHeatH] = useState<boolean>(false);
+  const [bodyHeatI, setBodyHeatI] = useState<boolean>(false);
+  const [bodyHeatJ, setBodyHeatJ] = useState<boolean>(false);
+  const [bodyHeatK, setBodyHeatK] = useState<boolean>(false);
+  const [sleeping, setSleeping] = useState<any>([]);
+  const [sleepingA, setSleepingA] = useState<boolean>(false);
+  const [sleepingB, setSleepingB] = useState<boolean>(false);
+  const [sleepingC, setSleepingC] = useState<boolean>(false);
+  const [sleepingD, setSleepingD] = useState<boolean>(false);
+  const [beforeSleeping, setBeforeSleeping] = useState<any>([]);
+  const [beforeSleepingA, setBeforeSleepingA] = useState<boolean>(false);
+  const [beforeSleepingB, setBeforeSleepingB] = useState<boolean>(false);
+  const [beforeSleepingC, setBeforeSleepingC] = useState<boolean>(false);
+  const [beforeSleepingD, setBeforeSleepingD] = useState<boolean>(false);
+  const [beforeSleepingE, setBeforeSleepingE] = useState<boolean>(false);
   const [
     submitHabitCheckListFn,
     { loading: submitHabitCheckListLoading },
@@ -175,9 +215,9 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
         meal: values.meal,
         mealDuring: values.mealDuring,
         mealDuringEtc: values.mealDuringEtc,
-        mealWithWater: values.mealWithWater,
-        mealWithSnack: values.mealWithSnack,
-        mealWithNightFood: values.mealWithNightFood,
+        mealWithWater: mealWithWater,
+        mealWithSnack: mealWithSnack,
+        mealWithNightFood: mealWithNightFood,
         afterLunch: values.afterLunch,
         afterLunchEtc: values.afterLunchEtc,
         saying: values.saying,
@@ -446,6 +486,14 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
+                <FormikInput
+                  label="기타"
+                  value={values.wakeupConditionEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="wakeupConditionEtc"
+                  placeholder="기타"
+                />
               </Box>
               <Divider
                 text={"아침에 눈 떠서 가장 처음에 하는 일은? (중복 가능)"}
@@ -559,6 +607,14 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   title={"잡지, 신문"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.wakeupFirstThingEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="wakeupFirstThingEtc"
+                  placeholder="기타"
                 />
               </Box>
               <Line />
@@ -708,6 +764,194 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
+                <FormikInput
+                  label="기타"
+                  value={values.mealDuringEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="mealDuringEtc"
+                  placeholder="기타"
+                />
+              </Box>
+              <Divider
+                text={"식사 전후에 물을 많이 마시나요?"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={mealWithWater === "DEGREE_A"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithWater("DEGREE_A");
+                  }}
+                  title={"안 마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithWater === "DEGREE_B"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithWater("DEGREE_B");
+                  }}
+                  title={"거의 안마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithWater === "DEGREE_C"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithWater("DEGREE_C");
+                  }}
+                  title={"가끔 마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithWater === "DEGREE_D"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithWater("DEGREE_D");
+                  }}
+                  title={"조금 마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithWater === "DEGREE_E"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithWater("DEGREE_E");
+                  }}
+                  title={"많이 마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Divider
+                text={"식사 외에 간식, 군것질을 하시나요?"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={mealWithSnack === "DEGREE_A"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithSnack("DEGREE_A");
+                  }}
+                  title={"안한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithSnack === "DEGREE_B"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithSnack("DEGREE_B");
+                  }}
+                  title={"거의 안한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithSnack === "DEGREE_C"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithSnack("DEGREE_C");
+                  }}
+                  title={"가끔 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithSnack === "DEGREE_D"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithSnack("DEGREE_D");
+                  }}
+                  title={"자주 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithSnack === "DEGREE_E"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithSnack("DEGREE_E");
+                  }}
+                  title={"매일 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Divider text={"야식을 많이 드시나요?"} color={"dark"} />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={mealWithNightFood === "DEGREE_A"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithNightFood("DEGREE_A");
+                  }}
+                  title={"안한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithNightFood === "DEGREE_B"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithNightFood("DEGREE_B");
+                  }}
+                  title={"거의 안한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithNightFood === "DEGREE_C"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithNightFood("DEGREE_C");
+                  }}
+                  title={"가끔 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithNightFood === "DEGREE_D"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithNightFood("DEGREE_D");
+                  }}
+                  title={"자주 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={mealWithNightFood === "DEGREE_E"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setMealWithNightFood("DEGREE_E");
+                  }}
+                  title={"매일 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
               </Box>
               <Divider
                 text={"점심식사 후 나는 주로... (중복 가능)"}
@@ -785,6 +1029,14 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   title={"잠이 쏟아진다."}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.afterLunchEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="afterLunchEtc"
+                  placeholder="기타"
                 />
               </Box>
               <Divider text={"내가 말을 할 때... (중복 가능)"} color={"dark"} />
@@ -921,7 +1173,23 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
+                <FormikInput
+                  label="기타"
+                  value={values.sayingEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sayingEtc"
+                  placeholder="기타"
+                />
               </Box>
+              <FormikInput
+                label="내가 말할 때 가장 자주 쓰는 말은?"
+                value={values.sayingRepeat}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="sayingRepeat"
+                placeholder="진짜, 아니, 어, 그, 아닌거같은데, 등"
+              />
               <Divider text={"나는 걸을 때... (중복 가능)"} color={"dark"} />
               <Box>
                 <CheckBox
@@ -1020,6 +1288,14 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
+                <FormikInput
+                  label="기타"
+                  value={values.walkingEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="walkingEtc"
+                  placeholder="기타"
+                />
               </Box>
               <Divider
                 text={"하루 중 어느 시간이 가장 긴가요? (중복 가능)"}
@@ -1086,7 +1362,518 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
+                <FormikInput
+                  label="기타"
+                  value={values.postureEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="postureEtc"
+                  placeholder="기타"
+                />
               </Box>
+              <Divider text={"나의 평소 자세는? (중복 가능)"} color={"dark"} />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={postureDetailA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_A"
+                    );
+                    setPostureDetailA((postureDetailA) => !postureDetailA);
+                  }}
+                  title={"자세를 편하게 잘 펴고 있다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_B"
+                    );
+                    setPostureDetailB((postureDetailB) => !postureDetailB);
+                  }}
+                  title={"자세가 무너져 있다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_C"
+                    );
+                    setPostureDetailC((postureDetailC) => !postureDetailC);
+                  }}
+                  title={"앉아 있는 것에 익숙하다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_D"
+                    );
+                    setPostureDetailD((postureDetailD) => !postureDetailD);
+                  }}
+                  title={"오래 서 있지 못한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_E"
+                    );
+                    setPostureDetailE((postureDetailE) => !postureDetailE);
+                  }}
+                  title={"앉아 있는 게 힘들다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_F"
+                    );
+                    setPostureDetailF((postureDetailF) => !postureDetailF);
+                  }}
+                  title={"등이 굽어 있거나 거북목이다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailG}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_G"
+                    );
+                    setPostureDetailG((postureDetailG) => !postureDetailG);
+                  }}
+                  title={"일자목, 목이 돌아가지 않는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailH}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_H"
+                    );
+                    setPostureDetailH((postureDetailH) => !postureDetailH);
+                  }}
+                  title={"다리를 자주 꼰다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailI}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_I"
+                    );
+                    setPostureDetailI((postureDetailI) => !postureDetailI);
+                  }}
+                  title={"무지외반증이 있다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={postureDetailJ}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      postureDetail,
+                      setPostureDetail,
+                      "POSTURE_DETAIL_J"
+                    );
+                    setPostureDetailJ((postureDetailJ) => !postureDetailJ);
+                  }}
+                  title={"다리가 휘어 있다.(안으로, 밖으로 등)"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.postureDetailEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="postureDetailEtc"
+                  placeholder="기타"
+                />
+              </Box>
+              <Divider
+                text={"체온조절을 위해 어떤 일을 하고 계시나요? (중복 가능)"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_A");
+                    setBodyHeatA((bodyHeatA) => !bodyHeatA);
+                  }}
+                  title={"열이 많아서 옷을 얇게 입는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_B");
+                    setBodyHeatB((bodyHeatB) => !bodyHeatB);
+                  }}
+                  title={"찬물을 피한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_C");
+                    setBodyHeatC((bodyHeatC) => !bodyHeatC);
+                  }}
+                  title={"찬물을 즐겨 마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_D");
+                    setBodyHeatD((bodyHeatD) => !bodyHeatD);
+                  }}
+                  title={"뜨거운 차를 자주 마신다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_E");
+                    setBodyHeatE((bodyHeatE) => !bodyHeatE);
+                  }}
+                  title={"핫팩을 자주 붙이고 다닌다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_F");
+                    setBodyHeatF((bodyHeatF) => !bodyHeatF);
+                  }}
+                  title={"목도리, 장갑 등을 챙겨서 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatG}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_G");
+                    setBodyHeatG((bodyHeatG) => !bodyHeatG);
+                  }}
+                  title={"내의를 챙겨 입는다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatH}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_H");
+                    setBodyHeatH((bodyHeatH) => !bodyHeatH);
+                  }}
+                  title={"발을 항상 따듯하게 해 준다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatI}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_I");
+                    setBodyHeatI((bodyHeatI) => !bodyHeatI);
+                  }}
+                  title={"발이 답답해서 집에서 맨발로 다닌다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatJ}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_J");
+                    setBodyHeatJ((bodyHeatJ) => !bodyHeatJ);
+                  }}
+                  title={"찜질팩, 돌뜸 등을 늘 챙겨서 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={bodyHeatK}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(bodyHeat, setBodyHeat, "BODY_HEAT_K");
+                    setBodyHeatK((bodyHeatK) => !bodyHeatK);
+                  }}
+                  title={"족탕, 반신욕, 찜질 등을 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.bodyHeatEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="bodyHeatEtc"
+                  placeholder="기타"
+                />
+              </Box>
+              <Line />
+              <FormikInput
+                label="지금 하고 있는 운동이 있으신가요?"
+                value={values.exercise}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="exercise"
+                error={touched.exercise && errors.exercise}
+                placeholder="헬스, 요가, 걷기, 마라톤 등등"
+              />
+              <Divider text={"잠은 어떻게 주무시나요?"} color={"dark"} />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={sleepingA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(sleeping, setSleeping, "SLEEPING_A");
+                    setSleepingA((sleepingA) => !sleepingA);
+                  }}
+                  title={"머리를 대면 바로 잠든다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sleepingB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(sleeping, setSleeping, "SLEEPING_B");
+                    setSleepingB((sleepingB) => !sleepingB);
+                  }}
+                  title={"한참을 뒤척이다 자야 한다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sleepingC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(sleeping, setSleeping, "SLEEPING_C");
+                    setSleepingC((sleepingC) => !sleepingC);
+                  }}
+                  title={"새벽에 꼭 한 번(이상) 일어난다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={sleepingD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(sleeping, setSleeping, "SLEEPING_D");
+                    setSleepingD((sleepingD) => !sleepingD);
+                  }}
+                  title={"잠을 못 잔다."}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.sleepingEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sleepingEtc"
+                  placeholder="기타"
+                />
+              </Box>
+              <Divider text={"자기 전 주로 하는 일은?"} color={"dark"} />
+              <Box>
+                <CheckBox
+                  size={30}
+                  checked={beforeSleepingA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      beforeSleeping,
+                      setBeforeSleeping,
+                      "BEFORE_SLEEPING_A"
+                    );
+                    setBeforeSleepingA((beforeSleepingA) => !beforeSleepingA);
+                  }}
+                  title={"스마트폰"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={beforeSleepingB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      beforeSleeping,
+                      setBeforeSleeping,
+                      "BEFORE_SLEEPING_B"
+                    );
+                    setBeforeSleepingB((beforeSleepingB) => !beforeSleepingB);
+                  }}
+                  title={"TV시청"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={beforeSleepingC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      beforeSleeping,
+                      setBeforeSleeping,
+                      "BEFORE_SLEEPING_C"
+                    );
+                    setBeforeSleepingC((beforeSleepingC) => !beforeSleepingC);
+                  }}
+                  title={"책, 잡지, 신문 등 읽기"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={beforeSleepingD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      beforeSleeping,
+                      setBeforeSleeping,
+                      "BEFORE_SLEEPING_D"
+                    );
+                    setBeforeSleepingD((beforeSleepingD) => !beforeSleepingD);
+                  }}
+                  title={"일기, 글쓰기"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={30}
+                  checked={beforeSleepingE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(
+                      beforeSleeping,
+                      setBeforeSleeping,
+                      "BEFORE_SLEEPING_E"
+                    );
+                    setBeforeSleepingE((beforeSleepingE) => !beforeSleepingE);
+                  }}
+                  title={"야식"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.beforeSleepingEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="beforeSleepingEtc"
+                  placeholder="기타"
+                />
+              </Box>
+              <Line />
+              <FormikInput
+                label="나의 좋은 습관은 무엇인가요?"
+                value={values.goodThing}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="goodThing"
+                error={touched.goodThing && errors.goodThing}
+              />
+              <FormikInput
+                label="나의 고치고 싶은 습관은 무엇인가요? 자세히 적어주세요."
+                value={values.badThing}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="badThing"
+                error={touched.badThing && errors.badThing}
+              />
+              <View>
+                <WhiteSpace />
+                <Text>
+                  고맙습니다. '제출'을 누르면 나의 습관 체크리스트 작성이
+                  완료됩니다. 작성해주신 내용은 모두 여러분의 몸과 마음의
+                  습관해독을 돕는 목적으로만 사용되며 외부로는 절대 공개되지
+                  않는 점 알려드립니다.
+                </Text>
+              </View>
               <ButtonContainer>
                 <Button
                   raised

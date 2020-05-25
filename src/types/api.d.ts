@@ -156,60 +156,6 @@ export interface SubmitCheckListVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: SubmitHabitCheckList
-// ====================================================
-
-export interface SubmitHabitCheckList_submitHabitCheckList {
-  __typename: "SubmitHabitCheckListResponse";
-  ok: boolean | null;
-}
-
-export interface SubmitHabitCheckList {
-  submitHabitCheckList: SubmitHabitCheckList_submitHabitCheckList;
-}
-
-export interface SubmitHabitCheckListVariables {
-  job: string;
-  wakeupTime: string;
-  wakeupLong: string;
-  wakeupCondition?: (string | null)[] | null;
-  wakeupConditionEtc?: string | null;
-  wakeupFirstThing?: (string | null)[] | null;
-  wakeupFirstThingEtc?: string | null;
-  meal?: string | null;
-  mealDuring?: (string | null)[] | null;
-  mealDuringEtc?: string | null;
-  mealWithWater?: (string | null)[] | null;
-  mealWithSnack?: (string | null)[] | null;
-  mealWithNightFood?: (string | null)[] | null;
-  afterLunch?: (string | null)[] | null;
-  afterLunchEtc?: string | null;
-  saying?: (string | null)[] | null;
-  sayingEtc?: string | null;
-  sayingRepeat: string;
-  walking?: (string | null)[] | null;
-  walkingEtc?: string | null;
-  posture?: (string | null)[] | null;
-  postureEtc?: string | null;
-  postureDetail?: (string | null)[] | null;
-  postureDetailEtc?: string | null;
-  bodyHeat?: (string | null)[] | null;
-  bodyHeatEtc?: string | null;
-  exercise: string;
-  sleeping?: (string | null)[] | null;
-  sleepingEtc?: string | null;
-  beforeSleeping?: (string | null)[] | null;
-  beforeSleepingEtc?: string | null;
-  goodThing: string;
-  badThing: string;
-}
-
-/* tslint:disable */
-/* eslint-disable */
-// @generated
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL mutation operation: CreateReport
 // ====================================================
 
@@ -310,6 +256,60 @@ export interface UpdateUserVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: SubmitHabitCheckList
+// ====================================================
+
+export interface SubmitHabitCheckList_submitHabitCheckList {
+  __typename: "SubmitHabitCheckListResponse";
+  ok: boolean | null;
+}
+
+export interface SubmitHabitCheckList {
+  submitHabitCheckList: SubmitHabitCheckList_submitHabitCheckList;
+}
+
+export interface SubmitHabitCheckListVariables {
+  job: string;
+  wakeupTime: string;
+  wakeupLong: string;
+  wakeupCondition?: (string | null)[] | null;
+  wakeupConditionEtc?: string | null;
+  wakeupFirstThing?: (string | null)[] | null;
+  wakeupFirstThingEtc?: string | null;
+  meal: string;
+  mealDuring?: (string | null)[] | null;
+  mealDuringEtc?: string | null;
+  mealWithWater: string;
+  mealWithSnack: string;
+  mealWithNightFood: string;
+  afterLunch?: (string | null)[] | null;
+  afterLunchEtc?: string | null;
+  saying?: (string | null)[] | null;
+  sayingEtc?: string | null;
+  sayingRepeat: string;
+  walking?: (string | null)[] | null;
+  walkingEtc?: string | null;
+  posture?: (string | null)[] | null;
+  postureEtc?: string | null;
+  postureDetail?: (string | null)[] | null;
+  postureDetailEtc?: string | null;
+  bodyHeat?: (string | null)[] | null;
+  bodyHeatEtc?: string | null;
+  exercise: string;
+  sleeping?: (string | null)[] | null;
+  sleepingEtc?: string | null;
+  beforeSleeping?: (string | null)[] | null;
+  beforeSleepingEtc?: string | null;
+  goodThing: string;
+  badThing: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: Me
 // ====================================================
 
@@ -339,6 +339,7 @@ export interface Me_me_user {
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
   hasKakaoAccount: boolean;
+  hasAppleAccount: boolean;
   /**
    * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.
    */

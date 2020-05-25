@@ -10,12 +10,12 @@ export const SUBMIT_HABIT_CHECK_LIST = gql`
     $wakeupConditionEtc: String
     $wakeupFirstThing: [String]
     $wakeupFirstThingEtc: String
-    $meal: String
+    $meal: String!
     $mealDuring: [String]
     $mealDuringEtc: String
-    $mealWithWater: [String]
-    $mealWithSnack: [String]
-    $mealWithNightFood: [String]
+    $mealWithWater: String!
+    $mealWithSnack: String!
+    $mealWithNightFood: String!
     $afterLunch: [String]
     $afterLunchEtc: String
     $saying: [String]
