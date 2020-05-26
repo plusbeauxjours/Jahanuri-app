@@ -852,18 +852,6 @@
             "deprecationReason": null
           },
           {
-            "name": "gender",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "ENUM",
-              "name": "UserGender",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "userImg",
             "description": "",
             "args": [],
@@ -882,6 +870,102 @@
             "type": {
               "kind": "OBJECT",
               "name": "ClassOrderType",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "gender",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "UserGender",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "birthDate",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Date",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "address",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "job",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "phoneNumber",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "emailAddress",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "approach",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "UserApproach",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "approachEtc",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1146,20 +1230,67 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "MALE",
+            "name": "GENDER_MALE",
             "description": "Male",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "FEMALE",
+            "name": "GENDER_FEMALE",
             "description": "Female",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "OTHER",
+            "name": "GENDER_OTHER",
             "description": "Other",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "UserApproach",
+        "description": "An enumeration.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "APPROACH_A",
+            "description": "지인 소개",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "APPROACH_B",
+            "description": "카페, 블로그",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "APPROACH_C",
+            "description": "페이스북, 트위터",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "APPROACH_D",
+            "description": "책 <치유본능>",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "APPROACH_E",
+            "description": "책 <짠맛의 힘>",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "APPROACH_F",
+            "description": "홈페이지(자하누리, 직관의 몸공부)",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -1633,9 +1764,13 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2042,37 +2177,37 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "WAKEUP_CONDITION_A",
+            "name": "WAKEUP_FIRST_THING_A",
             "description": "찬물 혹은 찬음료를 마신다",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "WAKEUP_CONDITION_B",
+            "name": "WAKEUP_FIRST_THING_B",
             "description": "뜨거운 물 혹은 차를 마신다",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "WAKEUP_CONDITION_C",
+            "name": "WAKEUP_FIRST_THING_C",
             "description": "가벼운 스트레칭",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "WAKEUP_CONDITION_D",
+            "name": "WAKEUP_FIRST_THING_D",
             "description": "양치, 세수, 샤워",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "WAKEUP_CONDITION_E",
+            "name": "WAKEUP_FIRST_THING_E",
             "description": "스마트폰",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "WAKEUP_CONDITION_F",
+            "name": "WAKEUP_FIRST_THING_F",
             "description": "잡지, 신문",
             "isDeprecated": false,
             "deprecationReason": null
@@ -3827,9 +3962,13 @@
                 "name": "exercise",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
@@ -4144,270 +4283,6 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "SubmitHabitCheckListResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "createClassOrder",
-            "description": null,
-            "args": [
-              {
-                "name": "endDate",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Date",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "order",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "startDate",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Date",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "CreateClassOrderResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateClassOrder",
-            "description": null,
-            "args": [
-              {
-                "name": "endDate",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Date",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "order",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "orderUuid",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "startDate",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Date",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UpdateClassOrderResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "removeClassOrder",
-            "description": null,
-            "args": [
-              {
-                "name": "orderUuid",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "RemoveClassOrderResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "createReportCover",
-            "description": null,
-            "args": [
-              {
-                "name": "orderUuid",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "reportType",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "CreateReportCoverResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateReportCover",
-            "description": null,
-            "args": [
-              {
-                "name": "reportType",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "reportUuid",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UpdateReportCoverResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "removeReportCover",
-            "description": null,
-            "args": [
-              {
-                "name": "reportUuid",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "RemoveReportCoverResponse",
                 "ofType": null
               }
             },
@@ -4740,41 +4615,11 @@
             "deprecationReason": null
           },
           {
-            "name": "updateReport",
+            "name": "submitApplication",
             "description": null,
             "args": [
               {
-                "name": "aminoEvening",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "aminoMorning",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "aminoNoon",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "diary",
+                "name": "address",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -4788,10 +4633,10 @@
                 "defaultValue": null
               },
               {
-                "name": "etc",
+                "name": "approach",
                 "description": null,
                 "type": {
-                  "kind": "NON_NULL",
+                  "kind": "LIST",
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
@@ -4802,117 +4647,7 @@
                 "defaultValue": null
               },
               {
-                "name": "hotGrain",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "hotWater",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "jeunHaeJilA",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "jeunHaeJilB",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "jeunHaeJilC",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "jeunHaeJilD",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "lecture",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "meal",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "mealCheck",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "reportCoverUuid",
+                "name": "approachEtc",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
@@ -4922,81 +4657,35 @@
                 "defaultValue": null
               },
               {
-                "name": "reportDate",
+                "name": "birthDate",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Date",
+                    "name": "DateTime",
                     "ofType": null
                   }
                 },
                 "defaultValue": null
               },
               {
-                "name": "saengSikEvening",
+                "name": "confirm",
                 "description": null,
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               },
               {
-                "name": "saengSikMorning",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "saengSikNoon",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "sangiSoEvening",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "sangiSoMorning",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "sangiSoNoon",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "sleeping",
+                "name": "emailAddress",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -5010,7 +4699,7 @@
                 "defaultValue": null
               },
               {
-                "name": "stool",
+                "name": "gender",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -5024,7 +4713,7 @@
                 "defaultValue": null
               },
               {
-                "name": "strolling",
+                "name": "job",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -5038,7 +4727,7 @@
                 "defaultValue": null
               },
               {
-                "name": "workout",
+                "name": "phoneNumber",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -5057,38 +4746,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "UpdateReportResponse",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "removeReport",
-            "description": null,
-            "args": [
-              {
-                "name": "reportUuid",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "RemoveReportResponse",
+                "name": "SubmitApplicationResponse",
                 "ofType": null
               }
             },
@@ -5461,144 +5119,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "CreateClassOrderResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "ok",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "UpdateClassOrderResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "ok",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "RemoveClassOrderResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "ok",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "CreateReportCoverResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "ok",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "UpdateReportCoverResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "ok",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "RemoveReportCoverResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "ok",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "CreateReportResponse",
         "description": null,
         "fields": [
@@ -5622,30 +5142,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "UpdateReportResponse",
-        "description": null,
-        "fields": [
-          {
-            "name": "report",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "ReportType",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "RemoveReportResponse",
+        "name": "SubmitApplicationResponse",
         "description": null,
         "fields": [
           {

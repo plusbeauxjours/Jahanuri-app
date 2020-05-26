@@ -4,6 +4,36 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: SubmitApplication
+// ====================================================
+
+export interface SubmitApplication_submitApplication {
+  __typename: "SubmitApplicationResponse";
+  ok: boolean | null;
+}
+
+export interface SubmitApplication {
+  submitApplication: SubmitApplication_submitApplication;
+}
+
+export interface SubmitApplicationVariables {
+  gender: string;
+  birthDate: any;
+  address: string;
+  job: string;
+  phoneNumber: string;
+  emailAddress: string;
+  approach?: (string | null)[] | null;
+  approachEtc?: string | null;
+  confirm: boolean;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: Login
 // ====================================================
 

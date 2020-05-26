@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { NavigationStackScreenComponent } from "react-navigation-stack";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import {
   SubmitHabitCheckList,
@@ -17,6 +16,11 @@ import FormikInput from "../../components/Formik/FormikInput";
 import { CheckBox } from "react-native-elements";
 import { SUBMIT_HABIT_CHECK_LIST } from "./HabitCheckListScreenQueries";
 import dimensions from "../../constants/dimensions";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
 
 const Box = styled.View`
   width: 100%;
@@ -82,9 +86,12 @@ const initialValues = {
   goodThing: "",
   badThing: "",
 };
-const HabitCheckListScreen: NavigationStackScreenComponent = ({
-  navigation,
-}) => {
+
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const HabitCheckListScreen: React.FC<IProps> = ({ navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [wakeupCondition, setWakeupCondition] = useState<any>([]);
   const [wakeupConditionA, setWakeupConditionA] = useState<boolean>(false);
@@ -1893,5 +1900,4 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
     </>
   );
 };
-HabitCheckListScreen.navigationOptions = () => ({});
 export default HabitCheckListScreen;
