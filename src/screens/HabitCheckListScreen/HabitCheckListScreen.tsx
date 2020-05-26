@@ -246,7 +246,7 @@ const HabitCheckListScreen: React.FC<IProps> = ({ navigation }) => {
       },
     });
     setModalOpen(false);
-    // navigation.navigate("MyprofileScreen");
+    navigation.navigate("MyProfileScreen");
     toast("나의 습관을 제출하였습니다.");
   };
   const toggleItems = (array: any, action: any, variables: string) => {

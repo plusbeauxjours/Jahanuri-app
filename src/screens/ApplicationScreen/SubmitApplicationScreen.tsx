@@ -27,7 +27,6 @@ import {
   NavigationState,
   NavigationParams,
 } from "react-navigation";
-import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 
 const Box = styled.View`
@@ -256,6 +255,7 @@ const SubmitApplicationScreen: React.FC<IProps> = ({ navigation }) => {
                   </Dialog.Actions>
                 </Dialog>
               </Portal>
+              <SmallWhiteSpace />
               <Divider text={"생년월일"} color={"dark"} />
               <Touchable onPress={() => setDatePickerModalOpen(true)}>
                 <Date>

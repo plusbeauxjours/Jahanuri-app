@@ -11,6 +11,7 @@ import { GET_APPLICATION } from "./ApplicationScreenQueries";
 import { GetApplication } from "../../types/api";
 import { ActivityIndicator } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import MenuCustomHeader from "../../components/MenuCustomHeader";
 
 const Container = styled.View`
   flex: 1;
@@ -71,6 +72,7 @@ const ApplicationDetailScreen: React.FC = () => {
   } else {
     return (
       <>
+        <MenuCustomHeader title={"신청서"} subTitle={"(제출 완료)"} />
         <KeyboardAwareScrollView
           contentContainerStyle={{
             flexGrow: 1,
@@ -83,6 +85,7 @@ const ApplicationDetailScreen: React.FC = () => {
           <Formik initialValues={{}} onSubmit={() => {}}>
             {({ setFieldValue, setFieldTouched }) => (
               <>
+                <SmallWhiteSpace />
                 <Divider text={"생년월일"} color={"dark"} />
                 <Date>
                   {application.birthDate
@@ -224,6 +227,7 @@ const ApplicationDetailScreen: React.FC = () => {
                     />
                   )}
                 </Box>
+                <WhiteSpace />
               </>
             )}
           </Formik>
