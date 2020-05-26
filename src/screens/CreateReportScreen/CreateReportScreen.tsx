@@ -59,8 +59,8 @@ const Date = styled.Text`
   font-size: 24px;
   color: #000;
   text-align: center;
-  margin: 40px 0;
-  padding: 20px;
+  margin: 30px 0 20px 0;
+  padding: 10px;
   border: 1px solid #999;
   color: #999;
   border-radius: 5px;

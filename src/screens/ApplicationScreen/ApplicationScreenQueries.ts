@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 export const SUBMIT_APPLICATION = gql`
   mutation SubmitApplication(
     $gender: String!
-    $birthDate: DateTime!
+    $birthDate: DateTime
     $address: String!
     $job: String!
     $phoneNumber: String!

@@ -18,7 +18,7 @@ export interface SubmitApplication {
 
 export interface SubmitApplicationVariables {
   gender: string;
-  birthDate: any;
+  birthDate?: any | null;
   address: string;
   job: string;
   phoneNumber: string;
@@ -108,7 +108,6 @@ export interface Signup {
 export interface SignupVariables {
   username: string;
   password: string;
-  email: string;
   firstName: string;
   lastName: string;
 }

@@ -1,8 +1,10 @@
-import { createSwitchNavigator, createAppContainer } from "react-navigation";
 import ApplicationScreen from "../screens/ApplicationScreen";
+import MyProfileScreen from "../screens/MyProfileScreen/MyProfileScreen";
+import { createStackNavigator } from "react-navigation-stack";
 
-const ApplicationNavigation = createSwitchNavigator(
+const ApplicationNavigation = createStackNavigator(
   {
+    MyProfileScreen,
     ApplicationScreen,
   },
   {
@@ -13,4 +15,4 @@ const ApplicationNavigation = createSwitchNavigator(
   }
 );
 
-export default createAppContainer(ApplicationNavigation);
+export default ApplicationNavigation;

@@ -1,8 +1,10 @@
-import { createSwitchNavigator, createAppContainer } from "react-navigation";
 import SurveyScreen from "../screens/SurveyScreen/index";
+import { createStackNavigator } from "react-navigation-stack";
+import MyProfileScreen from "../screens/MyProfileScreen/MyProfileScreen";
 
-const SurveyNavigation = createSwitchNavigator(
+const SurveyNavigation = createStackNavigator(
   {
+    MyProfileScreen,
     SurveyScreen,
   },
   {
@@ -13,4 +15,4 @@ const SurveyNavigation = createSwitchNavigator(
   }
 );
 
-export default createAppContainer(SurveyNavigation);
+export default SurveyNavigation;

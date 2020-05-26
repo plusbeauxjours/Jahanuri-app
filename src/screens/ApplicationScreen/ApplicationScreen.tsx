@@ -16,6 +16,11 @@ import { useMutation } from "react-apollo-hooks";
 import * as Yup from "yup";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Formik } from "formik";
+import { SUBMIT_APPLICATION } from "./ApplicationScreenQueries";
+import { SubmitApplication, SubmitApplicationVariables } from "../../types/api";
+import { Linking } from "react-native";
+import DatePickerModal from "react-native-modal-datetime-picker";
+import Moment from "moment";
 
 const Box = styled.View`
   width: 100%;
@@ -29,13 +34,17 @@ const Line = styled.View`
   margin: 20px;
 `;
 const View = styled.View`
-  width: 80%;
+  width: 90%;
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 const Text = styled.Text`
-  color: #999;
+  font-weight: 100;
+`;
+const Link = styled(Text)`
+  font-weight: 400;
+  color: #8b00ff;
 `;
 const ButtonContainer = styled.View`
   justify-content: center;
@@ -46,40 +55,32 @@ const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
 `;
+const SmallWhiteSpace = styled.View`
+  height: 10px;
+`;
 const WhiteSpace = styled.View`
   height: 30px;
 `;
+const Touchable = styled.TouchableOpacity``;
+const Date = styled.Text`
+  width: ${dimensions.width - 40};
+  font-size: 24px;
+  color: #000;
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #999;
+  color: #999;
+  border-radius: 5px;
+  background-color: #fff;
+`;
 
 const initialValues = {
-  wakeupTime: "",
-  wakeupLong: "",
-  wakeupConditionEtc: "",
-  wakeupFirstThingEtc: "",
-  meal: "",
-  mealDuringEtc: "",
-  mealWithWater: "",
-  mealWithSnack: "",
-  mealWithNightFood: "",
-  afterLunch: [],
-  afterLunchEtc: "",
-  saying: [],
-  sayingEtc: "",
-  sayingRepeat: "",
-  walking: [],
-  walkingEtc: "",
-  posture: [],
-  postureEtc: "",
-  postureDetail: [],
-  postureDetailEtc: "",
-  bodyHeat: [],
-  bodyHeatEtc: "",
-  exercise: "",
-  sleeping: [],
-  sleepingEtc: "",
-  beforeSleeping: [],
-  beforeSleepingEtc: "",
-  goodThing: "",
-  badThing: "",
+  address: "",
+  job: "",
+  phoneNumber: "",
+  emailAddress: "",
+  approachEtc: "",
 };
 
 interface IProps {
@@ -87,11 +88,12 @@ interface IProps {
 }
 
 const ApplicationScreen: React.FC<IProps> = ({ navigation }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [gender, setGender] = useState<any>([]);
-  const [genderA, setGenderMale] = useState<boolean>(false);
-  const [genderB, setGenderFemale] = useState<boolean>(false);
-  const [genderC, setGenderOther] = useState<boolean>(false);
+  const [isDatePickerModalOpen, setDatePickerModalOpen] = useState<boolean>(
+    false
+  );
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [birthDate, setBirthDate] = useState<any>(null);
+  const [gender, setGender] = useState<string>("");
   const [approach, setApproach] = useState<any>([]);
   const [approachA, setApproachA] = useState<boolean>(false);
   const [approachB, setApproachB] = useState<boolean>(false);
@@ -99,12 +101,30 @@ const ApplicationScreen: React.FC<IProps> = ({ navigation }) => {
   const [approachD, setApproachD] = useState<boolean>(false);
   const [approachE, setApproachE] = useState<boolean>(false);
   const [approachF, setApproachF] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
   const [
-    submitHabitCheckListFn,
-    { loading: submitHabitCheckListLoading },
-  ] = useMutation<SubmitHabitCheckList, SubmitHabitCheckListVariables>(
-    SUBMIT_HABIT_CHECK_LIST
+    submitApplicationFn,
+    { loading: submitApplicationLoading },
+  ] = useMutation<SubmitApplication, SubmitApplicationVariables>(
+    SUBMIT_APPLICATION
   );
+  const handleDateConfirm = (date) => {
+    setBirthDate(Moment(date).format("YYYY-MM-DD"));
+    setDatePickerModalOpen(false);
+  };
+  const onPress = (urls: string) => {
+    Linking.canOpenURL(urls)
+      .then((supported) => {
+        if (supported) {
+          return Linking.openURL(urls);
+        } else {
+          return null;
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   const toast = (message: string) => {
     Toast.show(message, {
       duration: Toast.durations.SHORT,
@@ -116,40 +136,28 @@ const ApplicationScreen: React.FC<IProps> = ({ navigation }) => {
     });
   };
   const submitConfirm = (values: any) => {
-    submitHabitCheckListFn({
+    console.log(
+      gender,
+      birthDate,
+      values.address,
+      values.job,
+      values.phoneNumber,
+      values.emailAddress,
+      approach,
+      values.approachEtc,
+      confirm
+    );
+    submitApplicationFn({
       variables: {
-        wakeupTime: values.wakeupTime,
-        wakeupLong: values.wakeupLong,
-        wakeupCondition: wakeupCondition,
-        wakeupConditionEtc: values.wakeupConditionEtc,
-        wakeupFirstThing: wakeupFirstThing,
-        wakeupFirstThingEtc: values.wakeupFirstThingEtc,
-        meal: values.meal,
-        mealDuring: mealDuring,
-        mealDuringEtc: values.mealDuringEtc,
-        mealWithWater: mealWithWater,
-        mealWithSnack: mealWithSnack,
-        mealWithNightFood: mealWithNightFood,
-        afterLunch: afterLunch,
-        afterLunchEtc: values.afterLunchEtc,
-        saying: saying,
-        sayingEtc: values.sayingEtc,
-        sayingRepeat: values.sayingRepeat,
-        walking: walking,
-        walkingEtc: values.walkingEtc,
-        posture: posture,
-        postureEtc: values.postureEtc,
-        postureDetail: postureDetail,
-        postureDetailEtc: values.postureDetailEtc,
-        bodyHeat: bodyHeat,
-        bodyHeatEtc: values.bodyHeatEtc,
-        exercise: values.exercise,
-        sleeping: sleeping,
-        sleepingEtc: values.sleepingEtc,
-        beforeSleeping: beforeSleeping,
-        beforeSleepingEtc: values.beforeSleepingEtc,
-        goodThing: values.goodThing,
-        badThing: values.badThing,
+        gender,
+        birthDate: Moment(birthDate),
+        address: values.address,
+        job: values.job,
+        phoneNumber: values.phoneNumber,
+        emailAddress: values.emailAddress,
+        approach,
+        approachEtc: values.approachEtc,
+        confirm,
       },
     });
     setModalOpen(false);
@@ -163,17 +171,20 @@ const ApplicationScreen: React.FC<IProps> = ({ navigation }) => {
       action((i) => [...i, variables]);
     }
   };
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const validationSchema = Yup.object().shape({
-    wakeupTime: Yup.string().required("필수 입력 사항입니다."),
-    wakeupLong: Yup.string().required("필수 입력 사항입니다."),
-    sayingRepeat: Yup.string().required("필수 입력 사항입니다."),
-    exercise: Yup.string().required("필수 입력 사항입니다."),
-    goodThing: Yup.string().required("필수 입력 사항입니다."),
-    badThing: Yup.string().required("필수 입력 사항입니다."),
+    address: Yup.string().required("필수 입력 사항입니다."),
+    job: Yup.string().required("필수 입력 사항입니다."),
+    phoneNumber: Yup.string()
+      .matches(phoneRegExp, "숫자만 입력해주세요.")
+      .required("필수 입력 사항입니다."),
+    emailAddress: Yup.string()
+      .email("이메일 주소를 입력하세요.")
+      .required("필수 입력 사항 입니다."),
   });
   return (
     <>
-      <MenuCustomHeader title={"나의 습관"} />
+      <MenuCustomHeader title={"신청서"} />
       <KeyboardAwareScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -206,7 +217,7 @@ const ApplicationScreen: React.FC<IProps> = ({ navigation }) => {
                   <Dialog.Title>알림</Dialog.Title>
                   <Dialog.Content>
                     <Paragraph>
-                      일지는 제출한 후에는 수정을 할 수 없습니다.
+                      신청서는 제출한 후에는 수정을 할 수 없습니다.
                     </Paragraph>
                     <Paragraph>제출하시겠습니까?</Paragraph>
                   </Dialog.Content>
@@ -219,31 +230,249 @@ const ApplicationScreen: React.FC<IProps> = ({ navigation }) => {
                   </Dialog.Actions>
                 </Dialog>
               </Portal>
-              <WhiteSpace />
-              <FormikInput
-                label="기상시간이 규칙적인가요?"
-                value={values.wakeupTime}
-                onChange={setFieldValue}
-                onTouch={setFieldTouched}
-                name="wakeupTime"
-                error={touched.wakeupTime && errors.wakeupTime}
-                placeholder="네, 7시 / 아니오, 9시~10시"
-              />
-              <Divider text={"내가 말을 할 때... (중복 가능)"} color={"dark"} />
+              <Divider text={"생년월일"} color={"dark"} />
+              <Touchable onPress={() => setDatePickerModalOpen(true)}>
+                <Date>
+                  {birthDate
+                    ? birthDate.substr(0, 4) +
+                      "년 " +
+                      birthDate.substr(5, 2) +
+                      "월 " +
+                      birthDate.substr(8, 2) +
+                      "일"
+                    : "탭하여 날짜를 선택하세요."}
+                </Date>
+                <DatePickerModal
+                  headerTextIOS={"날짜를 선택하세요."}
+                  cancelTextIOS={"취소"}
+                  confirmTextIOS={"확인"}
+                  isVisible={isDatePickerModalOpen}
+                  mode="date"
+                  locale="kr_KR"
+                  onConfirm={handleDateConfirm}
+                  onCancel={() => setDatePickerModalOpen(false)}
+                />
+              </Touchable>
+              <Divider text={"성별"} color={"dark"} />
               <Box>
                 <CheckBox
                   size={24}
-                  checked={sayingA}
+                  checked={gender === "GENDER_MALE"}
                   checkedColor={"#8b00ff"}
                   onPress={() => {
-                    toggleItems(saying, setSaying, "SAYING_A");
-                    setSayingA((sayingA) => !sayingA);
+                    setGender("GENDER_MALE");
                   }}
-                  title={"말의 속도가 빠르다."}
+                  title={"남성"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
-              <Box/>
+                <CheckBox
+                  size={24}
+                  checked={gender === "GENDER_FEMALE"}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setGender("GENDER_FEMALE");
+                  }}
+                  title={"여성"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <Line />
+              <FormikInput
+                label="사는곳"
+                value={values.address}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="address"
+                error={touched.address && errors.address}
+                placeholder="키트 발송을 위해 정확한 주소를 입력해주세요."
+              />
+              <FormikInput
+                label="직업"
+                value={values.job}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="job"
+                error={touched.job && errors.job}
+                placeholder="직업"
+              />
+              <FormikInput
+                label="연락처(휴대폰)"
+                value={values.phoneNumber}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="phoneNumber"
+                error={touched.phoneNumber && errors.phoneNumber}
+                placeholder="연락처(휴대폰)"
+              />
+              <FormikInput
+                label="이메일"
+                value={values.emailAddress}
+                onChange={setFieldValue}
+                onTouch={setFieldTouched}
+                name="emailAddress"
+                error={touched.emailAddress && errors.emailAddress}
+                placeholder="이메일"
+              />
+
+              <Divider
+                text={"'직관의 몸공부' 프로그램을 알게 된 계기 (중복가능)"}
+                color={"dark"}
+              />
+              <Box>
+                <CheckBox
+                  size={24}
+                  checked={approachA}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_A");
+                    setApproachA((approachA) => !approachA);
+                  }}
+                  title={"지인 소개"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={24}
+                  checked={approachB}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_B");
+                    setApproachB((approachB) => !approachB);
+                  }}
+                  title={"카페, 블로그"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={24}
+                  checked={approachC}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_C");
+                    setApproachC((approachC) => !approachC);
+                  }}
+                  title={"페이스북, 트위터"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={24}
+                  checked={approachD}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_D");
+                    setApproachD((approachD) => !approachD);
+                  }}
+                  title={"책 <치유본능>"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={24}
+                  checked={approachE}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_E");
+                    setApproachE((approachE) => !approachE);
+                  }}
+                  title={"책 <짠맛의 힘>"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={24}
+                  checked={approachF}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_F");
+                    setApproachF((approachF) => !approachF);
+                  }}
+                  title={"홈페이지(자하누리, 직관의 몸공부)"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <FormikInput
+                  label="기타"
+                  value={values.approachEtc}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="approachEtc"
+                  placeholder="기타"
+                />
+              </Box>
+              <Divider text={"유의사항"} color={"dark"} />
+              <View>
+                <Box>
+                  <Text>1) 준비물: 필기구, 운동 가능한 편한 복장</Text>
+                  <SmallWhiteSpace />
+                  <Text>
+                    2) 자하누리 카페 가입: 강의자료, 운동 동영상 제공, 과제 확인
+                  </Text>
+                  <Touchable
+                    onPress={() => onPress("https://cafe.naver.com/jahanuri")}
+                  >
+                    <Link>https://cafe.naver.com/jahanuri</Link>
+                  </Touchable>
+                  <SmallWhiteSpace />
+                  <Text>
+                    4) 자하누리 카카오톡 플러스친구 추가: 문의, 공지 등을 위해
+                    꼭 친구추가를 해주세요.
+                  </Text>
+                  <Touchable
+                    onPress={() => onPress("http://pf.kakao.com/_ucnLV")}
+                  >
+                    <Link>http://pf.kakao.com/_ucnLV</Link>
+                  </Touchable>
+                  <SmallWhiteSpace />
+                  <Text>
+                    4) 수강료: 첫 온라인 특가 38만원 (신청서 제출 후 3일내
+                    결제하셔야 신청이 완료됩니다.)
+                  </Text>
+                  <SmallWhiteSpace />
+                  <Text>
+                    5) 환불규정: 강의 시작 후에는 환불 불가. 이월 가능합니다. -
+                    2회 이상 결석시 수료증이 수여되지 않습니다.
+                  </Text>
+                </Box>
+              </View>
+              <WhiteSpace />
+              <Box>
+                <CheckBox
+                  size={24}
+                  checked={confirm}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    setConfirm((confirm) => !confirm);
+                  }}
+                  title={
+                    "위 사항을 모두 확인하고, <직관의 몸공부> 2주 프로그램을 신청합니다."
+                  }
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+              </Box>
+              <ButtonContainer>
+                <Button
+                  raised
+                  primary
+                  disabled={
+                    !isValid ||
+                    !gender ||
+                    !values.address ||
+                    !values.job ||
+                    !values.phoneNumber ||
+                    !values.emailAddress ||
+                    !confirm
+                  }
+                  loading={submitApplicationLoading}
+                  onPress={() => {
+                    setModalOpen(true), submitForm;
+                  }}
+                  title="제출"
+                />
+              </ButtonContainer>
             </>
           )}
         </Formik>

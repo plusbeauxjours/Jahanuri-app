@@ -35,7 +35,6 @@ const View = styled.View`
 const initialValues = {
   firstName: "",
   lastName: "",
-  email: "",
   username: "",
   password: "",
   confirmPassword: "",
@@ -43,9 +42,6 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("이름은 필수 입력 사항 입니다."),
   lastName: Yup.string().required("성은 필수 입력 사항 입니다."),
-  email: Yup.string()
-    .email("이메일 주소를 입력하세요.")
-    .required("이메일은 필수 입력 사항 입니다."),
   username: Yup.string()
     .matches(
       /^[A-Za-z0-9_]{4,15}$/,
@@ -130,16 +126,6 @@ const SignupForm: React.FC<IProps> = ({ navigation }) => {
                   error={touched.lastName && errors.lastName}
                 />
                 <FormikInput
-                  label="이메일"
-                  autoCapitalize="none"
-                  keyboardType="email-address"
-                  value={values.email}
-                  onChange={setFieldValue}
-                  onTouch={setFieldTouched}
-                  name="email"
-                  error={touched.email && errors.email}
-                />
-                <FormikInput
                   label="아이디"
                   autoCapitalize="none"
                   value={values.username}
@@ -182,7 +168,6 @@ const SignupForm: React.FC<IProps> = ({ navigation }) => {
                       variables={{
                         firstName: values.firstName,
                         lastName: values.lastName,
-                        email: values.email,
                         username: values.username,
                         password: values.password,
                       }}
@@ -204,7 +189,6 @@ const SignupForm: React.FC<IProps> = ({ navigation }) => {
                             signupLoading ||
                             !values.firstName ||
                             !values.lastName ||
-                            !values.email ||
                             !values.username ||
                             !values.password ||
                             !values.confirmPassword

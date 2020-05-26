@@ -299,7 +299,8 @@ const HabitCheckListScreen: React.FC<IProps> = ({ navigation }) => {
                   <Dialog.Title>알림</Dialog.Title>
                   <Dialog.Content>
                     <Paragraph>
-                      일지는 제출한 후에는 수정을 할 수 없습니다.
+                      나의 습관 체크리스트는 제출한 후에는 수정을 할 수
+                      없습니다.
                     </Paragraph>
                     <Paragraph>제출하시겠습니까?</Paragraph>
                   </Dialog.Content>
