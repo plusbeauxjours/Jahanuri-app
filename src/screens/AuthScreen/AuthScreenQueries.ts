@@ -36,6 +36,7 @@ export const SIGNUP = gql`
         reportCoverUuid
         hasSubmittedPreviousCheckList
         hasSubmittedLaterCheckList
+        hasSubmittedHabitCheckList
         hasSubmittedApplication
         hasSubmittedSurvey
         hasPaid

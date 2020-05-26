@@ -34,6 +34,37 @@ export interface SubmitApplicationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: GetApplication
+// ====================================================
+
+export interface GetApplication_getApplication_application {
+  __typename: "ApplicationType";
+  gender: ApplicationGender | null;
+  birthDate: any | null;
+  address: string;
+  job: string;
+  phoneNumber: string;
+  emailAddress: string;
+  getApproach: string | null;
+  approachEtc: string | null;
+  confirm: boolean;
+}
+
+export interface GetApplication_getApplication {
+  __typename: "GetApplicationResponse";
+  application: GetApplication_getApplication_application | null;
+}
+
+export interface GetApplication {
+  getApplication: GetApplication_getApplication;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: Login
 // ====================================================
 
@@ -85,6 +116,7 @@ export interface Signup_createUser_user {
   reportCoverUuid: string | null;
   hasSubmittedPreviousCheckList: boolean;
   hasSubmittedLaterCheckList: boolean;
+  hasSubmittedHabitCheckList: boolean;
   hasSubmittedApplication: boolean;
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
@@ -363,6 +395,7 @@ export interface Me_me_user {
   reportCoverUuid: string | null;
   hasSubmittedPreviousCheckList: boolean;
   hasSubmittedLaterCheckList: boolean;
+  hasSubmittedHabitCheckList: boolean;
   hasSubmittedApplication: boolean;
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
@@ -688,6 +721,15 @@ export interface GetReportListVariables {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+/**
+ * An enumeration.
+ */
+export enum ApplicationGender {
+  GENDER_FEMALE = "GENDER_FEMALE",
+  GENDER_MALE = "GENDER_MALE",
+  GENDER_OTHER = "GENDER_OTHER",
+}
 
 /**
  * An enumeration.

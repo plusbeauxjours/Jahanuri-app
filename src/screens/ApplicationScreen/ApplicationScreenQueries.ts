@@ -27,3 +27,21 @@ export const SUBMIT_APPLICATION = gql`
     }
   }
 `;
+
+export const GET_APPLICATION = gql`
+  query GetApplication {
+    getApplication {
+      application {
+        gender
+        birthDate
+        address
+        job
+        phoneNumber
+        emailAddress
+        getApproach
+        approachEtc
+        confirm
+      }
+    }
+  }
+`;
