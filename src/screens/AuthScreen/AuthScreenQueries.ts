@@ -33,6 +33,10 @@ export const SIGNUP = gql`
           endDate
           uuid
         }
+        address
+        job
+        phoneNumber
+        email
         reportCoverUuid
         hasSubmittedPreviousCheckList
         hasSubmittedLaterCheckList

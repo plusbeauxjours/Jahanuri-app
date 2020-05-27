@@ -56,10 +56,14 @@ class EditProfileScreen extends React.Component<IProps> {
       },
     });
   };
-
+  public phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   public validationSchema = Yup.object().shape({
     firstName: Yup.string().required("이름은 필수 입력 사항 입니다."),
     lastName: Yup.string().required("성은 필수 입력 사항 입니다."),
+    address: Yup.string(),
+    job: Yup.string(),
+    phoneNumber: Yup.string().matches(this.phoneRegExp, "숫자만 입력해주세요."),
+    emailAddress: Yup.string().email("이메일 주소를 입력하세요."),
     password: Yup.lazy((value) =>
       !value ? Yup.string() : Yup.string().min(6, "비밀번호는 6자 이상입니다.")
     ),
@@ -83,6 +87,10 @@ class EditProfileScreen extends React.Component<IProps> {
                     firstName
                     lastName
                     userImg
+                    address
+                    job
+                    phoneNumber
+                    email
                     hasKakaoAccount
                   }
                 }
@@ -110,6 +118,10 @@ class EditProfileScreen extends React.Component<IProps> {
                     userImg: me.user.userImg && {
                       uri: me.user.userImg,
                     },
+                    address: me.user.address || "",
+                    job: me.user.job || "",
+                    phoneNumber: me.user.phoneNumber || "",
+                    emailAddress: me.user.email || "",
                   }}
                   onSubmit={() => {}}
                   validationSchema={this.validationSchema}
@@ -138,6 +150,38 @@ class EditProfileScreen extends React.Component<IProps> {
                         onTouch={setFieldTouched}
                         name="lastName"
                         error={touched.lastName && errors.lastName}
+                      />
+                      <FormikInput
+                        label="이메일"
+                        value={values.emailAddress}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="emailAddress"
+                        error={touched.emailAddress && errors.emailAddress}
+                      />
+                      <FormikInput
+                        label="핸드폰"
+                        value={values.phoneNumber}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="phoneNumber"
+                        error={touched.phoneNumber && errors.phoneNumber}
+                      />
+                      <FormikInput
+                        label="사는곳"
+                        value={values.address}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="address"
+                        error={touched.address && errors.address}
+                      />
+                      <FormikInput
+                        label="직업"
+                        value={values.job}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="job"
+                        error={touched.job && errors.job}
                       />
                       {!me.user.hasKakaoAccount && (
                         <>
@@ -175,6 +219,10 @@ class EditProfileScreen extends React.Component<IProps> {
                             me.user.userImg === values.userImg
                               ? null
                               : new ReactNativeFile(values.userImg),
+                          address: values.address,
+                          job: values.job,
+                          phoneNumber: values.phoneNumber,
+                          email: values.emailAddress,
                         }}
                         update={this.updateCache}
                         onError={(error) => Alert.alert("", error.message)}
@@ -188,9 +236,8 @@ class EditProfileScreen extends React.Component<IProps> {
                             onPress={() => {
                               updateUserProfile();
                               this.toast("프로필이 변경되었습니다.");
-                              this.props.navigation.navigate("MyProfileScreen");
                             }}
-                            title="Save"
+                            title="제출"
                           />
                         )}
                       </Mutation>

@@ -113,6 +113,10 @@ export interface Signup_createUser_user {
   lastName: string;
   userImg: string | null;
   classOrder: Signup_createUser_user_classOrder | null;
+  address: string | null;
+  job: string | null;
+  phoneNumber: string | null;
+  email: string;
   reportCoverUuid: string | null;
   hasSubmittedPreviousCheckList: boolean;
   hasSubmittedLaterCheckList: boolean;
@@ -309,6 +313,10 @@ export interface UpdateUserVariables {
   lastName: string;
   password: string;
   userImg?: any | null;
+  address?: string | null;
+  job?: string | null;
+  phoneNumber?: string | null;
+  email?: string | null;
 }
 
 /* tslint:disable */
@@ -446,6 +454,10 @@ export interface Me_me_user {
   lastName: string;
   userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
+  address: string | null;
+  job: string | null;
+  phoneNumber: string | null;
+  email: string;
   reportCoverUuid: string | null;
   hasSubmittedPreviousCheckList: boolean;
   hasSubmittedLaterCheckList: boolean;

@@ -15,6 +15,10 @@ export const ME = gql`
           endDate
           uuid
         }
+        address
+        job
+        phoneNumber
+        email
         reportCoverUuid
         hasSubmittedPreviousCheckList
         hasSubmittedLaterCheckList
