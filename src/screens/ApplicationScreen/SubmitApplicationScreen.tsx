@@ -305,6 +305,7 @@ const SubmitApplicationScreen: React.FC = () => {
               />
               <FormikInput
                 label="연락처(휴대폰)"
+                keyboardType="phone-pad"
                 value={values.phoneNumber}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}
@@ -314,6 +315,7 @@ const SubmitApplicationScreen: React.FC = () => {
               />
               <FormikInput
                 label="이메일"
+                keyboardType="email-address"
                 value={values.emailAddress}
                 onChange={setFieldValue}
                 onTouch={setFieldTouched}

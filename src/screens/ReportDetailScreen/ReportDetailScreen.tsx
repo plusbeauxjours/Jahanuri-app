@@ -350,6 +350,7 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
                   name="diary"
                   multiline={true}
                 />
+                <WhiteSpace />
               </>
             )}
           </Formik>

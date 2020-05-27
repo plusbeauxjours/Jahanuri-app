@@ -152,20 +152,22 @@ class EditProfileScreen extends React.Component<IProps> {
                         error={touched.lastName && errors.lastName}
                       />
                       <FormikInput
+                        label="연락처(휴대폰)"
+                        value={values.phoneNumber}
+                        onChange={setFieldValue}
+                        onTouch={setFieldTouched}
+                        name="phoneNumber"
+                        keyboardType="phone-pad"
+                        error={touched.phoneNumber && errors.phoneNumber}
+                      />
+                      <FormikInput
                         label="이메일"
+                        keyboardType="email-address"
                         value={values.emailAddress}
                         onChange={setFieldValue}
                         onTouch={setFieldTouched}
                         name="emailAddress"
                         error={touched.emailAddress && errors.emailAddress}
-                      />
-                      <FormikInput
-                        label="핸드폰"
-                        value={values.phoneNumber}
-                        onChange={setFieldValue}
-                        onTouch={setFieldTouched}
-                        name="phoneNumber"
-                        error={touched.phoneNumber && errors.phoneNumber}
                       />
                       <FormikInput
                         label="사는곳"

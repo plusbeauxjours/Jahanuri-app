@@ -265,6 +265,7 @@ const ApplicationDetailScreen: React.FC = () => {
                   </Box>
                 </View>
                 <WhiteSpace />
+                <WhiteSpace />
               </>
             )}
           </Formik>
