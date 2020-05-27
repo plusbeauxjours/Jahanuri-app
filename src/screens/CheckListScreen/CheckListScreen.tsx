@@ -182,7 +182,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           <MenuCustomHeader title={"체크리스트"} subTitle={"(1/2)"} />
         )}
         {me.hasSubmittedPreviousCheckList && me.hasSubmittedLaterCheckList && (
-          <MenuCustomHeader title={"체크리스트"} subTitle={"(2/2) 제출 완료"} />
+          <MenuCustomHeader title={"체크리스트"} subTitle={"(2/2 제출 완료)"} />
         )}
         <ScrollView
           style={{

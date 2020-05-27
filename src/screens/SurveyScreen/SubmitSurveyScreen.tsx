@@ -5,7 +5,6 @@ import { ActivityIndicator } from "react-native";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";
 import SurveyDetailScreen from "./SurveyDetailScreen";
-import SubmitSurveyScreen from "./SubmitSurveyScreen";
 
 const Container = styled.View`
   flex: 1;
@@ -13,7 +12,7 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const SurveyScreen: React.FC = () => {
+const SubmitSurveyScreen: React.FC = () => {
   const {
     data: { me: { user: me = null } = {} } = {},
     loading: meLoading,
@@ -25,11 +24,6 @@ const SurveyScreen: React.FC = () => {
       </Container>
     );
   } else {
-    if (me.hasSubmittedHabitCheckList) {
-      return <SurveyDetailScreen />;
-    } else {
-      return <SubmitSurveyScreen />;
-    }
   }
 };
-export default SurveyScreen;
+export default SubmitSurveyScreen;

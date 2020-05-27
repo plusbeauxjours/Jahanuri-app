@@ -54,7 +54,7 @@ const HabitCheckListDetailScreen: React.FC = () => {
   } else {
     return (
       <>
-        <MenuCustomHeader title={"나의 습관"} />
+        <MenuCustomHeader title={"나의 습관"} subTitle={"(제출 완료)"} />
         <KeyboardAwareScrollView
           contentContainerStyle={{
             flexGrow: 1,

@@ -57,6 +57,15 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
+    Report: {
+      screen: ReportNavigation,
+      navigationOptions: {
+        drawerLabel: "일지",
+        drawerIcon: ({ tintColor }) => (
+          <Ionicons name={"ios-calendar"} size={24} color={tintColor} />
+        ),
+      },
+    },
     CheckList: {
       screen: CheckListNavigation,
       navigationOptions: {
@@ -79,15 +88,6 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
-    Report: {
-      screen: ReportNavigation,
-      navigationOptions: {
-        drawerLabel: "일지",
-        drawerIcon: ({ tintColor }) => (
-          <Ionicons name={"ios-calendar"} size={24} color={tintColor} />
-        ),
-      },
-    },
     Survey: {
       screen: SurveyNavigation,
       navigationOptions: {
@@ -97,21 +97,21 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
-    EditProfile: {
-      screen: EditProfileNavigation,
-      navigationOptions: {
-        drawerLabel: "프로필 수정",
-        drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="edit" size={24} color={tintColor} />
-        ),
-      },
-    },
     Application: {
       screen: ApplicationNavigation,
       navigationOptions: {
         drawerLabel: "신청서",
         drawerIcon: ({ tintColor }) => (
           <Ionicons name={"ios-document"} size={24} color={tintColor} />
+        ),
+      },
+    },
+    EditProfile: {
+      screen: EditProfileNavigation,
+      navigationOptions: {
+        drawerLabel: "프로필 수정",
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="edit" size={24} color={tintColor} />
         ),
       },
     },

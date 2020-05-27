@@ -784,6 +784,67 @@ export interface GetReportListVariables {
 // @generated
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: SubmitSurvey
+// ====================================================
+
+export interface SubmitSurvey_submitSurvey {
+  __typename: "SubmitSurveyResponse";
+  ok: boolean | null;
+}
+
+export interface SubmitSurvey {
+  submitSurvey: SubmitSurvey_submitSurvey;
+}
+
+export interface SubmitSurveyVariables {
+  hasMarried: boolean;
+  hasMarriedEtc?: string | null;
+  hasChildbirth: boolean;
+  hasChildbirthEtc?: string | null;
+  howManyChild?: string | null;
+  status: string;
+  change: string;
+  agreePersonalInformation: boolean;
+  confirm: boolean;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetSurvey
+// ====================================================
+
+export interface GetSurvey_getSurvey_survey {
+  __typename: "SurveyType";
+  hasMarried: boolean;
+  hasMarriedEtc: string | null;
+  hasChildbirth: boolean;
+  hasChildbirthEtc: string | null;
+  howManyChild: string | null;
+  status: string | null;
+  change: string | null;
+  agreePersonalInformation: boolean;
+  confirm: boolean;
+}
+
+export interface GetSurvey_getSurvey {
+  __typename: "GetSurveyResponse";
+  survey: GetSurvey_getSurvey_survey | null;
+}
+
+export interface GetSurvey {
+  getSurvey: GetSurvey_getSurvey;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

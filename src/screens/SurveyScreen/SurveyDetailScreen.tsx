@@ -13,23 +13,5 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const SurveyScreen: React.FC = () => {
-  const {
-    data: { me: { user: me = null } = {} } = {},
-    loading: meLoading,
-  } = useQuery<Me>(ME);
-  if (meLoading) {
-    return (
-      <Container>
-        <ActivityIndicator />
-      </Container>
-    );
-  } else {
-    if (me.hasSubmittedHabitCheckList) {
-      return <SurveyDetailScreen />;
-    } else {
-      return <SubmitSurveyScreen />;
-    }
-  }
-};
-export default SurveyScreen;
+const SurveyDetailScreen: React.FC = () => {};
+export default SurveyDetailScreen;
