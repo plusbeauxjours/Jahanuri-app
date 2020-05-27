@@ -12,6 +12,7 @@ import { GetApplication } from "../../types/api";
 import { ActivityIndicator } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
+import CheckBoxRow from "../../components/CheckBoxRow";
 
 const Container = styled.View`
   flex: 1;
@@ -100,22 +101,14 @@ const ApplicationDetailScreen: React.FC = () => {
                 <Divider text={"성별"} color={"dark"} />
                 <Box>
                   {application.gender === "GENDER_MALE" ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"남성"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"남성"} />
                   )}
                   {application.gender === "GENDER_FEMALE" ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"여성"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"여성"} />
                   )}
                 </Box>
                 <Line />
@@ -162,58 +155,37 @@ const ApplicationDetailScreen: React.FC = () => {
                 />
                 <Box>
                   {application.getApproach.includes("APPROACH_A") ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"지인 소개"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"지인 소개"} />
                   )}
                   {application.getApproach.includes("APPROACH_B") ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"카페, 블로그"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"카페, 블로그"} />
                   )}
                   {application.getApproach.includes("APPROACH_C") ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"페이스북, 트위터"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"페이스북, 트위터"} />
                   )}
                   {application.getApproach.includes("APPROACH_D") ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"책 <치유본능>"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"책 <치유본능>"} />
                   )}
                   {application.getApproach.includes("APPROACH_E") ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
-                    />
+                    <CheckBoxRow checked={true} text={"책 <짠맛의 힘>"} />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"책 <짠맛의 힘>"} />
                   )}
                   {application.getApproach.includes("APPROACH_F") ? (
-                    <FontAwesome
-                      name="check-square-o"
-                      color={"#999"}
-                      size={24}
+                    <CheckBoxRow
+                      checked={true}
+                      text={"홈페이지(자하누리, 직관의 몸공부)"}
                     />
                   ) : (
-                    <FontAwesome name="square-o" color={"#999"} size={24} />
+                    <CheckBoxRow text={"홈페이지(자하누리, 직관의 몸공부)"} />
                   )}
 
                   {application.approachEtc.length !== 0 && (
