@@ -7,7 +7,6 @@ export const SUBMIT_SURVEY = gql`
         $hasMarriedEtc: String
         $hasChildbirth: Boolean!
         $hasChildbirthEtc: String
-        $howManyChild: String
         $status: String!
         $change: String!
         $agreePersonalInformation: Boolean!
@@ -18,7 +17,6 @@ export const SUBMIT_SURVEY = gql`
         hasMarriedEtc:$hasMarriedEtc
         hasChildbirth:$hasChildbirth
         hasChildbirthEtc:$hasChildbirthEtc
-        howManyChild:$howManyChild
         status:$status
         change:$change
         agreePersonalInformation:$agreePersonalInformation
@@ -37,7 +35,6 @@ export const GET_SURVEY = gql`
         hasMarriedEtc
         hasChildbirth
         hasChildbirthEtc
-        howManyChild
         status
         change
         agreePersonalInformation

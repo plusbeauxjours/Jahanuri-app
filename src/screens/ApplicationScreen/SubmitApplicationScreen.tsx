@@ -42,6 +42,7 @@ const View = styled.View`
 `;
 const Text = styled.Text`
   font-weight: 100;
+  line-height: 20px;
 `;
 const Link = styled(Text)`
   font-weight: 400;
@@ -151,17 +152,6 @@ const SubmitApplicationScreen: React.FC = () => {
     });
   };
   const submitConfirm = (values: any) => {
-    console.log(
-      gender,
-      birthDate,
-      values.address,
-      values.job,
-      values.phoneNumber,
-      values.emailAddress,
-      approach,
-      values.approachEtc,
-      confirm
-    );
     submitApplicationFn({
       variables: {
         gender,
@@ -421,10 +411,20 @@ const SubmitApplicationScreen: React.FC = () => {
               <Divider text={"유의사항"} color={"dark"} />
               <View>
                 <Box>
-                  <Text>1) 준비물: 필기구, 운동 가능한 편한 복장</Text>
+                  <Text>
+                    1) 프로그램 시작 시간은 오전 11시 입니다. 5분전까지 강의실에
+                    입장해주세요.
+                  </Text>
+                  <SmallWhiteSpace />
+                  <Text>2) 준비물: 필기구, 운동 가능한 편한 복장</Text>
                   <SmallWhiteSpace />
                   <Text>
-                    2) 자하누리 카페 가입: 강의자료, 운동 동영상 제공, 과제 확인
+                    3) 책 (치유본능)을 프로그램 기간에 읽으시면 몸공부에 큰
+                    도움이 됩니다.
+                  </Text>
+                  <SmallWhiteSpace />
+                  <Text>
+                    4) 자하누리 카페 가입: 강의자료, 운동 동영상 제공, 과제 확인
                   </Text>
                   <Touchable
                     onPress={() => onPress("https://cafe.naver.com/jahanuri")}
@@ -433,7 +433,7 @@ const SubmitApplicationScreen: React.FC = () => {
                   </Touchable>
                   <SmallWhiteSpace />
                   <Text>
-                    4) 자하누리 카카오톡 플러스친구 추가: 문의, 공지 등을 위해
+                    5) 자하누리 카카오톡 플러스친구 추가: 문의, 공지 등을 위해
                     꼭 친구추가를 해주세요.
                   </Text>
                   <Touchable
@@ -443,12 +443,12 @@ const SubmitApplicationScreen: React.FC = () => {
                   </Touchable>
                   <SmallWhiteSpace />
                   <Text>
-                    4) 수강료: 첫 온라인 특가 38만원 (신청서 제출 후 3일내
+                    6) 수강료: 첫 온라인 특가 38만원 (신청서 제출 후 3일내
                     결제하셔야 신청이 완료됩니다.)
                   </Text>
                   <SmallWhiteSpace />
                   <Text>
-                    5) 환불규정: 강의 시작 후에는 환불 불가. 이월 가능합니다. -
+                    7) 환불규정: 강의 시작 후에는 환불 불가. 이월 가능합니다. -
                     2회 이상 결석시 수료증이 수여되지 않습니다.
                   </Text>
                 </Box>

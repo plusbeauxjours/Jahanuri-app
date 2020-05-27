@@ -139,7 +139,7 @@ const MainDrawer = createDrawerNavigator(
     },
   },
   {
-    initialRouteName: "Me",
+    initialRouteName: "Survey",
     contentComponent: DrawerWithLogoutButton,
   }
 );

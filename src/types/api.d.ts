@@ -802,7 +802,6 @@ export interface SubmitSurveyVariables {
   hasMarriedEtc?: string | null;
   hasChildbirth: boolean;
   hasChildbirthEtc?: string | null;
-  howManyChild?: string | null;
   status: string;
   change: string;
   agreePersonalInformation: boolean;
@@ -824,7 +823,6 @@ export interface GetSurvey_getSurvey_survey {
   hasMarriedEtc: string | null;
   hasChildbirth: boolean;
   hasChildbirthEtc: string | null;
-  howManyChild: string | null;
   status: string | null;
   change: string | null;
   agreePersonalInformation: boolean;

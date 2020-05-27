@@ -25,7 +25,7 @@ const SurveyScreen: React.FC = () => {
       </Container>
     );
   } else {
-    if (me.hasSubmittedHabitCheckList) {
+    if (me.hasSubmittedSurvey) {
       return <SurveyDetailScreen />;
     } else {
       return <SubmitSurveyScreen />;

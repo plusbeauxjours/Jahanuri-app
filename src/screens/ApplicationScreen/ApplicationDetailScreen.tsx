@@ -12,6 +12,7 @@ import { GetApplication } from "../../types/api";
 import { ActivityIndicator } from "react-native";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import CheckBoxRow from "../../components/CheckBoxRow";
+import { Linking } from "react-native";
 
 const Container = styled.View`
   flex: 1;
@@ -49,12 +50,40 @@ const Date = styled.Text`
   border-radius: 5px;
   background-color: #fff;
 `;
+const View = styled.View`
+  width: 90%;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+const Text = styled.Text`
+  font-weight: 100;
+  line-height: 20px;
+`;
+const Touchable = styled.TouchableOpacity``;
+const Link = styled(Text)`
+  font-weight: 400;
+  color: #8b00ff;
+`;
 
 const ApplicationDetailScreen: React.FC = () => {
   const {
     data: { getApplication: { application = null } = {} } = {},
     loading: getApplicationLoading,
   } = useQuery<GetApplication>(GET_APPLICATION);
+  const onPress = (urls: string) => {
+    Linking.canOpenURL(urls)
+      .then((supported) => {
+        if (supported) {
+          return Linking.openURL(urls);
+        } else {
+          return null;
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   if (getApplicationLoading) {
     return (
       <Container>
@@ -189,6 +218,52 @@ const ApplicationDetailScreen: React.FC = () => {
                     />
                   )}
                 </Box>
+                <Divider text={"유의사항"} color={"dark"} />
+                <View>
+                  <Box>
+                    <Text>
+                      1) 프로그램 시작 시간은 오전 11시 입니다. 5분전까지
+                      강의실에 입장해주세요.
+                    </Text>
+                    <SmallWhiteSpace />
+                    <Text>2) 준비물: 필기구, 운동 가능한 편한 복장</Text>
+                    <SmallWhiteSpace />
+                    <Text>
+                      3) 책 (치유본능)을 프로그램 기간에 읽으시면 몸공부에 큰
+                      도움이 됩니다.
+                    </Text>
+                    <SmallWhiteSpace />
+                    <Text>
+                      4) 자하누리 카페 가입: 강의자료, 운동 동영상 제공, 과제
+                      확인
+                    </Text>
+                    <Touchable
+                      onPress={() => onPress("https://cafe.naver.com/jahanuri")}
+                    >
+                      <Link>https://cafe.naver.com/jahanuri</Link>
+                    </Touchable>
+                    <SmallWhiteSpace />
+                    <Text>
+                      5) 자하누리 카카오톡 플러스친구 추가: 문의, 공지 등을 위해
+                      꼭 친구추가를 해주세요.
+                    </Text>
+                    <Touchable
+                      onPress={() => onPress("http://pf.kakao.com/_ucnLV")}
+                    >
+                      <Link>http://pf.kakao.com/_ucnLV</Link>
+                    </Touchable>
+                    <SmallWhiteSpace />
+                    <Text>
+                      6) 수강료: 첫 온라인 특가 38만원 (신청서 제출 후 3일내
+                      결제하셔야 신청이 완료됩니다.)
+                    </Text>
+                    <SmallWhiteSpace />
+                    <Text>
+                      7) 환불규정: 강의 시작 후에는 환불 불가. 이월 가능합니다.
+                      - 2회 이상 결석시 수료증이 수여되지 않습니다.
+                    </Text>
+                  </Box>
+                </View>
                 <WhiteSpace />
               </>
             )}

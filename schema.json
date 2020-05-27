@@ -1064,18 +1064,6 @@
             "deprecationReason": null
           },
           {
-            "name": "howManyChild",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "hasSubmittedPreviousCheckList",
             "description": "",
             "args": [],
@@ -3870,18 +3858,6 @@
             "deprecationReason": null
           },
           {
-            "name": "howManyChild",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "status",
             "description": "",
             "args": [],
@@ -5654,16 +5630,6 @@
               },
               {
                 "name": "hasMarriedEtc",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "howManyChild",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",

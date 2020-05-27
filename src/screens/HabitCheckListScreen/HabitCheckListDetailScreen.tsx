@@ -938,7 +938,6 @@ const HabitCheckListDetailScreen: React.FC = () => {
                     />
                   )}
                 </Box>
-                {console.log(habitCheckList)}
                 <Divider text={"자기 전 주로 하는 일은?"} color={"dark"} />
                 <Box>
                   {habitCheckList.getBeforeSleeping.includes(
@@ -1008,6 +1007,7 @@ const HabitCheckListDetailScreen: React.FC = () => {
                   onTouch={setFieldTouched}
                   name="badThing"
                 />
+                <WhiteSpace />
               </>
             )}
           </Formik>
