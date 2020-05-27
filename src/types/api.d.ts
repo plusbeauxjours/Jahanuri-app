@@ -370,6 +370,60 @@ export interface SubmitHabitCheckListVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: GetHabitCheckList
+// ====================================================
+
+export interface GetHabitCheckList_getHabitCheckList_habitCheckList {
+  __typename: "HabitCheckListType";
+  wakeupTime: string;
+  wakeupLong: string;
+  getWakeupCondition: string | null;
+  wakeupConditionEtc: string | null;
+  getWakeupFirstThing: string | null;
+  wakeupFirstThingEtc: string | null;
+  meal: string;
+  getMealDuring: string | null;
+  mealDuringEtc: string | null;
+  mealWithWater: HabitCheckListMealWithWater;
+  mealWithSnack: HabitCheckListMealWithSnack;
+  mealWithNightFood: HabitCheckListMealWithNightFood;
+  getAfterLunch: string | null;
+  afterLunchEtc: string | null;
+  getSaying: string | null;
+  sayingEtc: string | null;
+  sayingRepeat: string;
+  getWalking: string | null;
+  walkingEtc: string | null;
+  getPosture: string | null;
+  postureEtc: string | null;
+  getPostureDetail: string | null;
+  postureDetailEtc: string | null;
+  getBodyHeat: string | null;
+  bodyHeatEtc: string | null;
+  exercise: string;
+  getSleeping: string | null;
+  sleepingEtc: string | null;
+  getBeforeSleeping: string | null;
+  beforeSleepingEtc: string | null;
+  goodThing: string;
+  badThing: string;
+}
+
+export interface GetHabitCheckList_getHabitCheckList {
+  __typename: "GetHabitCheckListResponse";
+  habitCheckList: GetHabitCheckList_getHabitCheckList_habitCheckList | null;
+}
+
+export interface GetHabitCheckList {
+  getHabitCheckList: GetHabitCheckList_getHabitCheckList;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: Me
 // ====================================================
 
@@ -729,6 +783,39 @@ export enum ApplicationGender {
   GENDER_FEMALE = "GENDER_FEMALE",
   GENDER_MALE = "GENDER_MALE",
   GENDER_OTHER = "GENDER_OTHER",
+}
+
+/**
+ * An enumeration.
+ */
+export enum HabitCheckListMealWithNightFood {
+  DEGREE_A = "DEGREE_A",
+  DEGREE_B = "DEGREE_B",
+  DEGREE_C = "DEGREE_C",
+  DEGREE_D = "DEGREE_D",
+  DEGREE_E = "DEGREE_E",
+}
+
+/**
+ * An enumeration.
+ */
+export enum HabitCheckListMealWithSnack {
+  DEGREE_A = "DEGREE_A",
+  DEGREE_B = "DEGREE_B",
+  DEGREE_C = "DEGREE_C",
+  DEGREE_D = "DEGREE_D",
+  DEGREE_E = "DEGREE_E",
+}
+
+/**
+ * An enumeration.
+ */
+export enum HabitCheckListMealWithWater {
+  DEGREE_A = "DEGREE_A",
+  DEGREE_B = "DEGREE_B",
+  DEGREE_C = "DEGREE_C",
+  DEGREE_D = "DEGREE_D",
+  DEGREE_E = "DEGREE_E",
 }
 
 /**

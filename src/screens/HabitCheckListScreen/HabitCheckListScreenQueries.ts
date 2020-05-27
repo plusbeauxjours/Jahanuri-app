@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 
-
 export const SUBMIT_HABIT_CHECK_LIST = gql`
   mutation SubmitHabitCheckList(
     $wakeupTime: String!
@@ -71,6 +70,47 @@ export const SUBMIT_HABIT_CHECK_LIST = gql`
       badThing: $badThing
     ) {
       ok
+    }
+  }
+`;
+
+export const GET_HABIT_CHECK_LIST = gql`
+  query GetHabitCheckList {
+    getHabitCheckList {
+      habitCheckList {
+        wakeupTime
+        wakeupLong
+        getWakeupCondition
+        wakeupConditionEtc
+        getWakeupFirstThing
+        wakeupFirstThingEtc
+        meal
+        getMealDuring
+        mealDuringEtc
+        mealWithWater
+        mealWithSnack
+        mealWithNightFood
+        getAfterLunch
+        afterLunchEtc
+        getSaying
+        sayingEtc
+        sayingRepeat
+        getWalking
+        walkingEtc
+        getPosture
+        postureEtc
+        getPostureDetail
+        postureDetailEtc
+        getBodyHeat
+        bodyHeatEtc
+        exercise
+        getSleeping
+        sleepingEtc
+        getBeforeSleeping
+        beforeSleepingEtc
+        goodThing
+        badThing
+      }
     }
   }
 `;

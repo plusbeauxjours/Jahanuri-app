@@ -10,7 +10,6 @@ import { Formik } from "formik";
 import { GET_APPLICATION } from "./ApplicationScreenQueries";
 import { GetApplication } from "../../types/api";
 import { ActivityIndicator } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import CheckBoxRow from "../../components/CheckBoxRow";
 
@@ -31,15 +30,7 @@ const Line = styled.View`
   opacity: 0.4;
   margin: 20px;
 `;
-const View = styled.View`
-  width: 90%;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
-const Text = styled.Text`
-  font-weight: 100;
-`;
+
 const SmallWhiteSpace = styled.View`
   height: 10px;
 `;
@@ -187,7 +178,6 @@ const ApplicationDetailScreen: React.FC = () => {
                   ) : (
                     <CheckBoxRow text={"홈페이지(자하누리, 직관의 몸공부)"} />
                   )}
-
                   {application.approachEtc.length !== 0 && (
                     <FormikInput
                       label="기타"

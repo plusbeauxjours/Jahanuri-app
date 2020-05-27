@@ -21,12 +21,6 @@ import {
 import { Linking } from "react-native";
 import DatePickerModal from "react-native-modal-datetime-picker";
 import Moment from "moment";
-import {
-  withNavigation,
-  NavigationScreenProp,
-  NavigationState,
-  NavigationParams,
-} from "react-navigation";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 
 const Box = styled.View`
@@ -90,11 +84,7 @@ const initialValues = {
   approachEtc: "",
 };
 
-interface IProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
-
-const SubmitApplicationScreen: React.FC<IProps> = ({ navigation }) => {
+const SubmitApplicationScreen: React.FC = () => {
   const [isDatePickerModalOpen, setDatePickerModalOpen] = useState<boolean>(
     false
   );
@@ -506,4 +496,4 @@ const SubmitApplicationScreen: React.FC<IProps> = ({ navigation }) => {
     </>
   );
 };
-export default withNavigation(SubmitApplicationScreen);
+export default SubmitApplicationScreen;

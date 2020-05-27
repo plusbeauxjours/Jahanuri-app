@@ -70,7 +70,7 @@ const MainDrawer = createDrawerNavigator(
         ),
       },
     },
-    HabitCheckListNavigation: {
+    HabitCheckList: {
       screen: HabitCheckListNavigation,
       navigationOptions: {
         drawerLabel: "나의 습관",
@@ -139,7 +139,7 @@ const MainDrawer = createDrawerNavigator(
     },
   },
   {
-    initialRouteName: "Application",
+    initialRouteName: "Me",
     contentComponent: DrawerWithLogoutButton,
   }
 );

@@ -4,8 +4,8 @@ import { Me } from "../../types/api";
 import { ActivityIndicator } from "react-native";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";
-import SubmitApplicationScreen from "./SubmitApplicationScreen";
 import ApplicationDetailScreen from "./ApplicationDetailScreen";
+import SubmitApplicationScreen from "./SubmitApplicationScreen";
 
 const Container = styled.View`
   flex: 1;
