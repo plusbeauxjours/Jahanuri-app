@@ -148,6 +148,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
       },
     });
     setModalOpen(false);
+    setTrueAnswerQuestionUuids([]);
     toast("체크리스트를 제출하였습니다.");
   };
   if (meLoading || checkListQuestionsLoading) {

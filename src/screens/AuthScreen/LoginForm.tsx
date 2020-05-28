@@ -1,8 +1,8 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { ImageBackground, KeyboardAvoidingView, Platform } from "react-native";
-import { Mutation, MutationFunction } from "react-apollo";
+import { ImageBackground } from "react-native";
+import { Mutation } from "react-apollo";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -29,6 +29,12 @@ const View = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+`;
+const Sign = styled.Text`
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 10px;
 `;
 const initialValues = { username: "", password: "" };
 const validationSchema = Yup.object().shape({
@@ -156,6 +162,7 @@ const LoginForm: React.FC<IProps> = ({ navigation }) => {
                   )}
                 </Mutation>
               </View>
+              <Sign>Handcrafted by plusbeauxjours © twentytwenty</Sign>
             </ImageBackground>
           )}
         </Formik>

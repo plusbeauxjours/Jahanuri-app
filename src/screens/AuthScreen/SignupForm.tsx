@@ -1,8 +1,8 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { Mutation, MutationFunction } from "react-apollo";
-import { AsyncStorage, KeyboardAvoidingView, Platform } from "react-native";
+import { Mutation } from "react-apollo";
+import { AsyncStorage } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -25,11 +25,16 @@ const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
 `;
-
 const View = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+`;
+const Sign = styled.Text`
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 10px;
 `;
 
 const initialValues = {
@@ -203,6 +208,7 @@ const SignupForm: React.FC<IProps> = ({ navigation }) => {
                   )}
                 </Mutation>
               </View>
+              <Sign>Handcrafted by plusbeauxjours © twentytwenty</Sign>
             </ImageBackground>
           )}
         </Formik>

@@ -166,8 +166,7 @@ const SubmitApplicationScreen: React.FC = () => {
       },
     });
     setModalOpen(false);
-
-    toast("나의 습관을 제출하였습니다.");
+    toast("신청서를 제출하였습니다.");
   };
   const toggleItems = (array: any, action: any, variables: string) => {
     if (array.includes(variables)) {

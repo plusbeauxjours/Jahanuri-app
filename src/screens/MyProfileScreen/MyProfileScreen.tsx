@@ -114,11 +114,25 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const [createFeedFn, { loading: createFeedLoading }] = useMutation<
     CreateFeed,
     CreateFeedVariables
-  >(CREATE_FEED);
+  >(CREATE_FEED, {
+    refetchQueries: [
+      {
+        query: GET_FEED_LIST_STAFF,
+        variables: { classOrderUuid },
+      },
+    ],
+  });
   const [removeFeedFn, { loading: removeFeedLoading }] = useMutation<
     RemoveFeed,
     RemoveFeedVariables
-  >(REMOVE_FEED);
+  >(REMOVE_FEED, {
+    refetchQueries: [
+      {
+        query: GET_FEED_LIST_STAFF,
+        variables: { classOrderUuid },
+      },
+    ],
+  });
   const {
     data: { getClassList: { classes = null } = {} } = {},
     loading: getClassListLoading,
