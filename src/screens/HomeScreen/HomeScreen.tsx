@@ -6,6 +6,8 @@ import { NavigationStackScreenComponent } from "react-navigation-stack";
 import KakaoLogin from "../../components/KakaoLogin";
 import Divider from "../../components/Divider";
 import AppleApproach from "../../components/AppleApproach/index";
+import LoginForm from "../AuthScreen/LoginForm";
+import SignupForm from "../AuthScreen/SignupForm";
 
 const View = styled.View`
   flex: 1;
@@ -39,11 +41,11 @@ const Sign = styled.Text`
 `;
 
 const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
-  const [isHomePart, setIsHomePart] = useState<boolean>(true);
+  const [page, setPage] = useState<string>("HOME");
   const LoginPart = () => {
     return (
       <View>
-        <TouchableBorder onPress={() => navigation.navigate("Login")}>
+        <TouchableBorder onPress={() => setPage("ACCOUNT_LOGIN")}>
           <Text>계정 로그인</Text>
         </TouchableBorder>
         <WhiteSpace />
@@ -55,7 +57,7 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
         <WhiteSpace />
         <Divider text="OR" />
         <WhiteSpace />
-        <Touchable onPress={() => setIsHomePart(true)}>
+        <Touchable onPress={() => setPage("HOME")}>
           <Text>돌아가기</Text>
         </Touchable>
       </View>
@@ -72,7 +74,7 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
           <Text>고마센터 알아가기</Text>
         </Touchable>
         <WhiteSpace />
-        <Touchable onPress={() => setIsHomePart(false)}>
+        <Touchable onPress={() => setPage("LOGIN")}>
           <Text>로그인</Text>
         </Touchable>
       </View>
@@ -89,7 +91,10 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
       source={require("../../images/MainImage.jpg")}
       resizeMode="stretch"
     >
-      {isHomePart ? <HomePart /> : <LoginPart />}
+      {page === "HOME" && <HomePart />}
+      {page === "LOGIN" && <LoginPart />}
+      {page === "ACCOUNT_LOGIN" && <LoginForm setPage={setPage} />}
+      {page === "ACCOUNT_SIGNUP" && <SignupForm setPage={setPage} />}
       <Sign>Handcrafted by plusbeauxjours © twentytwenty</Sign>
     </ImageBackground>
   );
