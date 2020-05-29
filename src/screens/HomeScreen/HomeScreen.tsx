@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ImageBackground } from "react-native";
+import { ImageBackground, Platform } from "react-native";
 import styled from "styled-components";
 
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import KakaoLogin from "../../components/KakaoLogin";
 import Divider from "../../components/Divider";
+import AppleApproach from "../../components/AppleApproach/index";
 
 const View = styled.View`
   flex: 1;
@@ -16,7 +17,17 @@ const Text = styled.Text`
   font-size: 20px;
   font-weight: 400;
 `;
-const Touchabel = styled.TouchableOpacity``;
+const Touchable = styled.TouchableOpacity``;
+const TouchableBorder = styled(Touchable)`
+  width: 160px;
+  height: 40px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: #fff;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 const WhiteSpace = styled.View`
   height: 40px;
 `;
@@ -32,40 +43,38 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const LoginPart = () => {
     return (
       <View>
-        <Touchabel onPress={() => navigation.navigate("Login")}>
+        <TouchableBorder onPress={() => navigation.navigate("Login")}>
           <Text>계정 로그인</Text>
-        </Touchabel>
+        </TouchableBorder>
         <WhiteSpace />
-        <Touchabel onPress={KakaoLogin}>
+        <TouchableBorder onPress={KakaoLogin}>
           <Text>카카오 로그인</Text>
-        </Touchabel>
+        </TouchableBorder>
         <WhiteSpace />
-        <Touchabel onPress={KakaoLogin}>
-          <Text>애플 로그인</Text>
-        </Touchabel>
+        {Platform.OS === "ios" && <AppleApproach />}
         <WhiteSpace />
         <Divider text="OR" />
         <WhiteSpace />
-        <Touchabel onPress={() => setIsHomePart(true)}>
+        <Touchable onPress={() => setIsHomePart(true)}>
           <Text>돌아가기</Text>
-        </Touchabel>
+        </Touchable>
       </View>
     );
   };
   const HomePart = () => {
     return (
       <View>
-        <Touchabel onPress={() => navigation.navigate("AboutScreen")}>
+        <Touchable onPress={() => navigation.navigate("AboutScreen")}>
           <Text>직관의 몸공부란</Text>
-        </Touchabel>
+        </Touchable>
         <WhiteSpace />
-        <Touchabel onPress={() => navigation.navigate("ContactScreen")}>
+        <Touchable onPress={() => navigation.navigate("ContactScreen")}>
           <Text>고마센터 알아가기</Text>
-        </Touchabel>
+        </Touchable>
         <WhiteSpace />
-        <Touchabel onPress={() => setIsHomePart(false)}>
+        <Touchable onPress={() => setIsHomePart(false)}>
           <Text>로그인</Text>
-        </Touchabel>
+        </Touchable>
       </View>
     );
   };

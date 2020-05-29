@@ -4,6 +4,31 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: AppleConnect
+// ====================================================
+
+export interface AppleConnect_appleConnect {
+  __typename: "AppleConnectResponse";
+  token: string | null;
+}
+
+export interface AppleConnect {
+  appleConnect: AppleConnect_appleConnect;
+}
+
+export interface AppleConnectVariables {
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+  appleId: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: SubmitApplication
 // ====================================================
 
