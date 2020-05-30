@@ -15,6 +15,7 @@ import Toast from "react-native-root-toast";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Divider from "../../components/Divider";
 import { withNavigation } from "react-navigation";
+import Button from "../../components/Button";
 import {
   Login,
   LoginVariables,
@@ -22,11 +23,6 @@ import {
   SignupVariables,
 } from "../../types/api";
 
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
-  color: white;
-`;
 const HugeWhiteSpace = styled.View`
   height: 60px;
 `;
@@ -189,8 +185,6 @@ const SignupForm: React.FC<IProps> = ({ navigation, setPage }) => {
                       <>
                         <WhiteSpace />
                         <Button
-                          raised
-                          primary
                           disabled={
                             !isValid ||
                             loginLoading ||
@@ -203,19 +197,19 @@ const SignupForm: React.FC<IProps> = ({ navigation, setPage }) => {
                           }
                           loading={signupLoading}
                           onPress={() => signupFn()}
-                          color="#fff"
-                          title="계정 만들기"
+                          color="white"
+                          text="계정 만들기"
                         />
                         <WhiteSpace />
                         <Divider text="OR" />
                         <WhiteSpace />
                         <Button
-                          disabled={loginLoading}
+                          disabled={signupLoading}
                           onPress={() => {
                             setPage("ACCOUNT_LOGIN");
                           }}
-                          color="#FFFFFF"
-                          title="돌아가기"
+                          color="white"
+                          text="돌아가기"
                         />
                       </>
                     )}

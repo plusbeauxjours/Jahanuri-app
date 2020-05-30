@@ -6,6 +6,12 @@ import { Me } from "../types/api";
 import { ME } from "../screens/MyProfileScreen/MyProfileScreenQueries";
 import { useQuery } from "react-apollo-hooks";
 
+const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
 const View = styled.View`
   flex: 1;
   min-height: 100px;
@@ -36,12 +42,9 @@ export default withNavigation(({ navigation }) => {
   } = useQuery<Me>(ME);
   if (meLoading) {
     return (
-      <ActivityIndicator
-        size="large"
-        style={{
-          margin: 20,
-        }}
-      />
+      <Container>
+        <ActivityIndicator />
+      </Container>
     );
   } else {
     if (!me.hasSubmittedApplication) {

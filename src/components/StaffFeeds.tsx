@@ -11,6 +11,13 @@ const Container = styled.View`
   flex: 1;
   justify-content: center;
 `;
+
+const LoadingContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
 const View = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -44,12 +51,9 @@ const StaffFeeds: React.FC<IProps> = () => {
   } = useQuery<GetClassList>(GET_CLASS_LIST);
   if (loading) {
     return (
-      <ActivityIndicator
-        size="large"
-        style={{
-          margin: 20,
-        }}
-      />
+      <LoadingContainer>
+        <ActivityIndicator />
+      </LoadingContainer>
     );
   } else {
     return (

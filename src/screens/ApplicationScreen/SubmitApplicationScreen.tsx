@@ -22,6 +22,7 @@ import { Linking } from "react-native";
 import DatePickerModal from "react-native-modal-datetime-picker";
 import Moment from "moment";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
+import Button from "../../components/Button";
 
 const Box = styled.View`
   width: 100%;
@@ -53,9 +54,12 @@ const ButtonContainer = styled.View`
   align-items: center;
   height: 100px;
 `;
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
+const DialogButtonContainer = styled.View`
+  flex-direction: row;
+  width: 80px;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 const SmallWhiteSpace = styled.View`
   height: 10px;
@@ -125,7 +129,10 @@ const SubmitApplicationScreen: React.FC = () => {
     }
   );
   const handleDateConfirm = (date) => {
+    setDatePickerModalOpen(false);
     setBirthDate(Moment(date).format("YYYY-MM-DD"));
+  };
+  const hideDatePicker = () => {
     setDatePickerModalOpen(false);
   };
   const onPress = (urls: string) => {
@@ -226,16 +233,35 @@ const SubmitApplicationScreen: React.FC = () => {
                     <Paragraph>제출하시겠습니까?</Paragraph>
                   </Dialog.Content>
                   <Dialog.Actions>
-                    <Button title="취소" onPress={() => setModalOpen(false)} />
-                    <Button
-                      title="제출"
-                      onPress={() => submitConfirm(values)}
-                    />
+                    <DialogButtonContainer>
+                      <Button
+                        loading={submitApplicationLoading}
+                        text="취소"
+                        onPress={() => setModalOpen(false)}
+                      />
+                      <Button
+                        loading={submitApplicationLoading}
+                        text="제출"
+                        onPress={() => submitConfirm(values)}
+                      />
+                    </DialogButtonContainer>
                   </Dialog.Actions>
                 </Dialog>
               </Portal>
               <SmallWhiteSpace />
               <Divider text={"생년월일"} color={"dark"} />
+              <DatePickerModal
+                headerTextIOS={"날짜를 선택하세요."}
+                cancelTextIOS={"취소"}
+                confirmTextIOS={"확인"}
+                isVisible={isDatePickerModalOpen}
+                mode="date"
+                locale="kr_KR"
+                onConfirm={handleDateConfirm}
+                onCancel={hideDatePicker}
+                onChange={handleDateConfirm}
+                display="default"
+              />
               <Touchable onPress={() => setDatePickerModalOpen(true)}>
                 <Date>
                   {birthDate
@@ -247,16 +273,6 @@ const SubmitApplicationScreen: React.FC = () => {
                       "일"
                     : "탭하여 날짜를 선택하세요."}
                 </Date>
-                <DatePickerModal
-                  headerTextIOS={"날짜를 선택하세요."}
-                  cancelTextIOS={"취소"}
-                  confirmTextIOS={"확인"}
-                  isVisible={isDatePickerModalOpen}
-                  mode="date"
-                  locale="kr_KR"
-                  onConfirm={handleDateConfirm}
-                  onCancel={() => setDatePickerModalOpen(false)}
-                />
               </Touchable>
               <Divider text={"성별"} color={"dark"} />
               <Box>
@@ -472,8 +488,6 @@ const SubmitApplicationScreen: React.FC = () => {
               </Box>
               <ButtonContainer>
                 <Button
-                  raised
-                  primary
                   disabled={
                     !isValid ||
                     !gender ||
@@ -485,9 +499,10 @@ const SubmitApplicationScreen: React.FC = () => {
                   }
                   loading={submitApplicationLoading}
                   onPress={() => {
-                    setModalOpen(true), submitForm;
+                    setModalOpen(true);
                   }}
-                  title="제출"
+                  text="제출"
+                  border={true}
                 />
               </ButtonContainer>
             </>

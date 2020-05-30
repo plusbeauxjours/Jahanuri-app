@@ -17,6 +17,7 @@ import { GRAPHQL_URL } from "./src/constants/urls";
 import MainNavigation from "./src/navigations/MainNavigation";
 import { ThemeProvider } from "./src/styles/typed-components";
 import theme from "./src/styles/theme";
+import styled from "styled-components";
 
 export default function App() {
   const [client, setClient] = useState<any>(null);

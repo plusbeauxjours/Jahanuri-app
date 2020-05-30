@@ -174,11 +174,10 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     toast("일지를 제출하였습니다.");
   };
   const handleDateConfirm = (date) => {
+    hideDatePicker();
     setReportDate(Moment(date).format("YYYY-MM-DD"));
     if (reportDates.includes(Moment(date).format("YYYY-MM-DD"))) {
       toast("이미 일지를 제출하였습니다.");
-    } else {
-      hideDatePicker();
     }
   };
   const hideDatePicker = () => {
@@ -271,10 +270,8 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   locale="kr_KR"
                   onConfirm={handleDateConfirm}
                   onCancel={hideDatePicker}
-                  onChange={(event, value) => {
-                    setDatePickerModalOpen(!isDatePickerModalOpen);
-                    setReportDate(reportDate);
-                  }}
+                  onChange={handleDateConfirm}
+                  display="default"
                 />
                 <Touchable onPress={() => setDatePickerModalOpen(true)}>
                   <Date>

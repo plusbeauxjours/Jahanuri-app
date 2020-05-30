@@ -112,6 +112,7 @@ class EditProfileScreen extends React.Component<IProps> {
                 }}
                 keyboardShouldPersistTaps="handled"
               >
+                <WhiteSpace />
                 <Formik
                   initialValues={{
                     firstName: me.user.firstName,

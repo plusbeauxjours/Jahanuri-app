@@ -35,6 +35,11 @@ import UserStateController from "../../components/UserStateController";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import FormikInput from "../../components/Formik/FormikInput";
 
+const LoadingContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
 const View = styled.View`
   flex: 1;
   min-height: 100px;
@@ -186,12 +191,9 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
     getClassListLoading
   ) {
     return (
-      <ActivityIndicator
-        size="large"
-        style={{
-          margin: 20,
-        }}
-      />
+      <LoadingContainer>
+        <ActivityIndicator />
+      </LoadingContainer>
     );
   } else {
     return (

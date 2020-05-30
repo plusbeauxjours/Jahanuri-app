@@ -16,14 +16,8 @@ import { Login, LoginVariables } from "../../types/api";
 import Toast from "react-native-root-toast";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { withNavigation } from "react-navigation";
+import Button from "../../components/Button";
 
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
-  color: white;
-  background-color: null;
-  border-color: null;
-`;
 const SmallWhiteSpace = styled.View`
   height: 20px;
 `;
@@ -133,8 +127,6 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
                 {(loginFn, { loading, client }) => (
                   <React.Fragment>
                     <Button
-                      raised
-                      primary
                       disabled={
                         !isValid ||
                         !values.username ||
@@ -146,8 +138,8 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
                         client.resetStore();
                         loginFn();
                       }}
-                      color="#FFFFFF"
-                      title="로그인"
+                      color="white"
+                      text="로그인"
                     />
                     <SmallWhiteSpace />
                     <Button
@@ -155,8 +147,8 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
                       onPress={() => {
                         setPage("ACCOUNT_SIGNUP");
                       }}
-                      color="#FFFFFF"
-                      title="계정 만들기"
+                      color="white"
+                      text="계정 만들기"
                     />
                     <WhiteSpace />
                     <Divider text="OR" />
@@ -166,8 +158,8 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
                       onPress={() => {
                         setPage("LOGIN");
                       }}
-                      color="#FFFFFF"
-                      title="돌아가기"
+                      color="white"
+                      text="돌아가기"
                     />
                   </React.Fragment>
                 )}
