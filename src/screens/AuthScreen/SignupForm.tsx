@@ -14,6 +14,7 @@ import { LOGIN, SIGNUP } from "./AuthScreenQueries";
 import Toast from "react-native-root-toast";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Divider from "../../components/Divider";
+import { withNavigation } from "react-navigation";
 import {
   Login,
   LoginVariables,
@@ -27,7 +28,7 @@ const Button = styled.Button`
   color: white;
 `;
 const HugeWhiteSpace = styled.View`
-  height: 100px;
+  height: 60px;
 `;
 const View = styled.View`
   flex: 1;
@@ -221,6 +222,7 @@ const SignupForm: React.FC<IProps> = ({ navigation, setPage }) => {
                   </Mutation>
                 )}
               </Mutation>
+              <WhiteSpace />
             </View>
           )}
         </Formik>
@@ -229,4 +231,4 @@ const SignupForm: React.FC<IProps> = ({ navigation, setPage }) => {
   );
 };
 
-export default SignupForm;
+export default withNavigation(SignupForm);

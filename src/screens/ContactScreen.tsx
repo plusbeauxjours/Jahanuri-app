@@ -46,8 +46,11 @@ const Line = styled.View`
   opacity: 0.4;
   align-self: center;
 `;
-const WhiteSpace = styled.View`
+const RowWhiteSpace = styled.View`
   width: 30px;
+`;
+const ColumnWhiteSpace = styled.View`
+  height: 30px;
 `;
 const LogoContainer = styled.TouchableOpacity`
   width: 130px;
@@ -202,7 +205,7 @@ const ContactScreen: React.FC = () => {
             <Line />
           </TitleBox>
           <Box>
-            <WhiteSpace />
+            <RowWhiteSpace />
             <LogoContainer onPress={() => onPress("shop_gomashop")}>
               <Logo
                 resizeMode={"contain"}
@@ -217,9 +220,10 @@ const ContactScreen: React.FC = () => {
               />
               <Text>네이쳐 비타밀스</Text>
             </LogoContainer>
-            <WhiteSpace />
+            <RowWhiteSpace />
           </Box>
         </ScrollView>
+        <ColumnWhiteSpace />
       </Container>
     </ImageBackground>
   );

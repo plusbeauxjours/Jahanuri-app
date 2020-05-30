@@ -1,7 +1,6 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { ImageBackground } from "react-native";
 import { Mutation } from "react-apollo";
 import {
   NavigationParams,
@@ -22,6 +21,8 @@ const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
   color: white;
+  background-color: null;
+  border-color: null;
 `;
 const SmallWhiteSpace = styled.View`
   height: 20px;
@@ -171,6 +172,7 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
                   </React.Fragment>
                 )}
               </Mutation>
+              <WhiteSpace />
             </View>
           )}
         </Formik>

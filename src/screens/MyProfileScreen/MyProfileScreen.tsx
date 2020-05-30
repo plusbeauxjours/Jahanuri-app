@@ -292,6 +292,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                                 classes &&
                                 classes.length !== 0 &&
                                 classes.map((classe: any) => ({
+                                  key: classe.uuid.toString(),
                                   label:
                                     classe.order.toString() +
                                     " 기 - " +
@@ -317,7 +318,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                               <ButtonContainer>
                                 <Button
                                   color="#0000ff"
-                                  disabled={createFeedLoading}
+                                  disabled={!values.text || createFeedLoading}
                                   onPress={() => setCreateFeedModalOpen(true)}
                                 >
                                   게시

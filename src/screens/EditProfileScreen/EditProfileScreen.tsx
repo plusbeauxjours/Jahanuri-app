@@ -21,6 +21,9 @@ const Button = styled.Button`
   margin-top: 10px;
   width: 90%;
 `;
+const WhiteSpace = styled.View`
+  height: 30px;
+`;
 
 interface IProps extends NavigationStackScreenProps {}
 
@@ -230,17 +233,25 @@ class EditProfileScreen extends React.Component<IProps> {
                         onError={(error) => Alert.alert("", error.message)}
                       >
                         {(updateUserProfile, { loading }) => (
-                          <Button
-                            raised
-                            primary
-                            disabled={!isValid || loading}
-                            loading={loading}
-                            onPress={() => {
-                              updateUserProfile();
-                              this.toast("프로필이 변경되었습니다.");
-                            }}
-                            title="제출"
-                          />
+                          <>
+                            <Button
+                              raised
+                              primary
+                              disabled={
+                                !isValid ||
+                                loading ||
+                                !values.firstName ||
+                                !values.lastName
+                              }
+                              loading={loading}
+                              onPress={() => {
+                                updateUserProfile();
+                                this.toast("프로필이 변경되었습니다.");
+                              }}
+                              title="제출"
+                            />
+                            <WhiteSpace />
+                          </>
                         )}
                       </Mutation>
                     </React.Fragment>

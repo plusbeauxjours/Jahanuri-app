@@ -178,8 +178,11 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     if (reportDates.includes(Moment(date).format("YYYY-MM-DD"))) {
       toast("이미 일지를 제출하였습니다.");
     } else {
-      setDatePickerModalOpen(false);
+      hideDatePicker();
     }
+  };
+  const hideDatePicker = () => {
+    setDatePickerModalOpen(false);
   };
   const validationSchema = Yup.object().shape({
     meal: Yup.string().required("일반 식사는 필수 입력 사항입니다."),
@@ -259,6 +262,20 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     </Dialog.Actions>
                   </Dialog>
                 </Portal>
+                <DatePickerModal
+                  headerTextIOS={"날짜를 선택하세요."}
+                  cancelTextIOS={"취소"}
+                  confirmTextIOS={"확인"}
+                  isVisible={isDatePickerModalOpen}
+                  mode="date"
+                  locale="kr_KR"
+                  onConfirm={handleDateConfirm}
+                  onCancel={hideDatePicker}
+                  onChange={(event, value) => {
+                    setDatePickerModalOpen(!isDatePickerModalOpen);
+                    setReportDate(reportDate);
+                  }}
+                />
                 <Touchable onPress={() => setDatePickerModalOpen(true)}>
                   <Date>
                     {reportDate
@@ -270,16 +287,6 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                         "일"
                       : "탭하여 날짜를 선택하세요."}
                   </Date>
-                  <DatePickerModal
-                    headerTextIOS={"날짜를 선택하세요."}
-                    cancelTextIOS={"취소"}
-                    confirmTextIOS={"확인"}
-                    isVisible={isDatePickerModalOpen}
-                    mode="date"
-                    locale="kr_KR"
-                    onConfirm={handleDateConfirm}
-                    onCancel={() => setDatePickerModalOpen(false)}
-                  />
                 </Touchable>
                 <Divider text={"영양습관"} color={"dark"} />
                 <Text>섭생식</Text>
