@@ -336,8 +336,7 @@ export interface UpdateUser {
 export interface UpdateUserVariables {
   firstName: string;
   lastName: string;
-  password: string;
-  userImg?: any | null;
+  password?: string | null;
   address?: string | null;
   job?: string | null;
   phoneNumber?: string | null;

@@ -5,7 +5,6 @@ export const UPDATE_USER = gql`
     $firstName: String!
     $lastName: String!
     $password: String
-    $userImg: Upload
     $address: String
     $job: String
     $phoneNumber: String
@@ -15,7 +14,6 @@ export const UPDATE_USER = gql`
       firstName: $firstName
       lastName: $lastName
       password: $password
-      userImg: $userImg
       address: $address
       job: $job
       phoneNumber: $phoneNumber
