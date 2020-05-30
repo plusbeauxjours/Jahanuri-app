@@ -16,6 +16,7 @@ import { SubmitSurvey, SubmitSurveyVariables, Me } from "../../types/api";
 import { Linking } from "react-native";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import { SUBMIT_SURVEY } from "./SurveyScreenQueries";
+import Button from "../../components/Button";
 
 const Box = styled.View`
   width: 100%;
@@ -47,9 +48,12 @@ const ButtonContainer = styled.View`
   align-items: center;
   height: 100px;
 `;
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
+const DialogButtonContainer = styled.View`
+  flex-direction: row;
+  width: 80px;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 const SmallWhiteSpace = styled.View`
   height: 10px;
@@ -181,11 +185,18 @@ const SubmitSurveyScreen: React.FC = () => {
                     <Paragraph>제출하시겠습니까?</Paragraph>
                   </Dialog.Content>
                   <Dialog.Actions>
-                    <Button title="취소" onPress={() => setModalOpen(false)} />
-                    <Button
-                      title="제출"
-                      onPress={() => submitConfirm(values)}
-                    />
+                    <DialogButtonContainer>
+                      <Button
+                        disabled={submitSurveyLoading}
+                        text="취소"
+                        onPress={() => setModalOpen(false)}
+                      />
+                      <Button
+                        disabled={submitSurveyLoading}
+                        text="제출"
+                        onPress={() => submitConfirm(values)}
+                      />
+                    </DialogButtonContainer>
                   </Dialog.Actions>
                 </Dialog>
               </Portal>
@@ -403,8 +414,6 @@ const SubmitSurveyScreen: React.FC = () => {
               </Box>
               <ButtonContainer>
                 <Button
-                  raised
-                  primary
                   disabled={
                     !isValid ||
                     !values.status ||
@@ -420,7 +429,8 @@ const SubmitSurveyScreen: React.FC = () => {
                   onPress={() => {
                     setModalOpen(true), submitForm;
                   }}
-                  title="제출"
+                  text="제출"
+                  border={true}
                 />
               </ButtonContainer>
             </>

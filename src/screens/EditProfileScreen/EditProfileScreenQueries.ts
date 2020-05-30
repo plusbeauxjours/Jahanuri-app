@@ -4,7 +4,7 @@ export const UPDATE_USER = gql`
   mutation UpdateUser(
     $firstName: String!
     $lastName: String!
-    $password: String!
+    $password: String
     $userImg: Upload
     $address: String
     $job: String

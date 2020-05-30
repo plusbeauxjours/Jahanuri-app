@@ -78,7 +78,6 @@ const SurveyDetailScreen: React.FC = () => {
   } else {
     return (
       <>
-        {console.log(survey)}
         <MenuCustomHeader title={"설문지"} subTitle={"(제출 완료)"} />
         <KeyboardAwareScrollView
           contentContainerStyle={{

@@ -18,6 +18,7 @@ import { CheckBox } from "react-native-elements";
 import { SUBMIT_HABIT_CHECK_LIST } from "./HabitCheckListScreenQueries";
 import dimensions from "../../constants/dimensions";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
+import Button from "../../components/Button";
 
 const Box = styled.View`
   width: 100%;
@@ -44,9 +45,12 @@ const ButtonContainer = styled.View`
   align-items: center;
   height: 100px;
 `;
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
+const DialogButtonContainer = styled.View`
+  flex-direction: row;
+  width: 80px;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 const WhiteSpace = styled.View`
   height: 30px;
@@ -315,11 +319,18 @@ const SubmitHabitCheckListScreen: React.FC = () => {
                     <Paragraph>제출하시겠습니까?</Paragraph>
                   </Dialog.Content>
                   <Dialog.Actions>
-                    <Button title="취소" onPress={() => setModalOpen(false)} />
-                    <Button
-                      title="제출"
-                      onPress={() => submitConfirm(values)}
-                    />
+                    <DialogButtonContainer>
+                      <Button
+                        disabled={submitHabitCheckListLoading}
+                        text="취소"
+                        onPress={() => setModalOpen(false)}
+                      />
+                      <Button
+                        disabled={submitHabitCheckListLoading}
+                        text="제출"
+                        onPress={() => submitConfirm(values)}
+                      />
+                    </DialogButtonContainer>
                   </Dialog.Actions>
                 </Dialog>
               </Portal>
@@ -1882,8 +1893,6 @@ const SubmitHabitCheckListScreen: React.FC = () => {
               </View>
               <ButtonContainer>
                 <Button
-                  raised
-                  primary
                   disabled={
                     !isValid ||
                     !values.wakeupTime ||
@@ -1901,7 +1910,8 @@ const SubmitHabitCheckListScreen: React.FC = () => {
                   onPress={() => {
                     setModalOpen(true), submitForm;
                   }}
-                  title="제출"
+                  text="제출"
+                  border={true}
                 />
               </ButtonContainer>
             </>

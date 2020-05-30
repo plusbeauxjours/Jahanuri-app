@@ -16,10 +16,12 @@ import { UpdateUser } from "src/types/api";
 import { UpdateUserVariables } from "../../types/api";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import Toast from "react-native-root-toast";
+import Button from "../../components/Button";
 
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
+const ButtonContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 `;
 const WhiteSpace = styled.View`
   height: 30px;
@@ -234,10 +236,8 @@ class EditProfileScreen extends React.Component<IProps> {
                         onError={(error) => Alert.alert("", error.message)}
                       >
                         {(updateUserProfile, { loading }) => (
-                          <>
+                          <ButtonContainer>
                             <Button
-                              raised
-                              primary
                               disabled={
                                 !isValid ||
                                 loading ||
@@ -249,10 +249,10 @@ class EditProfileScreen extends React.Component<IProps> {
                                 updateUserProfile();
                                 this.toast("프로필이 변경되었습니다.");
                               }}
-                              title="제출"
+                              text="제출"
+                              border={true}
                             />
-                            <WhiteSpace />
-                          </>
+                          </ButtonContainer>
                         )}
                       </Mutation>
                     </React.Fragment>

@@ -9,6 +9,7 @@ import CheckListRow from "../../components/CheckListRow";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import { Portal, Dialog, Paragraph } from "react-native-paper";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
+import Button from "../../components/Button";
 import {
   GET_CHECK_LIST_QUESTIONS,
   SUBMIT_CHECK_LIST,
@@ -37,14 +38,17 @@ const LoadingContainer = styled.View`
   justify-content: center;
 `;
 const ButtonContainer = styled.View`
-  flex: 1;
   justify-content: center;
   align-items: center;
   height: 100px;
+  margin: 30px 0;
 `;
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
+const DialogButtonContainer = styled.View`
+  flex-direction: row;
+  width: 80px;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 const GreyLine = styled.View`
   margin: 0 20px;
@@ -170,8 +174,10 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               <Paragraph>제출하시겠습니까?</Paragraph>
             </Dialog.Content>
             <Dialog.Actions>
-              <Button title="취소" onPress={() => setModalOpen(false)} />
-              <Button title="제출" onPress={() => submitConfirm()} />
+              <DialogButtonContainer >
+                <Button disabled={submitCheckListLoading} text="취소" onPress={() => setModalOpen(false)} />
+                <Button disabled={submitCheckListLoading} text="제출" onPress={() => submitConfirm()} />
+              </DialogButtonContainer>
             </Dialog.Actions>
           </Dialog>
         </Portal>
@@ -273,16 +279,14 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           me.hasSubmittedLaterCheckList ? null : (
             <ButtonContainer>
               <Button
-                raised
-                primary
-                style={{ marginTop: 30, marginBottom: 30 }}
                 disabled={
                   trueAnswerQuestionUuids.length === 0 ||
                   checkListQuestionsLoading
                 }
                 loading={submitCheckListLoading}
                 onPress={() => setModalOpen(true)}
-                title="제출"
+                text="제출"
+                border={true}
               />
             </ButtonContainer>
           )}

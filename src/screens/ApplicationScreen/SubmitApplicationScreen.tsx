@@ -235,12 +235,12 @@ const SubmitApplicationScreen: React.FC = () => {
                   <Dialog.Actions>
                     <DialogButtonContainer>
                       <Button
-                        loading={submitApplicationLoading}
+                        disabled={submitApplicationLoading}
                         text="취소"
                         onPress={() => setModalOpen(false)}
                       />
                       <Button
-                        loading={submitApplicationLoading}
+                        disabled={submitApplicationLoading}
                         text="제출"
                         onPress={() => submitConfirm(values)}
                       />

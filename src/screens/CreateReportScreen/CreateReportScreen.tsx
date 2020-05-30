@@ -26,15 +26,12 @@ import Divider from "../../components/Divider";
 import dimensions from "../../constants/dimensions";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import { ActivityIndicator } from "react-native";
+import Button from "../../components/Button";
 
 const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-`;
-const Button = styled.Button`
-  margin-top: 10px;
-  width: 90%;
 `;
 const Text = styled.Text`
   align-self: flex-start;
@@ -53,6 +50,13 @@ const ButtonContainer = styled.View`
   justify-content: center;
   align-items: center;
   height: 100px;
+`;
+const DialogButtonContainer = styled.View`
+  flex-direction: row;
+  width: 80px;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 const Date = styled.Text`
   width: ${dimensions.width - 40};
@@ -250,14 +254,18 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                       <Paragraph>제출하시겠습니까?</Paragraph>
                     </Dialog.Content>
                     <Dialog.Actions>
-                      <Button
-                        title="취소"
-                        onPress={() => setModalOpen(false)}
-                      />
-                      <Button
-                        title="제출"
-                        onPress={() => submitConfirm(values)}
-                      />
+                      <DialogButtonContainer>
+                        <Button
+                          disabled={submitReportLoading}
+                          text="취소"
+                          onPress={() => setModalOpen(false)}
+                        />
+                        <Button
+                          disabled={submitReportLoading}
+                          text="제출"
+                          onPress={() => submitConfirm(values)}
+                        />
+                      </DialogButtonContainer>
                     </Dialog.Actions>
                   </Dialog>
                 </Portal>
@@ -524,12 +532,11 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                 />
                 <ButtonContainer>
                   <Button
-                    raised
-                    primary
                     disabled={!isValid || !reportDate}
                     loading={submitReportLoading}
                     onPress={() => setModalOpen(true)}
-                    title="제출"
+                    text="제출"
+                    border={true}
                   />
                 </ButtonContainer>
               </>

@@ -82,6 +82,13 @@ const ButtonContainer = styled.View`
   align-items: center;
   margin-bottom: 10px;
 `;
+const DialogButtonContainer = styled.View`
+  flex-direction: row;
+  width: 80px;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px;
+`;
 const Touchable = styled.TouchableOpacity`
   padding: 20px;
 `;
@@ -249,18 +256,24 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                                 <Paragraph>공지를 게시하시겠습니까?</Paragraph>
                               </Dialog.Content>
                               <Dialog.Actions>
-                                <Button
-                                  color="#0000ff"
-                                  onPress={() => setCreateFeedModalOpen(false)}
-                                >
-                                  취소
-                                </Button>
-                                <Button
-                                  color="#0000ff"
-                                  onPress={() => createFeedConfirm(values)}
-                                >
-                                  게시
-                                </Button>
+                                <DialogButtonContainer>
+                                  <Button
+                                    disabled={createFeedLoading}
+                                    color="#0000ff"
+                                    onPress={() =>
+                                      setCreateFeedModalOpen(false)
+                                    }
+                                  >
+                                    취소
+                                  </Button>
+                                  <Button
+                                    disabled={createFeedLoading}
+                                    color="#0000ff"
+                                    onPress={() => createFeedConfirm(values)}
+                                  >
+                                    게시
+                                  </Button>
+                                </DialogButtonContainer>
                               </Dialog.Actions>
                             </Dialog>
                           </Portal>
@@ -349,18 +362,24 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                                 <Paragraph>삭제하시겠습니까?</Paragraph>
                               </Dialog.Content>
                               <Dialog.Actions>
-                                <Button
-                                  color="#0000ff"
-                                  onPress={() => setRemoveFeedModalOpen(false)}
-                                >
-                                  취소
-                                </Button>
-                                <Button
-                                  color={"red"}
-                                  onPress={() => removeFeedConfirm()}
-                                >
-                                  삭제
-                                </Button>
+                                <DialogButtonContainer>
+                                  <Button
+                                    color="#0000ff"
+                                    onPress={() =>
+                                      setRemoveFeedModalOpen(false)
+                                    }
+                                    disabled={removeFeedLoading}
+                                  >
+                                    취소
+                                  </Button>
+                                  <Button
+                                    color={"red"}
+                                    onPress={() => removeFeedConfirm()}
+                                    disabled={removeFeedLoading}
+                                  >
+                                    삭제
+                                  </Button>
+                                </DialogButtonContainer>
                               </Dialog.Actions>
                             </Dialog>
                           </Portal>
