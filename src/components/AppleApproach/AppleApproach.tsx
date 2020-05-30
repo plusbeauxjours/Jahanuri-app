@@ -7,6 +7,7 @@ import Toast from "react-native-root-toast";
 import { ActivityIndicator, AsyncStorage } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { AppleConnect, AppleConnectVariables } from "../../types/api";
+import { withNavigation } from "react-navigation";
 
 const Touchable = styled.TouchableOpacity``;
 
@@ -33,7 +34,7 @@ const Text = styled.Text`
   font-weight: 400;
 `;
 
-export default () => {
+export default withNavigation(({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [appleConnectFn, { loading: appleConnectLoading }] = useMutation<
     AppleConnect,
@@ -57,6 +58,7 @@ export default () => {
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ],
       });
+      console.log(credential);
       try {
         const {
           data: { appleConnect },
@@ -69,8 +71,11 @@ export default () => {
           },
         });
         await AsyncStorage.setItem("jwt", appleConnect.token);
-        await toast(`Welcome!`);
-        await setLoading(false);
+        if (appleConnect.token) {
+          await toast(`환영합니다!`);
+          await setLoading(false);
+          navigation.navigate("AuthLoadingContainer");
+        }
       } catch ({ message }) {
         console.log(`Apple Login Error: ${message}`);
         setLoading(false);
@@ -100,4 +105,4 @@ export default () => {
       </Container>
     </Touchable>
   );
-};
+});

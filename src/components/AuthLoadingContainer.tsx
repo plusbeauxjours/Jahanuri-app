@@ -26,6 +26,7 @@ export default class AuthLoadingContainer extends React.Component<IProps> {
   checkAuthentication = async () => {
     try {
       const uuid = await AsyncStorage.getItem("jwt");
+      console.log("uuid", uuid);
       this.props.navigation.navigate(uuid ? "Main" : "Auth");
     } catch (_) {
       this.props.navigation.navigate("Auth");

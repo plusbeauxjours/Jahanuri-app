@@ -4,9 +4,13 @@ import AboutScreen from "../screens/AboutScreen";
 import ContactScreen from "../screens/ContactScreen";
 import LoginForm from "../screens/AuthScreen/LoginForm";
 import SignupForm from "../screens/AuthScreen/SignupForm";
+import AuthLoadingContainer from "../components/AuthLoadingContainer";
+import MainDrawer from "./MainDrawer";
 
 const AuthNavigation = createStackNavigator(
   {
+    AuthLoadingContainer: { screen: AuthLoadingContainer },
+    Main: { screen: MainDrawer },
     AboutScreen: { screen: AboutScreen },
     ContactScreen: { screen: ContactScreen },
     HomeScreen: { screen: HomeScreen },

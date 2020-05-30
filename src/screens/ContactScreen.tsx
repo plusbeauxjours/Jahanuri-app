@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Linking, ImageBackground, ScrollView } from "react-native";
 import dimensions from "../constants/dimensions";
+import { Ionicons } from "@expo/vector-icons";
+import { withNavigation } from "react-navigation";
 
 const Container = styled.View`
   flex: 1;
@@ -61,7 +63,14 @@ const Logo = styled.Image`
   width: 50px;
   height: 80px;
 `;
-
+const IconContainer = styled.TouchableOpacity`
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  top: 30px;
+  left: 10px;
+`;
 const ContactScreen: React.FC = () => {
   const urls = {
     web_gomaschool: "https://www.gomaschool.co.kr",
@@ -78,6 +87,13 @@ const ContactScreen: React.FC = () => {
     shop_gomashop: "https://www.gomashop.co.kr",
     shop_naturevitameals: "https://www.naturevitameals.co.kr",
   };
+  const LeftComponent = withNavigation(({ navigation }) => {
+    return (
+      <IconContainer onPress={() => navigation.toggleDrawer()}>
+        <Ionicons size={24} name={"ios-menu"} color={"white"} />
+      </IconContainer>
+    );
+  });
   const onPress = (name: string) => {
     Linking.canOpenURL(urls[name])
       .then((supported) => {
@@ -99,6 +115,7 @@ const ContactScreen: React.FC = () => {
     >
       <Container>
         <ScrollView style={{ width: dimensions.width }}>
+          <LeftComponent />
           <TitleBox>
             <Line />
             <Title>공식홈페이지</Title>
