@@ -26,7 +26,6 @@ export const SIGNUP = gql`
         username
         firstName
         lastName
-        userImg
         classOrder {
           order
           startDate
@@ -44,7 +43,6 @@ export const SIGNUP = gql`
         hasSubmittedApplication
         hasSubmittedSurvey
         hasPaid
-        hasKakaoAccount
         hasAppleAccount
         isStaff
       }

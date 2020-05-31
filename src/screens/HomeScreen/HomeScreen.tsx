@@ -3,7 +3,6 @@ import { ImageBackground, Platform } from "react-native";
 import styled from "styled-components";
 
 import { NavigationStackScreenComponent } from "react-navigation-stack";
-import KakaoLogin from "../../components/KakaoLogin";
 import Divider from "../../components/Divider";
 import AppleApproach from "../../components/AppleApproach/index";
 import LoginForm from "../AuthScreen/LoginForm";
@@ -47,10 +46,6 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
       <View>
         <TouchableBorder onPress={() => setPage("ACCOUNT_LOGIN")}>
           <Text>계정 로그인</Text>
-        </TouchableBorder>
-        <WhiteSpace />
-        <TouchableBorder onPress={KakaoLogin}>
-          <Text>카카오 로그인</Text>
         </TouchableBorder>
         <WhiteSpace />
         {Platform.OS === "ios" && <AppleApproach />}

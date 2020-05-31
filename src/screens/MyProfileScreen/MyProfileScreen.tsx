@@ -221,7 +221,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
             startDate={me.classOrder && me.classOrder.startDate}
             endDate={me.classOrder && me.classOrder.endDate}
             isStaff={me.isStaff}
-            userImg={me.userImg}
             name={`${me.lastName} ${me.firstName}`}
             username={me.username}
           />

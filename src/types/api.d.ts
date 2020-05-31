@@ -136,7 +136,6 @@ export interface Signup_createUser_user {
   username: string;
   firstName: string;
   lastName: string;
-  userImg: string | null;
   classOrder: Signup_createUser_user_classOrder | null;
   address: string | null;
   job: string | null;
@@ -149,7 +148,6 @@ export interface Signup_createUser_user {
   hasSubmittedApplication: boolean;
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
-  hasKakaoAccount: boolean;
   hasAppleAccount: boolean;
   /**
    * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.
@@ -321,7 +319,10 @@ export interface UpdateUser_updateUser_user {
   __typename: "UserType";
   firstName: string;
   lastName: string;
-  userImg: string | null;
+  address: string | null;
+  job: string | null;
+  phoneNumber: string | null;
+  email: string;
 }
 
 export interface UpdateUser_updateUser {
@@ -476,7 +477,6 @@ export interface Me_me_user {
   username: string;
   firstName: string;
   lastName: string;
-  userImg: string | null;
   classOrder: Me_me_user_classOrder | null;
   address: string | null;
   job: string | null;
@@ -489,7 +489,6 @@ export interface Me_me_user {
   hasSubmittedApplication: boolean;
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
-  hasKakaoAccount: boolean;
   hasAppleAccount: boolean;
   /**
    * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.

@@ -22,7 +22,10 @@ export const UPDATE_USER = gql`
       user {
         firstName
         lastName
-        userImg
+        address
+        job
+        phoneNumber
+        email
       }
     }
   }

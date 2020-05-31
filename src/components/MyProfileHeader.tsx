@@ -40,7 +40,6 @@ interface IProps {
   startDate?: string;
   endDate?: string;
   isStaff: boolean;
-  userImg?: string;
   name: string;
   username: string;
 }
@@ -50,7 +49,6 @@ const MyProfileHeader: React.FC<IProps> = ({
   startDate,
   endDate,
   isStaff,
-  userImg = null,
   name,
   username,
 }) => {
@@ -61,9 +59,8 @@ const MyProfileHeader: React.FC<IProps> = ({
         rounded
         containerStyle={{ marginVertical: 5 }}
         source={{
-          uri: userImg
-            ? MEDIA_URL + userImg
-            : "https://gblobscdn.gitbook.com/spaces%2F-L-nWFFFG5HNhz4YeOI_%2Favatar.png?generation=1523478414663564&alt=media",
+          uri:
+            "https://gblobscdn.gitbook.com/spaces%2F-L-nWFFFG5HNhz4YeOI_%2Favatar.png?generation=1523478414663564&alt=media",
         }}
       />
       <Headline>{name}</Headline>

@@ -5,14 +5,13 @@ import gql from "graphql-tag";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { ReactNativeFile } from "apollo-upload-client";
 
 import FormikInput from "../../components/Formik/FormikInput";
 import { UPDATE_USER } from "./EditProfileScreenQueries";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";
 import { NavigationStackScreenProps } from "react-navigation-stack";
-import { UpdateUser } from "src/types/api";
+import { UpdateUser } from "../../types/api";
 import { UpdateUserVariables } from "../../types/api";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import Toast from "react-native-root-toast";
@@ -55,7 +54,10 @@ class EditProfileScreen extends React.Component<IProps> {
             ...me.user,
             firstName: updateUser.user.firstName,
             lastName: updateUser.user.lastName,
-            userImg: updateUser.user.userImg,
+            address: updateUser.user.address,
+            job: updateUser.user.job,
+            phoneNumber: updateUser.user.phoneNumber,
+            email: updateUser.user.email,
           },
         },
       },
@@ -91,12 +93,11 @@ class EditProfileScreen extends React.Component<IProps> {
                     username
                     firstName
                     lastName
-                    userImg
                     address
                     job
                     phoneNumber
                     email
-                    hasKakaoAccount
+                    hasAppleAccount
                   }
                 }
               }
@@ -121,9 +122,6 @@ class EditProfileScreen extends React.Component<IProps> {
                     lastName: me.user.lastName,
                     password: "",
                     confirmPassword: "",
-                    userImg: me.user.userImg && {
-                      uri: me.user.userImg,
-                    },
                     address: me.user.address || "",
                     job: me.user.job || "",
                     phoneNumber: me.user.phoneNumber || "",
@@ -191,7 +189,7 @@ class EditProfileScreen extends React.Component<IProps> {
                         name="job"
                         error={touched.job && errors.job}
                       />
-                      {!me.user.hasKakaoAccount && (
+                      {!me.user.hasAppleAccount && (
                         <>
                           <FormikInput
                             label="비밀번호"
@@ -223,10 +221,6 @@ class EditProfileScreen extends React.Component<IProps> {
                           firstName: values.firstName.trim(),
                           lastName: values.lastName.trim(),
                           password: values.password,
-                          userImg:
-                            me.user.userImg === values.userImg
-                              ? null
-                              : new ReactNativeFile(values.userImg),
                           address: values.address,
                           job: values.job,
                           phoneNumber: values.phoneNumber,

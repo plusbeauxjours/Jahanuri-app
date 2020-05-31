@@ -8,7 +8,6 @@ export const ME = gql`
         username
         firstName
         lastName
-        userImg
         classOrder {
           order
           startDate
@@ -26,7 +25,6 @@ export const ME = gql`
         hasSubmittedApplication
         hasSubmittedSurvey
         hasPaid
-        hasKakaoAccount
         hasAppleAccount
         isStaff
       }
