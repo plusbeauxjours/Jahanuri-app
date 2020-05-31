@@ -199,9 +199,8 @@ const AboutScreen: React.FC = () => {
             <WhiteSpace />
             <View>
               <Bold>일시</Bold>
-              <Text>2020년 5월 25일 ~ 6월 5일 </Text>
-              <Text>낮반 : 월, 수,금 11:00 ~ 14:00 총 6회</Text>
-              <Text>저녁반: 화, 목, 토 7:30~10:00 </Text>
+              <Text>낮반 : 월, 수, 금 11:00 ~ 14:00 총 6회</Text>
+              <Text>저녁반: 화, 목, 토 늦은 7:30 ~ 늦은 10:00 </Text>
               <WhiteSpace />
               <Bold>장소</Bold>
               <Text>고마스쿨 교육관 (자하누리)</Text>
@@ -218,7 +217,7 @@ const AboutScreen: React.FC = () => {
               <WhiteSpace />
               <Bold>신청/문의</Bold>
               <Text>02-876-2236 / 010-4052-2236</Text>
-              <Text>카카오톡 @자하누리</Text>
+              <Text>카카오톡@자하누리</Text>
               <WhiteSpace />
               <Text>
                 1:1 관리로 이루어지는 프로그램 특성상 소수 정예로 진행됩니다.

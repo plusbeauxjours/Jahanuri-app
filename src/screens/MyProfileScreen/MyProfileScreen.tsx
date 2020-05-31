@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Moment from "moment";
 import styled from "styled-components";
-import { ActivityIndicator, RefreshControl } from "react-native";
+import {
+  ActivityIndicator,
+  RefreshControl,
+  Platform,
+  Alert,
+  Linking,
+} from "react-native";
 import { Portal, Dialog, Paragraph, Button } from "react-native-paper";
 import RNPickerSelect from "react-native-picker-select";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
@@ -9,6 +15,11 @@ import { useQuery, useMutation } from "react-apollo-hooks";
 import Toast from "react-native-root-toast";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { Notifications } from "expo";
+import axios from "axios";
+import Constants from "expo-constants";
+import * as IntentLauncher from "expo-intent-launcher";
+import * as Permissions from "expo-permissions";
 
 import {
   ME,
@@ -28,12 +39,15 @@ import {
   CreateFeedVariables,
   RemoveFeed,
   RemoveFeedVariables,
+  RegisterPush,
+  RegisterPushVariables,
 } from "../../types/api";
 import MyProfileHeader from "../../components/MyProfileHeader";
 
 import UserStateController from "../../components/UserStateController";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import FormikInput from "../../components/Formik/FormikInput";
+import { REGISTER_PUSH } from "./MyProfileScreenQueries";
 
 const LoadingContainer = styled.View`
   flex: 1;
@@ -145,6 +159,10 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       },
     ],
   });
+  const [registerPushFn, { loading: registerPushLoading }] = useMutation<
+    RegisterPush,
+    RegisterPushVariables
+  >(REGISTER_PUSH);
   const {
     data: { getClassList: { classes = null } = {} } = {},
     loading: getClassListLoading,
@@ -159,13 +177,28 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       delay: 0,
     });
   };
-  const createFeedConfirm = (values) => {
-    createFeedFn({
+  const createFeedConfirm = async (values) => {
+    const {
+      data: { createFeed },
+    } = await createFeedFn({
       variables: {
         classOrderUuid,
         text: values.text,
       },
     });
+    if (createFeed.feed) {
+      const classUsers = [];
+      createFeed.users.map((user: any) => {
+        classUsers.push(user.pushToken);
+        console.log("AMHERE");
+      });
+      await axios.post("https://exp.host/--/api/v2/push/send", {
+        to: classUsers,
+        title: "새로운 공지",
+        body: `몸공부 ${createFeed.feed.classOrder.order}기 ${me.firstName}: 새로운 공지가 게시되었습니다. `,
+      });
+      console.log("DONE");
+    }
     setCreateFeedModalOpen(false);
     toast("공지를 게시하였습니다.");
   };
@@ -190,7 +223,63 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       setRefreshing(false);
     }
   };
-
+  const askPermission = async () => {
+    const { status: notificationStatus } = await Permissions.askAsync(
+      Permissions.NOTIFICATIONS
+    );
+    if (Platform.OS === "ios" && notificationStatus === "denied") {
+      Alert.alert(
+        "Permission Denied",
+        "To enable notification, tap Open Settings, then tap on Notifications, and finally tap on Allow Notifications.",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
+          },
+          {
+            text: "Open Settings",
+            onPress: () => {
+              Linking.openURL("app-settings:");
+            },
+          },
+        ]
+      );
+    } else if (Platform.OS === "android" && notificationStatus === "denied") {
+      Alert.alert(
+        "Permission Denied",
+        "To enable notification, tap Open Settings, then tap on Notifications, and finally tap on Show notifications.",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
+          },
+          {
+            text: "Open Settings",
+            onPress: () => {
+              const pkg = Constants.manifest.releaseChannel
+                ? Constants.manifest.android.package
+                : "host.exp.exponent";
+              IntentLauncher.startActivityAsync(
+                IntentLauncher.ACTION_APPLICATION_DETAILS_SETTINGS,
+                { data: "package:" + pkg }
+              );
+            },
+          },
+        ]
+      );
+    } else if (notificationStatus === "granted") {
+      let pushToken = await Notifications.getExpoPushTokenAsync();
+      const { data: serverData } = await registerPushFn({
+        variables: { pushToken },
+      });
+      console.log(serverData);
+    } else {
+      return;
+    }
+  };
+  useEffect(() => {
+    askPermission();
+  }, []);
   if (
     meLoading ||
     getFeedListLoading ||

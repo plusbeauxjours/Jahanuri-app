@@ -104,6 +104,10 @@ export const CREATE_FEED = gql`
         text
         createdAt
       }
+      users{
+        firstName
+        pushToken
+      }
     }
   }
 `;
@@ -112,6 +116,14 @@ export const REMOVE_FEED = gql`
   mutation RemoveFeed($feedUuid: String!) {
     removeFeed(feedUuid: $feedUuid) {
       uuid
+    }
+  }
+`;
+
+export const REGISTER_PUSH = gql`
+  mutation RegisterPush($pushToken: String!) {
+    registerPush(pushToken: $pushToken) {
+      ok
     }
   }
 `;

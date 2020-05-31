@@ -655,9 +655,16 @@ export interface CreateFeed_createFeed_feed {
   createdAt: any;
 }
 
+export interface CreateFeed_createFeed_users {
+  __typename: "UserType";
+  firstName: string;
+  pushToken: string | null;
+}
+
 export interface CreateFeed_createFeed {
   __typename: "CreateFeedReponse";
   feed: CreateFeed_createFeed_feed | null;
+  users: (CreateFeed_createFeed_users | null)[] | null;
 }
 
 export interface CreateFeed {
@@ -689,6 +696,28 @@ export interface RemoveFeed {
 
 export interface RemoveFeedVariables {
   feedUuid: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: RegisterPush
+// ====================================================
+
+export interface RegisterPush_registerPush {
+  __typename: "RegisterPushResponse";
+  ok: boolean | null;
+}
+
+export interface RegisterPush {
+  registerPush: RegisterPush_registerPush;
+}
+
+export interface RegisterPushVariables {
+  pushToken: string;
 }
 
 /* tslint:disable */

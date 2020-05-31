@@ -52,9 +52,8 @@ const PaymentInformationScreen: NavigationStackScreenComponent = () => (
         <WhiteSpace />
         <View>
           <Bold>일시</Bold>
-          <Text>2020년 5월 25일 ~ 6월 5일 </Text>
-          <Text>낮반 : 월, 수,금 11:00 ~ 14:00 총 6회</Text>
-          <Text>저녁반: 화, 목, 토 7:30~10:00 </Text>
+          <Text>낮반 : 월, 수, 금 11:00 ~ 14:00 총 6회</Text>
+          <Text>저녁반: 화, 목, 토 늦은 7:30 ~ 늦은 10:00 </Text>
           <WhiteSpace />
           <Bold>장소</Bold>
           <Text>고마스쿨 교육관 (자하누리)</Text>
