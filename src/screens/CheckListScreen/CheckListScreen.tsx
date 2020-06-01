@@ -45,8 +45,7 @@ const ButtonContainer = styled.View`
 `;
 const DialogButtonContainer = styled.View`
   flex-direction: row;
-  width: 80px;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-right: 10px;
   margin-bottom: 10px;
 `;
@@ -174,9 +173,17 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               <Paragraph>제출하시겠습니까?</Paragraph>
             </Dialog.Content>
             <Dialog.Actions>
-              <DialogButtonContainer >
-                <Button disabled={submitCheckListLoading} text="취소" onPress={() => setModalOpen(false)} />
-                <Button disabled={submitCheckListLoading} text="제출" onPress={() => submitConfirm()} />
+              <DialogButtonContainer>
+                <Button
+                  disabled={submitCheckListLoading}
+                  text="취소"
+                  onPress={() => setModalOpen(false)}
+                />
+                <Button
+                  disabled={submitCheckListLoading}
+                  text="제출"
+                  onPress={() => submitConfirm()}
+                />
               </DialogButtonContainer>
             </Dialog.Actions>
           </Dialog>
