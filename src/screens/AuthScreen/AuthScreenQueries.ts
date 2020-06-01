@@ -44,6 +44,8 @@ export const SIGNUP = gql`
         hasSubmittedSurvey
         hasPaid
         hasAppleAccount
+        appleId
+        pushToken
         isStaff
       }
     }

@@ -102,6 +102,8 @@ const DialogButtonContainer = styled.View`
   justify-content: space-between;
   margin-right: 10px;
   margin-bottom: 10px;
+  border-width: 1px;
+  border-color: red;
 `;
 const Touchable = styled.TouchableOpacity`
   padding: 20px;
@@ -227,17 +229,18 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
     const { status: notificationStatus } = await Permissions.askAsync(
       Permissions.NOTIFICATIONS
     );
+    console.log("notificationStatus", notificationStatus);
     if (Platform.OS === "ios" && notificationStatus === "denied") {
       Alert.alert(
         "Permission Denied",
         "To enable notification, tap Open Settings, then tap on Notifications, and finally tap on Allow Notifications.",
         [
           {
-            text: "Cancel",
+            text: "취소",
             style: "cancel",
           },
           {
-            text: "Open Settings",
+            text: "확인",
             onPress: () => {
               Linking.openURL("app-settings:");
             },
@@ -250,11 +253,11 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
         "To enable notification, tap Open Settings, then tap on Notifications, and finally tap on Show notifications.",
         [
           {
-            text: "Cancel",
+            text: "취소",
             style: "cancel",
           },
           {
-            text: "Open Settings",
+            text: "확인",
             onPress: () => {
               const pkg = Constants.manifest.releaseChannel
                 ? Constants.manifest.android.package
@@ -272,7 +275,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       const { data: serverData } = await registerPushFn({
         variables: { pushToken },
       });
-      console.log(serverData);
+      console.log("serverData", serverData);
     } else {
       return;
     }
@@ -365,48 +368,57 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                               </Dialog.Actions>
                             </Dialog>
                           </Portal>
-                          <Touchable>
-                            <RNPickerSelect
-                              onValueChange={(value) => {
-                                setClassOrderUuid(value);
-                              }}
-                              value={classOrderUuid}
-                              style={{
-                                inputIOS: {
-                                  fontSize: 16,
-                                  paddingVertical: 12,
-                                  paddingHorizontal: 10,
-                                  borderWidth: 1,
-                                  borderColor: "gray",
-                                  borderRadius: 4,
-                                  backgroundColor: "#fff",
-                                  color: "black",
-                                  paddingRight: 30,
-                                  textAlign: "center",
-                                },
-                              }}
-                              placeholder={{
-                                label: "기수를 선택하세요.",
-                              }}
-                              pickerProps={{
-                                style: { height: 200, overflow: "hidden" },
-                              }}
-                              items={
-                                classes &&
-                                classes.length !== 0 &&
-                                classes.map((classe: any) => ({
-                                  key: classe.uuid.toString(),
-                                  label:
-                                    classe.order.toString() +
-                                    " 기 - " +
-                                    Moment(classe.startDate).format("M월 D일") +
-                                    " ~ " +
-                                    Moment(classe.endDate).format("M월 D일"),
-                                  value: classe.uuid.toString(),
-                                }))
-                              }
-                            />
-                          </Touchable>
+                          <RNPickerSelect
+                            onValueChange={(value) => {
+                              setClassOrderUuid(value);
+                            }}
+                            value={classOrderUuid}
+                            style={{
+                              inputIOS: {
+                                margin: 20,
+                                fontSize: 16,
+                                paddingVertical: 12,
+                                paddingHorizontal: 10,
+                                borderWidth: 1,
+                                borderColor: "gray",
+                                borderRadius: 4,
+                                backgroundColor: "#fff",
+                                color: "black",
+                                paddingRight: 30,
+                                textAlign: "center",
+                              },
+                              inputAndroid: {
+                                borderWidth: 1,
+                                borderColor: "gray",
+                                borderRadius: 4,
+                                backgroundColor: "#fff",
+                                color: "black",
+                              },
+                            }}
+                            placeholder={{
+                              label: "기수를 선택하세요.",
+                            }}
+                            pickerProps={{
+                              style: {
+                                marginLeft: 20,
+                                marginRight: 20,
+                              },
+                            }}
+                            items={
+                              classes &&
+                              classes.length !== 0 &&
+                              classes.map((classe: any) => ({
+                                key: classe.uuid.toString(),
+                                label:
+                                  classe.order.toString() +
+                                  " 기 - " +
+                                  Moment(classe.startDate).format("M월 D일") +
+                                  " ~ " +
+                                  Moment(classe.endDate).format("M월 D일"),
+                                value: classe.uuid.toString(),
+                              }))
+                            }
+                          />
                           {classOrderUuid && classOrderUuid.length !== 0 && (
                             <>
                               <FormikInput

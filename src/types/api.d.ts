@@ -149,6 +149,8 @@ export interface Signup_createUser_user {
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
   hasAppleAccount: boolean;
+  appleId: string | null;
+  pushToken: string | null;
   /**
    * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.
    */
@@ -490,6 +492,8 @@ export interface Me_me_user {
   hasSubmittedSurvey: boolean;
   hasPaid: boolean;
   hasAppleAccount: boolean;
+  appleId: string | null;
+  pushToken: string | null;
   /**
    * 사용자가 관리사이트에 로그인이 가능한지를 나타냅니다.
    */

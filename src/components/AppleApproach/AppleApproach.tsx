@@ -58,7 +58,6 @@ export default withNavigation(({ navigation }) => {
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ],
       });
-      console.log(credential);
       try {
         const {
           data: { appleConnect },

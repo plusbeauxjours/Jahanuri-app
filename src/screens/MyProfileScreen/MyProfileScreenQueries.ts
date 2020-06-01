@@ -26,6 +26,8 @@ export const ME = gql`
         hasSubmittedSurvey
         hasPaid
         hasAppleAccount
+        appleId
+        pushToken
         isStaff
       }
     }
