@@ -69,9 +69,9 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
           <Text>고마센터 알아가기</Text>
         </Touchable>
         <WhiteSpace />
-        <Touchable onPress={() => setPage("LOGIN")}>
+        <TouchableBorder onPress={() => setPage("LOGIN")}>
           <Text>로그인</Text>
-        </Touchable>
+        </TouchableBorder>
       </View>
     );
   };

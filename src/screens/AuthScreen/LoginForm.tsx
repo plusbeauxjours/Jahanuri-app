@@ -7,7 +7,7 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, ActivityIndicator } from "react-native";
 import FormikInput from "../../components/Formik/FormikInput";
 import styled from "styled-components";
 import Divider from "../../components/Divider";
@@ -34,6 +34,24 @@ const View = styled.View`
   justify-content: center;
   align-items: center;
 `;
+const Text = styled.Text`
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+`;
+const GreyText = styled(Text)`
+  color: #bbb;
+`;
+const TouchableBorder = styled.TouchableOpacity<ITheme>`
+  width: 160px;
+  height: 40px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: ${(props) => (props.disabled ? "#bbb" : "#fff")};
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 const initialValues = { username: "", password: "" };
 const validationSchema = Yup.object().shape({
@@ -51,6 +69,9 @@ const validationSchema = Yup.object().shape({
 interface IProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
   setPage: (page: string) => void;
+}
+interface ITheme {
+  disabled?: boolean;
 }
 
 const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
@@ -126,30 +147,41 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
               >
                 {(loginFn, { loading, client }) => (
                   <React.Fragment>
-                    <Button
-                      disabled={
-                        !isValid ||
+                    {loading ? (
+                      <TouchableBorder disabled={true}>
+                        <ActivityIndicator color={"#fff"} />
+                      </TouchableBorder>
+                    ) : (
+                      <TouchableBorder
+                        disabled={
+                          !isValid ||
+                          !values.username ||
+                          !values.password ||
+                          loading
+                        }
+                        onPress={() => {
+                          client.resetStore();
+                          loginFn();
+                        }}
+                      >
+                        {!isValid ||
                         !values.username ||
                         !values.password ||
-                        loading
-                      }
-                      loading={loading}
-                      onPress={() => {
-                        client.resetStore();
-                        loginFn();
-                      }}
-                      color="white"
-                      text="로그인"
-                    />
+                        loading ? (
+                          <GreyText>로그인</GreyText>
+                        ) : (
+                          <Text>로그인</Text>
+                        )}
+                      </TouchableBorder>
+                    )}
+
                     <SmallWhiteSpace />
-                    <Button
+                    <TouchableBorder
                       disabled={loading}
-                      onPress={() => {
-                        setPage("ACCOUNT_SIGNUP");
-                      }}
-                      color="white"
-                      text="계정 만들기"
-                    />
+                      onPress={() => setPage("ACCOUNT_SIGNUP")}
+                    >
+                      <Text>계정 만들기</Text>
+                    </TouchableBorder>
                     <WhiteSpace />
                     <Divider text="OR" />
                     <WhiteSpace />

@@ -2,7 +2,7 @@ import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { Mutation } from "react-apollo";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, ActivityIndicator } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -36,6 +36,24 @@ const View = styled.View`
 const WhiteSpace = styled.View`
   height: 40px;
 `;
+const Text = styled.Text`
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+`;
+const GreyText = styled(Text)`
+  color: #999;
+`;
+const TouchableBorder = styled.TouchableOpacity<ITheme>`
+  width: 160px;
+  height: 40px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: ${(props) => (props.disabled ? "#bbb" : "#fff")};
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 const initialValues = {
   firstName: "",
@@ -67,6 +85,9 @@ const validationSchema = Yup.object().shape({
 interface IProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
   setPage: (page: string) => void;
+}
+interface ITheme {
+  disabled?: boolean;
 }
 
 const SignupForm: React.FC<IProps> = ({ navigation, setPage }) => {
@@ -184,22 +205,38 @@ const SignupForm: React.FC<IProps> = ({ navigation, setPage }) => {
                     {(signupFn, { loading: signupLoading }) => (
                       <>
                         <WhiteSpace />
-                        <Button
-                          disabled={
-                            !isValid ||
+                        {signupLoading ? (
+                          <TouchableBorder disabled={true}>
+                            <ActivityIndicator color={"#fff"} />
+                          </TouchableBorder>
+                        ) : (
+                          <TouchableBorder
+                            disabled={
+                              !isValid ||
+                              loginLoading ||
+                              signupLoading ||
+                              !values.firstName ||
+                              !values.lastName ||
+                              !values.username ||
+                              !values.password ||
+                              !values.confirmPassword
+                            }
+                            onPress={() => signupFn()}
+                          >
+                            {!isValid ||
                             loginLoading ||
                             signupLoading ||
                             !values.firstName ||
                             !values.lastName ||
                             !values.username ||
                             !values.password ||
-                            !values.confirmPassword
-                          }
-                          loading={signupLoading}
-                          onPress={() => signupFn()}
-                          color="white"
-                          text="계정 만들기"
-                        />
+                            !values.confirmPassword ? (
+                              <GreyText>계정 만들기</GreyText>
+                            ) : (
+                              <Text>계정 만들기</Text>
+                            )}
+                          </TouchableBorder>
+                        )}
                         <WhiteSpace />
                         <Divider text="OR" />
                         <WhiteSpace />

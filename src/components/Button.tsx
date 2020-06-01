@@ -13,7 +13,7 @@ const Text = styled.Text<ITheme>`
 `;
 const Touchable = styled.TouchableOpacity<ITheme>`
   border-width: 0.5px;
-  border-color: black;
+  border-color: ${(props) => (props.disabled ? "#bbb" : "#000")};
   border-radius: 5px;
   padding: 10px 20px;
 `;
@@ -29,6 +29,7 @@ interface IProps {
 interface ITheme {
   color?: string;
   border?: boolean;
+  disabled?: boolean;
 }
 const Button: React.FC<IProps> = ({
   loading,
@@ -44,7 +45,7 @@ const Button: React.FC<IProps> = ({
         <Touchable disabled={disabled} onPress={onPress} border={border}>
           <Container>
             {disabled ? (
-              <Text color={"#ccc"}>{text}</Text>
+              <Text color={"#bbb"}>{text}</Text>
             ) : (
               <Text color={color}>{text}</Text>
             )}
@@ -56,7 +57,7 @@ const Button: React.FC<IProps> = ({
         <DialogTouchable disabled={disabled} onPress={onPress}>
           <Container>
             {disabled ? (
-              <Text color={"#ccc"}>{text}</Text>
+              <Text color={"#bbb"}>{text}</Text>
             ) : (
               <Text color={color}>{text}</Text>
             )}
