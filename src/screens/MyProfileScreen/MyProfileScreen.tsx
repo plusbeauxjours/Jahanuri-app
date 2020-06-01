@@ -122,7 +122,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
     data: { getFeedList: { feeds = null } = {} } = {},
     loading: getFeedListLoading,
     refetch: getFeedListRefetch,
-  } = useQuery<GetFeedList>(GET_FEED_LIST, {});
+  } = useQuery<GetFeedList>(GET_FEED_LIST);
   const {
     data: { getFeedListStaff: { feeds: feedsStaff = null } = {} } = {},
     loading: getFeedListStaffLoading,
@@ -186,14 +186,12 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       const classUsers = [];
       createFeed.users.map((user: any) => {
         classUsers.push(user.pushToken);
-        console.log("AMHERE");
       });
       await axios.post("https://exp.host/--/api/v2/push/send", {
         to: classUsers,
         title: "새로운 공지",
         body: `몸공부 ${createFeed.feed.classOrder.order}기 ${me.firstName}: 새로운 공지가 게시되었습니다. `,
       });
-      console.log("DONE");
     }
     setCreateFeedModalOpen(false);
     toast("공지를 게시하였습니다.");
@@ -212,7 +210,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       setRefreshing(true);
       await meRefetch();
       await getFeedListRefetch();
-      await getFeedListStaffRefetch();
     } catch (e) {
       console.log(e);
     } finally {
@@ -224,10 +221,10 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       Permissions.NOTIFICATIONS
     );
     console.log("notificationStatus", notificationStatus);
-    if (Platform.OS === "ios" && notificationStatus === "denied") {
+    if (Platform.OS === "ios" && notificationStatus !== "granted") {
       Alert.alert(
-        "Permission Denied",
-        "To enable notification, tap Open Settings, then tap on Notifications, and finally tap on Allow Notifications.",
+        "푸쉬 알림",
+        "푸쉬 알림을 받기 위해서는 '확인'을 누른 뒤 '알림'을 탭하고 '알림 허용'을 켜세요.",
         [
           {
             text: "취소",
@@ -241,10 +238,10 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
           },
         ]
       );
-    } else if (Platform.OS === "android" && notificationStatus === "denied") {
+    } else if (Platform.OS === "android" && notificationStatus !== "granted") {
       Alert.alert(
-        "Permission Denied",
-        "To enable notification, tap Open Settings, then tap on Notifications, and finally tap on Show notifications.",
+        "푸쉬 알림",
+        "푸쉬 알림을 받기 위해서는 '확인'을 누른 뒤 '알림'을 탭하고 '알림 표시'를 켜세요.",
         [
           {
             text: "취소",
@@ -269,7 +266,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       const { data: serverData } = await registerPushFn({
         variables: { pushToken },
       });
-      console.log("serverData", serverData);
     } else {
       return;
     }
