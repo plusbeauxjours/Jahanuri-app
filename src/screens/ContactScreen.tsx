@@ -64,12 +64,14 @@ const Logo = styled.Image`
   height: 80px;
 `;
 const IconContainer = styled.TouchableOpacity`
-  position: fixed;
+  position: absolute;
   align-items: center;
   justify-content: center;
   width: 40px;
-  top: 30px;
+  height: 40px;
+  top: 45px;
   left: 10px;
+  z-index: 10;
 `;
 const ContactScreen: React.FC = () => {
   const urls = {
@@ -116,6 +118,7 @@ const ContactScreen: React.FC = () => {
       <Container>
         <ScrollView style={{ width: dimensions.width }}>
           <LeftComponent />
+          <ColumnWhiteSpace />
           <TitleBox>
             <Line />
             <Title>공식홈페이지</Title>

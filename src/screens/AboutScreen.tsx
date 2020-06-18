@@ -41,12 +41,14 @@ const SecondTitle = styled(Title)`
   margin-top: 0px;
 `;
 const IconContainer = styled.TouchableOpacity`
-  position: fixed;
+  position: absolute;
   align-items: center;
   justify-content: center;
   width: 40px;
-  top: 30px;
+  height: 40px;
+  top: 45px;
   left: 10px;
+  z-index: 10;
 `;
 const AboutScreen: React.FC = () => {
   const LeftComponent = withNavigation(({ navigation }) => {

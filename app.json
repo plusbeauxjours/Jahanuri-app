@@ -1,6 +1,8 @@
 {
   "expo": {
     "name": "Jahanuri-app",
+    "githubUrl": "https://github.com/plusbeauxjours/airbnp-app",
+    "description": "Jahanuri application",
     "slug": "app",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -9,10 +11,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "primaryColor": "#17202a",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#17202a"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -31,7 +34,11 @@
       "permissions": ["ACCESS_NOTIFICATION_POLICY"]
     },
     "notification": {
-      "icon": "./assets/notification.png"
+      "icon": "./assets/notification.png",
+    },
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#fff"
     }
   }
 }
