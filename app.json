@@ -7,7 +7,10 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "scheme": "jahanuri.plusbeauxjours",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -31,10 +34,12 @@
     "android": {
       "versionCode": 1,
       "package": "jahanuri.plusbeauxjours",
-      "permissions": ["ACCESS_NOTIFICATION_POLICY"]
+      "permissions": [
+        "ACCESS_NOTIFICATION_POLICY"
+      ]
     },
     "notification": {
-      "icon": "./assets/notification.png",
+      "icon": "./assets/notification.png"
     },
     "androidStatusBar": {
       "barStyle": "dark-content",
