@@ -54,6 +54,9 @@ const DialogButtonContainer = styled.View`
 const WhiteSpace = styled.View`
   height: 30px;
 `;
+const ButtonSpace = styled.View`
+  width: 20px;
+`;
 
 const initialValues = {
   wakeupTime: "",
@@ -324,6 +327,7 @@ const SubmitHabitCheckListScreen: React.FC = () => {
                         text="취소"
                         onPress={() => setModalOpen(false)}
                       />
+                      <ButtonSpace />
                       <Button
                         disabled={submitHabitCheckListLoading}
                         text="제출"

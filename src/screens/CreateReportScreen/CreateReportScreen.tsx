@@ -75,6 +75,9 @@ const CheckboxLine = styled.View`
   width: 100%;
   height: 60px;
 `;
+const ButtonSpace = styled.View`
+  width: 20px;
+`;
 const initialValues = {
   saengSikMorning: "",
   saengSikNoon: "",
@@ -259,6 +262,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                           text="취소"
                           onPress={() => setModalOpen(false)}
                         />
+                        <ButtonSpace />
                         <Button
                           disabled={submitReportLoading}
                           text="제출"

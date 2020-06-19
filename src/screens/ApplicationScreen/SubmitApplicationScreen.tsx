@@ -79,6 +79,9 @@ const Date = styled.Text`
   border-radius: 5px;
   background-color: #fff;
 `;
+const ButtonSpace = styled.View`
+  width: 20px;
+`;
 
 const initialValues = {
   address: "",
@@ -238,6 +241,7 @@ const SubmitApplicationScreen: React.FC = () => {
                         text="취소"
                         onPress={() => setModalOpen(false)}
                       />
+                      <ButtonSpace />
                       <Button
                         disabled={submitApplicationLoading}
                         text="제출"

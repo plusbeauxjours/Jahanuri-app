@@ -54,6 +54,9 @@ const GreyLine = styled.View`
   border-bottom-width: 0.3px;
   border-bottom-color: #999;
 `;
+const ButtonSpace = styled.View`
+  width: 20px;
+`;
 
 interface IProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -179,6 +182,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                   text="취소"
                   onPress={() => setModalOpen(false)}
                 />
+                <ButtonSpace />
                 <Button
                   disabled={submitCheckListLoading}
                   text="제출"

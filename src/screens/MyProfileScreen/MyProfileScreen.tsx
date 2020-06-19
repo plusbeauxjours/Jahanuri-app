@@ -8,7 +8,7 @@ import {
   Alert,
   Linking,
 } from "react-native";
-import { Portal, Dialog, Paragraph, Button } from "react-native-paper";
+import { Portal, Dialog, Paragraph } from "react-native-paper";
 import RNPickerSelect from "react-native-picker-select";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { useQuery, useMutation } from "react-apollo-hooks";
@@ -48,6 +48,8 @@ import UserStateController from "../../components/UserStateController";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import FormikInput from "../../components/Formik/FormikInput";
 import { REGISTER_PUSH } from "./MyProfileScreenQueries";
+import Button from "../../components/Button";
+import { Ionicons } from "@expo/vector-icons";
 
 const LoadingContainer = styled.View`
   flex: 1;
@@ -102,6 +104,10 @@ const DialogButtonContainer = styled.View`
   margin-right: 10px;
   margin-bottom: 10px;
 `;
+const ButtonSpace = styled.View`
+  width: 20px;
+`;
+const IconContainer = styled.TouchableOpacity``;
 
 const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
@@ -329,6 +335,37 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                         <>
                           <Portal>
                             <Dialog
+                              visible={removeFeedModalOpen}
+                              onDismiss={() => setRemoveFeedModalOpen(false)}
+                            >
+                              <Dialog.Title>알림</Dialog.Title>
+                              <Dialog.Content>
+                                <Paragraph>
+                                  공지를 삭제한 후에는 되돌릴 수 없습니다.
+                                </Paragraph>
+                                <Paragraph>삭제하시겠습니까?</Paragraph>
+                              </Dialog.Content>
+                              <Dialog.Actions>
+                                <DialogButtonContainer>
+                                  <Button
+                                    disabled={removeFeedLoading}
+                                    text="취소"
+                                    onPress={() =>
+                                      setRemoveFeedModalOpen(false)
+                                    }
+                                  />
+                                  <ButtonSpace />
+                                  <Button
+                                    disabled={removeFeedLoading}
+                                    text="삭제"
+                                    onPress={() => removeFeedConfirm()}
+                                  />
+                                </DialogButtonContainer>
+                              </Dialog.Actions>
+                            </Dialog>
+                          </Portal>
+                          <Portal>
+                            <Dialog
                               visible={createFeedModalOpen}
                               onDismiss={() => setCreateFeedModalOpen(false)}
                             >
@@ -340,20 +377,17 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                                 <DialogButtonContainer>
                                   <Button
                                     disabled={createFeedLoading}
-                                    color="#0000ff"
+                                    text="취소"
                                     onPress={() =>
                                       setCreateFeedModalOpen(false)
                                     }
-                                  >
-                                    취소
-                                  </Button>
+                                  />
+                                  <ButtonSpace />
                                   <Button
                                     disabled={createFeedLoading}
-                                    color="#0000ff"
+                                    text="게시"
                                     onPress={() => createFeedConfirm(values)}
-                                  >
-                                    게시
-                                  </Button>
+                                  />
                                 </DialogButtonContainer>
                               </Dialog.Actions>
                             </Dialog>
@@ -422,12 +456,10 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                               />
                               <ButtonContainer>
                                 <Button
-                                  color="#0000ff"
                                   disabled={!values.text || createFeedLoading}
                                   onPress={() => setCreateFeedModalOpen(true)}
-                                >
-                                  게시
-                                </Button>
+                                  text="게시"
+                                />
                               </ButtonContainer>
                             </>
                           )}
@@ -439,40 +471,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                       feedsStaff.length !== 0 &&
                       feedsStaff.map((feed: any) => (
                         <React.Fragment key={feed.uuid}>
-                          <Portal>
-                            <Dialog
-                              visible={removeFeedModalOpen}
-                              onDismiss={() => setRemoveFeedModalOpen(false)}
-                            >
-                              <Dialog.Title>알림</Dialog.Title>
-                              <Dialog.Content>
-                                <Paragraph>
-                                  공지를 삭제한 후에는 되돌릴 수 없습니다.
-                                </Paragraph>
-                                <Paragraph>삭제하시겠습니까?</Paragraph>
-                              </Dialog.Content>
-                              <Dialog.Actions>
-                                <DialogButtonContainer>
-                                  <Button
-                                    color="#0000ff"
-                                    onPress={() =>
-                                      setRemoveFeedModalOpen(false)
-                                    }
-                                    disabled={removeFeedLoading}
-                                  >
-                                    취소
-                                  </Button>
-                                  <Button
-                                    color={"red"}
-                                    onPress={() => removeFeedConfirm()}
-                                    disabled={removeFeedLoading}
-                                  >
-                                    삭제
-                                  </Button>
-                                </DialogButtonContainer>
-                              </Dialog.Actions>
-                            </Dialog>
-                          </Portal>
                           <View>
                             <Row>
                               <FeedHeader>{feed.user.username}</FeedHeader>
@@ -483,16 +481,19 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                             <Text>{feed.text}</Text>
                           </View>
                           <ButtonContainer>
-                            <Button
+                            <IconContainer
                               disabled={removeFeedLoading}
                               onPress={() => {
                                 setRemoveFeedModalOpen(true),
                                   setFeedUuid(feed.uuid);
                               }}
-                              color={"red"}
                             >
-                              삭제
-                            </Button>
+                              <Ionicons
+                                name="ios-close-circle-outline"
+                                size={24}
+                                color="black"
+                              />
+                            </IconContainer>
                           </ButtonContainer>
                           <GreyLine />
                         </React.Fragment>

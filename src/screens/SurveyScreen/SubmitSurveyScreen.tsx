@@ -62,6 +62,10 @@ const WhiteSpace = styled.View`
 `;
 const Touchable = styled.TouchableOpacity``;
 
+const ButtonSpace = styled.View`
+  width: 20px;
+`;
+
 const initialValues = {
   hasMarriedEtc: "",
   hasChildbirthEtc: "",
@@ -190,6 +194,7 @@ const SubmitSurveyScreen: React.FC = () => {
                         text="취소"
                         onPress={() => setModalOpen(false)}
                       />
+                      <ButtonSpace />
                       <Button
                         disabled={submitSurveyLoading}
                         text="제출"
