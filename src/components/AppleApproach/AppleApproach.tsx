@@ -22,7 +22,7 @@ const Container = styled.View`
 `;
 
 const LoginTextContainer = styled.View`
-  width: 130px;
+  width: 145px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -97,8 +97,8 @@ export default withNavigation(({ navigation }) => {
           <ActivityIndicator color={"white"} />
         ) : (
           <LoginTextContainer>
-            <FontAwesome name={"apple"} color={"white"} size={25} />
-            <Text>애플 로그인</Text>
+            <FontAwesome name={"apple"} color={"white"} size={20} />
+            <Text>Apple로 로그인</Text>
           </LoginTextContainer>
         )}
       </Container>
