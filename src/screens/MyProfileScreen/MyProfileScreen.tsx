@@ -226,7 +226,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
     const { status: notificationStatus } = await Permissions.askAsync(
       Permissions.NOTIFICATIONS
     );
-    console.log("notificationStatus", notificationStatus);
     if (Platform.OS === "ios" && notificationStatus !== "granted") {
       Alert.alert(
         "푸쉬 알림",

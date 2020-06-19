@@ -8,7 +8,6 @@ import { Formik } from "formik";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Divider from "../../components/Divider";
 import FormikInput from "../../components/Formik/FormikInput";
-import { CheckBox } from "react-native-elements";
 import { GET_HABIT_CHECK_LIST } from "./HabitCheckListScreenQueries";
 import dimensions from "../../constants/dimensions";
 import { GetHabitCheckList } from "../../types/api";
