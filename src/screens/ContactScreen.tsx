@@ -91,7 +91,13 @@ const ContactScreen: React.FC = () => {
   };
   const LeftComponent = withNavigation(({ navigation }) => {
     return (
-      <IconContainer onPress={() => navigation.toggleDrawer()}>
+      <IconContainer
+        onPress={() =>
+          navigation.toggleDrawer
+            ? navigation.toggleDrawer()
+            : navigation.goBack()
+        }
+      >
         <Ionicons size={24} name={"ios-menu"} color={"white"} />
       </IconContainer>
     );

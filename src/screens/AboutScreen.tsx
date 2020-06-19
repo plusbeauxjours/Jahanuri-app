@@ -5,6 +5,7 @@ import { ImageBackground, ScrollView } from "react-native";
 import dimensions from "../constants/dimensions";
 import { withNavigation } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationStackScreenComponent } from "react-navigation-stack";
 
 const Container = styled.View`
   flex: 1;
@@ -50,10 +51,16 @@ const IconContainer = styled.TouchableOpacity`
   left: 10px;
   z-index: 10;
 `;
-const AboutScreen: React.FC = () => {
+const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const LeftComponent = withNavigation(({ navigation }) => {
     return (
-      <IconContainer onPress={() => navigation.toggleDrawer()}>
+      <IconContainer
+        onPress={() =>
+          navigation.toggleDrawer
+            ? navigation.toggleDrawer()
+            : navigation.goBack()
+        }
+      >
         <Ionicons size={24} name={"ios-menu"} color={"white"} />
       </IconContainer>
     );
