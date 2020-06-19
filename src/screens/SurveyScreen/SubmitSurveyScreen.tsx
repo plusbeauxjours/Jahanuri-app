@@ -152,6 +152,9 @@ const SubmitSurveyScreen: React.FC = () => {
     <>
       <MenuCustomHeader title={"설문지"} />
       <KeyboardAwareScrollView
+        enableOnAndroid
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        scrollEnabled
         contentContainerStyle={{
           flexGrow: 1,
           backgroundColor: null,

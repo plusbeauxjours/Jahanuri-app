@@ -108,6 +108,9 @@ class EditProfileScreen extends React.Component<IProps> {
             <>
               <MenuCustomHeader title={"프로필 수정"} />
               <KeyboardAwareScrollView
+                enableOnAndroid
+                resetScrollToCoords={{ x: 0, y: 0 }}
+                scrollEnabled
                 contentContainerStyle={{
                   flexGrow: 1,
                   alignItems: "center",

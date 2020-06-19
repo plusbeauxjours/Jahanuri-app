@@ -80,6 +80,9 @@ const SurveyDetailScreen: React.FC = () => {
       <>
         <MenuCustomHeader title={"설문지"} subTitle={"(제출 완료)"} />
         <KeyboardAwareScrollView
+          enableOnAndroid
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          scrollEnabled
           contentContainerStyle={{
             flexGrow: 1,
             backgroundColor: null,

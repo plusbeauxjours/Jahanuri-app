@@ -199,6 +199,9 @@ const SubmitApplicationScreen: React.FC = () => {
     <>
       <MenuCustomHeader title={"신청서"} />
       <KeyboardAwareScrollView
+        enableOnAndroid
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        scrollEnabled
         contentContainerStyle={{
           flexGrow: 1,
           backgroundColor: null,

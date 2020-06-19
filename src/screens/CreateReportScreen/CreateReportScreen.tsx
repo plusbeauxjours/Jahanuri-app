@@ -221,6 +221,9 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
       <>
         <BackCustomHeader title={"새 일지"} />
         <KeyboardAwareScrollView
+          enableOnAndroid
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          scrollEnabled
           contentContainerStyle={{
             flexGrow: 1,
             backgroundColor: null,

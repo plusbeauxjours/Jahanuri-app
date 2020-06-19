@@ -95,6 +95,9 @@ const ApplicationDetailScreen: React.FC = () => {
       <>
         <MenuCustomHeader title={"신청서"} subTitle={"(제출 완료)"} />
         <KeyboardAwareScrollView
+          enableOnAndroid
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          scrollEnabled
           contentContainerStyle={{
             flexGrow: 1,
             backgroundColor: null,

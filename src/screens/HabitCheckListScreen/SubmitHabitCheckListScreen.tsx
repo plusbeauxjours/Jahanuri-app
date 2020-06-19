@@ -284,6 +284,9 @@ const SubmitHabitCheckListScreen: React.FC = () => {
     <>
       <MenuCustomHeader title={"나의 습관"} />
       <KeyboardAwareScrollView
+        enableOnAndroid
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        scrollEnabled
         contentContainerStyle={{
           flexGrow: 1,
           backgroundColor: null,

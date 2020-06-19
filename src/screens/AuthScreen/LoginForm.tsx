@@ -93,6 +93,9 @@ const LoginForm: React.FC<IProps> = ({ navigation, setPage }) => {
   return (
     <>
       <KeyboardAwareScrollView
+        enableOnAndroid
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        scrollEnabled
         contentContainerStyle={{
           flexGrow: 1,
           backgroundColor: null,
