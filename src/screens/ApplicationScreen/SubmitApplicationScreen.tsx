@@ -431,7 +431,7 @@ const SubmitApplicationScreen: React.FC = () => {
                   placeholder="기타"
                 />
               </Box>
-              <Divider text={"유의사항"} color={"dark"} />
+              {/* <Divider text={"유의사항"} color={"dark"} />
               <View>
                 <Box>
                   <Text>
@@ -475,7 +475,7 @@ const SubmitApplicationScreen: React.FC = () => {
                     2회 이상 결석시 수료증이 수여되지 않습니다.
                   </Text>
                 </Box>
-              </View>
+              </View> */}
               <WhiteSpace />
               <Box>
                 <CheckBox
