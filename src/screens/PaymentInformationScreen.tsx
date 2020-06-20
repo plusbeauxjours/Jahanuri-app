@@ -51,10 +51,10 @@ const PaymentInformationScreen: NavigationStackScreenComponent = () => (
         <WhiteSpace />
         <WhiteSpace />
         <View>
-          <Bold>일시</Bold>
+          {/* <Bold>일시</Bold>
           <Text>낮반 : 월, 수, 금 11:00 ~ 14:00 총 6회</Text>
           <Text>저녁반: 화, 목, 토 늦은 7:30 ~ 늦은 10:00 </Text>
-          {/* <WhiteSpace />
+          <WhiteSpace />
           <Bold>장소</Bold>
           <Text>고마스쿨 교육관 (자하누리)</Text>
           <WhiteSpace />

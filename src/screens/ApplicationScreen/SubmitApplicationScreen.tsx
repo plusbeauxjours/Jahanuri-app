@@ -497,6 +497,7 @@ const SubmitApplicationScreen: React.FC = () => {
                   disabled={
                     !isValid ||
                     !gender ||
+                    !birthDate ||
                     !values.address ||
                     !values.job ||
                     !values.phoneNumber ||
