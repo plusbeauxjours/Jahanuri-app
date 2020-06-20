@@ -17,11 +17,23 @@ import { GRAPHQL_URL } from "./src/constants/urls";
 import MainNavigation from "./src/navigations/MainNavigation";
 import { ThemeProvider } from "./src/styles/typed-components";
 import theme from "./src/styles/theme";
-import styled from "styled-components";
+import * as Sentry from "sentry-expo";
+import Constants from "expo-constants";
 
 export default function App() {
   const [client, setClient] = useState<any>(null);
   const [isLoadingComplete, setLoadingComplete] = useState<boolean>(false);
+  const setSentry = () => {
+    Sentry.init({
+      dsn:
+        "https://4bfd98de218e4113a025e5b44c9eb9ae@o282599.ingest.sentry.io/5283690",
+      enableInExpoDevelopment: true,
+      debug: true,
+    });
+    Sentry.setRelease(
+      Constants.manifest.revisionId ? Constants.manifest.revisionId : ""
+    );
+  };
   const makeClient = async () => {
     try {
       const cache = new InMemoryCache();
@@ -67,6 +79,7 @@ export default function App() {
   };
   useEffect(() => {
     makeClient();
+    setSentry();
   }, []);
   if (isLoadingComplete && client !== null) {
     return (
