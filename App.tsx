@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AppLoading } from "expo";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import * as Font from "expo-font";
+import { Asset } from "expo-asset";
 import { AsyncStorage } from "react-native";
 import { persistCache } from "apollo-cache-persist";
 import { Provider as PaperProvider } from "react-native-paper";
@@ -70,6 +71,25 @@ export default function App() {
       ...Ionicons.font,
       ...MaterialIcons.font,
     });
+    await Asset.loadAsync([
+      require("./src/images/AboutImages/FifthPage.jpg"),
+      require("./src/images/AboutImages/FirstPage.jpg"),
+      require("./src/images/AboutImages/FourthPage.jpg"),
+      require("./src/images/AboutImages/SecondPage.jpg"),
+      require("./src/images/AboutImages/ThirdPage.jpg"),
+      require("./src/images/MainImage.jpg"),
+      require("./src/images/Contact/web_gomaschool.png"),
+      require("./src/images/Contact/web_jahanuri.png"),
+      require("./src/images/Contact/web_hanmuye.png"),
+      require("./src/images/Contact/web_gomaon.png"),
+      require("./src/images/Contact/channel_youtube.png"),
+      require("./src/images/Contact/channel_instagram_gomaon.png"),
+      require("./src/images/Contact/channel_facebook_gomaon.png"),
+      require("./src/images/Contact/blog.png"),
+      require("./src/images/Contact/community_cafe_jahanuri.png"),
+      require("./src/images/Contact/shop_gomashop.png"),
+      require("./src/images/Contact/shop_naturevitameals.png"),
+    ]);
   };
   const handleLoadingError = (error) => {
     console.warn(error);

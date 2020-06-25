@@ -22,7 +22,7 @@ const Container = styled.View`
 `;
 
 const LoginTextContainer = styled.View`
-  width: 145px;
+  width: 130px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
