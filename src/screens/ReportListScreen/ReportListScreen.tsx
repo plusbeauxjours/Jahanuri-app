@@ -141,7 +141,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                         })
                       }
                     >
-                      {report.reportCover.classOrder ? (
+                      {report?.reportCover?.classOrder ? (
                         <Row>
                           <Text>
                             {Moment(report.reportDate).diff(

@@ -95,8 +95,7 @@ const HomeScreen: NavigationStackScreenComponent = ({ navigation }) => {
   );
 };
 HomeScreen.navigationOptions = () => ({
-  // title: "결제",
-  title: "완료",
+  title: "결제",
   headerStyle: {
     backgroundColor: "red",
   },

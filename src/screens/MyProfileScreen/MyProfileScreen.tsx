@@ -304,12 +304,12 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         >
           <MyProfileHeader
-            order={me.classOrder && me.classOrder.order}
-            startDate={me.classOrder && me.classOrder.startDate}
-            endDate={me.classOrder && me.classOrder.endDate}
-            isStaff={me.isStaff}
-            name={`${me.lastName} ${me.firstName}`}
-            username={me.username}
+            order={me?.classOrder?.order}
+            startDate={me?.classOrder?.startDate}
+            endDate={me?.classOrder?.endDate}
+            isStaff={me?.isStaff}
+            name={`${me?.lastName} ${me?.firstName}`}
+            username={me?.username}
           />
           {(() => {
             switch (me.isStaff) {

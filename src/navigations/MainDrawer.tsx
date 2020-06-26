@@ -70,7 +70,7 @@ const DrawerLabel = ({ text }) => {
       return (
         <DrawerTextContainer>
           <DrawerText>{text}</DrawerText>
-          {/* {me && me.hasPaid && <DrawerSubText>&nbsp;(결제 완료)</DrawerSubText>} */}
+          {me && me.hasPaid && <DrawerSubText>&nbsp;(결제 완료)</DrawerSubText>}
           {me && me.hasPaid && <DrawerSubText>&nbsp;(완료)</DrawerSubText>}
         </DrawerTextContainer>
       );

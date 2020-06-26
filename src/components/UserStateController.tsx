@@ -63,12 +63,12 @@ export default withNavigation(({ navigation }) => {
       return (
         <>
           <View>
-            {/* <Text>아직 결제를 하지 않았습니다.</Text> */}
+            <Text>아직 결제를 하지 않았습니다.</Text>
             <Text>아직 완료되지 않았습니다.</Text>
             <Touchable
               onPress={() => navigation.navigate("PaymentInformationScreen")}
             >
-              {/* <DateFont>결제 정보를 보려면 여기를 탭하세요.</DateFont> */}
+              <DateFont>결제 정보를 보려면 여기를 탭하세요.</DateFont>
               <DateFont>결제 정보를 보려면 여기를 탭하세요.</DateFont>
             </Touchable>
           </View>

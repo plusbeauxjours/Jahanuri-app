@@ -194,7 +194,7 @@ const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
           </View>
         </Container>
       </ImageBackground>
-      {/* <ImageBackground
+      <ImageBackground
         style={{ width: "100%", height: "100%" }}
         source={require("../images/AboutImages/FifthPage.jpg")}
         resizeMode="stretch"
@@ -238,7 +238,7 @@ const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
             </View>
           </ScrollView>
         </Container>
-      </ImageBackground> */}
+      </ImageBackground>
     </Swiper>
   );
 };

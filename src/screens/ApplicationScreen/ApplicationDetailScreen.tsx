@@ -221,7 +221,7 @@ const ApplicationDetailScreen: React.FC = () => {
                     />
                   )}
                 </Box>
-                {/* <Divider text={"유의사항"} color={"dark"} />
+                <Divider text={"유의사항"} color={"dark"} />
                 <View>
                   <Box>
                     <Text>
@@ -268,7 +268,7 @@ const ApplicationDetailScreen: React.FC = () => {
                   </Box>
                 </View>
                 <WhiteSpace />
-                <WhiteSpace /> */}
+                <WhiteSpace />
               </>
             )}
           </Formik>

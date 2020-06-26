@@ -360,7 +360,7 @@ const SubmitSurveyScreen: React.FC = () => {
                 />
               </Box>
               <SmallWhiteSpace />
-              {/* <Divider text={"유의사항"} color={"dark"} />
+              <Divider text={"유의사항"} color={"dark"} />
               <View>
                 <Box>
                   <Text>
@@ -404,7 +404,7 @@ const SubmitSurveyScreen: React.FC = () => {
                     2회 이상 결석시 수료증이 수여되지 않습니다.
                   </Text>
                 </Box>
-              </View> */}
+              </View>
               <WhiteSpace />
               <Box>
                 <CheckBox

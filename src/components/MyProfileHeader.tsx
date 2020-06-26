@@ -65,7 +65,7 @@ const MyProfileHeader: React.FC<IProps> = ({
       />
       <Headline>{name}</Headline>
       <Caption>{`@${username}`}</Caption>
-      {/* {isStaff ? (
+      {isStaff ? (
         <Staff>스태프 권한</Staff>
       ) : (
         <>
@@ -80,7 +80,7 @@ const MyProfileHeader: React.FC<IProps> = ({
             </Row>
           )}
         </>
-      )} */}
+      )}
     </UserInfoContainer>
   );
 };

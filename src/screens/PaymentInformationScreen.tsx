@@ -51,7 +51,7 @@ const PaymentInformationScreen: NavigationStackScreenComponent = () => (
         <WhiteSpace />
         <WhiteSpace />
         <View>
-          {/* <Bold>일시</Bold>
+          <Bold>일시</Bold>
           <Text>낮반 : 월, 수, 금 11:00 ~ 14:00 총 6회</Text>
           <Text>저녁반: 화, 목, 토 늦은 7:30 ~ 늦은 10:00 </Text>
           <WhiteSpace />
@@ -68,7 +68,7 @@ const PaymentInformationScreen: NavigationStackScreenComponent = () => (
           <Bold>신청</Bold>
           <Text>신청링크 들어가서 신청서 작성후 참가비 입금</Text>
           <WhiteSpace />
-          <Bold>신청/문의</Bold> */}
+          <Bold>신청/문의</Bold>
           <Text>02-876-2236 / 010-4052-2236</Text>
           <Text>카카오톡 @자하누리</Text>
           <WhiteSpace />

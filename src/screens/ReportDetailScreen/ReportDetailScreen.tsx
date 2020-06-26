@@ -68,7 +68,7 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
   } else {
     return (
       <>
-        {report.reportCover.classOrder ? (
+        {report?.reportCover?.classOrder ? (
           <BackCustomHeader
             title={
               `${Moment(report.reportDate).diff(
