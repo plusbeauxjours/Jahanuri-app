@@ -21,7 +21,7 @@ const View = styled.View`
 `;
 const Text = styled.Text`
   font-weight: 100;
-  font-size: 20px;
+  font-size: 16px;
 `;
 const SmallText = styled.Text`
   font-weight: 100;

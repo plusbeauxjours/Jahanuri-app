@@ -15,7 +15,7 @@ const View = styled.View`
 `;
 const Text = styled.Text`
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
 `;
 const Touchable = styled.TouchableOpacity``;

@@ -71,7 +71,6 @@ const DrawerLabel = ({ text }) => {
         <DrawerTextContainer>
           <DrawerText>{text}</DrawerText>
           {me && me.hasPaid && <DrawerSubText>&nbsp;(결제 완료)</DrawerSubText>}
-          {me && me.hasPaid && <DrawerSubText>&nbsp;(완료)</DrawerSubText>}
         </DrawerTextContainer>
       );
     case "체크 리스트":

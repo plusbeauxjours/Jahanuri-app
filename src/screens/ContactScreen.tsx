@@ -35,7 +35,7 @@ const TitleBox = styled.View`
 `;
 const Title = styled(Text)`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   align-self: center;
   padding: 0 5px;
   color: #ffffff;
