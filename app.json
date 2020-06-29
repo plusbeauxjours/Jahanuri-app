@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Jahanuri-app",
+    "name": "Jahanuri",
     "githubUrl": "https://github.com/plusbeauxjours/airbnp-app",
     "description": "Jahanuri application",
-    "slug": "app",
+    "slug": "Jahanuri-plusbeauxjours",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "scheme": "jahanuri.plusbeauxjours",
@@ -11,7 +11,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.6",
+    "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "primaryColor": "#17202a",
@@ -32,7 +32,7 @@
       "usesAppleSignIn": true
     },
     "android": {
-      "versionCode": 6,
+      "versionCode": 7,
       "package": "jahanuri.plusbeauxjours",
       "permissions": [
         "ACCESS_NOTIFICATION_POLICY"
