@@ -281,10 +281,9 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   confirmTextIOS={"확인"}
                   isVisible={isDatePickerModalOpen}
                   mode="date"
-                  locale="kr_KR"
+                  locale="ko_KR"
                   onConfirm={handleDateConfirm}
                   onCancel={hideDatePicker}
-                  onChange={handleDateConfirm}
                   display="default"
                 />
                 <Touchable onPress={() => setDatePickerModalOpen(true)}>

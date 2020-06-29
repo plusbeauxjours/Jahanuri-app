@@ -275,6 +275,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
       return;
     }
   };
+  console.log(me);
   useEffect(() => {
     askPermission();
   }, []);
