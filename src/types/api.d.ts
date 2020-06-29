@@ -182,22 +182,30 @@ export interface SignupVariables {
 // GraphQL query operation: GetCheckListQuestions
 // ====================================================
 
-export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet {
-  __typename: "CheckListAnswerType";
-  previousAnswer: boolean;
-  laterAnswer: boolean;
-}
-
 export interface GetCheckListQuestions_getCheckListQuestions_checkListQuestions {
   __typename: "CheckListQuestionType";
   question: string;
   uuid: any;
-  questionSet: GetCheckListQuestions_getCheckListQuestions_checkListQuestions_questionSet[];
+}
+
+export interface GetCheckListQuestions_getCheckListQuestions_checkListAnswers_question {
+  __typename: "CheckListQuestionType";
+  uuid: any;
+  question: string;
+}
+
+export interface GetCheckListQuestions_getCheckListQuestions_checkListAnswers {
+  __typename: "CheckListAnswerType";
+  uuid: any;
+  question: GetCheckListQuestions_getCheckListQuestions_checkListAnswers_question;
+  previousAnswer: boolean;
+  laterAnswer: boolean;
 }
 
 export interface GetCheckListQuestions_getCheckListQuestions {
   __typename: "GetCheckListQuestionsResponse";
   checkListQuestions: (GetCheckListQuestions_getCheckListQuestions_checkListQuestions | null)[] | null;
+  checkListAnswers: (GetCheckListQuestions_getCheckListQuestions_checkListAnswers | null)[] | null;
 }
 
 export interface GetCheckListQuestions {
@@ -213,22 +221,23 @@ export interface GetCheckListQuestions {
 // GraphQL mutation operation: SubmitCheckList
 // ====================================================
 
-export interface SubmitCheckList_submitCheckList_checkListQuestions_questionSet {
+export interface SubmitCheckList_submitCheckList_checkListAnswers_question {
+  __typename: "CheckListQuestionType";
+  uuid: any;
+  question: string;
+}
+
+export interface SubmitCheckList_submitCheckList_checkListAnswers {
   __typename: "CheckListAnswerType";
+  uuid: any;
+  question: SubmitCheckList_submitCheckList_checkListAnswers_question;
   previousAnswer: boolean;
   laterAnswer: boolean;
 }
 
-export interface SubmitCheckList_submitCheckList_checkListQuestions {
-  __typename: "CheckListQuestionType";
-  question: string;
-  uuid: any;
-  questionSet: SubmitCheckList_submitCheckList_checkListQuestions_questionSet[];
-}
-
 export interface SubmitCheckList_submitCheckList {
   __typename: "SubmitCheckListResponse";
-  checkListQuestions: (SubmitCheckList_submitCheckList_checkListQuestions | null)[] | null;
+  checkListAnswers: (SubmitCheckList_submitCheckList_checkListAnswers | null)[] | null;
 }
 
 export interface SubmitCheckList {

@@ -72,7 +72,12 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
   );
   const [modalOpen, setModalOpen] = useState(false);
   const {
-    data: { getCheckListQuestions: { checkListQuestions = null } = {} } = {},
+    data: {
+      getCheckListQuestions: {
+        checkListQuestions = null,
+        checkListAnswers = null,
+      } = {},
+    } = {},
     loading: checkListQuestionsLoading,
   } = useQuery<GetCheckListQuestions>(GET_CHECK_LIST_QUESTIONS);
   const [submitCheckListFn, { loading: submitCheckListLoading }] = useMutation<
@@ -85,8 +90,8 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           query: GET_CHECK_LIST_QUESTIONS,
         });
         if (checkListData) {
-          checkListData.getCheckListQuestions.checkListQuestions =
-            submitCheckList.checkListQuestions;
+          checkListData.getCheckListQuestions.checkListAnswers =
+            submitCheckList.checkListAnswers;
           cache.writeQuery({
             query: GET_CHECK_LIST_QUESTIONS,
             data: checkListData,
@@ -209,8 +214,8 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
           keyboardShouldPersistTaps="always"
           showsVerticalScrollIndicator={false}
         >
-          {me.hasSubmittedPreviousCheckList &&
-          !me.hasSubmittedLaterCheckList ? (
+          {/* 0/2 */}
+          {!me.hasSubmittedPreviousCheckList && !me.hasSubmittedLaterCheckList && (
             <SwipeListView
               useFlatList={false}
               closeOnRowBeginSwipe={true}
@@ -219,19 +224,37 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               renderItem={(data) => (
                 <>
                   <CheckListRow
-                    key={data.item.uuid}
-                    uuid={data.item.uuid}
-                    question={data.item.question}
-                    previousAnswer={
-                      data.item.questionSet.length !== 0
-                        ? data.item.questionSet[0].previousAnswer
-                        : false
+                    key={data?.item?.uuid}
+                    uuid={data?.item?.uuid}
+                    question={data?.item?.question}
+                    hasSubmittedPreviousCheckList={
+                      me.hasSubmittedPreviousCheckList
                     }
-                    laterAnswer={
-                      data.item.questionSet.length !== 0
-                        ? data.item.questionSet[0].laterAnswer
-                        : false
-                    }
+                    hasSubmittedLaterCheckList={me.hasSubmittedLaterCheckList}
+                    onPress={onPress}
+                  />
+                  <GreyLine />
+                </>
+              )}
+              leftOpenValue={50}
+              keyExtractor={(item) => item.uuid}
+            />
+          )}
+          {/* 1/2 */}
+          {me.hasSubmittedPreviousCheckList && !me.hasSubmittedLaterCheckList && (
+            <SwipeListView
+              useFlatList={false}
+              closeOnRowBeginSwipe={true}
+              data={checkListAnswers}
+              previewOpenValue={1000}
+              renderItem={(data) => (
+                <>
+                  <CheckListRow
+                    key={data?.item?.uuid}
+                    uuid={data?.item?.question?.uuid}
+                    question={data?.item?.question?.question}
+                    previousAnswer={data?.item?.previousAnswer}
+                    laterAnswer={data?.item?.laterAnswer}
                     hasSubmittedPreviousCheckList={
                       me.hasSubmittedPreviousCheckList
                     }
@@ -243,7 +266,7 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               )}
               renderHiddenItem={(data) => (
                 <View>
-                  {data.item.questionSet[0].previousAnswer ? (
+                  {data?.item?.previousAnswer ? (
                     <FontAwesome
                       name="check-square-o"
                       color={"#999"}
@@ -257,25 +280,18 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
               leftOpenValue={50}
               keyExtractor={(item) => item.uuid}
             />
-          ) : (
-            checkListQuestions &&
-            checkListQuestions.length !== 0 &&
-            checkListQuestions.map((checkListQuestion: any) => (
-              <React.Fragment key={checkListQuestion.uuid}>
+          )}
+          {/* 2/2 */}
+          {me.hasSubmittedPreviousCheckList &&
+            me.hasSubmittedLaterCheckList &&
+            checkListAnswers?.map((checkListAnswer: any) => (
+              <React.Fragment key={checkListAnswer.uuid}>
                 <CheckListRow
-                  key={checkListQuestion.uuid}
-                  uuid={checkListQuestion.uuid}
-                  question={checkListQuestion.question}
-                  previousAnswer={
-                    checkListQuestion.questionSet.length !== 0
-                      ? checkListQuestion.questionSet[0].previousAnswer
-                      : false
-                  }
-                  laterAnswer={
-                    checkListQuestion.questionSet.length !== 0
-                      ? checkListQuestion.questionSet[0].laterAnswer
-                      : false
-                  }
+                  key={checkListAnswer.uuid}
+                  uuid={checkListAnswer.uuid}
+                  question={checkListAnswer.question.question}
+                  previousAnswer={checkListAnswer.previousAnswer}
+                  laterAnswer={checkListAnswer.laterAnswer}
                   hasSubmittedPreviousCheckList={
                     me.hasSubmittedPreviousCheckList
                   }
@@ -284,10 +300,9 @@ const CheckListScreen: React.FC<IProps> = ({ navigation }) => {
                 />
                 <GreyLine />
               </React.Fragment>
-            ))
-          )}
-          {me.hasSubmittedPreviousCheckList &&
-          me.hasSubmittedLaterCheckList ? null : (
+            ))}
+          {(!me.hasSubmittedPreviousCheckList ||
+            !me.hasSubmittedLaterCheckList) && (
             <ButtonContainer>
               <Button
                 disabled={

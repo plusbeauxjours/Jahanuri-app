@@ -44,6 +44,7 @@ const CheckListRow: React.FC<IProps> = ({
     laterAnswer
   );
   if (!hasSubmittedPreviousCheckList && !hasSubmittedPreviousCheckList) {
+    // 0/2
     return (
       <View>
         <Text>{question}</Text>
@@ -64,6 +65,7 @@ const CheckListRow: React.FC<IProps> = ({
       </View>
     );
   } else if (hasSubmittedPreviousCheckList && !hasSubmittedLaterCheckList) {
+    // 1/2
     return (
       <View>
         <Text>{question}</Text>
@@ -82,6 +84,7 @@ const CheckListRow: React.FC<IProps> = ({
       </View>
     );
   } else if (!hasSubmittedPreviousCheckList && hasSubmittedLaterCheckList) {
+    // error
     return (
       <View>
         <Text>{question}</Text>
@@ -102,6 +105,7 @@ const CheckListRow: React.FC<IProps> = ({
       </View>
     );
   } else {
+    // 2/2
     return (
       <View>
         {isPreviousAnswerTrue ? (

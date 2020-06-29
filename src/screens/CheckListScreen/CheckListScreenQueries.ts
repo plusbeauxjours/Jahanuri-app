@@ -6,10 +6,15 @@ export const GET_CHECK_LIST_QUESTIONS = gql`
       checkListQuestions {
         question
         uuid
-        questionSet {
-          previousAnswer
-          laterAnswer
+      }
+      checkListAnswers {
+        uuid
+        question {
+          uuid
+          question
         }
+        previousAnswer
+        laterAnswer
       }
     }
   }
@@ -24,13 +29,14 @@ export const SUBMIT_CHECK_LIST = gql`
       isPreviousAnswer: $isPreviousAnswer
       trueAnswerQuestionUuids: $trueAnswerQuestionUuids
     ) {
-      checkListQuestions {
-        question
+      checkListAnswers {
         uuid
-        questionSet {
-          previousAnswer
-          laterAnswer
+        question {
+          uuid
+          question
         }
+        previousAnswer
+        laterAnswer
       }
     }
   }
