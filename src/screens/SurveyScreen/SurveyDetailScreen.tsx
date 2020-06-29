@@ -255,8 +255,7 @@ const SurveyDetailScreen: React.FC = () => {
                       - 2회 이상 결석시 수료증이 수여되지 않습니다.
                     </Text>
                   </Box>
-                </View>{" "}
-                */}
+                </View>
                 <WhiteSpace />
                 <WhiteSpace />
               </>

@@ -180,6 +180,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
     });
   };
   const createFeedConfirm = async (values) => {
+    console.log(classOrderUuid, values.text);
     const {
       data: { createFeed },
     } = await createFeedFn({
@@ -188,19 +189,26 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
         text: values.text,
       },
     });
-    if (createFeed.feed) {
+    if (createFeed?.feed) {
       const classUsers = [];
       createFeed.users.map((user: any) => {
-        classUsers.push(user.pushToken);
+        if (user.pushToken) {
+          classUsers.push(user.pushToken);
+        }
       });
-      await axios.post("https://exp.host/--/api/v2/push/send", {
-        to: classUsers,
-        title: "새로운 공지",
-        body: `몸공부 ${createFeed.feed.classOrder.order}기 ${me.firstName}: 새로운 공지가 게시되었습니다. `,
-      });
+      try {
+        return axios.post("https://exp.host/--/api/v2/push/send", {
+          to: classUsers,
+          title: "새로운 공지",
+          body: `몸공부 ${createFeed.feed.classOrder.order}기 ${me.firstName}: 새로운 공지가 게시되었습니다. `,
+        });
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setCreateFeedModalOpen(false);
+        toast("공지를 게시하였습니다.");
+      }
     }
-    setCreateFeedModalOpen(false);
-    toast("공지를 게시하였습니다.");
   };
   const removeFeedConfirm = () => {
     removeFeedFn({
@@ -506,6 +514,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                     me.hasSubmittedApplication &&
                     me.hasPaid ? (
                       <>
+                        {console.log("feeds", feeds)}
                         {feeds &&
                           feeds.length !== 0 &&
                           feeds.map((feed: any) => (
