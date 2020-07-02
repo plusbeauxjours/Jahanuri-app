@@ -3,7 +3,7 @@ import { AppLoading } from "expo";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
-import { AsyncStorage } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import { persistCache } from "apollo-cache-persist";
 import { Provider as PaperProvider } from "react-native-paper";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";

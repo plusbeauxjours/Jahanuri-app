@@ -7,7 +7,8 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import { AsyncStorage, ActivityIndicator } from "react-native";
+import { ActivityIndicator } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import FormikInput from "../../components/Formik/FormikInput";
 import styled from "styled-components";
 import Divider from "../../components/Divider";

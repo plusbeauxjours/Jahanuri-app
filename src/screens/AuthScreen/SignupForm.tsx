@@ -2,7 +2,8 @@ import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { Mutation } from "react-apollo";
-import { AsyncStorage, ActivityIndicator } from "react-native";
+import { ActivityIndicator } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import {
   NavigationParams,
   NavigationScreenProp,

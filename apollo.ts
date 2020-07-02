@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import { MAIN_URL } from './src/constants/urls';
 
 const apolloClientOptions = {
