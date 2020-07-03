@@ -514,7 +514,6 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
                     me.hasSubmittedApplication &&
                     me.hasPaid ? (
                       <>
-                        {console.log("feeds", feeds)}
                         {feeds &&
                           feeds.length !== 0 &&
                           feeds.map((feed: any) => (

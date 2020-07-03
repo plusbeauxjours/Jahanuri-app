@@ -80,7 +80,7 @@ const ContactScreen: React.FC = () => {
     web_hanmuye: "http://www.hanmuye.com",
     web_gomaon: "http://www.gomaon.co.kr",
     channel_youtube: "https://www.youtube.com/channel/UCn1gZg25yEw4WTe__OPu1wA",
-    channel_instagram_gomaon: "https://www.instagram.com/gomaon_seoul",
+    channel_instagram_gomaon: "https://instagram.com/gomaschool.official",
     channel_facebook_gomaon: "https://www.facebook.com/jhonhealing",
     channel_blog_gomaschool: "https://blog.naver.com/jh_onhealing",
     channel_blog_gomaon: "https://blog.naver.com/salt__planet",
