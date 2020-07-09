@@ -56,7 +56,7 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
     loading: getReportDetailLoading,
   } = useQuery<GetReportDetail, GetReportDetailVariables>(GET_REPORT_DETAIL, {
     variables: {
-      reportUuid: navigation.state.params && navigation.state.params.reportUuid,
+      reportUuid: navigation?.state?.params?.reportUuid,
     },
   });
   if (getReportDetailLoading) {

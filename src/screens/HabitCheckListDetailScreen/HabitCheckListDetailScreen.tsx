@@ -8,12 +8,19 @@ import { Formik } from "formik";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Divider from "../../components/Divider";
 import FormikInput from "../../components/Formik/FormikInput";
-import { GET_HABIT_CHECKLIST } from "../HabitCheckListScreen/HabitCheckListScreenQueries";
 import dimensions from "../../constants/dimensions";
-import { GetHabitCheckList } from "../../types/api";
 import { ActivityIndicator } from "react-native";
 import CheckBoxRow from "../../components/CheckBoxRow";
 import { GET_HABIT_CHECK_LIST_DETAIL } from "./HabitCheckListDetailQueries";
+import {
+  GetHabitCheckListDetail,
+  GetHabitCheckListDetailVariables,
+} from "../../types/api";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
 
 const Container = styled.View`
   flex: 1;
@@ -40,11 +47,22 @@ const WhiteSpace = styled.View`
   height: 30px;
 `;
 
-const HabitCheckListDetailScreen: React.FC = () => {
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const HabitCheckListDetailScreen: React.FC<IProps> = ({ navigation }) => {
   const {
-    data: { getHabitCheckList: { habitCheckLists = null } = {} } = {},
+    data: { getHabitCheckListDetail: { habitCheckList = null } = {} } = {},
     loading: getApplicationLoading,
-  } = useQuery<GetHabitCheckList>(GET_HABIT_CHECK_LIST_DETAIL);
+  } = useQuery<GetHabitCheckListDetail, GetHabitCheckListDetailVariables>(
+    GET_HABIT_CHECK_LIST_DETAIL,
+    {
+      variables: {
+        habitCheckListUuid: navigation?.state?.params?.habitCheckListUuid,
+      },
+    }
+  );
   if (getApplicationLoading) {
     return (
       <Container>

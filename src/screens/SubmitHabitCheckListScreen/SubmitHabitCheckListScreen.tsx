@@ -4,7 +4,7 @@ import MenuCustomHeader from "../../components/MenuCustomHeader";
 import {
   Me,
   SubmitHabitCheckList,
-  SubmitHabitCheckListVariables,
+  SubmitApplicationVariables,
 } from "../../types/api";
 import { useMutation } from "react-apollo-hooks";
 import Toast from "react-native-root-toast";
@@ -19,7 +19,14 @@ import { CheckBox } from "react-native-elements";
 import dimensions from "../../constants/dimensions";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import Button from "../../components/Button";
-import { SUBMIT_HABIT_CHECK_LIST } from "../HabitCheckListDetailScreen/HabitCheckListScreenQueries";
+import { SUBMIT_HABIT_CHECK_LIST } from "./SubmitHabitCheckListQueries";
+import { SubmitHabitCheckListVariables } from "../../types/api";
+import { GET_HABIT_CHECK_LIST_LIST } from "../HabitCheckListScreen/HabitCheckListScreenQueries";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
 
 const Box = styled.View`
   width: 100%;
@@ -91,7 +98,11 @@ const initialValues = {
   badThing: "",
 };
 
-const SubmitHabitCheckListScreen: React.FC = () => {
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const SubmitHabitCheckListScreen: React.FC<IProps> = ({ navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [wakeupCondition, setWakeupCondition] = useState<any>([]);
   const [wakeupConditionA, setWakeupConditionA] = useState<boolean>(false);
@@ -198,6 +209,7 @@ const SubmitHabitCheckListScreen: React.FC = () => {
   ] = useMutation<SubmitHabitCheckList, SubmitHabitCheckListVariables>(
     SUBMIT_HABIT_CHECK_LIST,
     {
+      refetchQueries: [{ query: GET_HABIT_CHECK_LIST_LIST }],
       update(cache) {
         try {
           const meData = cache.readQuery<Me>({
@@ -264,6 +276,7 @@ const SubmitHabitCheckListScreen: React.FC = () => {
       },
     });
     setModalOpen(false);
+    navigation.navigate("HabitCheckListScreen");
     toast("나의 습관을 제출하였습니다.");
   };
   const toggleItems = (array: any, action: any, variables: string) => {

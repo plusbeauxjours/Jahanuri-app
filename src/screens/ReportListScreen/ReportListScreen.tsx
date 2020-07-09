@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useQuery } from "react-apollo-hooks";
 import { NavigationStackScreenComponent } from "react-navigation-stack";
 import { ActivityIndicator, RefreshControl } from "react-native";
-import { GetReportList, GetReportListVariables, Me } from "../../types/api";
+import { GetReportList, Me } from "../../types/api";
 import { GET_REPORT_LIST } from "./ReportListScreenQueries";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import Moment from "moment";
@@ -68,7 +68,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
   const {
     data: { getReportList: { reports = null } = {} } = {},
     loading: getReportListLoading,
-  } = useQuery<GetReportList, GetReportListVariables>(GET_REPORT_LIST, {
+  } = useQuery<GetReportList>(GET_REPORT_LIST, {
     variables: { userUuid: me && me.uuid },
   });
   const onRefresh = async () => {
@@ -141,6 +141,12 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                       }
                     >
                       {report?.classOrder ? (
+                        <CenterRow>
+                          <Text>
+                            {Moment(report.reportDate).format("MM월 DD일")} 일지
+                          </Text>
+                        </CenterRow>
+                      ) : (
                         <Row>
                           <Text>
                             {Moment(report.reportDate).diff(
@@ -153,12 +159,6 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                             ({Moment(report.reportDate).format("MM월 DD일")})
                           </SmallText>
                         </Row>
-                      ) : (
-                        <CenterRow>
-                          <Text>
-                            {Moment(report.reportDate).format("MM월 DD일")} 일지
-                          </Text>
-                        </CenterRow>
                       )}
                     </Touchable>
                     <GreyLine />

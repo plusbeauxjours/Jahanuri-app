@@ -17,6 +17,12 @@ import { Linking } from "react-native";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import { SUBMIT_SURVEY } from "./SurveyScreenQueries";
 import Button from "../../components/Button";
+import { GET_HABIT_CHECK_LIST_LIST } from "../HabitCheckListScreen/HabitCheckListScreenQueries";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
 
 const Box = styled.View`
   width: 100%;
@@ -73,7 +79,11 @@ const initialValues = {
   change: "",
 };
 
-const SubmitSurveyScreen: React.FC = () => {
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const SubmitSurveyScreen: React.FC<IProps> = ({ navigation }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [hasMarried, setHasMarried] = useState<boolean>(null);
   const [hasChildbirth, setHasChildbirth] = useState<boolean>(null);
@@ -140,6 +150,7 @@ const SubmitSurveyScreen: React.FC = () => {
       },
     });
     setModalOpen(false);
+    navigation.navigate("ReportListScreen");
     toast("설문지를 제출하였습니다.");
   };
   const validationSchema = Yup.object().shape({

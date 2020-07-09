@@ -201,12 +201,9 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
     diary: Yup.string().required("세줄 일기는 필수 입력 사항입니다."),
   });
   useEffect(() => {
-    navigation.state.params &&
-      navigation.state.params.reports &&
-      navigation.state.params.reports.length !== 0 &&
-      navigation.state.params.reports.map((report: any) =>
-        setReportDates((prev) => [...prev, report.reportDate])
-      );
+    navigation?.state?.params?.reports?.map((report: any) =>
+      setReportDates((prev) => [...prev, report.reportDate])
+    );
   }, []);
   if (meLoading) {
     return (
