@@ -11,7 +11,7 @@ import { GetSurvey } from "../../types/api";
 import { ActivityIndicator, Linking } from "react-native";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import CheckBoxRow from "../../components/CheckBoxRow";
-import { GET_SURVEY } from "./SurveyScreenQueries";
+import { GET_SURVEY } from "../SurveyScreen/SurveyScreenQueries";
 
 const Container = styled.View`
   flex: 1;

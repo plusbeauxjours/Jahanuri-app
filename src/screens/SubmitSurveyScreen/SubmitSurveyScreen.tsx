@@ -15,9 +15,9 @@ import { Formik } from "formik";
 import { SubmitSurvey, SubmitSurveyVariables, Me } from "../../types/api";
 import { Linking } from "react-native";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
-import { SUBMIT_SURVEY } from "./SurveyScreenQueries";
 import Button from "../../components/Button";
-import { GET_HABIT_CHECK_LIST_LIST } from "../HabitCheckListScreen/HabitCheckListScreenQueries";
+import { SUBMIT_SURVEY } from "./SubmitSurveyScreenQueries";
+import { GET_SURVEY_LIST } from "../SurveyScreen/SurveyScreenQueries";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -95,6 +95,7 @@ const SubmitSurveyScreen: React.FC<IProps> = ({ navigation }) => {
     SubmitSurvey,
     SubmitSurveyVariables
   >(SUBMIT_SURVEY, {
+    refetchQueries: [{ query: GET_SURVEY_LIST }],
     update(cache) {
       try {
         const meData = cache.readQuery<Me>({
@@ -150,7 +151,7 @@ const SubmitSurveyScreen: React.FC<IProps> = ({ navigation }) => {
       },
     });
     setModalOpen(false);
-    navigation.navigate("ReportListScreen");
+    navigation.navigate("SurveyScreen");
     toast("설문지를 제출하였습니다.");
   };
   const validationSchema = Yup.object().shape({

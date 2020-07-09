@@ -759,10 +759,18 @@ export interface GetReportDetailVariables {
 // GraphQL query operation: GetReportList
 // ====================================================
 
+export interface GetReportList_getReportList_reports_classOrder {
+  __typename: "ClassOrderType";
+  order: number | null;
+  startDate: any | null;
+  endDate: any | null;
+}
+
 export interface GetReportList_getReportList_reports {
   __typename: "ReportType";
   uuid: any;
   reportDate: any;
+  classOrder: GetReportList_getReportList_reports_classOrder;
 }
 
 export interface GetReportList_getReportList {
@@ -862,30 +870,6 @@ export interface SubmitSurveyVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetSurveyList
-// ====================================================
-
-export interface GetSurveyList_getSurveyList_surveys {
-  __typename: "SurveyType";
-  uuid: any;
-  createdAt: any;
-}
-
-export interface GetSurveyList_getSurveyList {
-  __typename: "GetSurveyListResponse";
-  surveys: (GetSurveyList_getSurveyList_surveys | null)[] | null;
-}
-
-export interface GetSurveyList {
-  getSurveyList: GetSurveyList_getSurveyList;
-}
-
-/* tslint:disable */
-/* eslint-disable */
-// @generated
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL query operation: GetSurveyDetail
 // ====================================================
 
@@ -908,6 +892,30 @@ export interface GetSurveyDetail_getSurveyDetail {
 
 export interface GetSurveyDetail {
   getSurveyDetail: GetSurveyDetail_getSurveyDetail;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetSurveyList
+// ====================================================
+
+export interface GetSurveyList_getSurveyList_surveys {
+  __typename: "SurveyType";
+  uuid: any;
+  createdAt: any;
+}
+
+export interface GetSurveyList_getSurveyList {
+  __typename: "GetSurveyListResponse";
+  surveys: (GetSurveyList_getSurveyList_surveys | null)[] | null;
+}
+
+export interface GetSurveyList {
+  getSurveyList: GetSurveyList_getSurveyList;
 }
 
 /* tslint:disable */

@@ -1689,7 +1689,7 @@
             "deprecationReason": null
           },
           {
-            "name": "report",
+            "name": "reportUser",
             "description": "",
             "args": [],
             "type": {

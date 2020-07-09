@@ -116,7 +116,7 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                 }
               >
                 <CenterRow>
-                  <Text>새일지 제출하기</Text>
+                  <Text>일지 제출하기</Text>
                 </CenterRow>
               </Touchable>
             ) : (
@@ -141,16 +141,10 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                       }
                     >
                       {report?.classOrder ? (
-                        <CenterRow>
-                          <Text>
-                            {Moment(report.reportDate).format("MM월 DD일")} 일지
-                          </Text>
-                        </CenterRow>
-                      ) : (
                         <Row>
                           <Text>
                             {Moment(report.reportDate).diff(
-                              Moment(report.classOrder.startDate),
+                              Moment(report.classOrder?.startDate),
                               "day"
                             )}
                             일차 일지
@@ -159,6 +153,12 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                             ({Moment(report.reportDate).format("MM월 DD일")})
                           </SmallText>
                         </Row>
+                      ) : (
+                        <CenterRow>
+                          <Text>
+                            {Moment(report.reportDate).format("MM월 DD일")} 일지
+                          </Text>
+                        </CenterRow>
                       )}
                     </Touchable>
                     <GreyLine />

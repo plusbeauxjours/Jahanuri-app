@@ -6,6 +6,11 @@ export const GET_REPORT_LIST = gql`
       reports {
         uuid
         reportDate
+        classOrder{
+          order
+          startDate
+          endDate
+        }
       }
     }
   }

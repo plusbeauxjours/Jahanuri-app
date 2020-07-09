@@ -81,7 +81,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
   } else {
     return (
       <>
-        <MenuCustomHeader title={"일지"} />
+        <MenuCustomHeader title={"나의 습관"} />
         <ScrollView
           refreshControl={
             <RefreshControl
@@ -102,31 +102,34 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
               onPress={() => navigation.navigate("SubmitHabitCheckListScreen")}
             >
               <CenterRow>
-                <Text>새설문지 제출하기</Text>
+                <Text>나의 습관 제출하기</Text>
               </CenterRow>
             </Touchable>
-            <GreyLine />
-
-            {habitCheckLists?.map((habitCheckList) => (
-              <React.Fragment key={habitCheckList.uuid}>
-                <Touchable
-                  onPress={() =>
-                    navigation.navigate("HabitCheckListDetailScreen", {
-                      habitCheckListUuid: habitCheckList.uuid,
-                    })
-                  }
-                >
-                  <CenterRow>
-                    <Text>
-                      {Moment(habitCheckList.createdAt).format("MM월 DD일")}{" "}
-                      설문지
-                    </Text>
-                  </CenterRow>
-                </Touchable>
+            {habitCheckLists && habitCheckLists.length !== 0 && (
+              <>
                 <GreyLine />
-              </React.Fragment>
-            ))}
-            <Circle>●</Circle>
+                {habitCheckLists?.map((habitCheckList) => (
+                  <React.Fragment key={habitCheckList.uuid}>
+                    <Touchable
+                      onPress={() =>
+                        navigation.navigate("HabitCheckListDetailScreen", {
+                          habitCheckListUuid: habitCheckList.uuid,
+                        })
+                      }
+                    >
+                      <CenterRow>
+                        <Text>
+                          {Moment(habitCheckList.createdAt).format("MM월 DD일")}
+                          &nbsp;나의 습관
+                        </Text>
+                      </CenterRow>
+                    </Touchable>
+                    <GreyLine />
+                  </React.Fragment>
+                ))}
+                <Circle>●</Circle>
+              </>
+            )}
           </View>
         </ScrollView>
       </>
