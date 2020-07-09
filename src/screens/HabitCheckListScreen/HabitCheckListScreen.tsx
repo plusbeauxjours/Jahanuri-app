@@ -5,7 +5,6 @@ import { ActivityIndicator } from "react-native";
 import { ME } from "../MyProfileScreen/MyProfileScreenQueries";
 import styled from "styled-components";
 import HabitCheckListDetailScreen from "./HabitCheckListDetailScreen";
-import SubmitHabitCheckListScreen from "./SubmitHabitCheckListScreen";
 
 const Container = styled.View`
   flex: 1;

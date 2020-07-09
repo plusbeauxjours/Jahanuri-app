@@ -105,6 +105,7 @@ const SubmitApplicationScreen: React.FC = () => {
   const [approachD, setApproachD] = useState<boolean>(false);
   const [approachE, setApproachE] = useState<boolean>(false);
   const [approachF, setApproachF] = useState<boolean>(false);
+  const [approachG, setApproachG] = useState<boolean>(false);
   const [confirm, setConfirm] = useState<boolean>(false);
   const [
     submitApplicationFn,
@@ -369,7 +370,7 @@ const SubmitApplicationScreen: React.FC = () => {
                     toggleItems(approach, setApproach, "APPROACH_B");
                     setApproachB((approachB) => !approachB);
                   }}
-                  title={"카페, 블로그"}
+                  title={"카페, 블로그, 홈페이지"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -381,7 +382,7 @@ const SubmitApplicationScreen: React.FC = () => {
                     toggleItems(approach, setApproach, "APPROACH_C");
                     setApproachC((approachC) => !approachC);
                   }}
-                  title={"페이스북, 트위터"}
+                  title={"페이스북, 인스타그램"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -393,7 +394,7 @@ const SubmitApplicationScreen: React.FC = () => {
                     toggleItems(approach, setApproach, "APPROACH_D");
                     setApproachD((approachD) => !approachD);
                   }}
-                  title={"책 <치유본능>"}
+                  title={"유튜브"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -405,7 +406,7 @@ const SubmitApplicationScreen: React.FC = () => {
                     toggleItems(approach, setApproach, "APPROACH_E");
                     setApproachE((approachE) => !approachE);
                   }}
-                  title={"책 <짠맛의 힘>"}
+                  title={"책<치유본능> 혹은 <짠맛의 힘>"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -417,7 +418,19 @@ const SubmitApplicationScreen: React.FC = () => {
                     toggleItems(approach, setApproach, "APPROACH_F");
                     setApproachF((approachF) => !approachF);
                   }}
-                  title={"홈페이지(자하누리, 직관의 몸공부)"}
+                  title={"외부강연"}
+                  textStyle={{ fontSize: 16, fontWeight: "200" }}
+                  containerStyle={{ backgroundColor: null }}
+                />
+                <CheckBox
+                  size={24}
+                  checked={approachG}
+                  checkedColor={"#8b00ff"}
+                  onPress={() => {
+                    toggleItems(approach, setApproach, "APPROACH_G");
+                    setApproachG((approachG) => !approachG);
+                  }}
+                  title={"제품구입"}
                   textStyle={{ fontSize: 16, fontWeight: "200" }}
                   containerStyle={{ backgroundColor: null }}
                 />
@@ -433,15 +446,12 @@ const SubmitApplicationScreen: React.FC = () => {
               <Divider text={"유의사항"} color={"dark"} />
               <View>
                 <Box>
-                  <Text>
-                    1) 프로그램 시작 시간은 오전 11시 입니다. 5분전까지 강의실에
-                    입장해주세요.
-                  </Text>
+                  <Text>1) 5분전까지 강의실에 입장해주세요.</Text>
                   <SmallWhiteSpace />
                   <Text>2) 준비물: 필기구, 운동 가능한 편한 복장</Text>
                   <SmallWhiteSpace />
                   <Text>
-                    3) 책 (치유본능)을 프로그램 기간에 읽으시면 몸공부에 큰
+                    3) 책 (치유본능), (짠맛의 힘)을 읽고 참여하시면 몸공부에 큰
                     도움이 됩니다.
                   </Text>
                   <SmallWhiteSpace />
@@ -465,7 +475,7 @@ const SubmitApplicationScreen: React.FC = () => {
                   </Touchable>
                   <SmallWhiteSpace />
                   <Text>
-                    6) 수강료: 첫 온라인 특가 38만원 (신청서 제출 후 3일내
+                    6) 수강료: 첫 온라인 특가 45만원 (신청서 제출 후 3일내
                     결제하셔야 신청이 완료됩니다.)
                   </Text>
                   <SmallWhiteSpace />

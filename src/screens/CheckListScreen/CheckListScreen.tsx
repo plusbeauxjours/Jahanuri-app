@@ -51,7 +51,7 @@ const DialogButtonContainer = styled.View`
 `;
 const GreyLine = styled.View`
   margin: 0 20px;
-  border-bottom-width: 0.3px;
+  border-bottom-width: 0.6px;
   border-bottom-color: #999;
 `;
 const ButtonSpace = styled.View`

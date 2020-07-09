@@ -18,7 +18,6 @@ export const ME = gql`
         job
         phoneNumber
         email
-        reportCoverUuid
         hasSubmittedPreviousCheckList
         hasSubmittedLaterCheckList
         hasSubmittedHabitCheckList

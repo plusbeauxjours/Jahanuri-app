@@ -27,9 +27,21 @@ export const SUBMIT_SURVEY = gql`
   }
 `;
 
-export const GET_SURVEY = gql`
-  query GetSurvey {
-    getSurvey {
+export const GET_SURVEY_LIST = gql`
+  query GetSurveyList {
+    getSurveyList {
+      surveys {
+        uuid
+        createdAt
+      }
+    }
+  }
+`;
+
+
+export const GET_SURVEY_DETAIL = gql`
+  query GetSurveyDetail {
+    getSurveyDetail {
       survey {
         hasMarried
         hasMarriedEtc
@@ -43,4 +55,3 @@ export const GET_SURVEY = gql`
     }
   }
 `;
-

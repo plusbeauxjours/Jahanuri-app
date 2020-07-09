@@ -141,7 +141,6 @@ export interface Signup_createUser_user {
   job: string | null;
   phoneNumber: string | null;
   email: string;
-  reportCoverUuid: string | null;
   hasSubmittedPreviousCheckList: boolean;
   hasSubmittedLaterCheckList: boolean;
   hasSubmittedHabitCheckList: boolean;
@@ -258,25 +257,10 @@ export interface SubmitCheckListVariables {
 // GraphQL mutation operation: CreateReport
 // ====================================================
 
-export interface CreateReport_createReport_report_reportCover_classOrder {
-  __typename: "ClassOrderType";
-  order: number | null;
-  startDate: any | null;
-  endDate: any | null;
-}
-
-export interface CreateReport_createReport_report_reportCover {
-  __typename: "ReportCoverType";
-  classOrder: CreateReport_createReport_report_reportCover_classOrder | null;
-  uuid: any;
-  reportType: ReportCoverReportType;
-}
-
 export interface CreateReport_createReport_report {
   __typename: "ReportType";
   uuid: any;
   reportDate: any;
-  reportCover: CreateReport_createReport_report_reportCover;
 }
 
 export interface CreateReport_createReport {
@@ -289,7 +273,6 @@ export interface CreateReport {
 }
 
 export interface CreateReportVariables {
-  reportCoverUuid?: string | null;
   saengSikMorning?: string | null;
   saengSikNoon?: string | null;
   saengSikEvening?: string | null;
@@ -361,63 +344,10 @@ export interface UpdateUserVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: SubmitHabitCheckList
+// GraphQL query operation: GetHabitCheckListDetail
 // ====================================================
 
-export interface SubmitHabitCheckList_submitHabitCheckList {
-  __typename: "SubmitHabitCheckListResponse";
-  ok: boolean | null;
-}
-
-export interface SubmitHabitCheckList {
-  submitHabitCheckList: SubmitHabitCheckList_submitHabitCheckList;
-}
-
-export interface SubmitHabitCheckListVariables {
-  wakeupTime: string;
-  wakeupLong: string;
-  wakeupCondition?: (string | null)[] | null;
-  wakeupConditionEtc?: string | null;
-  wakeupFirstThing?: (string | null)[] | null;
-  wakeupFirstThingEtc?: string | null;
-  meal: string;
-  mealDuring?: (string | null)[] | null;
-  mealDuringEtc?: string | null;
-  mealWithWater: string;
-  mealWithSnack: string;
-  mealWithNightFood: string;
-  afterLunch?: (string | null)[] | null;
-  afterLunchEtc?: string | null;
-  saying?: (string | null)[] | null;
-  sayingEtc?: string | null;
-  sayingRepeat: string;
-  walking?: (string | null)[] | null;
-  walkingEtc?: string | null;
-  posture?: (string | null)[] | null;
-  postureEtc?: string | null;
-  postureDetail?: (string | null)[] | null;
-  postureDetailEtc?: string | null;
-  bodyHeat?: (string | null)[] | null;
-  bodyHeatEtc?: string | null;
-  exercise: string;
-  sleeping?: (string | null)[] | null;
-  sleepingEtc?: string | null;
-  beforeSleeping?: (string | null)[] | null;
-  beforeSleepingEtc?: string | null;
-  goodThing: string;
-  badThing: string;
-}
-
-/* tslint:disable */
-/* eslint-disable */
-// @generated
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL query operation: GetHabitCheckList
-// ====================================================
-
-export interface GetHabitCheckList_getHabitCheckList_habitCheckList {
+export interface GetHabitCheckListDetail_getHabitCheckListDetail_habitCheckList {
   __typename: "HabitCheckListType";
   wakeupTime: string;
   wakeupLong: string;
@@ -453,13 +383,41 @@ export interface GetHabitCheckList_getHabitCheckList_habitCheckList {
   badThing: string;
 }
 
-export interface GetHabitCheckList_getHabitCheckList {
-  __typename: "GetHabitCheckListResponse";
-  habitCheckList: GetHabitCheckList_getHabitCheckList_habitCheckList | null;
+export interface GetHabitCheckListDetail_getHabitCheckListDetail {
+  __typename: "GetHabitCheckListDetailResponse";
+  habitCheckList: GetHabitCheckListDetail_getHabitCheckListDetail_habitCheckList | null;
 }
 
-export interface GetHabitCheckList {
-  getHabitCheckList: GetHabitCheckList_getHabitCheckList;
+export interface GetHabitCheckListDetail {
+  getHabitCheckListDetail: GetHabitCheckListDetail_getHabitCheckListDetail;
+}
+
+export interface GetHabitCheckListDetailVariables {
+  habitCheckListUuid?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetHabitCheckListList
+// ====================================================
+
+export interface GetHabitCheckListList_getHabitCheckListList_habitCheckLists {
+  __typename: "HabitCheckListType";
+  uuid: any;
+  createdAt: any;
+}
+
+export interface GetHabitCheckListList_getHabitCheckListList {
+  __typename: "GetHabitCheckListListResponse";
+  habitCheckLists: (GetHabitCheckListList_getHabitCheckListList_habitCheckLists | null)[] | null;
+}
+
+export interface GetHabitCheckListList {
+  getHabitCheckListList: GetHabitCheckListList_getHabitCheckListList;
 }
 
 /* tslint:disable */
@@ -493,7 +451,6 @@ export interface Me_me_user {
   job: string | null;
   phoneNumber: string | null;
   email: string;
-  reportCoverUuid: string | null;
   hasSubmittedPreviousCheckList: boolean;
   hasSubmittedLaterCheckList: boolean;
   hasSubmittedHabitCheckList: boolean;
@@ -742,24 +699,17 @@ export interface RegisterPushVariables {
 // GraphQL query operation: GetReportDetail
 // ====================================================
 
-export interface GetReportDetail_getReportDetail_report_reportCover_classOrder {
+export interface GetReportDetail_getReportDetail_report_classOrder {
   __typename: "ClassOrderType";
   order: number | null;
   startDate: any | null;
   endDate: any | null;
 }
 
-export interface GetReportDetail_getReportDetail_report_reportCover {
-  __typename: "ReportCoverType";
-  classOrder: GetReportDetail_getReportDetail_report_reportCover_classOrder | null;
-  uuid: any;
-  reportType: ReportCoverReportType;
-}
-
 export interface GetReportDetail_getReportDetail_report {
   __typename: "ReportType";
+  classOrder: GetReportDetail_getReportDetail_report_classOrder;
   uuid: any;
-  reportCover: GetReportDetail_getReportDetail_report_reportCover;
   saengSikMorning: string | null;
   saengSikNoon: string | null;
   saengSikEvening: string | null;
@@ -809,25 +759,10 @@ export interface GetReportDetailVariables {
 // GraphQL query operation: GetReportList
 // ====================================================
 
-export interface GetReportList_getReportList_reports_reportCover_classOrder {
-  __typename: "ClassOrderType";
-  order: number | null;
-  startDate: any | null;
-  endDate: any | null;
-}
-
-export interface GetReportList_getReportList_reports_reportCover {
-  __typename: "ReportCoverType";
-  classOrder: GetReportList_getReportList_reports_reportCover_classOrder | null;
-  uuid: any;
-  reportType: ReportCoverReportType;
-}
-
 export interface GetReportList_getReportList_reports {
   __typename: "ReportType";
   uuid: any;
   reportDate: any;
-  reportCover: GetReportList_getReportList_reports_reportCover;
 }
 
 export interface GetReportList_getReportList {
@@ -837,11 +772,6 @@ export interface GetReportList_getReportList {
 
 export interface GetReportList {
   getReportList: GetReportList_getReportList;
-}
-
-export interface GetReportListVariables {
-  classOrderId?: string | null;
-  userUuid?: string | null;
 }
 
 /* tslint:disable */
@@ -879,10 +809,34 @@ export interface SubmitSurveyVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetSurvey
+// GraphQL query operation: GetSurveyList
 // ====================================================
 
-export interface GetSurvey_getSurvey_survey {
+export interface GetSurveyList_getSurveyList_surveys {
+  __typename: "SurveyType";
+  uuid: any;
+  createdAt: any;
+}
+
+export interface GetSurveyList_getSurveyList {
+  __typename: "GetSurveyListResponse";
+  surveys: (GetSurveyList_getSurveyList_surveys | null)[] | null;
+}
+
+export interface GetSurveyList {
+  getSurveyList: GetSurveyList_getSurveyList;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetSurveyDetail
+// ====================================================
+
+export interface GetSurveyDetail_getSurveyDetail_survey {
   __typename: "SurveyType";
   hasMarried: boolean;
   hasMarriedEtc: string | null;
@@ -894,13 +848,13 @@ export interface GetSurvey_getSurvey_survey {
   confirm: boolean;
 }
 
-export interface GetSurvey_getSurvey {
-  __typename: "GetSurveyResponse";
-  survey: GetSurvey_getSurvey_survey | null;
+export interface GetSurveyDetail_getSurveyDetail {
+  __typename: "GetSurveyDetailResponse";
+  survey: GetSurveyDetail_getSurveyDetail_survey | null;
 }
 
-export interface GetSurvey {
-  getSurvey: GetSurvey_getSurvey;
+export interface GetSurveyDetail {
+  getSurveyDetail: GetSurveyDetail_getSurveyDetail;
 }
 
 /* tslint:disable */
@@ -952,14 +906,6 @@ export enum HabitCheckListMealWithWater {
   DEGREE_C = "DEGREE_C",
   DEGREE_D = "DEGREE_D",
   DEGREE_E = "DEGREE_E",
-}
-
-/**
- * An enumeration.
- */
-export enum ReportCoverReportType {
-  BODY_STUDY = "BODY_STUDY",
-  ETC = "ETC",
 }
 
 //==============================================================

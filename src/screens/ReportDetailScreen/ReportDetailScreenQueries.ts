@@ -4,16 +4,12 @@ export const GET_REPORT_DETAIL = gql`
   query GetReportDetail($reportUuid: String) {
     getReportDetail(reportUuid: $reportUuid) {
       report {
-        uuid
-        reportCover {
-          classOrder {
-            order
-            startDate
-            endDate
-          }
-          uuid
-          reportType
+        classOrder{
+          order
+          startDate
+          endDate
         }
+        uuid
         saengSikMorning
         saengSikNoon
         saengSikEvening

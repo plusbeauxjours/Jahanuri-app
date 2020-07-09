@@ -68,11 +68,11 @@ const ReportDetailScreen: React.FC<IProps> = ({ navigation }) => {
   } else {
     return (
       <>
-        {report?.reportCover?.classOrder ? (
+        {report?.classOrder ? (
           <BackCustomHeader
             title={
               `${Moment(report.reportDate).diff(
-                Moment(report.reportCover.classOrder.startDate),
+                Moment(report.classOrder.startDate),
                 "day"
               )}` + "일차 일지"
             }

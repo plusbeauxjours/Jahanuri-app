@@ -8,11 +8,12 @@ import { Formik } from "formik";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Divider from "../../components/Divider";
 import FormikInput from "../../components/Formik/FormikInput";
-import { GET_HABIT_CHECK_LIST } from "./HabitCheckListScreenQueries";
+import { GET_HABIT_CHECKLIST } from "../HabitCheckListScreen/HabitCheckListScreenQueries";
 import dimensions from "../../constants/dimensions";
 import { GetHabitCheckList } from "../../types/api";
 import { ActivityIndicator } from "react-native";
 import CheckBoxRow from "../../components/CheckBoxRow";
+import { GET_HABIT_CHECK_LIST_DETAIL } from "./HabitCheckListDetailQueries";
 
 const Container = styled.View`
   flex: 1;
@@ -41,9 +42,9 @@ const WhiteSpace = styled.View`
 
 const HabitCheckListDetailScreen: React.FC = () => {
   const {
-    data: { getHabitCheckList: { habitCheckList = null } = {} } = {},
+    data: { getHabitCheckList: { habitCheckLists = null } = {} } = {},
     loading: getApplicationLoading,
-  } = useQuery<GetHabitCheckList>(GET_HABIT_CHECK_LIST);
+  } = useQuery<GetHabitCheckList>(GET_HABIT_CHECK_LIST_DETAIL);
   if (getApplicationLoading) {
     return (
       <Container>

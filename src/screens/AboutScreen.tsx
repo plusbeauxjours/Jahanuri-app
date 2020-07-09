@@ -104,6 +104,7 @@ const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
         resizeMode="stretch"
       >
         <Container>
+          <LeftComponent />
           <TitleBox>
             <Title>몸공부 구성</Title>
           </TitleBox>
@@ -140,6 +141,7 @@ const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
         resizeMode="stretch"
       >
         <Container>
+          <LeftComponent />
           <TitleBox>
             <Title>몸공부 진행</Title>
           </TitleBox>
@@ -169,6 +171,7 @@ const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
         resizeMode="stretch"
       >
         <Container>
+          <LeftComponent />
           <TitleBox>
             <Title>몸공부,</Title>
             <SecondTitle>이런 분들께 더욱 추천합니다</SecondTitle>
@@ -201,6 +204,7 @@ const AboutScreen: NavigationStackScreenComponent = ({ navigation }) => {
       >
         <Container>
           <ScrollView style={{ width: dimensions.width }}>
+            <LeftComponent />
             <TitleBox>
               <Title>몸공부 일정과 비용, 신청방법</Title>
             </TitleBox>

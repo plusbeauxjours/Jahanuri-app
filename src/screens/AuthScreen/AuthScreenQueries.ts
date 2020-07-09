@@ -36,7 +36,6 @@ export const SIGNUP = gql`
         job
         phoneNumber
         email
-        reportCoverUuid
         hasSubmittedPreviousCheckList
         hasSubmittedLaterCheckList
         hasSubmittedHabitCheckList

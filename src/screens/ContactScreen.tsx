@@ -178,7 +178,7 @@ const ContactScreen: React.FC = () => {
                 resizeMode={"contain"}
                 source={require(`../images/Contact/channel_instagram_gomaon.png`)}
               />
-              <Text>@gomaon_seoul</Text>
+              <Text>@gomaschool</Text>
             </LogoContainer>
             <LogoContainer onPress={() => onPress("channel_facebook_gomaon")}>
               <Logo

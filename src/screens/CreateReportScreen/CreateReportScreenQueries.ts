@@ -2,7 +2,6 @@ import gql from "graphql-tag";
 
 export const CREATE_REPORT = gql`
   mutation CreateReport(
-    $reportCoverUuid: String
     $saengSikMorning: String
     $saengSikNoon: String
     $saengSikEvening: String
@@ -30,7 +29,6 @@ export const CREATE_REPORT = gql`
     $reportDate: DateTime!
   ) {
     createReport(
-      reportCoverUuid: $reportCoverUuid
       saengSikMorning: $saengSikMorning
       saengSikNoon: $saengSikNoon
       saengSikEvening: $saengSikEvening
@@ -60,15 +58,6 @@ export const CREATE_REPORT = gql`
       report {
         uuid
         reportDate
-        reportCover {
-          classOrder {
-            order
-            startDate
-            endDate
-          }
-          uuid
-          reportType
-        }
       }
     }
   }

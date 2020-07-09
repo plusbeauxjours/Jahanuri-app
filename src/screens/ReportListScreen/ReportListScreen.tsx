@@ -111,7 +111,6 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
               <Touchable
                 onPress={() =>
                   navigation.navigate("CreateReportScreen", {
-                    reportCoverUuid: me.reportCoverUuid,
                     reports: reports,
                   })
                 }
@@ -141,11 +140,11 @@ const ReportListScreen: NavigationStackScreenComponent = ({ navigation }) => {
                         })
                       }
                     >
-                      {report?.reportCover?.classOrder ? (
+                      {report?.classOrder ? (
                         <Row>
                           <Text>
                             {Moment(report.reportDate).diff(
-                              Moment(report.reportCover.classOrder.startDate),
+                              Moment(report.classOrder.startDate),
                               "day"
                             )}
                             일차 일지

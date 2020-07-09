@@ -53,7 +53,7 @@ const Touchable = styled.TouchableOpacity``;
 
 const SurveyDetailScreen: React.FC = () => {
   const {
-    data: { getSurvey: { survey = null } = {} } = {},
+    data: { getSurvey: { surveys = null } = {} } = {},
     loading: getSurveyLoading,
   } = useQuery<GetSurvey>(GET_SURVEY);
   const onPress = (urls: string) => {
@@ -213,16 +213,13 @@ const SurveyDetailScreen: React.FC = () => {
                 <Divider text={"유의사항"} color={"dark"} />
                 <View>
                   <Box>
-                    <Text>
-                      1) 프로그램 시작 시간은 오전 11시 입니다. 5분전까지
-                      강의실에 입장해주세요.
-                    </Text>
+                    <Text>1) 5분전까지 강의실에 입장해주세요.</Text>
                     <SmallWhiteSpace />
                     <Text>2) 준비물: 필기구, 운동 가능한 편한 복장</Text>
                     <SmallWhiteSpace />
                     <Text>
-                      3) 책 (치유본능)을 프로그램 기간에 읽으시면 몸공부에 큰
-                      도움이 됩니다.
+                      3) 책 (치유본능), (짠맛의 힘)을 읽고 참여하시면 몸공부에
+                      큰 도움이 됩니다.
                     </Text>
                     <SmallWhiteSpace />
                     <Text>
@@ -246,7 +243,7 @@ const SurveyDetailScreen: React.FC = () => {
                     </Touchable>
                     <SmallWhiteSpace />
                     <Text>
-                      6) 수강료: 첫 온라인 특가 38만원 (신청서 제출 후 3일내
+                      6) 수강료: 첫 온라인 특가 45만원 (신청서 제출 후 3일내
                       결제하셔야 신청이 완료됩니다.)
                     </Text>
                     <SmallWhiteSpace />

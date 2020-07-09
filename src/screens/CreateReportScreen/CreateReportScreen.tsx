@@ -144,8 +144,6 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
   const submitConfirm = (values: any) => {
     submitReportFn({
       variables: {
-        reportCoverUuid:
-          navigation.state.params && navigation.state.params.reportCoverUuid,
         saengSikMorning:
           values.saengSikMorning && values.saengSikMorning.trim(),
         saengSikNoon: values.saengSikNoon && values.saengSikNoon.trim(),
@@ -309,7 +307,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="saengSikMorning"
                     error={touched.saengSikMorning && errors.saengSikMorning}
-                    placeholder="화토"
+                    placeholder="예) 화토"
                   />
                   <FormikInput
                     type="row"
@@ -319,7 +317,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="saengSikNoon"
                     error={touched.saengSikNoon && errors.saengSikNoon}
-                    placeholder="화토"
+                    placeholder="예) 화토"
                   />
                   <FormikInput
                     type="row"
@@ -329,7 +327,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="saengSikEvening"
                     error={touched.saengSikEvening && errors.saengSikEvening}
-                    placeholder="수목"
+                    placeholder="예) 수목"
                   />
                 </Line>
                 <Text>아미노</Text>
@@ -342,7 +340,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="aminoMorning"
                     error={touched.aminoMorning && errors.aminoMorning}
-                    placeholder="아미노 1"
+                    placeholder="예) 아미노 1"
                   />
                   <FormikInput
                     type="row"
@@ -352,7 +350,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="aminoNoon"
                     error={touched.aminoNoon && errors.aminoNoon}
-                    placeholder="아미노 2"
+                    placeholder="예) 아미노 2"
                   />
                   <FormikInput
                     type="row"
@@ -362,7 +360,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="aminoEvening"
                     error={touched.aminoEvening && errors.aminoEvening}
-                    placeholder="아미노 2"
+                    placeholder="예) 아미노 2"
                   />
                 </Line>
                 <Text>생기소</Text>
@@ -375,7 +373,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="sangiSoMorning"
                     error={touched.sangiSoMorning && errors.sangiSoMorning}
-                    placeholder="휴 1, 활 2"
+                    placeholder="예) 휴 1, 활 2"
                   />
                   <FormikInput
                     type="row"
@@ -385,7 +383,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="sangiSoNoon"
                     error={touched.sangiSoNoon && errors.sangiSoNoon}
-                    placeholder="활 1"
+                    placeholder="예) 활 1"
                   />
                   <FormikInput
                     type="row"
@@ -395,7 +393,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                     onTouch={setFieldTouched}
                     name="sangiSoEvening"
                     error={touched.sangiSoEvening && errors.sangiSoEvening}
-                    placeholder="휴 2, 정 1"
+                    placeholder="예) 휴 2, 정 1"
                   />
                 </Line>
                 <Text>전해질 보충</Text>
@@ -440,7 +438,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="meal"
                   error={touched.meal && errors.meal}
-                  placeholder="저녁 된장찌개 + 밥"
+                  placeholder="예) 저녁 된장찌개 + 밥"
                 />
                 <FormikInput
                   label="식사 습관 체크"
@@ -449,7 +447,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="mealCheck"
                   error={touched.mealCheck && errors.mealCheck}
-                  placeholder="먹는 양이 줄었다."
+                  placeholder="예) 먹는 양이 줄었다."
                 />
                 <Divider text={"생활습관"} color={"dark"} />
                 <FormikInput
@@ -459,7 +457,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="sleeping"
                   error={touched.sleeping && errors.sleeping}
-                  placeholder="현실적인 꿈을 꾸었다."
+                  placeholder="예) 현실적인 꿈을 꾸었다."
                 />
                 <FormikInput
                   label="변"
@@ -468,7 +466,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="stool"
                   error={touched.stool && errors.stool}
-                  placeholder="약간 풀어짐"
+                  placeholder="예) 약간 풀어짐"
                 />
                 <FormikInput
                   label="곡식 찜질"
@@ -477,7 +475,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="hotGrain"
                   error={touched.hotGrain && errors.hotGrain}
-                  placeholder="족욕, 자기전에 배"
+                  placeholder="예) 족욕, 자기전에 배"
                 />
                 <FormikInput
                   label="따뜻한 물"
@@ -486,7 +484,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="hotWater"
                   error={touched.hotWater && errors.hotWater}
-                  placeholder="따뜻한 차만 마심"
+                  placeholder="예) 따뜻한 차만 마심"
                 />
                 <FormikInput
                   label="걷기"
@@ -495,7 +493,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="strolling"
                   error={touched.strolling && errors.strolling}
-                  placeholder="2시간 반"
+                  placeholder="예) 2시간 반"
                 />
                 <Divider text={"오늘의 숙제 (운동/강의)"} color={"dark"} />
                 <FormikInput
@@ -505,7 +503,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="workout"
                   error={touched.workout && errors.workout}
-                  placeholder="허리돌리기 호흡에 맞게 10분, 앉았다 일어나기 10회 3번"
+                  placeholder="예) 허리돌리기 호흡에 맞게 10분, 앉았다 일어나기 10회 3번"
                 />
                 <FormikInput
                   label="강의"
@@ -514,7 +512,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="lecture"
                   error={touched.lecture && errors.lecture}
-                  placeholder="뇌구조"
+                  placeholder="예) 뇌구조"
                 />
                 <FormikInput
                   label="기타"
@@ -523,7 +521,7 @@ const CreateReportScreen: React.FC<IProps> = ({ navigation }) => {
                   onTouch={setFieldTouched}
                   name="etc"
                   error={touched.etc && errors.etc}
-                  placeholder="곡식주머니 꾸준히 하기, 음식에 간해서 먹기"
+                  placeholder="예) 곡식주머니 꾸준히 하기, 음식에 간해서 먹기"
                 />
                 <Divider text={"세줄 일기"} color={"dark"} />
                 <FormikInput
