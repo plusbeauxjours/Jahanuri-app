@@ -248,8 +248,8 @@ const ContactScreen: React.FC = () => {
             </LogoContainer>
             <RowWhiteSpace />
           </Box>
+          <ColumnWhiteSpace />
         </ScrollView>
-        <ColumnWhiteSpace />
       </Container>
     </ImageBackground>
   );
