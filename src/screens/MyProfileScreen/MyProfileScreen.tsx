@@ -320,7 +320,7 @@ const MyProfileScreen: NavigationStackScreenComponent = ({ navigation }) => {
             username={me?.username}
           />
           {(() => {
-            switch (me.isStaff) {
+            switch (me?.isStaff) {
               case true:
                 return (
                   <>
