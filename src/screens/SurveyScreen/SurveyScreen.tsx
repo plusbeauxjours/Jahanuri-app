@@ -113,7 +113,7 @@ const HabitCheckListScreen: NavigationStackScreenComponent = ({
                     <Touchable
                       onPress={() =>
                         navigation.navigate("SurveyDetailScreen", {
-                          habitCheckListUuid: survey.uuid,
+                          surveyUuid: survey.uuid,
                         })
                       }
                     >

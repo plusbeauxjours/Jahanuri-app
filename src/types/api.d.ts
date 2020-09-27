@@ -708,7 +708,7 @@ export interface GetReportDetail_getReportDetail_report_classOrder {
 
 export interface GetReportDetail_getReportDetail_report {
   __typename: "ReportType";
-  classOrder: GetReportDetail_getReportDetail_report_classOrder;
+  classOrder: GetReportDetail_getReportDetail_report_classOrder | null;
   uuid: any;
   saengSikMorning: string | null;
   saengSikNoon: string | null;
@@ -770,7 +770,7 @@ export interface GetReportList_getReportList_reports {
   __typename: "ReportType";
   uuid: any;
   reportDate: any;
-  classOrder: GetReportList_getReportList_reports_classOrder;
+  classOrder: GetReportList_getReportList_reports_classOrder | null;
 }
 
 export interface GetReportList_getReportList {
@@ -892,6 +892,10 @@ export interface GetSurveyDetail_getSurveyDetail {
 
 export interface GetSurveyDetail {
   getSurveyDetail: GetSurveyDetail_getSurveyDetail;
+}
+
+export interface GetSurveyDetailVariables {
+  surveyUuid: string;
 }
 
 /* tslint:disable */

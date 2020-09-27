@@ -2,8 +2,8 @@ import gql from "graphql-tag";
 
 
 export const GET_SURVEY_DETAIL = gql`
-  query GetSurveyDetail {
-    getSurveyDetail {
+  query GetSurveyDetail ($surveyUuid: String!) {
+    getSurveyDetail (surveyUuid: $surveyUuid) {
       survey {
         hasMarried
         hasMarriedEtc

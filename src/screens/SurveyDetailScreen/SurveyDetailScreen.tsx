@@ -1,17 +1,22 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
+import { useQuery } from "react-apollo-hooks";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { Formik } from "formik";
+import { ActivityIndicator, Linking } from "react-native";
 
 import Divider from "../../components/Divider";
 import FormikInput from "../../components/Formik/FormikInput";
 import dimensions from "../../constants/dimensions";
-import { useQuery } from "react-apollo-hooks";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { Formik } from "formik";
-import { GetSurvey } from "../../types/api";
-import { ActivityIndicator, Linking } from "react-native";
 import MenuCustomHeader from "../../components/MenuCustomHeader";
 import CheckBoxRow from "../../components/CheckBoxRow";
-import { GET_SURVEY } from "../SurveyScreen/SurveyScreenQueries";
+import { GET_SURVEY_DETAIL } from "./SurveyDetailScreenQueries";
+import { GetSurveyDetail, GetSurveyDetailVariables } from "../../types/api";
 
 const Container = styled.View`
   flex: 1;
@@ -51,11 +56,17 @@ const Link = styled(Text)`
 `;
 const Touchable = styled.TouchableOpacity``;
 
-const SurveyDetailScreen: React.FC = () => {
+interface IProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const SurveyDetailScreen: React.FC<IProps> = ({ navigation }) => {
   const {
-    data: { getSurvey: { surveys = null } = {} } = {},
+    data: { getSurveyDetail: { survey = null } = {} } = {},
     loading: getSurveyLoading,
-  } = useQuery<GetSurvey>(GET_SURVEY);
+  } = useQuery<GetSurveyDetail, GetSurveyDetailVariables>(GET_SURVEY_DETAIL, {
+    variables: { surveyUuid: navigation?.state?.params?.surveyUuid },
+  });
   const onPress = (urls: string) => {
     Linking.canOpenURL(urls)
       .then((supported) => {
