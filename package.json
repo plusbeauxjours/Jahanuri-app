@@ -19,7 +19,7 @@
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.8",
     "apollo-upload-client": "^13.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "eslint-cli": "^1.1.1",
     "expo": "~37.0.3",
     "expo-apple-authentication": "~2.1.0",
