@@ -1,7 +1,7 @@
 # JAHANURI-APP
 
 <p align="center" >
-  <img src="https://www.plusbeauxjours.com/static/media/Jahanuri_app_video.a8ae0f67.gif" >
+  <img src="https://github.com/plusbeauxjours/web-plusbeauxjours/blob/master/src/Images/App/Jahanuri_app/Jahanuri_app_video.gif" >
   <br>
 </p>
 
@@ -15,18 +15,18 @@
 
 ### Portfolio Link
 
-> https://www.plusbeauxjours.com/projects/app/jahanuri-app
+> https://www.plusbeauxjours.info/projects/app/jahanuri
 
 ### Download
 
 <span>
 <p align="center" >
-  <img src="https://www.plusbeauxjours.com/static/media/Jahanuri_app_Android.4d0fb35c.jpg" width="200"height="200" >
+  <img src="https://github.com/plusbeauxjours/web-plusbeauxjours/blob/master/src/Images/App/Jahanuri_app/Jahanuri_app_Android.jpg" width="200"height="200" >
   <br>
   <em>Android</em>
   </p>
   <p align="center" >
-  <img src="https://www.plusbeauxjours.com/static/media/Jahanuri_app_IOS.71ff0d6c.jpg" width="200"height="200" >
+  <img src="https://github.com/plusbeauxjours/web-plusbeauxjours/blob/master/src/Images/App/Jahanuri_app/Jahanuri_app_IOS.jpg" width="200"height="200" >
   <br>
   <em>IOS</em>
 </p>
